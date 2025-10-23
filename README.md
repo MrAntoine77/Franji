@@ -11,7 +11,7 @@
 Kotlin + Jetpack Compose
 
 ## Lancer le projet
-Ouvre avec **Android Studio** (Electric Eel ou +) et lance l’app via un émulateur ou un appareil physique.
+Ouvre avec **Android Studio** et lance l’app via un émulateur ou un appareil physique.
 
 ## Structure actuelle
 En cours de création
