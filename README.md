@@ -1,3 +1,5 @@
+/!\ Ce projet n'est pas à jour /!\
+
 # Franji
 **Franji** est une application Android développée en Kotlin avec Jetpack Compose pour apprendre le japonais à travers des quiz, des fiches, et des mini-jeux ludiques.
 
