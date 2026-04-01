@@ -2,12 +2,7 @@ package fr.mrantoine.franji.ui.screens.main.home
 
 import Kanji
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
@@ -15,18 +10,12 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.components.Tree
-import fr.mrantoine.franji.ui.theme.Dimens
-import getCategory
-import getCategoryArray
-import getKanjiByCharId
-import getLottie
-import kotlinx.coroutines.launch
-import kotlin.to
+import getCategories
+import getCategoryKanjiChar
+import getCategoryKanjiId
 
 enum class KanjiScreenState {
     CATEGORY,
@@ -40,11 +29,12 @@ fun KanjiScreen() {
     var selected_kanji by remember { mutableStateOf<Kanji>(Kanji("", emptyList(), "")) }
 
 
-    var category by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
+    var categories by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
     var kanji_list by remember { mutableStateOf(emptyArray<String>()) }
 
+
     LaunchedEffect(Unit) {
-        category = getCategory("")
+        categories = getCategories()
     }
 
     when (state) {
@@ -54,7 +44,7 @@ fun KanjiScreen() {
                     .verticalScroll(rememberScrollState())
             ) {
                 Tree(
-                    treeData = category,//temp_data,
+                    treeData = categories,//temp_data,
                     onClick = {arg ->
                         state = KanjiScreenState.LIST
                         path = arg
@@ -65,8 +55,7 @@ fun KanjiScreen() {
         KanjiScreenState.LIST -> {
 
             LaunchedEffect(Unit) {
-                kanji_list = getCategoryArray(path)
-                print(kanji_list)
+                kanji_list = getCategoryKanjiChar(path)
             }
 
             BackHandler() {
@@ -82,10 +71,6 @@ fun KanjiScreen() {
             )
         }
         KanjiScreenState.KANJI -> {
-            LaunchedEffect(Unit) {
-                kanji_list = getCategoryArray(path)
-                print(kanji_list)
-            }
 
             BackHandler() {
                 state = KanjiScreenState.LIST

@@ -30,7 +30,6 @@ import fr.mrantoine.franji.ui.components.EaseBar
 import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.components.TopBar
 import fr.mrantoine.franji.ui.theme.Dimens
-import getCategory
 import getLottie
 
 

@@ -26,7 +26,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.theme.Dimens
-import getKanjiByCharId
+import getCategoryKanjiChar
+import getKanjiByChar
+import getKanjiById
 import getLottie
 
 @Composable
@@ -63,6 +65,10 @@ fun KanjiListScreen(
                     for (colIndex in 0 until columns) {
                         val kanjiIndex = rowIndex * columns + colIndex
                         var kanji by remember { mutableStateOf<Kanji>(Kanji("", emptyList(), "")) }
+                        LaunchedEffect(Unit) {
+                            kanji = getKanjiByChar(kanjis.getOrNull(kanjiIndex) ?: "")
+                            print(kanji)
+                        }
                         if (kanjiIndex < kanjis.size) {
                             Box(
                                 modifier = Modifier
@@ -70,18 +76,14 @@ fun KanjiListScreen(
                                     .weight(1f)
                                     .padding(Dimens.s)
                                     .clickable {
+
+
                                         onKanjiClick(kanji)
                                     },
                                 contentAlignment = Alignment.Center
                             ) {
-
-
-                                LaunchedEffect(kanjis[kanjiIndex]) {
-                                    kanji = getKanjiByCharId(kanjis[kanjiIndex])
-                                }
-
                                 Text(
-                                    text = kanji?.kanji ?: "",
+                                    text = kanjis.getOrNull(kanjiIndex) ?: "",
                                     fontSize = 32.sp,
                                     fontWeight = FontWeight.SemiBold
                                 )

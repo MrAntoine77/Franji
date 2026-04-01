@@ -9,6 +9,7 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
@@ -26,9 +27,9 @@ val client = HttpClient(CIO) {
     }
 }
 
-suspend fun getCategory(path: String): Map<String, Any> {
+suspend fun getCategories(): Map<String, Any> {
     return try {
-        val response = client.get("http://$IP_ADDRESS:$PORT/categories/$path")
+        val response = client.get("http://$IP_ADDRESS:$PORT/categories")
         val jsonString: String = response.body()
 
         val jsonObject: JsonObject = Json.parseToJsonElement(jsonString).jsonObject
@@ -39,13 +40,28 @@ suspend fun getCategory(path: String): Map<String, Any> {
     }
 }
 
-suspend fun getCategoryArray(path: String): Array<String> {
-    return try {
-        val response = client.get("http://$IP_ADDRESS:$PORT/categories/$path")
-        val jsonString: String = response.body()
 
-        val jsonArray: JsonArray = Json.parseToJsonElement(jsonString).jsonArray
-        jsonArray.map { it.jsonPrimitive.content }.toTypedArray()
+suspend fun getCategoryKanjiChar(path: String): Array<String> {
+    return try {
+        client.get("http://$IP_ADDRESS:$PORT/categories/category/kanji_char/$path").body()
+    } catch (e: Exception) {
+        e.printStackTrace()
+        emptyArray()
+    }
+}
+
+suspend fun getCategoryKanjiId(path: String): Array<String> {
+    return try {
+        client.get("http://$IP_ADDRESS:$PORT/categories/category/kanji_id/$path").body()
+    } catch (e: Exception) {
+        e.printStackTrace()
+        emptyArray()
+    }
+}
+
+suspend fun getCategoriesPaths(): Array<String> {
+    return try {
+        client.get("http://$IP_ADDRESS:$PORT/categories/paths").body()
     } catch (e: Exception) {
         e.printStackTrace()
         emptyArray()
@@ -78,9 +94,22 @@ data class Kanji(
     val id: String
 )
 
-suspend fun getKanjiByCharId(charId: String): Kanji {
+suspend fun getKanjiById(kanji_id: String): Kanji {
     return try {
-        client.get("http://$IP_ADDRESS:$PORT/kanji/char_id/$charId").body()
+        client.get("http://$IP_ADDRESS:$PORT/kanji/kanji_data/id/$kanji_id").body()
+    } catch (e: Exception) {
+        e.printStackTrace()
+        Kanji("", emptyList(), "")
+    }
+}
+
+suspend fun getKanjiByChar(kanji_char: String): Kanji {
+    return try {
+        client.get("http://$IP_ADDRESS:$PORT/kanji/kanji_data/kanji") {
+            url {
+                parameters.append("kanji_char", kanji_char)
+            }
+        }.body()
     } catch (e: Exception) {
         e.printStackTrace()
         Kanji("", emptyList(), "")
