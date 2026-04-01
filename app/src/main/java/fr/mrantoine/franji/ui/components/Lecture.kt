@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.ui.theme.Dimens
@@ -51,7 +52,6 @@ fun Lecture(
                     .weight(1f)
                     .fillMaxWidth()
             ) {
-                // Ligne On
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -64,11 +64,11 @@ fun Lecture(
                     )
                     Text(
                         text = on.joinToString(", "),
-                        fontSize = 14.sp
+                        fontSize = 14.sp,
+                        textAlign = TextAlign.Right
                     )
                 }
 
-                // Ligne Kun
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -81,7 +81,8 @@ fun Lecture(
                     )
                     Text(
                         text = kun.joinToString(", "),
-                        fontSize = 14.sp
+                        fontSize = 14.sp,
+                        textAlign = TextAlign.Right
                     )
                 }
             }

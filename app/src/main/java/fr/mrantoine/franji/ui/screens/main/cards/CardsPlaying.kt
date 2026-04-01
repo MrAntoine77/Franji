@@ -15,8 +15,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,6 +30,8 @@ import fr.mrantoine.franji.ui.components.EaseBar
 import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.components.TopBar
 import fr.mrantoine.franji.ui.theme.Dimens
+import getCategory
+import getLottie
 
 
 @Composable
@@ -117,7 +122,15 @@ fun CardsPlaying(
                             .padding(top = Dimens.l),
                         textAlign = TextAlign.Center
                     )
-                    Lottie()
+
+                    var lottie by remember { mutableStateOf<String>("{}") }
+
+                    LaunchedEffect(Unit) {
+                        lottie = getLottie("kanji12")
+                    }
+                    Lottie(
+                        data = lottie
+                    )
                 }
             }
         }

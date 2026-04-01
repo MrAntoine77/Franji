@@ -1,5 +1,7 @@
 package fr.mrantoine.franji.ui.screens.main.home
 
+import Category
+import Kanji
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,14 +12,21 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.components.Tree
 import fr.mrantoine.franji.ui.theme.Dimens
+import getCategory
+import getCategoryArray
+import getKanjiByCharId
+import getLottie
+import kotlinx.coroutines.launch
 import kotlin.to
 
 enum class KanjiScreenState {
@@ -28,7 +37,17 @@ enum class KanjiScreenState {
 @Composable
 fun KanjiScreen() {
     var state by remember { mutableStateOf(KanjiScreenState.CATEGORY) }
-    var categoryTitle by remember { mutableStateOf("Default") }
+    var path by remember { mutableStateOf("Default") }
+    var selected_kanji by remember { mutableStateOf<Kanji>(Kanji("", emptyList(), "")) }
+
+
+    var category by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
+    var kanji_list by remember { mutableStateOf(emptyArray<String>()) }
+    val scope = rememberCoroutineScope()
+
+    LaunchedEffect(Unit) {
+        category = getCategory("")
+    }
 
     when (state) {
         KanjiScreenState.CATEGORY ->  {
@@ -61,41 +80,43 @@ fun KanjiScreen() {
                     .verticalScroll(rememberScrollState())
             ) {
                 Tree(
-                    treeData = temp_data,
+                    treeData = category,//temp_data,
                     onClick = {arg ->
                         state = KanjiScreenState.LIST
-                        categoryTitle = arg
+                        path = arg
                     }
                 )
             }
         }
         KanjiScreenState.LIST -> {
+
+            LaunchedEffect(Unit) {
+                kanji_list = getCategoryArray(path)
+                print(kanji_list)
+            }
+
             BackHandler() {
                 state = KanjiScreenState.CATEGORY
             }
             KanjiListScreen(
-                onKanjiClick = {state = KanjiScreenState.KANJI},
-                title = categoryTitle
+                onKanjiClick = {kanji ->
+                    selected_kanji = kanji
+                    state = KanjiScreenState.KANJI
+                               },
+                path = path,
+                kanjis = kanji_list
             )
         }
         KanjiScreenState.KANJI -> {
+            LaunchedEffect(Unit) {
+                kanji_list = getCategoryArray(path)
+                print(kanji_list)
+            }
+
             BackHandler() {
                 state = KanjiScreenState.LIST
             }
-            val scrollState = rememberLazyListState()
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize(),
-                state = scrollState,
-                verticalArrangement = Arrangement.spacedBy(Dimens.m)
-            ) {
-                item {
-                    Lottie()
-                }
-                item {
-                    KanjiInfoScreen()
-                }
-            }
+            KanjiInfoScreen(selected_kanji)
 
         }
     }

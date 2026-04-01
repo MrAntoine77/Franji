@@ -116,7 +116,8 @@ fun Tree(
     treeData: Map<String, Any>,
     level: Int = 0,
     onClick: (arg: String) -> Unit = {},
-    onAdd: () -> Unit = {}
+    onAdd: () -> Unit = {},
+    path: String = ""
 
 ) {
     treeData.forEach { (key, value) ->
@@ -131,7 +132,7 @@ fun Tree(
                         if(key != "+")
                         {
                             if(!isNode) {
-                                onClick(key)
+                                onClick("$path/$key")
                             } else {
                                 isSelected = !isSelected
                             }
@@ -177,7 +178,8 @@ fun Tree(
             Tree(
                 treeData = value as Map<String, Any>,
                 level = level + 1,
-                onClick = onClick
+                onClick = onClick,
+                path = if(level == 0) key else "$path/$key"
             )
         }
     }

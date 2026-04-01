@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.screens.main.home
 
+import Kanji
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,33 +14,36 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.theme.Dimens
+import getKanjiByCharId
+import getLottie
 
 @Composable
 fun KanjiListScreen(
-    onKanjiClick: (() -> Unit) = {},
-    title: String
+    onKanjiClick: ((Kanji) -> Unit) = {},
+    path: String,
+    kanjis: Array<String> = emptyArray()
 ) {
-    val kanjis = listOf(
-        "日", "月", "火", "水", "木", "金", "土", "山", "川", "田",
-        "人", "口", "目", "耳", "手", "足", "力", "心", "雨", "空",
-        "花", "草", "魚", "鳥", "犬", "猫", "虫", "車", "門", "山",
-        "石", "森", "海", "川", "火", "風", "雨", "雪", "天", "地",
-        "王", "玉", "金", "銀", "銅", "鉄", "刀", "弓", "矢", "弦"
-    ) // 50 kanjis
-    var uppercaseTitle = title.uppercase()
+
+    var title = path.uppercase().replace("/", " ")
     Column(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
             .padding(Dimens.m)
     ) {
         Text(
-            text = "- $uppercaseTitle -",
+            text = "- $title -",
             fontSize = 20.sp,
             modifier = Modifier
                 .fillMaxWidth()
@@ -58,6 +62,7 @@ fun KanjiListScreen(
                 ) {
                     for (colIndex in 0 until columns) {
                         val kanjiIndex = rowIndex * columns + colIndex
+                        var kanji by remember { mutableStateOf<Kanji>(Kanji("", emptyList(), "")) }
                         if (kanjiIndex < kanjis.size) {
                             Box(
                                 modifier = Modifier
@@ -65,12 +70,18 @@ fun KanjiListScreen(
                                     .weight(1f)
                                     .padding(Dimens.s)
                                     .clickable {
-                                        onKanjiClick()
+                                        onKanjiClick(kanji)
                                     },
                                 contentAlignment = Alignment.Center
                             ) {
+
+
+                                LaunchedEffect(kanjis[kanjiIndex]) {
+                                    kanji = getKanjiByCharId(kanjis[kanjiIndex])
+                                }
+
                                 Text(
-                                    text = kanjis[kanjiIndex],
+                                    text = kanji?.kanji ?: "",
                                     fontSize = 32.sp,
                                     fontWeight = FontWeight.SemiBold
                                 )
