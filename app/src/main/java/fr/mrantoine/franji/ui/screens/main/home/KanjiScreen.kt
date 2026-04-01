@@ -1,6 +1,5 @@
 package fr.mrantoine.franji.ui.screens.main.home
 
-import Category
 import Kanji
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
@@ -43,7 +42,6 @@ fun KanjiScreen() {
 
     var category by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
     var kanji_list by remember { mutableStateOf(emptyArray<String>()) }
-    val scope = rememberCoroutineScope()
 
     LaunchedEffect(Unit) {
         category = getCategory("")
@@ -51,30 +49,6 @@ fun KanjiScreen() {
 
     when (state) {
         KanjiScreenState.CATEGORY ->  {
-            val temp_data = mapOf(
-                "Niveaux" to mapOf(
-                    "JLPT 5" to mapOf(
-                        "JLPT 5 1-20" to listOf("kanji1", "kanji2"),
-                        "JLPT 5 21-40" to listOf("kanji3", "kanji4")
-                    ),
-                    "JLPT 4" to mapOf(
-                        "JLPT 4 41-60" to listOf("kanji5", "kanji6"),
-                        "JLPT 4 61-80" to listOf("kanji7", "kanji8")
-                    )
-                ),
-                "Catégories" to mapOf(
-                    "Nature" to listOf(""),
-                    "Famille" to listOf(""),
-                    "Travail" to listOf(""),
-                    "Véhicules" to listOf(""),
-                    "Compteurs" to listOf("")
-                ),
-                "Kana" to mapOf(
-                    "Hiragana" to listOf("a", "i" ,"u"),
-                    "Katakana" to listOf("a", "i" ,"u")
-                )
-            )
-
             Column(
                 modifier = Modifier
                     .verticalScroll(rememberScrollState())

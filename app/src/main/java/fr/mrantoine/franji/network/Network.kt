@@ -26,15 +26,6 @@ val client = HttpClient(CIO) {
     }
 }
 
-@Serializable
-data class Category(
-    val id: Int,
-    val name: String,
-    val parent: String? = null
-)
-
-
-
 suspend fun getCategory(path: String): Map<String, Any> {
     return try {
         val response = client.get("http://$IP_ADDRESS:$PORT/categories/$path")
