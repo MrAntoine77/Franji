@@ -24,12 +24,14 @@ import fr.mrantoine.franji.ui.theme.Dimens
 @Composable
 fun CardsRecapScreen(
     onStartClick: (() -> Unit) = {},
+    onBackClick: (() -> Unit) = {},
     title: String = "Titre"
 ) {
     Column(modifier = Modifier.statusBarsPadding()) {
         TopBar(
             title = "Révision",
-            showBack = true
+            showBack = true,
+            onBackClick = onBackClick
         )
         Column(
             modifier = Modifier.padding(Dimens.l).fillMaxWidth(),

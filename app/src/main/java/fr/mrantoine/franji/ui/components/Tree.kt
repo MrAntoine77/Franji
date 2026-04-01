@@ -86,12 +86,37 @@ fun TreeNode(
     }
 }
 
+@Composable
+fun TreeNodeAdd(
+    onClick: () -> Unit = {},
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onClick() },
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(Dimens.s),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = Icons.Default.AddCircle,
+                contentDescription = "Add",
+                tint = MaterialTheme.colorScheme.primary,
+            )
+        }
+    }
+}
+
 
 @Composable
 fun Tree(
     treeData: Map<String, Any>,
     level: Int = 0,
-    onClick: (arg: String) -> Unit = {}
+    onClick: (arg: String) -> Unit = {},
+    onAdd: () -> Unit = {}
 
 ) {
     treeData.forEach { (key, value) ->
@@ -103,26 +128,37 @@ fun Tree(
             modifier = Modifier
                 .clickable(
                     onClick = {
-                        if(!isNode) {
-                            onClick(key)
-                        } else {
-                            isSelected = !isSelected
+                        if(key != "+")
+                        {
+                            if(!isNode) {
+                                onClick(key)
+                            } else {
+                                isSelected = !isSelected
+                            }
                         }
                     }
                 )
             ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(Dimens.s),
-                modifier = Modifier
-                    .padding(Dimens.s)
-            ) {
-                TreeNode(
-                    text = key,
-                    isNode = isNode,
-                    isSelected = isSelected,
-                    level = level
-                )
+
+            if(!isNode and (key == "+")) {
+                TreeNodeAdd(onClick = onAdd)
+            }
+            else {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(Dimens.s),
+                    modifier = Modifier
+                        .padding(Dimens.s)
+                ) {
+
+                    TreeNode(
+                        text = key,
+                        isNode = isNode,
+                        isSelected = isSelected,
+                        level = level
+                    )
+
+                }
             }
         }
 
@@ -147,34 +183,4 @@ fun Tree(
     }
 }
 
-@Composable
-fun NodeAdd(
-    onClick: () -> Unit = {},
-) {
-    Column(
-        modifier = Modifier.clickable { onClick() }
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(Dimens.s),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(Dimens.s)
-            ) {
-                Icon(
-                    imageVector = Icons.Default.AddCircle,
-                    contentDescription = "Add",
-                    tint = MaterialTheme.colorScheme.primary,
-                )
-            }
-        }
-        HorizontalDivider(
-            color = Color.LightGray,
-            thickness = 1.dp
-        )
-    }
-}
+

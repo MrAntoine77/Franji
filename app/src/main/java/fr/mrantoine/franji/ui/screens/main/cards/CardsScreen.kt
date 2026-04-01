@@ -63,7 +63,8 @@ fun CardsScreen(
         ),
         "Personnalisées" to mapOf(
             "Perso 1" to listOf("a", "i" ,"u"),
-            "Perso 2" to listOf("a", "i" ,"u")
+            "Perso 2" to listOf("a", "i" ,"u"),
+            "+" to emptyList()
         )
     )
 

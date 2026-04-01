@@ -66,7 +66,9 @@ class MainActivity : ComponentActivity() {
 
                     composable(AuthRoutes.CARD_RECAP) {
                         CardsRecapScreen(
-                            onStartClick = { navController.navigate(AuthRoutes.CARD_PLAYING) }
+                            onStartClick = { navController.navigate(AuthRoutes.CARD_PLAYING) },
+                            onBackClick = { navController.navigate(AuthRoutes.MAIN) },
+
                         )
                     }
 
