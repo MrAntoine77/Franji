@@ -2,10 +2,14 @@ package fr.mrantoine.franji.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -17,103 +21,134 @@ import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.ui.theme.Dimens
 import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material.icons.sharp.Star
+import androidx.compose.material.icons.twotone.Star
+import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+
 @Composable
 fun TreeNode(
-    onClick: () -> Unit = {},
-    text: String = "",
-    isExpanded: Boolean = false
+    text: String,
+    isNode: Boolean = true,
+    isSelected: Boolean = false,
+    level: Int = 0,
 ) {
-    Column(
-        modifier = Modifier.clickable { onClick() }
+    val isExpanded = isNode and isSelected
+    Row(
+        modifier = Modifier
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(Dimens.s),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(Dimens.s)
         ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(Dimens.s)
-            ) {
+            if((level == 0) and isNode) {
                 Icon(
-                    imageVector = Icons.Default.Star,
+                    imageVector = if (isSelected) Icons.Outlined.Star else Icons.Outlined.Star,
                     contentDescription = text,
-                    tint = MaterialTheme.colorScheme.primary
-                )
-                Text(
-                    text = text,
-                    color = if (isExpanded) Color.Black else Color.Gray,
-                    fontWeight = if (isExpanded) FontWeight.SemiBold else FontWeight.Normal,
-                    fontSize = 20.sp
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(Dimens.l)
                 )
             }
-
+            else {
+                for(i in 0..level) {
+                    Box(modifier = Modifier.size(Dimens.l))
+                }
+            }
+            Text(
+                text = text,
+                color = if (isExpanded) Color.Black else Color.Gray,
+                fontWeight = if (isExpanded) FontWeight.SemiBold else FontWeight.Normal,
+                fontSize = 20.sp
+            )
+        }
+        if (isNode) {
             Icon(
-                imageVector = if (isExpanded) Icons.Default.KeyboardArrowDown else Icons.Default.KeyboardArrowRight,
+                imageVector = if (isExpanded) Icons.Default.KeyboardArrowDown else Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = text,
                 tint = Color.Black,
             )
         }
-        HorizontalDivider(
-            color = if (isExpanded) MaterialTheme.colorScheme.primary else Color.Gray,
-            thickness = 1.dp
-        )
     }
 }
 
+
 @Composable
-fun TreeLeaf(
-    onClick: () -> Unit = {},
-    text: String = "",
+fun Tree(
+    treeData: Map<String, Any>,
+    level: Int = 0,
+    onClick: (arg: String) -> Unit = {}
+
 ) {
-    Column(
-        modifier = Modifier.clickable { onClick() }
-    ) {
-        Row(
+    treeData.forEach { (key, value) ->
+
+        val isNode = value is Map<*, *>
+        var isSelected by remember { mutableStateOf(false) }
+
+        Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(
-                    start = 64.dp,
-                    bottom = Dimens.s,
-                    top = Dimens.s,
-                    end = Dimens.s
-                ),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
+                .clickable(
+                    onClick = {
+                        if(!isNode) {
+                            onClick(key)
+                        } else {
+                            isSelected = !isSelected
+                        }
+                    }
+                )
+            ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(Dimens.s)
+                horizontalArrangement = Arrangement.spacedBy(Dimens.s),
+                modifier = Modifier
+                    .padding(Dimens.s)
             ) {
-                Text(
-                    text = text,
-                    color = Color.Gray,
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 16.sp
+                TreeNode(
+                    text = key,
+                    isNode = isNode,
+                    isSelected = isSelected,
+                    level = level
                 )
             }
         }
+
+
         HorizontalDivider(
-            color = Color.LightGray,
+            color = when {
+                (isNode and isSelected) -> MaterialTheme.colorScheme.primary
+                (isNode and !isSelected) -> Color.Gray
+                else -> Color.LightGray
+            },
             thickness = 1.dp
         )
+
+        if(isNode && isSelected)
+        {
+            Tree(
+                treeData = value as Map<String, Any>,
+                level = level + 1,
+                onClick = onClick
+            )
+        }
     }
 }
 
 @Composable
-fun TreeLeafAdd(
+fun NodeAdd(
     onClick: () -> Unit = {},
 ) {
     Column(
@@ -141,37 +176,5 @@ fun TreeLeafAdd(
             color = Color.LightGray,
             thickness = 1.dp
         )
-    }
-}
-
-@Composable
-fun Tree(
-    nodes: List<Pair<String, List<String>>>,
-    onClick: (() -> Unit) = {}
-) {
-    var expandedIndex by remember { mutableStateOf(-1) }
-
-    Column {
-        nodes.forEachIndexed { index, node ->
-            val (label, children) = node
-            val isExpanded = index == expandedIndex
-
-            TreeNode(
-                text = label,
-                isExpanded = isExpanded,
-                onClick = {
-                    expandedIndex = if (isExpanded) -1 else index
-                }
-            )
-
-            if (isExpanded) {
-                children.forEach { childLabel ->
-                    TreeLeaf(
-                        text = childLabel,
-                        onClick = onClick
-                    )
-                }
-            }
-        }
     }
 }

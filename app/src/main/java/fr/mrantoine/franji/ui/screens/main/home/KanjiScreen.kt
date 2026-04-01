@@ -10,16 +10,15 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.components.Tree
-import fr.mrantoine.franji.ui.components.TreeLeaf
-import fr.mrantoine.franji.ui.components.TreeNode
-import fr.mrantoine.franji.ui.screens.main.cards.CardsScreen
 import fr.mrantoine.franji.ui.theme.Dimens
+import kotlin.to
 
 enum class KanjiScreenState {
     CATEGORY,
@@ -28,37 +27,60 @@ enum class KanjiScreenState {
 }
 @Composable
 fun KanjiScreen() {
-    val state = remember { mutableStateOf(KanjiScreenState.CATEGORY) }
+    var state by remember { mutableStateOf(KanjiScreenState.CATEGORY) }
+    var categoryTitle by remember { mutableStateOf("Default") }
 
-    when (state.value) {
+    when (state) {
         KanjiScreenState.CATEGORY ->  {
-            val treeData = listOf(
-                "Niveaux" to listOf("JLPT5", "JLPT4", "JLPT3"),
-                "Catégories" to listOf("Nature", "Famille", "Travail", "Véhicules", "Compteurs"),
-                "Kana" to listOf("Hiragana", "Katakana"),
-
+            val data = mapOf(
+                "Niveaux" to mapOf(
+                    "JLPT 5" to mapOf(
+                        "JLPT 5 1-20" to listOf("kanji1", "kanji2"),
+                        "JLPT 5 21-40" to listOf("kanji3", "kanji4")
+                    ),
+                    "JLPT 4" to mapOf(
+                        "JLPT 4 41-60" to listOf("kanji5", "kanji6"),
+                        "JLPT 4 61-80" to listOf("kanji7", "kanji8")
+                    )
+                ),
+                "Catégories" to mapOf(
+                    "Nature" to listOf(""),
+                    "Famille" to listOf(""),
+                    "Travail" to listOf(""),
+                    "Véhicules" to listOf(""),
+                    "Compteurs" to listOf("")
+                ),
+                "Kana" to mapOf(
+                    "Hiragana" to listOf("a", "i" ,"u"),
+                    "Katakana" to listOf("a", "i" ,"u")
                 )
+            )
+
             Column(
                 modifier = Modifier
                     .verticalScroll(rememberScrollState())
             ) {
                 Tree(
-                    nodes = treeData,
-                    onClick = {state.value = KanjiScreenState.LIST}
+                    treeData = data,
+                    onClick = {arg ->
+                        state = KanjiScreenState.LIST
+                        categoryTitle = arg
+                    }
                 )
             }
         }
         KanjiScreenState.LIST -> {
             BackHandler() {
-                state.value = KanjiScreenState.CATEGORY
+                state = KanjiScreenState.CATEGORY
             }
             KanjiListScreen(
-                onKanjiClick = {state.value = KanjiScreenState.KANJI}
+                onKanjiClick = {state = KanjiScreenState.KANJI},
+                title = categoryTitle
             )
         }
         KanjiScreenState.KANJI -> {
             BackHandler() {
-                state.value = KanjiScreenState.LIST
+                state = KanjiScreenState.LIST
             }
             val scrollState = rememberLazyListState()
             LazyColumn(

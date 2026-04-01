@@ -24,7 +24,7 @@ import fr.mrantoine.franji.ui.theme.Dimens
 @Composable
 fun KanjiListScreen(
     onKanjiClick: (() -> Unit) = {},
-    title: String = "titre"
+    title: String
 ) {
     val kanjis = listOf(
         "日", "月", "火", "水", "木", "金", "土", "山", "川", "田",
