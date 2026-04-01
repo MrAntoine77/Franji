@@ -74,7 +74,7 @@ fun CardsRecapScreen(
             }
             Box(
                 modifier = Modifier
-                    .weight(1f) // occupe tout l'espace restant vertical
+                    .weight(1f)
                     .fillMaxWidth(),
                 contentAlignment = Alignment.Center
             ) {

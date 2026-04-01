@@ -16,7 +16,7 @@ import fr.mrantoine.franji.ui.components.Tree
 fun CardsScreen(
     onCardClick: (() -> Unit) = {}
 ) {
-    val data = mapOf(
+    val temp_data = mapOf(
         "Par types" to mapOf(
             "Kanji" to mapOf(
                 "JLPT 5" to mapOf(
@@ -77,7 +77,7 @@ fun CardsScreen(
             thickness = 2.dp
         )
         Tree(
-            treeData = data,
+            treeData = temp_data,
             onClick = { onCardClick() }
         )
     }

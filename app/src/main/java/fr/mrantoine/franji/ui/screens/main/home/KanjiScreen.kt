@@ -32,7 +32,7 @@ fun KanjiScreen() {
 
     when (state) {
         KanjiScreenState.CATEGORY ->  {
-            val data = mapOf(
+            val temp_data = mapOf(
                 "Niveaux" to mapOf(
                     "JLPT 5" to mapOf(
                         "JLPT 5 1-20" to listOf("kanji1", "kanji2"),
@@ -61,7 +61,7 @@ fun KanjiScreen() {
                     .verticalScroll(rememberScrollState())
             ) {
                 Tree(
-                    treeData = data,
+                    treeData = temp_data,
                     onClick = {arg ->
                         state = KanjiScreenState.LIST
                         categoryTitle = arg
