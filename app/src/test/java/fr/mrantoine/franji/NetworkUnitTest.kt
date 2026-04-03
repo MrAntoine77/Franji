@@ -1,14 +1,9 @@
 package fr.mrantoine.franji
 
-import androidx.compose.runtime.LaunchedEffect
-import fr.mrantoine.franji.network.getCategories
-import fr.mrantoine.franji.network.getCategoriesPaths
-import fr.mrantoine.franji.network.getCategoryKanjiChar
-import fr.mrantoine.franji.network.getCategoryKanjiId
-import fr.mrantoine.franji.network.getKanjiByChar
-import fr.mrantoine.franji.network.getKanjiById
-import fr.mrantoine.franji.network.getLottie
-import fr.mrantoine.franji.network.getMainMage
+import fr.mrantoine.franji.storage.getKanjiByChar
+import fr.mrantoine.franji.storage.getKanjiById
+import fr.mrantoine.franji.storage.getLottie
+import fr.mrantoine.franji.storage.getMainMage
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
@@ -18,29 +13,22 @@ import org.junit.Assert.*
 
 class CategoryNetworkUnitTest {
     @Test
-    fun getCategoriesPaths_TEST() = runBlocking {
-        val paths = getCategoriesPaths()
-        assertTrue(paths.size > 0)
-        assertTrue(paths[0] == "Kanji/JLPT5/Tout")
-    }
-
-    @Test
     fun getCategoryKanjiId_TEST() = runBlocking {
-        val category = getCategoryKanjiId("Kanji/JLPT5/Tout")
+        val category = `CategoryStorage.kt`.getCategoriesKanjiId("Kanji/JLPT5/Tout")
         assertTrue(category.size > 0)
         assertTrue(category[0] == "kanji1")
     }
 
     @Test
     fun getCategoryKanjiChar_TEST() = runBlocking {
-        val category = getCategoryKanjiChar("Kanji/JLPT5/Tout")
+        val category = `CategoryStorage.kt`.getCategoriesKanjiChar("Kanji/JLPT5/Tout")
         assertTrue(category.size > 0)
         assertTrue(category[0] == "人")
     }
 
     @Test
     fun getCategories_TEST() = runBlocking {
-        val categories = getCategories()
+        val categories = `CategoryStorage.kt`.getCategories()
         assertTrue(categories.size > 0)
         assertTrue(categories.containsKey("Kanji"))
     }

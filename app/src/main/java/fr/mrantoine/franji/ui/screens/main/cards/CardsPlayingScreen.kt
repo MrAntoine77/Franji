@@ -1,7 +1,6 @@
 package fr.mrantoine.franji.ui.screens.main.cards
 
 
-import android.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -32,13 +31,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
-import fr.mrantoine.franji.network.Kanji
-import fr.mrantoine.franji.network.getKanjiById
-import fr.mrantoine.franji.network.getLottie
+import fr.mrantoine.franji.storage.Kanji
+import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.ui.components.Lecture
 import fr.mrantoine.franji.ui.components.navigation.EaseBar
 import fr.mrantoine.franji.ui.components.Lottie
-import fr.mrantoine.franji.ui.components.navigation.ThemedButton
 import fr.mrantoine.franji.ui.components.navigation.TopBar
 import fr.mrantoine.franji.ui.theme.Dimens
 
@@ -60,10 +57,10 @@ fun CardsPlayingScreen(
         var failed by remember { mutableStateOf(0) }
 
         LaunchedEffect(isRevealed.value == false) {
-            lottie = getLottie(cardsArray[0])
+            lottie = KanjiStorage.getLottieByKanjiId(cardsArray[0])
         }
         LaunchedEffect(isRevealed.value == false) {
-            kanji = getKanjiById(cardsArray[0])
+            kanji = KanjiStorage.getKanjiById(cardsArray[0])
         }
 
         fun nextCard(ok: Boolean) {

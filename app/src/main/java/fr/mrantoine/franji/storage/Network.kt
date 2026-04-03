@@ -7,8 +7,6 @@ import io.ktor.client.request.*
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-
-
 var IP_ADDRESS = "192.168.1.182"
 var PORT = "8000"
 

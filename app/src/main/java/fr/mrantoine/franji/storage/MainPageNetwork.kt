@@ -1,4 +1,4 @@
-package fr.mrantoine.franji.network
+package fr.mrantoine.franji.storage
 
 import IP_ADDRESS
 import PORT
@@ -6,9 +6,6 @@ import client
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.jsonObject
 
 
 @Serializable

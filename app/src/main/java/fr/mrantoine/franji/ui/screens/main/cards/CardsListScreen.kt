@@ -16,10 +16,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
-import fr.mrantoine.franji.network.getCategories
+import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
-import fr.mrantoine.franji.ui.components.navigation.CategoryBar
-import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.components.navigation.SearchBar
 import fr.mrantoine.franji.ui.components.navigation.Tree
 
@@ -32,7 +30,7 @@ fun CardsListScreen(
     var searchText by remember { mutableStateOf("") }
 
     LaunchedEffect(Unit) {
-        categories = getCategories()
+        categories = CategoryStorage.getCategories()
     }
 
     Scaffold(

@@ -15,9 +15,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import fr.mrantoine.franji.network.Kanji
-import fr.mrantoine.franji.network.getKanjiByChar
-import fr.mrantoine.franji.network.getLottie
+import fr.mrantoine.franji.storage.Kanji
+import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.components.Lecture
@@ -50,9 +49,9 @@ fun KanjiInfoScreen(
 
 
         LaunchedEffect(kanjiChar) {
-            kanji = getKanjiByChar(kanjiChar)
+            kanji = KanjiStorage.getKanjiByChar(kanjiChar)
             kanji.let {
-                lottie = getLottie(it.id)
+                lottie = KanjiStorage.getLottieByKanjiId(it.id)
             }
         }
         LazyColumn(
@@ -64,9 +63,6 @@ fun KanjiInfoScreen(
         ) {
 
             item {
-                LaunchedEffect(Unit) {
-                    lottie = getLottie(kanji.id)
-                }
                 Lottie(
                     data = lottie
                 )

@@ -27,7 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
-import fr.mrantoine.franji.network.getCategoryKanjiChar
+import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.theme.Dimens
@@ -55,7 +55,7 @@ fun KanjiCategoryScreen(
 
         var kanji_list by remember { mutableStateOf(emptyArray<String>()) }
         LaunchedEffect(Unit) {
-            kanji_list = getCategoryKanjiChar(categoryPath)
+            kanji_list = CategoryStorage.getCategoriesKanjiChar(categoryPath)
         }
 
         Box(

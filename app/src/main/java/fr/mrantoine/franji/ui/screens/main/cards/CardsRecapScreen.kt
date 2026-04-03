@@ -19,13 +19,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
-import fr.mrantoine.franji.network.getCategoryKanjiChar
-import fr.mrantoine.franji.network.getCategoryKanjiId
+import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.ui.components.navigation.ThemedButton
 import fr.mrantoine.franji.ui.components.navigation.TopBar
 import fr.mrantoine.franji.ui.theme.Dimens
@@ -37,7 +35,7 @@ fun CardsRecapScreen(
 ) {
     var cardsList by remember { mutableStateOf(emptyArray<String>()) }
     LaunchedEffect(Unit) {
-        cardsList = getCategoryKanjiId(cardsPath)
+        cardsList = CategoryStorage.getCategoriesKanjiId(cardsPath)
     }
 
 

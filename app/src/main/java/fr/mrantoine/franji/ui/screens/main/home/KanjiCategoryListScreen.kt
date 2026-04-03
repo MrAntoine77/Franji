@@ -15,7 +15,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
-import fr.mrantoine.franji.network.getCategories
+import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.components.navigation.Tree
@@ -27,7 +27,7 @@ fun KanjiCategoryListScreen(
     var categories by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
 
     LaunchedEffect(Unit) {
-        categories = getCategories("Kanji")
+        categories = CategoryStorage.getCategories("Kanji")
     }
 
     Scaffold(
