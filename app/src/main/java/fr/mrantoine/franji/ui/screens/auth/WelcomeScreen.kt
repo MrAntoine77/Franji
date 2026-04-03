@@ -8,14 +8,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import fr.mrantoine.franji.R
+import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.ui.components.ThemedButton
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
 fun WelcomeScreen(
-    onSignUpClick: () -> Unit = {},
-    onLoginClick: () -> Unit = {}
+    navController: NavController
 ) {
     Box(
         modifier = Modifier.fillMaxSize()
@@ -36,14 +37,14 @@ fun WelcomeScreen(
         ) {
             ThemedButton(
                 text = "Créer un compte",
-                onClick = onSignUpClick,
+                onClick = {navController.navigate(Screen.Register.route)},
                 isPrimary = true,
             )
             Spacer(modifier = Modifier.height(Dimens.m))
 
             ThemedButton(
                 text = "Se connecter",
-                onClick = onLoginClick,
+                onClick = {navController.navigate(Screen.Login.route)},
                 isPrimary = false,
             )
             Spacer(modifier = Modifier.height(Dimens.m))

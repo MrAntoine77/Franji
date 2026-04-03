@@ -60,7 +60,6 @@ fun BottomBarItem(
 fun BottomBar(
     modifier: Modifier = Modifier,
     selectedIndex: Int = 0,
-    onItemSelected: (Int) -> Unit = {}
 ) {
     Column(modifier = modifier) {
         HorizontalDivider(
@@ -86,7 +85,7 @@ fun BottomBar(
                     icon = icon,
                     label = label,
                     isSelected = index == selectedIndex,
-                    onClick = { onItemSelected(index) },
+                    onClick = {},
                     modifier = Modifier.weight(1f)
                 )
             }

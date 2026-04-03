@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.screens.auth
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -18,15 +19,15 @@ import androidx.compose.runtime.*
 
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.navigation.NavController
+import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.ui.components.ThemedButton
+import fr.mrantoine.franji.ui.screens.main.home.KanjiScreenState
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
 fun RegisterScreen(
-    onBackClick: (() -> Unit) = {},
-    onRegisterClick: (() -> Unit) = {},
-    onLoginClick: (() -> Unit) = {}
-
+    navController: NavController,
 ) {
     var email by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
@@ -35,12 +36,15 @@ fun RegisterScreen(
     var acceptTerms by remember { mutableStateOf(false) }
     var subscribeNewsletter by remember { mutableStateOf(false) }
 
+    BackHandler() {
+        navController.navigate(Screen.Welcome.route)
+    }
 
     Column(modifier = Modifier.statusBarsPadding()) {
         TopBar(
             showBack = true,
             title = "Créer un compte",
-            onBackClick = onBackClick
+            onBackClick = { navController.navigate(Screen.Welcome.route) }
         )
         Column(
             modifier = Modifier.padding(Dimens.m)
@@ -97,12 +101,12 @@ fun RegisterScreen(
 
             ThemedButton(
                 text = "S'inscrire",
-                onClick = onRegisterClick
+                onClick = { navController.navigate(Screen.HomeAll.route) }
             )
             Spacer(modifier = Modifier.height(Dimens.s))
             ThemedButton(
                 text = "Déja un compte ?",
-                onClick = onLoginClick,
+                onClick = { navController.navigate(Screen.Login.route) },
                 isPrimary = false
             )
         }

@@ -24,6 +24,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import fr.mrantoine.franji.Screen
 
 @Composable
 fun CategoryBarItem(
@@ -57,13 +59,17 @@ fun CategoryBarItem(
 
 @Composable
 fun CategoryBar(
+    navController: NavController,
     modifier: Modifier = Modifier,
-    selectedIndex: Int = 0,
-    onItemSelected: (Int) -> Unit = {},
-    items: List<String> = emptyList()  // ← liste par défaut vide
+    selectedCategoryIndex: Int = 0,
 ) {
+    val items = listOf(
+        "Tout",
+        "Kanji & Kana",
+        "Vocabulaire",
+        "Grammaire"
+    )
     Column(modifier = modifier) {
-
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -71,8 +77,14 @@ fun CategoryBar(
         ) {
             items.forEachIndexed { index, item ->
                 CategoryBarItem(
-                    isSelected = index == selectedIndex,
-                    onClick = { onItemSelected(index) },
+                    isSelected = index == selectedCategoryIndex,
+                    onClick = {
+                        when(index) {
+                            0 -> navController.navigate(Screen.HomeAll.route)
+                            1 -> navController.navigate(Screen.KanjiCategoryList.route)
+                            else -> navController.navigate(Screen.HomeAll.route)
+                        }
+                    },
                     modifier = Modifier.weight(1f),
                     label = item
                 )

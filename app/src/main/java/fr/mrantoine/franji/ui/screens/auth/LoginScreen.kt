@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.screens.auth
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -14,26 +15,27 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.navigation.NavController
+import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.ui.components.ThemedButton
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
 fun LoginScreen(
-    onBackClick: (() -> Unit) = {},
-    onLoginClick: (() -> Unit) = {},
-    onRegisterClick: (() -> Unit) = {}
-
+    navController: NavController,
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
-
+    BackHandler() {
+        navController.navigate(Screen.Welcome.route)
+    }
 
     Column(modifier = Modifier.statusBarsPadding()) {
         TopBar(
             showBack = true,
             title = "Se connecter",
-            onBackClick = onBackClick
+            onBackClick = {navController.navigate(Screen.Welcome.route)}
         )
         Column(
             modifier = Modifier.padding(Dimens.m)
@@ -57,12 +59,12 @@ fun LoginScreen(
 
             ThemedButton(
                 text = "Se connecter",
-                onClick = onLoginClick
+                onClick = {navController.navigate(Screen.HomeAll.route)}
             )
             Spacer(modifier = Modifier.height(Dimens.s))
             ThemedButton(
                 text = "Créer un compte",
-                onClick = onRegisterClick,
+                onClick = {navController.navigate(Screen.Register.route)},
                 isPrimary = false
             )
 

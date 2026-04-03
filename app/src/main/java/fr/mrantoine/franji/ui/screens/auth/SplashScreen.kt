@@ -8,12 +8,14 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavController
 import fr.mrantoine.franji.R
+import fr.mrantoine.franji.Screen
 import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(
-    onTimeout: () -> Unit = {}
+    navController: NavController
 ) {
     Box(
         modifier = Modifier.fillMaxSize()
@@ -27,6 +29,6 @@ fun SplashScreen(
     }
     LaunchedEffect(Unit) {
         delay(3000L)
-        onTimeout()
+        navController.navigate(Screen.Welcome.route)
     }
 }

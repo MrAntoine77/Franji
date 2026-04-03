@@ -31,7 +31,7 @@ fun HeaderRow(
             text = text,
             color = Color.Black,
             fontWeight = FontWeight.Bold,
-            fontSize = 20.sp // tu peux ajuster
+            fontSize = 20.sp
         )
 
         Text(
