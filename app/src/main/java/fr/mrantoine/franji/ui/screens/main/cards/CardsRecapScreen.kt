@@ -1,6 +1,7 @@
 package fr.mrantoine.franji.ui.screens.main.cards
 
 
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -43,10 +44,12 @@ fun CardsRecapScreen(
     val title = cardsPath.replace("/", " ")
 
     Column(modifier = Modifier.statusBarsPadding()) {
+        val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
+
         TopBar(
             title = "Révision",
             showBack = true,
-            onBackClick = {  }
+            onBackClick = { backDispatcher?.onBackPressed() }
         )
         Column(
             modifier = Modifier

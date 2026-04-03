@@ -3,45 +3,80 @@ package fr.mrantoine.franji.ui.screens.auth
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.R
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.storage.KanjiStorage
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun SplashScreen(
     navController: NavController
 ) {
+    val context = LocalContext.current
+    var showLoader by remember { mutableStateOf(false) }
 
-    ///////////// APPELS RESEAUX //////////////////
     LaunchedEffect(Unit) {
-        // Categories
-        CategoryStorage.getCategories()
-        CategoryStorage.getCategories("Kanji")
-        var kanji_char_list = CategoryStorage.getCategoriesKanjiChar("Kanji/JLPT5/Tout")
-        CategoryStorage.getCategoriesKanjiChar("Kanji/JLPT5/1-20")
-        CategoryStorage.getCategoriesKanjiChar("Kanji/JLPT5/21-40")
-        var kanji_id_list = CategoryStorage.getCategoriesKanjiId("Kanji/JLPT5/Tout")
-        CategoryStorage.getCategoriesKanjiId("Kanji/JLPT5/1-20")
-        CategoryStorage.getCategoriesKanjiId("Kanji/JLPT5/21-40")
-        // Kanjis
-        kanji_id_list.forEach { kanji ->
-            KanjiStorage.getKanjiById(kanji)
-            KanjiStorage.getLottieByKanjiId(kanji)
+
+        val loaderDelay = launch {
+            delay(2500)
+            showLoader = true
         }
-        kanji_char_list.forEach { kanji ->
-            KanjiStorage.getKanjiByChar(kanji)
+
+        val splashMinDelay = launch {
+            delay(2000)
         }
+
+        val loadingJob = launch {
+            //CategoryStorage.clearCache(context)
+            //KanjiStorage.clearCache(context)
+            CategoryStorage.loadCache(context)
+            KanjiStorage.loadCache(context)
+
+            CategoryStorage.getCategoriesPaths()
+            CategoryStorage.getCategoriesPaths("Kanji")
+            val kanjiCharList = CategoryStorage.getCategoriesKanjiChar("Kanji/JLPT5/Tout")
+            CategoryStorage.getCategoriesKanjiChar("Kanji/JLPT5/1-20")
+            CategoryStorage.getCategoriesKanjiChar("Kanji/JLPT5/21-40")
+            val kanjiIdList = CategoryStorage.getCategoriesKanjiId("Kanji/JLPT5/Tout")
+            CategoryStorage.getCategoriesKanjiId("Kanji/JLPT5/1-20")
+            CategoryStorage.getCategoriesKanjiId("Kanji/JLPT5/21-40")
+
+            kanjiIdList.forEach { kanji ->
+                KanjiStorage.getKanjiById(kanji)
+                KanjiStorage.getLottieByKanjiId(kanji)
+            }
+            kanjiCharList.forEach { kanji ->
+                KanjiStorage.getKanjiByChar(kanji)
+            }
+
+            CategoryStorage.saveCache(context)
+            KanjiStorage.saveCache(context)
+        }
+
+
+        splashMinDelay.join()
+        loadingJob.join()
+
         navController.navigate(Screen.Welcome.route)
     }
-    //////////////////////////////////////////////
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -52,5 +87,14 @@ fun SplashScreen(
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
         )
+
+        if (showLoader) {
+            CircularProgressIndicator(
+                color = Color.White,
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(bottom = 80.dp)
+            )
+        }
     }
 }

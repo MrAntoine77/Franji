@@ -19,15 +19,20 @@ import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.components.navigation.Tree
+import fr.mrantoine.franji.ui.screens.main.cards.buildMap
 
 @Composable
 fun KanjiCategoryListScreen(
     navController: NavController
 ) {
-    var categories by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
+
+    var paths by remember { mutableStateOf<Array<String>>(emptyArray()) }
+    var maps by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
+
 
     LaunchedEffect(Unit) {
-        categories = CategoryStorage.getCategories("Kanji")
+        paths = CategoryStorage.getCategoriesPaths("Kanji")
+        maps = buildMap(paths)
     }
 
     Scaffold(
@@ -51,7 +56,7 @@ fun KanjiCategoryListScreen(
                 .padding(innerPadding)
         ) {
             Tree(
-                treeData = categories,
+                treeData = maps,
                 onClick = {arg ->
                     navController.navigate(Screen.KanjiCategory.route("Kanji/$arg"))
                 }

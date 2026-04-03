@@ -1,6 +1,7 @@
 package fr.mrantoine.franji.ui.screens.main.cards
 
 
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -93,10 +94,12 @@ fun CardsPlayingScreen(
 
         Scaffold(
             topBar = {
+                val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
                 TopBar(
                     modifier = Modifier.statusBarsPadding(),
                     title = title,
-                    showBack = true
+                    showBack = true,
+                    onBackClick = {backDispatcher?.onBackPressed()}
                 )
             },
             bottomBar = {
