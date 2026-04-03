@@ -1,14 +1,11 @@
 package fr.mrantoine.franji.ui.screens.main.home
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -21,11 +18,10 @@ import androidx.navigation.NavController
 import fr.mrantoine.franji.network.Kanji
 import fr.mrantoine.franji.network.getKanjiByChar
 import fr.mrantoine.franji.network.getLottie
-import fr.mrantoine.franji.ui.components.BottomBar
-import fr.mrantoine.franji.ui.components.HomeTopBar
+import fr.mrantoine.franji.ui.components.navigation.BottomBar
+import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.components.Lecture
 import fr.mrantoine.franji.ui.components.Lottie
-import fr.mrantoine.franji.ui.components.Tree
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
@@ -44,6 +40,7 @@ fun KanjiInfoScreen(
             BottomBar(
                 modifier = Modifier.navigationBarsPadding(),
                 selectedIndex = 0,
+                navController = navController
             )
         }
     ) { innerPadding ->

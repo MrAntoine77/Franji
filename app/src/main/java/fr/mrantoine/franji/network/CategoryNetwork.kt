@@ -10,9 +10,10 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonObject
 
 
-suspend fun getCategories(): Map<String, Any> {
+suspend fun getCategories(path: String = ""): Map<String, Any> {
+
     return try {
-        val response = client.get("http://$IP_ADDRESS:$PORT/categories")
+        val response = client.get("http://$IP_ADDRESS:$PORT/categories/$path")
         val jsonString: String = response.body()
 
         val jsonObject: JsonObject = Json.parseToJsonElement(jsonString).jsonObject

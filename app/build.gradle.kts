@@ -70,4 +70,6 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.5")
     // Kotlinx serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    // Transitions
+    implementation("com.google.accompanist:accompanist-navigation-animation:0.32.0")
 }

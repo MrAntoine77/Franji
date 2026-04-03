@@ -1,8 +1,9 @@
-package fr.mrantoine.franji.ui.screens.main.home
+package fr.mrantoine.franji.ui.screens.main.cards
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
@@ -17,30 +18,36 @@ import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.network.getCategories
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
+import fr.mrantoine.franji.ui.components.navigation.CategoryBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
+import fr.mrantoine.franji.ui.components.navigation.SearchBar
 import fr.mrantoine.franji.ui.components.navigation.Tree
 
+
 @Composable
-fun KanjiCategoryListScreen(
+fun CardsListScreen(
     navController: NavController
 ) {
     var categories by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
+    var searchText by remember { mutableStateOf("") }
 
     LaunchedEffect(Unit) {
-        categories = getCategories("Kanji")
+        categories = getCategories()
     }
 
     Scaffold(
         topBar = {
-            HomeTopBar(
-                navController = navController,
-                selectedCategoryIndex = 1
-            )
+            Column(modifier = Modifier.statusBarsPadding()) {
+                SearchBar(
+                    value = searchText,
+                    onValueChange = { searchText = it }
+                )
+            }
         },
         bottomBar = {
             BottomBar(
                 modifier = Modifier.navigationBarsPadding(),
-                selectedIndex = 0,
+                selectedIndex = 1,
                 navController = navController
             )
         }
@@ -53,7 +60,7 @@ fun KanjiCategoryListScreen(
             Tree(
                 treeData = categories,
                 onClick = {arg ->
-                    navController.navigate(Screen.KanjiCategory.route("Kanji/$arg"))
+                    navController.navigate(Screen.CardsRecap.route(arg))
                 }
             )
         }

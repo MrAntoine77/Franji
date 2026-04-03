@@ -27,13 +27,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
-import fr.mrantoine.franji.network.Kanji
-import fr.mrantoine.franji.network.getCategories
 import fr.mrantoine.franji.network.getCategoryKanjiChar
-import fr.mrantoine.franji.network.getKanjiByChar
-import fr.mrantoine.franji.ui.components.BottomBar
-import fr.mrantoine.franji.ui.components.HomeTopBar
-import fr.mrantoine.franji.ui.components.Tree
+import fr.mrantoine.franji.ui.components.navigation.BottomBar
+import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
@@ -52,6 +48,7 @@ fun KanjiCategoryScreen(
             BottomBar(
                 modifier = Modifier.navigationBarsPadding(),
                 selectedIndex = 0,
+                navController = navController
             )
         }
     ) { innerPadding ->

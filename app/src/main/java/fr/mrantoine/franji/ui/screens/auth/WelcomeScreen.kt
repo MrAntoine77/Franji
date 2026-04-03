@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.R
 import fr.mrantoine.franji.Screen
-import fr.mrantoine.franji.ui.components.ThemedButton
+import fr.mrantoine.franji.ui.components.navigation.ThemedButton
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable

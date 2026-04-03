@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import fr.mrantoine.franji.ui.components.TopBar
+import fr.mrantoine.franji.ui.components.navigation.TopBar
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -21,8 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
-import fr.mrantoine.franji.ui.components.ThemedButton
-import fr.mrantoine.franji.ui.screens.main.home.KanjiScreenState
+import fr.mrantoine.franji.ui.components.navigation.ThemedButton
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable

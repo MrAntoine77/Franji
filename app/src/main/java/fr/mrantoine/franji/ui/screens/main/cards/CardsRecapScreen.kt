@@ -12,29 +12,48 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import fr.mrantoine.franji.ui.components.ThemedButton
-import fr.mrantoine.franji.ui.components.TopBar
+import androidx.navigation.NavController
+import fr.mrantoine.franji.Screen
+import fr.mrantoine.franji.network.getCategoryKanjiChar
+import fr.mrantoine.franji.network.getCategoryKanjiId
+import fr.mrantoine.franji.ui.components.navigation.ThemedButton
+import fr.mrantoine.franji.ui.components.navigation.TopBar
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
 fun CardsRecapScreen(
-    onStartClick: (() -> Unit) = {},
-    onBackClick: (() -> Unit) = {},
-    title: String = "Titre"
+    navController: NavController,
+    cardsPath: String
 ) {
+    var cardsList by remember { mutableStateOf(emptyArray<String>()) }
+    LaunchedEffect(Unit) {
+        cardsList = getCategoryKanjiId(cardsPath)
+    }
+
+
+
+    val title = cardsPath.replace("/", " ")
+
     Column(modifier = Modifier.statusBarsPadding()) {
         TopBar(
             title = "Révision",
             showBack = true,
-            onBackClick = onBackClick
+            onBackClick = {  }
         )
         Column(
-            modifier = Modifier.padding(Dimens.l).fillMaxWidth(),
+            modifier = Modifier
+                .padding(Dimens.l)
+                .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         )
         {
@@ -44,33 +63,20 @@ fun CardsRecapScreen(
                 fontWeight = FontWeight.SemiBold
             )
 
-            data class ItemInfo(
-                val value: Int,
-                val color: Color
-            )
-            val tab: Map<String, ItemInfo> = mapOf(
-                "Total de cartes" to ItemInfo(100, Color.Black),
-                "Total des nouvelles cartes" to ItemInfo(75, Color.Black),
-                "À réviser" to ItemInfo(2, Color.Green),
-                "À repasser" to ItemInfo(3, Color.Red),
-                "Nouvelles" to ItemInfo(20, Color.Blue),
-            )
             Spacer(modifier = Modifier.height(Dimens.m))
-            tab.forEach { (label, itemInfo) ->
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = label
-                    )
-                    Text(
-                        text = itemInfo.value.toString(),
-                        color = itemInfo.color
-                    )
-                }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Total de cartes"
+                )
+                Text(
+                    text = cardsList.size.toString(),
+                )
+
             }
             Box(
                 modifier = Modifier
@@ -78,8 +84,9 @@ fun CardsRecapScreen(
                     .fillMaxWidth(),
                 contentAlignment = Alignment.Center
             ) {
+                cardsList.shuffle()
                 ThemedButton(
-                    onClick = onStartClick,
+                    onClick = { navController.navigate(Screen.CardsPlaying.route(cardsList, title)) },
                     text = "Commencer la révision"
                 )
             }

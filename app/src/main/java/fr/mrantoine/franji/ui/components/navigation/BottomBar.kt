@@ -1,4 +1,4 @@
-package fr.mrantoine.franji.ui.components
+package fr.mrantoine.franji.ui.components.navigation
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -21,8 +21,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import fr.mrantoine.franji.Screen
 
 @Composable
 fun BottomBarItem(
@@ -51,13 +54,15 @@ fun BottomBarItem(
         Text(
             text = label,
             fontSize = 12.sp,
-            color = contentColor
+            color = contentColor,
+            fontWeight = if(isSelected) FontWeight.Bold else FontWeight.Normal
         )
     }
 }
 
 @Composable
 fun BottomBar(
+    navController: NavController,
     modifier: Modifier = Modifier,
     selectedIndex: Int = 0,
 ) {
@@ -85,7 +90,13 @@ fun BottomBar(
                     icon = icon,
                     label = label,
                     isSelected = index == selectedIndex,
-                    onClick = {},
+                    onClick = {
+                        when(index) {
+                            0 -> navController.navigate(Screen.HomeAll.route)
+                            1 -> navController.navigate(Screen.CardsList.route)
+                            else -> navController.navigate(Screen.HomeAll.route)
+                        }
+                    },
                     modifier = Modifier.weight(1f)
                 )
             }

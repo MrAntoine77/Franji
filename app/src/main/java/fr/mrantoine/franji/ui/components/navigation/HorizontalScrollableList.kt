@@ -1,4 +1,4 @@
-package fr.mrantoine.franji.ui.components
+package fr.mrantoine.franji.ui.components.navigation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

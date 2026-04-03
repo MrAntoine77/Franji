@@ -1,4 +1,4 @@
-package fr.mrantoine.franji.ui.components
+package fr.mrantoine.franji.ui.components.navigation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -32,7 +32,7 @@ fun EaseBarItem(
         Text(
             text = label,
             color = Color.White,
-            fontSize = 14.sp,
+            fontSize = 16.sp,
             fontWeight = FontWeight.Normal
         )
     }
