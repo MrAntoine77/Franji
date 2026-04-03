@@ -1,6 +1,5 @@
 package fr.mrantoine.franji.ui.screens.main.home
 
-import Kanji
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.rememberScrollState
@@ -12,11 +11,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import fr.mrantoine.franji.network.Kanji
+import fr.mrantoine.franji.network.getCategories
+import fr.mrantoine.franji.network.getCategoryKanjiChar
 import fr.mrantoine.franji.ui.components.Tree
-import getCategories
-import getCategoryKanjiChar
-import getCategoryKanjiId
-
 enum class KanjiScreenState {
     CATEGORY,
     LIST,

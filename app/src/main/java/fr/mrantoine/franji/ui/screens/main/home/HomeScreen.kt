@@ -3,8 +3,10 @@ package fr.mrantoine.franji.ui.screens.main.home
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import fr.mrantoine.franji.ui.components.CategoryBar
 
 

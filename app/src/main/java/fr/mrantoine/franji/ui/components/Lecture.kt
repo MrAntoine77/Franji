@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -26,7 +25,7 @@ import fr.mrantoine.franji.ui.theme.Dimens
 fun Lecture(
     french: List<String> = emptyList(),
     kun: List<String> = emptyList(),
-    on: List<String> = emptyList()
+    ON: List<String> = emptyList()
 ) {
     Box(modifier = Modifier.padding(Dimens.m)) {
         Row(
@@ -40,7 +39,7 @@ fun Lecture(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = french.joinToString(", "),
+                text = french.joinToString("\n"),
                 modifier = Modifier.weight(1f),
                 fontSize = 16.sp
             )
@@ -52,39 +51,43 @@ fun Lecture(
                     .weight(1f)
                     .fillMaxWidth()
             ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = "On:",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 14.sp
-                    )
-                    Text(
-                        text = on.joinToString(", "),
-                        fontSize = 14.sp,
-                        textAlign = TextAlign.Right
-                    )
+                if(ON.isNotEmpty()){
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "On:",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp
+                        )
+                        Text(
+                            text = ON.joinToString("\n"),
+                            fontSize = 14.sp,
+                            textAlign = TextAlign.Right
+                        )
+                    }
+                }
+                if(kun.isNotEmpty()){
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "Kun:",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp
+                        )
+                        Text(
+                            text = kun.joinToString("\n"),
+                            fontSize = 14.sp,
+                            textAlign = TextAlign.Right
+                        )
+                    }
                 }
 
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = "Kun:",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 14.sp
-                    )
-                    Text(
-                        text = kun.joinToString(", "),
-                        fontSize = 14.sp,
-                        textAlign = TextAlign.Right
-                    )
-                }
             }
         }
     }

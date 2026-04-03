@@ -26,11 +26,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import fr.mrantoine.franji.network.getLottie
 import fr.mrantoine.franji.ui.components.EaseBar
 import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.components.TopBar
 import fr.mrantoine.franji.ui.theme.Dimens
-import getLottie
 
 
 @Composable

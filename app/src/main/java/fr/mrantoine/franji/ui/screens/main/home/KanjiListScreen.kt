@@ -1,6 +1,5 @@
 package fr.mrantoine.franji.ui.screens.main.home
 
-import Kanji
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,12 +23,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import fr.mrantoine.franji.ui.components.Lottie
+import fr.mrantoine.franji.network.Kanji
+import fr.mrantoine.franji.network.getKanjiByChar
 import fr.mrantoine.franji.ui.theme.Dimens
-import getCategoryKanjiChar
-import getKanjiByChar
-import getKanjiById
-import getLottie
+
 
 @Composable
 fun KanjiListScreen(
@@ -67,7 +64,6 @@ fun KanjiListScreen(
                         var kanji by remember { mutableStateOf<Kanji>(Kanji("", emptyList(), "")) }
                         LaunchedEffect(Unit) {
                             kanji = getKanjiByChar(kanjis.getOrNull(kanjiIndex) ?: "")
-                            print(kanji)
                         }
                         if (kanjiIndex < kanjis.size) {
                             Box(

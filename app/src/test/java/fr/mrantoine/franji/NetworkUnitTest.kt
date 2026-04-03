@@ -1,13 +1,14 @@
 package fr.mrantoine.franji
 
 import androidx.compose.runtime.LaunchedEffect
-import getCategories
-import getCategoriesPaths
-import getCategoryKanjiChar
-import getCategoryKanjiId
-import getKanjiByChar
-import getKanjiById
-import getLottie
+import fr.mrantoine.franji.network.getCategories
+import fr.mrantoine.franji.network.getCategoriesPaths
+import fr.mrantoine.franji.network.getCategoryKanjiChar
+import fr.mrantoine.franji.network.getCategoryKanjiId
+import fr.mrantoine.franji.network.getKanjiByChar
+import fr.mrantoine.franji.network.getKanjiById
+import fr.mrantoine.franji.network.getLottie
+import fr.mrantoine.franji.network.getMainMage
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
@@ -15,38 +16,7 @@ import org.junit.Assert.*
 
 
 
-class NetworkUnitTest {
-    @Test
-    fun getLottie_TEST() = runBlocking {
-        val lottie = getLottie(kanji = "kanji1")
-        println(lottie)
-        assertTrue(lottie.isNotEmpty())
-        assertTrue(lottie != "{}")
-    }
-
-    @Test
-    fun getKanjiById_TEST() = runBlocking {
-        val kanji = getKanjiById("kanji25")
-        print(kanji)
-        assertTrue(kanji.kanji=="本")
-        assertTrue(kanji.id=="kanji25")
-        assertTrue(kanji.lectures[0].fr[0] == "livre")
-        assertTrue(kanji.lectures[0].ON[0] == "HON")
-        assertTrue(kanji.lectures[1].kun[0] == "moto")
-    }
-
-    @Test
-    fun getKanjiByChar_TEST() = runBlocking {
-        val kanji = getKanjiByChar("本")
-        print("=====>$kanji \n")
-        assertTrue(kanji.kanji=="本")
-        assertTrue(kanji.id=="kanji25")
-        assertTrue(kanji.lectures[0].fr[0] == "livre")
-        assertTrue(kanji.lectures[0].ON[0] == "HON")
-        assertTrue(kanji.lectures[1].kun[0] == "moto")
-    }
-
-
+class CategoryNetworkUnitTest {
     @Test
     fun getCategoriesPaths_TEST() = runBlocking {
         val paths = getCategoriesPaths()
@@ -74,6 +44,50 @@ class NetworkUnitTest {
         assertTrue(categories.size > 0)
         assertTrue(categories.containsKey("Kanji"))
     }
+}
+
+class KanjiNetworkUnitTest {
+    @Test
+    fun getKanjiById_TEST() = runBlocking {
+        val kanji = getKanjiById("kanji25")
+        print(kanji)
+        assertTrue(kanji.kanji=="本")
+        assertTrue(kanji.id=="kanji25")
+        assertTrue(kanji.lectures[0].fr[0] == "livre")
+        assertTrue(kanji.lectures[0].ON[0] == "HON")
+        assertTrue(kanji.lectures[1].kun[0] == "moto")
+    }
+
+    @Test
+    fun getKanjiByChar_TEST() = runBlocking {
+        val kanji = getKanjiByChar("本")
+        print("=====>$kanji \n")
+        assertTrue(kanji.kanji=="本")
+        assertTrue(kanji.id=="kanji25")
+        assertTrue(kanji.lectures[0].fr[0] == "livre")
+        assertTrue(kanji.lectures[0].ON[0] == "HON")
+        assertTrue(kanji.lectures[1].kun[0] == "moto")
+    }
+
+}
 
 
+class lottieNetworkUnitTest {
+    @Test
+    fun getLottie_TEST() = runBlocking {
+        val lottie = getLottie(kanji = "kanji1")
+        println(lottie)
+        assertTrue(lottie.isNotEmpty())
+        assertTrue(lottie != "{}")
+    }
+}
+
+class mainPageUnitTest {
+    @Test
+    fun getMainPage_TEST() = runBlocking {
+        val mainPage = getMainMage()
+        assertTrue(mainPage.Kanji.height == 200)
+        assertTrue(mainPage.Kanji.width == 200)
+        assertTrue(mainPage.Kanji.paths[0] == "Kanji/JLPT5/Tout")
+    }
 }
