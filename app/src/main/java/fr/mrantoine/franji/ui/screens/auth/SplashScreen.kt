@@ -23,6 +23,7 @@ import fr.mrantoine.franji.R
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.storage.KanjiStorage
+import fr.mrantoine.franji.storage.MainPageStorage
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -47,8 +48,10 @@ fun SplashScreen(
         val loadingJob = launch {
             //CategoryStorage.clearCache(context)
             //KanjiStorage.clearCache(context)
+            //MainPageStorage.clearCache(context)
             CategoryStorage.loadCache(context)
             KanjiStorage.loadCache(context)
+            MainPageStorage.loadCache(context)
 
             CategoryStorage.getCategoriesPaths()
             CategoryStorage.getCategoriesPaths("Kanji")
@@ -67,8 +70,13 @@ fun SplashScreen(
                 KanjiStorage.getKanjiByChar(kanji)
             }
 
+            MainPageStorage.getMainPage("Kanji")
+            MainPageStorage.getMainPage("Vocabulaire")
+            MainPageStorage.getMainPage("Grammaire")
+
             CategoryStorage.saveCache(context)
             KanjiStorage.saveCache(context)
+            MainPageStorage.saveCache(context)
         }
 
 

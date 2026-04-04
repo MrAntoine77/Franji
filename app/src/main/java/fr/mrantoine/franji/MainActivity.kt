@@ -1,13 +1,18 @@
 package fr.mrantoine.franji
 
+import android.graphics.Color
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.view.View
+import android.view.WindowInsetsController
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavType
 import fr.mrantoine.franji.ui.screens.auth.SplashScreen
 import fr.mrantoine.franji.ui.screens.auth.WelcomeScreen
@@ -66,11 +71,16 @@ sealed class Screen(val route: String) {
 
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             FranjiTheme(dynamicColor = false) {
+                /*window.insetsController?.setSystemBarsAppearance(
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                )*/
+
+
                 val navController = rememberNavController()
 
 

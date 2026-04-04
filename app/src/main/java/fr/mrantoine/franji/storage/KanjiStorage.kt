@@ -22,7 +22,8 @@ data class Lecture(
 data class Kanji(
     val kanji: String = "",
     val lectures: List<Lecture> = emptyList(),
-    val id: String = ""
+    val id: String = "",
+    val angles: List<Float> = emptyList()
 )
 
 @Serializable

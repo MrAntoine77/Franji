@@ -8,9 +8,16 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
+import fr.mrantoine.franji.storage.MainPage
+import fr.mrantoine.franji.storage.MainPageStorage
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HeaderRow
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
@@ -24,7 +31,7 @@ fun AllScreen(
     Scaffold(
         topBar = {
             HomeTopBar(
-                navController=navController,
+                navController = navController,
                 selectedCategoryIndex = 0
             )
         },
@@ -37,6 +44,20 @@ fun AllScreen(
         }
     ) { innerPadding ->
         val scrollState = rememberLazyListState()
+        var kanjiPages by remember { mutableStateOf(MainPage()) }
+        var kanaPages by remember { mutableStateOf(MainPage()) }
+        var vocabPages by remember { mutableStateOf(MainPage()) }
+        var grammarPages by remember { mutableStateOf(MainPage()) }
+
+
+
+        LaunchedEffect(Unit) {
+            kanjiPages = MainPageStorage.getMainPage("Kanji")
+            vocabPages = MainPageStorage.getMainPage("Vocabulaire")
+            grammarPages = MainPageStorage.getMainPage("Grammaire")
+        }
+
+
 
         LazyColumn(
             modifier = Modifier
@@ -53,25 +74,47 @@ fun AllScreen(
             }
             item {
                 HorizontalScrollableList(
-                    items = listOf("JLPT5", "JLPT4", "JLPT3", "JLPT2", "JLPT1"),
-                    onItemClick = { navController.navigate(Screen.KanjiCategory.route("Kanji/JLPT5/Tout")) }
+                    navController = navController,
+                    page = kanjiPages,
+                )
+            }
+            item {
+                HeaderRow(
+                    text = "Vocabulaire",
+                    onClick = { navController.navigate(Screen.KanjiCategoryList.route) }
+                )
+            }
+            item {
+                HorizontalScrollableList(
+                    navController = navController,
+                    page = vocabPages,
+                )
+            }
+            item {
+                HeaderRow(
+                    text = "Grammaire",
+                    onClick = { navController.navigate(Screen.KanjiCategoryList.route) }
+                )
+            }
+            item {
+                HorizontalScrollableList(
+                    navController = navController,
+                    page = grammarPages,
                 )
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

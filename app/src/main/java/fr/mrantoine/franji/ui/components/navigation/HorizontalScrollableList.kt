@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.components.navigation
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -15,39 +16,79 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import fr.mrantoine.franji.Screen
+import fr.mrantoine.franji.storage.MainPage
 import fr.mrantoine.franji.ui.theme.Dimens
+import androidx.compose.foundation.layout.*
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import fr.mrantoine.franji.R
 
 @Composable
 fun HorizontalScrollableList(
+    navController: NavController,
     modifier: Modifier = Modifier,
-    items: List<String>,
-    itemWidth: Dp = 200.dp,
-    itemHeight: Dp = 200.dp,
-    onItemClick: (index: Int) -> Unit = {}
+    page: MainPage
 ) {
     LazyRow(
         modifier = modifier.padding(bottom = Dimens.m),
         contentPadding = PaddingValues(horizontal = Dimens.m),
         horizontalArrangement = Arrangement.spacedBy(Dimens.m)
     ) {
-        itemsIndexed(items) { index, item ->
+
+        items(page.items.size) { index ->
+
+            val context = LocalContext.current
+            val drawableId = context.resources.getIdentifier(page.items[index].img, "drawable", context.packageName)
+
+
             Box(
                 modifier = Modifier
-                    .width(itemWidth)
-                    .height(itemHeight)
-                    .clickable { onItemClick(index) }
-                    .background(
-                        color = MaterialTheme.colorScheme.surfaceVariant
-                    ),
+                    .width(page.width.dp)
+                    .height(page.height.dp)
+                    .clickable {
+                        navController.navigate(
+                            Screen.KanjiCategory.route(page.items[index].path)
+                        )
+                    },
                 contentAlignment = Alignment.Center
             ) {
+                if (drawableId != 0) {
+                    Image(
+                        painter = painterResource(id = drawableId),
+                        contentDescription = "Wallpaper",
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Crop
+                    )
+                }
+
+                Box(
+                    modifier = Modifier
+                        .matchParentSize()
+                        .background(
+                            brush = Brush.verticalGradient(
+                                colors = listOf(
+                                    Color.Transparent,
+                                    Color(page.items[index].color.removePrefix("0x").toLong(16))
+                                )
+                            )
+                        )
+                )
+
+                // Texte
                 Text(
-                    text = item,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    fontWeight = FontWeight.Medium
+                    text = page.items[index].path.replace("/", " "),
+                    color = Color.White,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier
+                        .align(Alignment.BottomStart)
+                        .padding(8.dp)
                 )
             }
         }

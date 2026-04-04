@@ -34,6 +34,7 @@ import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
+import fr.mrantoine.franji.ui.components.DrawArea
 import fr.mrantoine.franji.ui.components.Lecture
 import fr.mrantoine.franji.ui.components.navigation.EaseBar
 import fr.mrantoine.franji.ui.components.Lottie
@@ -140,35 +141,34 @@ fun CardsPlayingScreen(
                 val hint = kanji.lectures.firstOrNull()?.let { lecture ->
                     lecture.fr.firstOrNull()?.takeIf { it.isNotEmpty() } ?: ""
                 } ?: ""
-
+                Text(
+                    text = hint,
+                    fontSize = 20.sp,
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Center
+                )
+                HorizontalDivider(
+                    color = Color.Gray,
+                    thickness = 1.dp,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                if(!isRevealed.value){
+                    DrawArea(kanji.angles, isRevealed)
+                }
                 val scrollState = rememberLazyListState()
+                if(isRevealed.value) {
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        state = scrollState,
+                    ) {
 
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxSize(),
-                    state = scrollState,
-                ) {
-                    item {
-                        Text(
-                            text = hint,
-                            fontSize = 20.sp,
-                            modifier = Modifier.fillMaxWidth(),
-                            textAlign = TextAlign.Center
-                        )
-                        HorizontalDivider(
-                            color = Color.Gray,
-                            thickness = 1.dp,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                    }
-                    if(isRevealed.value) {
                         item {
                             val translation = kanji.lectures.firstOrNull()?.let { lecture ->
                                 lecture.kun.firstOrNull()?.takeIf { it.isNotEmpty() }
                                     ?: lecture.ON.firstOrNull()?.takeIf { it.isNotEmpty() }
                                     ?: ""
                             } ?: ""
-
                             Column(
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
