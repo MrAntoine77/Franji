@@ -17,8 +17,7 @@ import kotlin.collections.mutableMapOf
 @Serializable
 data class CategoryCache(
     val categories: Map<String, Array<String>>,
-    val kanjiChar: Map<String, Array<String>>,
-    val kanjiId: Map<String, Array<String>>
+    val ids: Map<String, Array<String>>
 )
 object CategoryStorage {
     private val getCategoriesPathsCache = mutableMapOf<String, Array<String>>()
@@ -37,37 +36,20 @@ object CategoryStorage {
         getCategoriesPathsCache[path] = result
         return result
     }
-    
 
-    private val getCategoriesKanjiCharCache = mutableMapOf<String, Array<String>>()
-    suspend fun getCategoriesKanjiChar(path: String): Array<String> {
-        getCategoriesKanjiCharCache[path]?.let {
+    private val getCategoryIdsCache = mutableMapOf<String, Array<String>>()
+    suspend fun getCategoryIds(path: String): Array<String> {
+        getCategoryIdsCache[path]?.let {
             return it
         }
 
         val result = try {
-            client.get("http://$IP_ADDRESS:$PORT/categories/category/kanji_char/$path").body<Array<String>>()
+            client.get("http://$IP_ADDRESS:$PORT/categories/id/$path").body<Array<String>>()
         } catch (e: Exception) {
             e.printStackTrace()
             emptyArray()
         }
-        getCategoriesKanjiCharCache[path] = result
-        return result
-    }
-
-    private val getCategoriesKanjiIdCache = mutableMapOf<String, Array<String>>()
-    suspend fun getCategoriesKanjiId(path: String): Array<String> {
-        getCategoriesKanjiIdCache[path]?.let {
-            return it
-        }
-
-        val result = try {
-            client.get("http://$IP_ADDRESS:$PORT/categories/category/kanji_id/$path").body<Array<String>>()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emptyArray()
-        }
-        getCategoriesKanjiIdCache[path] = result
+        getCategoryIdsCache[path] = result
         return result
     }
 
@@ -77,8 +59,7 @@ object CategoryStorage {
 
     fun clearCache(context: Context) {
         getCategoriesPathsCache.clear()
-        getCategoriesKanjiCharCache.clear()
-        getCategoriesKanjiIdCache.clear()
+        getCategoryIdsCache.clear()
 
         val cacheFile = File(context.filesDir, cache_file_path)
         if (cacheFile.exists()) {
@@ -91,8 +72,7 @@ object CategoryStorage {
 
         val serializableCache = CategoryCache(
             categories = getCategoriesPathsCache.toMap(),
-            kanjiChar = getCategoriesKanjiCharCache.toMap(),
-            kanjiId = getCategoriesKanjiIdCache.toMap()
+            ids = getCategoryIdsCache.toMap()
         )
 
         val jsonString = Json.encodeToString(serializableCache)
@@ -110,11 +90,8 @@ object CategoryStorage {
             getCategoriesPathsCache.clear()
             getCategoriesPathsCache.putAll(loadedCache.categories)
 
-            getCategoriesKanjiCharCache.clear()
-            getCategoriesKanjiCharCache.putAll(loadedCache.kanjiChar)
-
-            getCategoriesKanjiIdCache.clear()
-            getCategoriesKanjiIdCache.putAll(loadedCache.kanjiId)
+            getCategoryIdsCache.clear()
+            getCategoryIdsCache.putAll(loadedCache.ids)
         } catch (e: Exception) {
             e.printStackTrace()
         }

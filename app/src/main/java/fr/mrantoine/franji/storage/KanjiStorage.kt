@@ -23,7 +23,8 @@ data class Kanji(
     val kanji: String = "",
     val lectures: List<Lecture> = emptyList(),
     val id: String = "",
-    val angles: List<Float> = emptyList()
+    val angles: List<Float> = emptyList(),
+    val vocab: List<String> = emptyList()
 )
 
 @Serializable
@@ -46,7 +47,7 @@ object KanjiStorage {
             }.body()
         } catch (e: Exception) {
             e.printStackTrace()
-            Kanji("", emptyList(), "")
+            Kanji()
         }
         getKanjiByIdCache[kanjiId] = result
         return result
@@ -60,7 +61,7 @@ object KanjiStorage {
             }.body()
         } catch (e: Exception) {
             e.printStackTrace()
-            Kanji("", emptyList(), "")
+            Kanji()
         }
         getKanjiByCharCache[kanjiChar] = result
         return result

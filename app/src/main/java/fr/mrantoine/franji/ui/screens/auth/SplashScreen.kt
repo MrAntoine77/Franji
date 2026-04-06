@@ -24,6 +24,7 @@ import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.storage.MainPageStorage
+import fr.mrantoine.franji.storage.VocabStorage
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -58,23 +59,26 @@ fun SplashScreen(
             KanjiStorage.loadCache(context)
             MainPageStorage.loadCache(context)
 
+            //CategoryStorage Loading
             CategoryStorage.getCategoriesPaths()
             CategoryStorage.getCategoriesPaths("Kanji")
-            val kanjiCharList = CategoryStorage.getCategoriesKanjiChar("Kanji/JLPT5/Tout")
-            CategoryStorage.getCategoriesKanjiChar("Kanji/JLPT5/1-20")
-            CategoryStorage.getCategoriesKanjiChar("Kanji/JLPT5/21-40")
-            val kanjiIdList = CategoryStorage.getCategoriesKanjiId("Kanji/JLPT5/Tout")
-            CategoryStorage.getCategoriesKanjiId("Kanji/JLPT5/1-20")
-            CategoryStorage.getCategoriesKanjiId("Kanji/JLPT5/21-40")
 
+            //KanjiStorage Loading
+            val kanjiIdList = CategoryStorage.getCategoryIds("Kanji/JLPT5/Tout")
+            CategoryStorage.getCategoryIds("Kanji/JLPT5/1-20")
+            CategoryStorage.getCategoryIds("Kanji/JLPT5/21-40")
             kanjiIdList.forEach { kanji ->
                 KanjiStorage.getKanjiById(kanji)
                 KanjiStorage.getLottieByKanjiId(kanji)
             }
-            kanjiCharList.forEach { kanji ->
-                KanjiStorage.getKanjiByChar(kanji)
+
+            //VocabStorage Loading
+            val vocabListId = CategoryStorage.getCategoryIds("Vocab/JLPT5/Tout")
+            vocabListId.forEach { vocab ->
+                VocabStorage.getVocabById(vocab)
             }
 
+            //MainPageStorage Loading
             MainPageStorage.getMainPage("Kanji")
             MainPageStorage.getMainPage("Vocabulaire")
             MainPageStorage.getMainPage("Grammaire")

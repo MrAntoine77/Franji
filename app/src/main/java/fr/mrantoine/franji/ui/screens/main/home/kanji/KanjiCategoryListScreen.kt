@@ -1,9 +1,8 @@
-package fr.mrantoine.franji.ui.screens.main.cards
+package fr.mrantoine.franji.ui.screens.main.home.kanji
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
@@ -18,62 +17,35 @@ import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
-import fr.mrantoine.franji.ui.components.navigation.SearchBar
+import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.components.navigation.Tree
-
-
-
-fun buildMap(paths: Array<String>): Map<String, Any> {
-    print(paths)
-
-    val result = mutableMapOf<String, Any>()
-
-    paths.forEach { path ->
-        val parts = path.split("/")
-        var currentLevel = result
-        parts.forEachIndexed { index, part ->
-            if (index == parts.lastIndex) {
-                currentLevel[part] = 0
-            } else {
-                if (currentLevel[part] !is MutableMap<*, *>) {
-                    currentLevel[part] = mutableMapOf<String, Any>()
-                }
-                currentLevel = currentLevel[part] as MutableMap<String, Any>
-            }
-        }
-    }
-    return result
-}
+import fr.mrantoine.franji.ui.screens.main.cards.buildMap
 
 @Composable
-fun CardsListScreen(
+fun KanjiCategoryListScreen(
     navController: NavController
 ) {
-    var searchText by remember { mutableStateOf("") }
 
     var paths by remember { mutableStateOf<Array<String>>(emptyArray()) }
     var maps by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
 
 
     LaunchedEffect(Unit) {
-        paths = CategoryStorage.getCategoriesPaths()
+        paths = CategoryStorage.getCategoriesPaths("Kanji")
         maps = buildMap(paths)
     }
 
-
     Scaffold(
         topBar = {
-            Column(modifier = Modifier.statusBarsPadding()) {
-                SearchBar(
-                    value = searchText,
-                    onValueChange = { searchText = it }
-                )
-            }
+            HomeTopBar(
+                navController = navController,
+                selectedCategoryIndex = 1
+            )
         },
         bottomBar = {
             BottomBar(
                 modifier = Modifier.navigationBarsPadding(),
-                selectedIndex = 1,
+                selectedIndex = 0,
                 navController = navController
             )
         }
@@ -86,7 +58,7 @@ fun CardsListScreen(
             Tree(
                 treeData = maps,
                 onClick = {arg ->
-                    navController.navigate(Screen.CardsRecap.route(arg))
+                    navController.navigate(Screen.KanjiCategory.route("Kanji/$arg"))
                 }
             )
         }

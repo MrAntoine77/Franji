@@ -1,18 +1,12 @@
 package fr.mrantoine.franji
 
-import android.graphics.Color
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.view.View
-import android.view.WindowInsetsController
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.core.content.ContextCompat
 import androidx.navigation.NavType
 import fr.mrantoine.franji.ui.screens.auth.SplashScreen
 import fr.mrantoine.franji.ui.screens.auth.WelcomeScreen
@@ -26,9 +20,11 @@ import fr.mrantoine.franji.ui.screens.main.cards.CardsListScreen
 import fr.mrantoine.franji.ui.screens.main.cards.CardsPlayingScreen
 import fr.mrantoine.franji.ui.screens.main.cards.CardsRecapScreen
 import fr.mrantoine.franji.ui.screens.main.home.AllScreen
-import fr.mrantoine.franji.ui.screens.main.home.KanjiCategoryListScreen
-import fr.mrantoine.franji.ui.screens.main.home.KanjiCategoryScreen
-import fr.mrantoine.franji.ui.screens.main.home.KanjiInfoScreen
+import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiCategoryListScreen
+import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiCategoryScreen
+import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiInfoScreen
+import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabCategoryScreen
+import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabInfoScreen
 
 
 sealed class Screen(val route: String) {
@@ -47,6 +43,16 @@ sealed class Screen(val route: String) {
     data object KanjiInfo : Screen("kanji_info/{kanjiChar}") {
         const val ARG = "kanjiChar"
         fun route(kanjiChar: String) = "kanji_info/${Uri.encode(kanjiChar)}"
+    }
+
+    data object VocabCategoryList : Screen("vocab_category_list")
+    data object VocabCategory : Screen("vocab_category/{categoryPath}") {
+        const val ARG = "categoryPath"
+        fun route(categoryPath: String) = "vocab_category/${Uri.encode(categoryPath)}"
+    }
+    data object VocabInfo : Screen("vocab_info/{vocabId}") {
+        const val ARG = "vocabId"
+        fun route(vocabId: String) = "vocab_info/${Uri.encode(vocabId)}"
     }
 
     data object CardsList : Screen("cards_list")
@@ -136,6 +142,40 @@ class MainActivity : ComponentActivity() {
 
                         KanjiInfoScreen(navController, kanjiChar)
                     }
+
+
+                    composable(Screen.VocabCategoryList.route) {
+                        VocabCategoryScreen(navController)
+                    }
+
+                    composable(
+                        route = Screen.VocabCategory.route,
+                        arguments = listOf(navArgument(Screen.VocabCategory.ARG) {
+                            type = NavType.StringType
+                        })
+                    ) { backStackEntry ->
+
+                        val categoryPath = backStackEntry.arguments
+                            ?.getString(Screen.VocabCategory.ARG)
+                            ?.let { Uri.decode(it) } ?: ""
+
+                        VocabCategoryScreen(navController, categoryPath)
+                    }
+                    composable(
+                        route = Screen.VocabInfo.route,
+                        arguments = listOf(navArgument(Screen.VocabInfo.ARG) {
+                            type = NavType.StringType
+                        })
+                    ) { backStackEntry ->
+
+                        val vocabId = backStackEntry.arguments
+                            ?.getString(Screen.VocabInfo.ARG)
+                            ?.let { Uri.decode(it) } ?: ""
+
+                        VocabInfoScreen(navController, vocabId)
+                    }
+
+
 
                     composable(Screen.CardsList.route) {
                         CardsListScreen(navController)

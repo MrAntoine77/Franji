@@ -1,4 +1,4 @@
-package fr.mrantoine.franji.ui.screens.main.home
+package fr.mrantoine.franji.ui.screens.main.home.kanji
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,7 +26,7 @@ import fr.mrantoine.franji.ui.theme.Dimens
 @Composable
 fun KanjiInfoScreen(
     navController: NavController,
-    kanjiChar: String
+    kanjiId: String
 ) {
     Scaffold(
         topBar = {
@@ -48,8 +48,8 @@ fun KanjiInfoScreen(
         var lottie by remember { mutableStateOf("{}") }
 
 
-        LaunchedEffect(kanjiChar) {
-            kanji = KanjiStorage.getKanjiByChar(kanjiChar)
+        LaunchedEffect(Unit) {
+            kanji = KanjiStorage.getKanjiById(kanjiId)
             kanji.let {
                 lottie = KanjiStorage.getLottieByKanjiId(it.id)
             }

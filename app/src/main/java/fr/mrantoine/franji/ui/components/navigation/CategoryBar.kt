@@ -73,6 +73,7 @@ fun CategoryBar(
                         when(index) {
                             0 -> navController.navigate(Screen.HomeAll.route)
                             1 -> navController.navigate(Screen.KanjiCategoryList.route)
+                            2 -> navController.navigate(Screen.VocabCategoryList.route)
                             else -> navController.navigate(Screen.HomeAll.route)
                         }
                     },

@@ -53,9 +53,14 @@ fun HorizontalScrollableList(
                     .width(page.width.dp)
                     .height(page.height.dp)
                     .clickable {
-                        navController.navigate(
-                            Screen.KanjiCategory.route(page.items[index].path)
-                        )
+                        val path = page.items[index].path
+                        if(path.startsWith("Kanji")) {
+                            navController.navigate(Screen.KanjiCategory.route(path))
+                        }
+                        else if(path.startsWith("Vocab")) {
+                            navController.navigate(Screen.VocabCategory.route(path))
+                        }
+
                     },
                 contentAlignment = Alignment.Center
             ) {

@@ -37,10 +37,10 @@ fun CardKanjiScreen(
     var lottie by remember { mutableStateOf<String>("{}") }
     var kanji by remember { mutableStateOf(Kanji()) }
 
-    LaunchedEffect(isRevealed.value == false) {
+    LaunchedEffect(!isRevealed.value) {
         lottie = KanjiStorage.getLottieByKanjiId(cardsArray[0])
     }
-    LaunchedEffect(isRevealed.value == false) {
+    LaunchedEffect(!isRevealed.value) {
         kanji = KanjiStorage.getKanjiById(cardsArray[0])
     }
 

@@ -36,7 +36,7 @@ fun CardsRecapScreen(
 ) {
     var cardsList by remember { mutableStateOf(emptyArray<String>()) }
     LaunchedEffect(Unit) {
-        cardsList = CategoryStorage.getCategoriesKanjiId(cardsPath)
+        cardsList = CategoryStorage.getCategoryIds(cardsPath)
     }
 
 

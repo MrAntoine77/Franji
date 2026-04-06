@@ -1,4 +1,4 @@
-package fr.mrantoine.franji.ui.screens.main.home
+package fr.mrantoine.franji.ui.screens.main.home.kanji
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -22,16 +22,14 @@ import fr.mrantoine.franji.ui.components.navigation.Tree
 import fr.mrantoine.franji.ui.screens.main.cards.buildMap
 
 @Composable
-fun KanjiCategoryListScreen(
+fun VocabCategoryScreen(
     navController: NavController
 ) {
-
     var paths by remember { mutableStateOf<Array<String>>(emptyArray()) }
     var maps by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
 
-
     LaunchedEffect(Unit) {
-        paths = CategoryStorage.getCategoriesPaths("Kanji")
+        paths = CategoryStorage.getCategoriesPaths("Vocab")
         maps = buildMap(paths)
     }
 
@@ -39,7 +37,7 @@ fun KanjiCategoryListScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 1
+                selectedCategoryIndex = 2
             )
         },
         bottomBar = {
@@ -58,7 +56,7 @@ fun KanjiCategoryListScreen(
             Tree(
                 treeData = maps,
                 onClick = {arg ->
-                    navController.navigate(Screen.KanjiCategory.route("Kanji/$arg"))
+                    navController.navigate(Screen.VocabCategory.route("Vocab/$arg"))
                 }
             )
         }

@@ -1,4 +1,4 @@
-package fr.mrantoine.franji.ui.screens.main.home
+package fr.mrantoine.franji.ui.screens.main.home.kanji
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -28,6 +29,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
+import fr.mrantoine.franji.storage.Kanji
+import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.theme.Dimens
@@ -53,9 +56,14 @@ fun KanjiCategoryScreen(
         }
     ) { innerPadding ->
 
-        var kanji_list by remember { mutableStateOf(emptyArray<String>()) }
+        var kanji_list_id by remember { mutableStateOf(emptyArray<String>()) }
+        val kanji_list = remember { mutableStateListOf<Kanji>() }
+
         LaunchedEffect(Unit) {
-            kanji_list = CategoryStorage.getCategoriesKanjiChar(categoryPath)
+            kanji_list_id = CategoryStorage.getCategoryIds(categoryPath)
+            kanji_list_id.forEach { kanjiId ->
+                kanji_list.add(KanjiStorage.getKanjiById(kanjiId))
+            }
         }
 
         Box(
@@ -87,9 +95,10 @@ fun KanjiCategoryScreen(
                             horizontalArrangement = Arrangement.SpaceEvenly
                         ) {
                             for (colIndex in 0 until columns) {
-                                val kanjiIndex = rowIndex * columns + colIndex
-                                if (kanjiIndex < kanji_list.size) {
-                                    var kanji_char = kanji_list.getOrNull(kanjiIndex) ?: ""
+                                val index = rowIndex * columns + colIndex
+                                if (index < kanji_list.size) {
+                                    var kanjiId = kanji_list[index].id
+                                    var kanjiChar = kanji_list[index].kanji
 
                                     Box(
                                         modifier = Modifier
@@ -97,12 +106,12 @@ fun KanjiCategoryScreen(
                                             .weight(1f)
                                             .padding(Dimens.s)
                                             .clickable {
-                                                navController.navigate(Screen.KanjiInfo.route(kanji_char))
+                                                navController.navigate(Screen.KanjiInfo.route(kanjiId))
                                             },
                                         contentAlignment = Alignment.Center
                                     ) {
                                         Text(
-                                            text = kanji_char,
+                                            text = kanjiChar,
                                             fontSize = 32.sp,
                                             fontWeight = FontWeight.SemiBold
                                         )

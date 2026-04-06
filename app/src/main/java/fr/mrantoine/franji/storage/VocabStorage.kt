@@ -17,7 +17,8 @@ data class Vocab(
     val fr: String = "",
     val jp: String = "",
     val lecture: String = "",
-    val id: String = ""
+    val id: String = "",
+    val kanji: List<String> = emptyList()
 )
 
 @Serializable
