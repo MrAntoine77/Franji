@@ -89,7 +89,8 @@ fun CardKanjiScreen(
                         textAlign = TextAlign.Center
                     )
                     Lottie(
-                        data = lottie
+                        data = lottie,
+                        speed = 2f
                     )
                 }
             }

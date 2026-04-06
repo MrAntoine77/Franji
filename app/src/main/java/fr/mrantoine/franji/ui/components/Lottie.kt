@@ -34,7 +34,7 @@ fun Lottie(
     data: String = "{}",
     autoPlay: Boolean = false,
     color: Color = Color.Black,
-    speed: Float = 1.5f,
+    speed: Float = 1f,
     lines: Int = 0
 ) {
     Box(

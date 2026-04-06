@@ -95,7 +95,12 @@ fun DrawArea(angles: List<Float>, isRevealed: MutableState<Boolean>, lottie: Str
         ) {
             if (fails >= 1) {
                 key(fails) {
-                    Lottie(lottie, true, Color.LightGray, 1.5f, fails)
+                    Lottie(
+                        data = lottie,
+                        autoPlay = true,
+                        color = Color.LightGray,
+                        speed = 1.5f,
+                        lines = fails)
                 }
             }
             Box(

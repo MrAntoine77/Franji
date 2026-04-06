@@ -124,7 +124,7 @@ fun VocabInfoScreen(
                                     .clickable { navController.navigate(Screen.KanjiInfo.route(kanjiId)) }
                                     .padding(vertical = Dimens.s, horizontal = Dimens.m),
                                 verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(Dimens.m)
+                                horizontalArrangement = Arrangement.SpaceBetween
                             ) {
                                 Text(
                                     text = kanji.kanji,

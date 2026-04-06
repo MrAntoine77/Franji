@@ -81,7 +81,7 @@ fun AllScreen(
             item {
                 HeaderRow(
                     text = "Vocabulaire",
-                    onClick = { navController.navigate(Screen.KanjiCategoryList.route) }
+                    onClick = { navController.navigate(Screen.VocabCategoryList.route) }
                 )
             }
             item {

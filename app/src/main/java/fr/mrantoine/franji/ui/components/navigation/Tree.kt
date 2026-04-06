@@ -22,6 +22,7 @@ import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material.icons.twotone.Star
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -49,7 +50,7 @@ fun TreeNode(
         ) {
             if((level == 0) and isNode) {
                 Icon(
-                    imageVector = if (isSelected) Icons.Outlined.Star else Icons.Outlined.Star,
+                    imageVector = if (isSelected) Icons.Outlined.Star else Icons.TwoTone.Star,
                     contentDescription = text,
                     tint = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.size(Dimens.l)
