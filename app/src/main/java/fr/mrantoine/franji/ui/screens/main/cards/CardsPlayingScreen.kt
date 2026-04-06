@@ -6,20 +6,15 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -27,18 +22,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
-import fr.mrantoine.franji.storage.Kanji
-import fr.mrantoine.franji.storage.KanjiStorage
-import fr.mrantoine.franji.ui.components.DrawArea
-import fr.mrantoine.franji.ui.components.Lecture
 import fr.mrantoine.franji.ui.components.navigation.EaseBar
-import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.components.navigation.TopBar
+import fr.mrantoine.franji.ui.screens.main.cards.types.CardKanjiScreen
+import fr.mrantoine.franji.ui.screens.main.cards.types.CardVocabScreen
 import fr.mrantoine.franji.ui.theme.Dimens
 
 
@@ -50,27 +39,15 @@ fun CardsPlayingScreen(
 ) {
     if(cardsArray.size > 0) {
         val isRevealed = remember { mutableStateOf(false) }
-        var lottie by remember { mutableStateOf<String>("{}") }
-        var kanji by remember { mutableStateOf(Kanji()) }
-        var total by remember { mutableStateOf( cardsArray.size) }
-
-
         var passed by remember { mutableStateOf(0) }
         var failed by remember { mutableStateOf(0) }
-
-        LaunchedEffect(isRevealed.value == false) {
-            lottie = KanjiStorage.getLottieByKanjiId(cardsArray[0])
-        }
-        LaunchedEffect(isRevealed.value == false) {
-            kanji = KanjiStorage.getKanjiById(cardsArray[0])
-        }
+        var total by remember { mutableStateOf( cardsArray.size) }
 
         fun nextCard(ok: Boolean) {
-            isRevealed.value = false
             if (ok && cardsArray.size == 1) {
                 navController.navigate(Screen.CardsList.route)
             } else {
-
+                isRevealed.value = false
                 val first = cardsArray.removeAt(0)
                 if(ok) {
                     passed+=1
@@ -92,7 +69,6 @@ fun CardsPlayingScreen(
             "Révéler" to (MaterialTheme.colorScheme.primary to { isRevealed.value = true })
         )
 
-
         Scaffold(
             topBar = {
                 val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
@@ -110,10 +86,9 @@ fun CardsPlayingScreen(
                 )
             }
         ) { innerPadding ->
+
             Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(innerPadding)
+                modifier = Modifier.padding(innerPadding)
             ) {
                 Row(
                     modifier = Modifier
@@ -138,61 +113,16 @@ fun CardsPlayingScreen(
 
                 Spacer(modifier = Modifier.height(Dimens.s))
 
-                val hint = kanji.lectures.firstOrNull()?.let { lecture ->
-                    lecture.fr.firstOrNull()?.takeIf { it.isNotEmpty() } ?: ""
-                } ?: ""
-                Text(
-                    text = hint,
-                    fontSize = 20.sp,
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Center
-                )
-                HorizontalDivider(
-                    color = Color.Gray,
-                    thickness = 1.dp,
-                    modifier = Modifier.fillMaxWidth()
-                )
-                if(!isRevealed.value){
-                    DrawArea(kanji.angles, isRevealed)
-                }
-                val scrollState = rememberLazyListState()
-                if(isRevealed.value) {
-                    LazyColumn(
-                        modifier = Modifier
-                            .fillMaxSize(),
-                        state = scrollState,
-                    ) {
-
-                        item {
-                            val translation = kanji.lectures.firstOrNull()?.let { lecture ->
-                                lecture.kun.firstOrNull()?.takeIf { it.isNotEmpty() }
-                                    ?: lecture.ON.firstOrNull()?.takeIf { it.isNotEmpty() }
-                                    ?: ""
-                            } ?: ""
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Text(
-                                    text = translation,
-                                    fontSize = 20.sp,
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(top = Dimens.l),
-                                    textAlign = TextAlign.Center
-                                )
-                                Lottie(
-                                    data = lottie
-                                )
-                            }
-                        }
-                        items(kanji.lectures.size) { index ->
-                            Lecture(
-                                french = kanji.lectures[index].fr,
-                                ON = kanji.lectures[index].ON,
-                                kun = kanji.lectures[index].kun
-                            )
-                        }
-                    }
+                if(cardsArray[0].startsWith("kanji")) {
+                    CardKanjiScreen(
+                        cardsArray = cardsArray,
+                        isRevealed = isRevealed
+                    )
+                } else if(cardsArray[0].startsWith("vocab")) {
+                    CardVocabScreen(
+                        cardsArray = cardsArray,
+                        isRevealed = isRevealed
+                    )
                 }
             }
         }

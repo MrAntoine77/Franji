@@ -28,6 +28,7 @@ fun buildMap(paths: Array<String>): Map<String, Any> {
 
     val result = mutableMapOf<String, Any>()
 
+
     paths.forEach { path ->
         val parts = path.split("/")
         var currentLevel = result

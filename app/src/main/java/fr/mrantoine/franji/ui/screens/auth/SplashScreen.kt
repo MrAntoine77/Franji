@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun SplashScreen(
-    navController: NavController
+    navController: NavController,
 ) {
     val context = LocalContext.current
     var showLoader by remember { mutableStateOf(false) }
@@ -46,9 +46,14 @@ fun SplashScreen(
         }
 
         val loadingJob = launch {
-            //CategoryStorage.clearCache(context)
-            //KanjiStorage.clearCache(context)
-            //MainPageStorage.clearCache(context)
+            val clearCache = true
+            if(clearCache) {
+                CategoryStorage.clearCache(context)
+                KanjiStorage.clearCache(context)
+                MainPageStorage.clearCache(context)
+            }
+
+
             CategoryStorage.loadCache(context)
             KanjiStorage.loadCache(context)
             MainPageStorage.loadCache(context)

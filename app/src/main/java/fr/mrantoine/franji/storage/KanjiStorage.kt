@@ -38,31 +38,31 @@ object KanjiStorage {
     private var getKanjiByCharCache = mutableMapOf<String, Kanji>()
     private var getLottieByKanjiIdCache = mutableMapOf<String, String>()
 
-    suspend fun getKanjiById(kanji_id: String): Kanji {
-        getKanjiByIdCache[kanji_id]?.let { return it }
-
+    suspend fun getKanjiById(kanjiId: String): Kanji {
+        getKanjiByIdCache[kanjiId]?.let { return it }
         val result = try {
-            client.get("http://$IP_ADDRESS:$PORT/kanji/kanji_data/id/$kanji_id").body()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Kanji("", emptyList(), "")
-        }
-        getKanjiByIdCache[kanji_id] = result
-        return result
-    }
-
-    suspend fun getKanjiByChar(kanji_char: String): Kanji {
-        getKanjiByCharCache[kanji_char]?.let { return it }
-
-        val result = try {
-            client.get("http://$IP_ADDRESS:$PORT/kanji/kanji_data/kanji") {
-                url { parameters.append("kanji_char", kanji_char) }
+            client.get("http://$IP_ADDRESS:$PORT/kanji/kanji_data/id") {
+                url { parameters.append("kanji_id", kanjiId) }
             }.body()
         } catch (e: Exception) {
             e.printStackTrace()
             Kanji("", emptyList(), "")
         }
-        getKanjiByCharCache[kanji_char] = result
+        getKanjiByIdCache[kanjiId] = result
+        return result
+    }
+
+    suspend fun getKanjiByChar(kanjiChar: String): Kanji {
+        getKanjiByCharCache[kanjiChar]?.let { return it }
+        val result = try {
+            client.get("http://$IP_ADDRESS:$PORT/kanji/kanji_data/char") {
+                url { parameters.append("kanji_char", kanjiChar) }
+            }.body()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Kanji("", emptyList(), "")
+        }
+        getKanjiByCharCache[kanjiChar] = result
         return result
     }
 
@@ -81,9 +81,7 @@ object KanjiStorage {
         return result
     }
 
-
     private val cache_file_path = "kanji_cache.json"
-
     fun clearCache(context: Context) {
         getKanjiByIdCache.clear()
         getKanjiByCharCache.clear()
@@ -94,8 +92,6 @@ object KanjiStorage {
             cacheFile.delete()
         }
     }
-
-
     fun saveCache(context: Context) {
         val cacheFile = File(context.filesDir, cache_file_path)
 
@@ -108,7 +104,6 @@ object KanjiStorage {
         val jsonString = Json.encodeToString(serializableCache)
         cacheFile.writeText(jsonString)
     }
-
     fun loadCache(context: Context) {
         val cacheFile = File(context.filesDir, cache_file_path)
         if (!cacheFile.exists()) return

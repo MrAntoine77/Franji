@@ -34,7 +34,8 @@ fun Lottie(
     data: String = "{}",
     autoPlay: Boolean = false,
     color: Color = Color.Black,
-    speed: Float = 2f
+    speed: Float = 1.5f,
+    lines: Int = 0
 ) {
     Box(
         modifier = Modifier
@@ -46,7 +47,9 @@ fun Lottie(
             lottieJson = data,
             autoPlay = autoPlay,
             color = color,
-            speed = speed)
+            speed = speed,
+            lines = lines
+        )
     }
 }
 
@@ -55,7 +58,8 @@ fun ClickToPlayLottie(
     lottieJson: String,
     autoPlay: Boolean,
     color: Color,
-    speed: Float
+    speed: Float,
+    lines: Int = 0
 ) {
     val composition by rememberLottieComposition(
         LottieCompositionSpec.JsonString(lottieJson)
@@ -64,6 +68,14 @@ fun ClickToPlayLottie(
     var progress by remember { mutableStateOf(if (autoPlay) 0f else 1f) }
     var animationJob by remember { mutableStateOf<Job?>(null) }
     val scope = rememberCoroutineScope()
+
+    val maxProgress = remember(composition) {
+        val frames = (lines * 32).toFloat()
+        if (composition != null && lines > 0) {
+            val totalFrames = composition!!.durationFrames
+            (frames / totalFrames).coerceIn(0f, 1f)
+        } else 1f
+    }
 
     val dynamicProperties = rememberLottieDynamicProperties(
         rememberLottieDynamicProperty(
@@ -81,17 +93,17 @@ fun ClickToPlayLottie(
             animationJob?.cancel()
             animationJob = scope.launch {
                 progress = 0f
-                val duration = (composition!!.duration).toLong()
+                val duration = composition!!.duration.toLong()
                 val start = System.currentTimeMillis()
 
                 while (true) {
                     val elapsed = System.currentTimeMillis() - start
                     val raw = (elapsed.toFloat() / duration) * speed
-                    progress = raw.coerceIn(0f, 1f)
-                    if (raw >= 1f) break
+                    progress = raw.coerceIn(0f, maxProgress)
+                    if (raw >= maxProgress) break
                     delay(16)
                 }
-                progress = 1f
+                progress = maxProgress
             }
         }
     }
@@ -113,11 +125,11 @@ fun ClickToPlayLottie(
                     while (true) {
                         val elapsed = System.currentTimeMillis() - start
                         val raw = (elapsed.toFloat() / duration) * speed
-                        progress = raw.coerceIn(0f, 1f)
-                        if (raw >= 1f) break
+                        progress = raw.coerceIn(0f, maxProgress)
+                        if (raw >= maxProgress) break
                         delay(16)
                     }
-                    progress = 1f
+                    progress = maxProgress
                 }
             },
         contentAlignment = Alignment.Center
