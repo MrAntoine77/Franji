@@ -25,11 +25,9 @@ import fr.mrantoine.franji.ui.screens.main.cards.buildMap
 fun KanjiCategoryListScreen(
     navController: NavController
 ) {
-
     var paths by remember { mutableStateOf<Array<String>>(emptyArray()) }
     var maps by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
-
-
+    
     LaunchedEffect(Unit) {
         paths = CategoryStorage.getCategoriesPaths("Kanji")
         maps = buildMap(paths)

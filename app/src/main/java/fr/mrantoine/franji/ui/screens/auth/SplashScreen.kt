@@ -22,6 +22,7 @@ import androidx.navigation.NavController
 import fr.mrantoine.franji.R
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
+import fr.mrantoine.franji.storage.GrammarStorage
 import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.storage.MainPageStorage
 import fr.mrantoine.franji.storage.VocabStorage
@@ -80,6 +81,12 @@ fun SplashScreen(
             val vocabListId = CategoryStorage.getCategoryIds("Vocab/Tout/Tout")
             vocabListId.forEach { vocab ->
                 VocabStorage.getVocabById(vocab)
+            }
+
+            //GrammarStorage Loading
+            val grammarListId = CategoryStorage.getCategoryIds("Grammar/Tout/Tout")
+            grammarListId.forEach { grammar ->
+                GrammarStorage.getGrammarById(grammar)
             }
 
             //MainPageStorage Loading
