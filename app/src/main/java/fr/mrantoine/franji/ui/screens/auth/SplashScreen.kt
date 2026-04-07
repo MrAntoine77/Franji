@@ -38,7 +38,7 @@ fun SplashScreen(
 
     LaunchedEffect(Unit) {
 
-        val loaderDelay = launch {
+        launch {
             delay(2500)
             showLoader = true
         }

@@ -28,7 +28,7 @@ object CategoryStorage {
 
         val result = try {
             val filtered_path = if(path == "") "" else "/$path"
-            client.get("http://$IP_ADDRESS:$PORT/categories/paths$filtered_path").body<Array<String>>()
+            client.get("http://$IP_ADDRESS:$PORT/categories/paths/$path").body<Array<String>>()
         } catch (e: Exception) {
             e.printStackTrace()
             emptyArray()
