@@ -1,8 +1,10 @@
 package fr.mrantoine.franji.ui.screens.main.cards.types
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -29,8 +31,8 @@ import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
-fun CardKanjiScreen(
-    cardsArray: MutableList<String>,
+fun CardKanjiVersionScreen(
+    cardId: String,
     isRevealed: MutableState<Boolean>,
 ) {
 
@@ -38,31 +40,29 @@ fun CardKanjiScreen(
     var kanji by remember { mutableStateOf(Kanji()) }
 
     LaunchedEffect(!isRevealed.value) {
-        lottie = KanjiStorage.getLottieByKanjiId(cardsArray[0])
+        lottie = KanjiStorage.getLottieByKanjiId(cardId)
     }
     LaunchedEffect(!isRevealed.value) {
-        kanji = KanjiStorage.getKanjiById(cardsArray[0])
+        kanji = KanjiStorage.getKanjiById(cardId)
     }
 
-
-
-    val hint = kanji.lectures.firstOrNull()?.let { lecture ->
-        lecture.fr.firstOrNull()?.takeIf { it.isNotEmpty() } ?: ""
-    } ?: ""
-    Text(
-        text = hint,
-        fontSize = 20.sp,
-        modifier = Modifier.fillMaxWidth(),
-        textAlign = TextAlign.Center
-    )
+    val hint = kanji.kanji
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(48.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = hint,
+            fontSize = 32.sp
+        )
+    }
     HorizontalDivider(
         color = Color.Gray,
         thickness = 1.dp,
         modifier = Modifier.fillMaxWidth()
     )
-    if(!isRevealed.value){
-        DrawArea(kanji.angles, isRevealed, lottie)
-    }
     val scrollState = rememberLazyListState()
     if(isRevealed.value) {
         LazyColumn(
@@ -72,7 +72,11 @@ fun CardKanjiScreen(
         ) {
 
             item {
-                val translation = kanji.lectures.firstOrNull()?.let { lecture ->
+                val fr = kanji.lectures.firstOrNull()?.let { lecture ->
+                    lecture.fr.firstOrNull()?.takeIf { it.isNotEmpty() } ?: ""
+                } ?: ""
+
+                val jp = kanji.lectures.firstOrNull()?.let { lecture ->
                     lecture.kun.firstOrNull()?.takeIf { it.isNotEmpty() }
                         ?: lecture.ON.firstOrNull()?.takeIf { it.isNotEmpty() }
                         ?: ""
@@ -81,7 +85,15 @@ fun CardKanjiScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = translation,
+                        text = jp,
+                        fontSize = 20.sp,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = Dimens.l),
+                        textAlign = TextAlign.Center
+                    )
+                    Text(
+                        text = fr,
                         fontSize = 20.sp,
                         modifier = Modifier
                             .fillMaxWidth()

@@ -26,29 +26,59 @@ import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.ui.components.navigation.EaseBar
 import fr.mrantoine.franji.ui.components.navigation.TopBar
-import fr.mrantoine.franji.ui.screens.main.cards.types.CardKanjiScreen
-import fr.mrantoine.franji.ui.screens.main.cards.types.CardVocabScreen
+import fr.mrantoine.franji.ui.screens.main.cards.types.CardKanjiThemeScreen
+import fr.mrantoine.franji.ui.screens.main.cards.types.CardKanjiVersionScreen
+import fr.mrantoine.franji.ui.screens.main.cards.types.CardVocabThemeScreen
+import fr.mrantoine.franji.ui.screens.main.cards.types.CardVocabVersionScreen
 import fr.mrantoine.franji.ui.theme.Dimens
 
+
+enum class Mode {
+    THEME,
+    VERSION,
+    BOTH
+}
+
+fun buildcardList(idList: List<String>, mode: Mode): MutableList<Pair<String, Mode>> {
+    val cardList = mutableListOf<Pair<String, Mode>>()
+    idList.forEach { id ->
+        when(mode) {
+            Mode.THEME -> {
+                cardList.add(id to Mode.THEME)
+            }
+            Mode.VERSION -> {
+                cardList.add(id to Mode.VERSION)
+            }
+            Mode.BOTH -> {
+                cardList.add(id to Mode.THEME)
+                cardList.add(id to Mode.VERSION)
+            }
+        }
+    }
+    cardList.shuffle()
+    return cardList
+}
 
 @Composable
 fun CardsPlayingScreen(
     navController: NavController,
-    cardsArray: MutableList<String>,
-    title: String
+    idList: MutableList<String>,
+    title: String,
+    mode: Mode
 ) {
-    if(cardsArray.size > 0) {
+    if(idList.size > 0) {
         val isRevealed = remember { mutableStateOf(false) }
         var passed by remember { mutableStateOf(0) }
         var failed by remember { mutableStateOf(0) }
-        var total by remember { mutableStateOf( cardsArray.size) }
+        val cardslist = remember { buildcardList(idList, mode) }
+        var total by remember { mutableStateOf( cardslist.size) }
 
         fun nextCard(ok: Boolean) {
-            if (ok && cardsArray.size == 1) {
+            if (ok && cardslist.size == 1) {
                 navController.navigate(Screen.CardsList.route)
             } else {
                 isRevealed.value = false
-                val first = cardsArray.removeAt(0)
+                val first = cardslist.removeAt(0)
                 if(ok) {
                     passed+=1
                 }
@@ -56,7 +86,7 @@ fun CardsPlayingScreen(
                     if((passed + failed) < total) {
                         failed += 1
                     }
-                    cardsArray.add(first)
+                    cardslist.add(first)
                 }
             }
         }
@@ -105,7 +135,7 @@ fun CardsPlayingScreen(
                         modifier = Modifier.padding(end = Dimens.s),
                         color = Color.Red
                     )
-                    Text(cardsArray.size.toString(),
+                    Text(cardslist.size.toString(),
                         modifier = Modifier.padding(end = Dimens.s),
                         color = Color.Blue
                     )
@@ -113,16 +143,33 @@ fun CardsPlayingScreen(
 
                 Spacer(modifier = Modifier.height(Dimens.s))
 
-                if(cardsArray[0].startsWith("kanji")) {
-                    CardKanjiScreen(
-                        cardsArray = cardsArray,
-                        isRevealed = isRevealed
-                    )
-                } else if(cardsArray[0].startsWith("vocab")) {
-                    CardVocabScreen(
-                        cardsArray = cardsArray,
-                        isRevealed = isRevealed
-                    )
+                if(cardslist[0].first.startsWith("kanji")) {
+                    if(cardslist[0].second == Mode.THEME) {
+                        CardKanjiThemeScreen(
+                            cardId = cardslist[0].first,
+                            isRevealed = isRevealed
+                        )
+                    }
+                    else {
+                        CardKanjiVersionScreen(
+                            cardId = cardslist[0].first,
+                            isRevealed = isRevealed
+                        )
+                    }
+
+                } else if(cardslist[0].first.startsWith("vocab")) {
+                    if(cardslist[0].second == Mode.THEME) {
+                        CardVocabThemeScreen(
+                            cardId = cardslist[0].first,
+                            isRevealed = isRevealed
+                        )
+                    }
+                    else {
+                        CardVocabVersionScreen(
+                            cardId = cardslist[0].first,
+                            isRevealed = isRevealed
+                        )
+                    }
                 }
             }
         }

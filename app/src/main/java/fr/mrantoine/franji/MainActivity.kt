@@ -19,6 +19,7 @@ import fr.mrantoine.franji.ui.screens.auth.*
 import fr.mrantoine.franji.ui.screens.main.cards.CardsListScreen
 import fr.mrantoine.franji.ui.screens.main.cards.CardsPlayingScreen
 import fr.mrantoine.franji.ui.screens.main.cards.CardsRecapScreen
+import fr.mrantoine.franji.ui.screens.main.cards.Mode
 import fr.mrantoine.franji.ui.screens.main.home.AllScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiCategoryListScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiCategoryScreen
@@ -63,14 +64,16 @@ sealed class Screen(val route: String) {
     }
 
 
-    data object CardsPlaying : Screen("cards_playing/{cardsArray}/{title}") {
-        const val ARG_CARDS = "cardsArray"
+    data object CardsPlaying : Screen("cards_playing/{idArray}/{title}/{mode}") {
+        const val ARG_CARDS = "idArray"
         const val ARG_TITLE = "title"
+        const val ARG_MODE = "mode"
 
-        fun route(cardsArray: Array<String>, title: String): String {
-            val encodedCards = Uri.encode(cardsArray.joinToString(","))
+        fun route(idArray: Array<String>, title: String, mode: Mode): String {
+            val encodedCards = Uri.encode(idArray.joinToString(","))
             val encodedTitle = Uri.encode(title)
-            return "cards_playing/$encodedCards/$encodedTitle"
+            val encodedMode = Uri.encode(mode.toString())
+            return "cards_playing/$encodedCards/$encodedTitle/$encodedMode"
         }
     }
 }
@@ -199,7 +202,8 @@ class MainActivity : ComponentActivity() {
                         route = Screen.CardsPlaying.route,
                         arguments = listOf(
                             navArgument(Screen.CardsPlaying.ARG_CARDS) { type = NavType.StringType },
-                            navArgument(Screen.CardsPlaying.ARG_TITLE) { type = NavType.StringType }
+                            navArgument(Screen.CardsPlaying.ARG_TITLE) { type = NavType.StringType },
+                            navArgument(Screen.CardsPlaying.ARG_MODE) { type = NavType.StringType }
                         )
                     ) { backStackEntry ->
 
@@ -213,14 +217,21 @@ class MainActivity : ComponentActivity() {
                             ?.let { Uri.decode(it) }
                             ?: ""
 
-                        val cardsArray: MutableList<String> =
+                        val mode: Mode = backStackEntry.arguments
+                            ?.getString(Screen.CardsPlaying.ARG_MODE)
+                            ?.let { Uri.decode(it) }
+                            ?.let { Mode.valueOf(it) }
+                            ?: Mode.VERSION
+
+                        val idList: MutableList<String> =
                             if (cardsPlayingString.isEmpty()) mutableListOf()
                             else cardsPlayingString.split(",").toMutableList()
 
                         CardsPlayingScreen(
                             navController = navController,
-                            cardsArray = cardsArray,
-                            title = title
+                            idList = idList,
+                            title = title,
+                            mode = mode
                         )
                     }
                 }

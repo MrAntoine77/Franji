@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -35,6 +36,7 @@ fun CardsRecapScreen(
     cardsPath: String
 ) {
     var cardsList by remember { mutableStateOf(emptyArray<String>()) }
+    var mode by remember { mutableStateOf(Mode.THEME) }
     LaunchedEffect(Unit) {
         cardsList = CategoryStorage.getCategoryIds(cardsPath)
     }
@@ -72,12 +74,45 @@ fun CardsRecapScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Total de cartes"
+                    text = "Total de cartes",
+                    fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = cardsList.size.toString(),
+                    text = if(mode == Mode.BOTH) (cardsList.size * 2).toString() else cardsList.size.toString(),
                 )
 
+            }
+            Spacer(modifier = Modifier.height(Dimens.m))
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.Start
+            ) {
+                Text("Choisissez un mode :")
+                var fr_flag = "\uD83C\uDDEB\uD83C\uDDF7"
+                var jp_flag = "\uD83C\uDDEF\uD83C\uDDF5"
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(
+                        selected = mode == Mode.THEME,
+                        onClick = { mode = Mode.THEME }
+                    )
+                    Text("$fr_flag → $jp_flag Thème")
+                }
+
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(
+                        selected = mode == Mode.VERSION,
+                        onClick = { mode = Mode.VERSION }
+                    )
+                    Text("$jp_flag → $fr_flag Version")
+                }
+
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(
+                        selected = mode == Mode.BOTH,
+                        onClick = { mode = Mode.BOTH }
+                    )
+                    Text("$fr_flag ↔ $jp_flag Les deux")
+                }
             }
             Box(
                 modifier = Modifier
@@ -87,7 +122,7 @@ fun CardsRecapScreen(
             ) {
                 cardsList.shuffle()
                 ThemedButton(
-                    onClick = { navController.navigate(Screen.CardsPlaying.route(cardsList, title)) },
+                    onClick = { navController.navigate(Screen.CardsPlaying.route(cardsList, title, mode)) },
                     text = "Commencer la révision"
                 )
             }

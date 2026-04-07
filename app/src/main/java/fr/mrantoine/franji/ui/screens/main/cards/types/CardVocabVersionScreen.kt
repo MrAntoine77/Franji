@@ -1,8 +1,10 @@
 package fr.mrantoine.franji.ui.screens.main.cards.types
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -26,24 +28,29 @@ import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
-fun CardVocabScreen(
-    cardsArray: MutableList<String>,
+fun CardVocabVersionScreen(
+    cardId: String,
     isRevealed: MutableState<Boolean>,
 ) {
 
     var vocab by remember { mutableStateOf(Vocab()) }
 
     LaunchedEffect(isRevealed.value == false) {
-        vocab = VocabStorage.getVocabById(cardsArray[0])
+        vocab = VocabStorage.getVocabById(cardId)
     }
-    val hint = vocab.fr
+    val hint = vocab.jp
 
-    Text(
-        text = hint,
-        fontSize = 20.sp,
-        modifier = Modifier.fillMaxWidth(),
-        textAlign = TextAlign.Center
-    )
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(48.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = hint,
+            fontSize = 32.sp
+        )
+    }
     HorizontalDivider(
         color = Color.Gray,
         thickness = 1.dp,
@@ -59,13 +66,13 @@ fun CardVocabScreen(
         ) {
 
             item {
-                val translation = vocab.jp
+                val fr = vocab.fr
                 val lecture = vocab.lecture
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = translation,
+                        text = fr,
                         fontSize = 48.sp,
                         lineHeight = 56.sp,
                         modifier = Modifier
