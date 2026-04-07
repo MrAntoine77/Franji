@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.components.navigation
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -66,7 +67,9 @@ fun BottomBar(
     modifier: Modifier = Modifier,
     selectedIndex: Int = 0,
 ) {
-    Column(modifier = modifier) {
+    Column(
+        modifier = modifier.background(MaterialTheme.colorScheme.background)
+    ) {
         HorizontalDivider(
             color = Color.Gray,
             thickness = 2.dp

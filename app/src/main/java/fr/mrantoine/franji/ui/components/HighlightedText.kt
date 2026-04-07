@@ -10,6 +10,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.sp
 
@@ -19,9 +20,11 @@ fun HighlightedText(
     text: String,
     color: Color = Color.Black,
     highlightColor: Color = MaterialTheme.colorScheme.primary,
-    fontSize: androidx.compose.ui.unit.TextUnit = 32.sp,
+    fontSize: androidx.compose.ui.unit.TextUnit = 16.sp,
+    lineHeight: androidx.compose.ui.unit.TextUnit = 16.sp,
     fontWeight: FontWeight = FontWeight.Normal,
-    fontStyle: FontStyle = FontStyle.Normal
+    fontStyle: FontStyle = FontStyle.Normal,
+    textAlign: TextAlign = TextAlign.Start
 ) {
     val annotatedString = buildAnnotatedString {
         var inBraces = false
@@ -49,5 +52,7 @@ fun HighlightedText(
         fontSize = fontSize,
         fontStyle = fontStyle,
         fontWeight = fontWeight,
+        textAlign = textAlign,
+        lineHeight = lineHeight
     )
 }

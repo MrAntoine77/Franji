@@ -1,4 +1,4 @@
-package fr.mrantoine.franji.ui.screens.main.cards.types
+package fr.mrantoine.franji.ui.screens.main.cards.types.vocab
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -25,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.storage.Vocab
 import fr.mrantoine.franji.storage.VocabStorage
+import fr.mrantoine.franji.ui.components.CardTypeTag
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
@@ -40,17 +42,18 @@ fun CardVocabVersionScreen(
     }
     val hint = vocab.jp
 
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(48.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = hint,
-            fontSize = 32.sp
-        )
-    }
+    CardTypeTag(
+        text = "Vocabulaire",
+        color = MaterialTheme.colorScheme.primary,
+        textColor = Color.White
+    )
+    Text(
+        text = hint,
+        fontSize = 32.sp,
+        lineHeight = 40.sp,
+        textAlign = TextAlign.Center,
+        modifier = Modifier.fillMaxWidth()
+    )
     HorizontalDivider(
         color = Color.Gray,
         thickness = 1.dp,
@@ -73,8 +76,8 @@ fun CardVocabVersionScreen(
                 ) {
                     Text(
                         text = fr,
-                        fontSize = 48.sp,
-                        lineHeight = 56.sp,
+                        fontSize = 32.sp,
+                        lineHeight = 40.sp,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = Dimens.l),

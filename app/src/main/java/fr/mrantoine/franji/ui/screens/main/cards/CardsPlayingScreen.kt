@@ -26,10 +26,12 @@ import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.ui.components.navigation.EaseBar
 import fr.mrantoine.franji.ui.components.navigation.TopBar
-import fr.mrantoine.franji.ui.screens.main.cards.types.CardKanjiThemeScreen
-import fr.mrantoine.franji.ui.screens.main.cards.types.CardKanjiVersionScreen
-import fr.mrantoine.franji.ui.screens.main.cards.types.CardVocabThemeScreen
-import fr.mrantoine.franji.ui.screens.main.cards.types.CardVocabVersionScreen
+import fr.mrantoine.franji.ui.screens.main.cards.types.grammar.CardGrammarThemeScreen
+import fr.mrantoine.franji.ui.screens.main.cards.types.grammar.CardGrammarVersionScreen
+import fr.mrantoine.franji.ui.screens.main.cards.types.kanji.CardKanjiThemeScreen
+import fr.mrantoine.franji.ui.screens.main.cards.types.kanji.CardKanjiVersionScreen
+import fr.mrantoine.franji.ui.screens.main.cards.types.vocab.CardVocabThemeScreen
+import fr.mrantoine.franji.ui.screens.main.cards.types.vocab.CardVocabVersionScreen
 import fr.mrantoine.franji.ui.theme.Dimens
 
 
@@ -166,6 +168,19 @@ fun CardsPlayingScreen(
                     }
                     else {
                         CardVocabVersionScreen(
+                            cardId = cardslist[0].first,
+                            isRevealed = isRevealed
+                        )
+                    }
+                } else if(cardslist[0].first.startsWith("grammar")) {
+                    if(cardslist[0].second == Mode.THEME) {
+                        CardGrammarThemeScreen(
+                            cardId = cardslist[0].first,
+                            isRevealed = isRevealed
+                        )
+                    }
+                    else {
+                        CardGrammarVersionScreen(
                             cardId = cardslist[0].first,
                             isRevealed = isRevealed
                         )
