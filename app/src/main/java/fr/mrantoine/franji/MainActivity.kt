@@ -21,9 +21,13 @@ import fr.mrantoine.franji.ui.screens.main.cards.CardsPlayingScreen
 import fr.mrantoine.franji.ui.screens.main.cards.CardsRecapScreen
 import fr.mrantoine.franji.ui.screens.main.cards.Mode
 import fr.mrantoine.franji.ui.screens.main.home.AllScreen
+import fr.mrantoine.franji.ui.screens.main.home.kanji.GrammarCategoryListScreen
+import fr.mrantoine.franji.ui.screens.main.home.kanji.GrammarCategoryScreen
+import fr.mrantoine.franji.ui.screens.main.home.kanji.GrammarInfoScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiCategoryListScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiCategoryScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiInfoScreen
+import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabCategoryListScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabCategoryScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabInfoScreen
 
@@ -35,8 +39,8 @@ sealed class Screen(val route: String) {
     data object Register : Screen("register")
     data object Login : Screen("login")
     data object HomeAll : Screen("home_all")
-    data object KanjiCategoryList : Screen("kanji_category_list")
 
+    data object KanjiCategoryList : Screen("kanji_category_list")
     data object KanjiCategory : Screen("kanji_category/{categoryPath}") {
         const val ARG = "categoryPath"
         fun route(categoryPath: String) = "kanji_category/${Uri.encode(categoryPath)}"
@@ -56,14 +60,21 @@ sealed class Screen(val route: String) {
         fun route(vocabId: String) = "vocab_info/${Uri.encode(vocabId)}"
     }
 
-    data object CardsList : Screen("cards_list")
+    data object GrammarCategoryList : Screen("grammar_category_list")
+    data object GrammarCategory : Screen("grammar_category/{categoryPath}") {
+        const val ARG = "categoryPath"
+        fun route(categoryPath: String) = "grammar_category/${Uri.encode(categoryPath)}"
+    }
+    data object GrammarInfo : Screen("grammar_info/{grammarId}") {
+        const val ARG = "grammarId"
+        fun route(grammarId: String) = "grammar_info/${Uri.encode(grammarId)}"
+    }
 
+    data object CardsList : Screen("cards_list")
     data object CardsRecap : Screen("cards_recap/{cardsPath}") {
         const val ARG = "cardsPath"
         fun route(cardsPath: String) = "cards_recap/${Uri.encode(cardsPath)}"
     }
-
-
     data object CardsPlaying : Screen("cards_playing/{idArray}/{title}/{mode}") {
         const val ARG_CARDS = "idArray"
         const val ARG_TITLE = "title"
@@ -148,7 +159,7 @@ class MainActivity : ComponentActivity() {
 
 
                     composable(Screen.VocabCategoryList.route) {
-                        VocabCategoryScreen(navController)
+                        VocabCategoryListScreen(navController)
                     }
 
                     composable(
@@ -178,7 +189,36 @@ class MainActivity : ComponentActivity() {
                         VocabInfoScreen(navController, vocabId)
                     }
 
+                    composable(Screen.GrammarCategoryList.route) {
+                        GrammarCategoryListScreen(navController)
+                    }
 
+                    composable(
+                        route = Screen.GrammarCategory.route,
+                        arguments = listOf(navArgument(Screen.GrammarCategory.ARG) {
+                            type = NavType.StringType
+                        })
+                    ) { backStackEntry ->
+
+                        val categoryPath = backStackEntry.arguments
+                            ?.getString(Screen.GrammarCategory.ARG)
+                            ?.let { Uri.decode(it) } ?: ""
+
+                        GrammarCategoryScreen(navController, categoryPath)
+                    }
+                    composable(
+                        route = Screen.GrammarInfo.route,
+                        arguments = listOf(navArgument(Screen.GrammarInfo.ARG) {
+                            type = NavType.StringType
+                        })
+                    ) { backStackEntry ->
+
+                        val grammarId = backStackEntry.arguments
+                            ?.getString(Screen.GrammarInfo.ARG)
+                            ?.let { Uri.decode(it) } ?: ""
+
+                        GrammarInfoScreen(navController, grammarId)
+                    }
 
                     composable(Screen.CardsList.route) {
                         CardsListScreen(navController)

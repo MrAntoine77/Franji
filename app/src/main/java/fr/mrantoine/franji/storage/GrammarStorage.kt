@@ -16,6 +16,7 @@ import java.io.File
 data class Grammar(
     val id: String = "",
     val title: String = "",
+    val subtitle: String = "",
     val desc : String = "",
     val examples: List<GrammarItem> = emptyList()
 )
@@ -24,8 +25,7 @@ data class Grammar(
 data class GrammarItem(
     val jp: String = "",
     val fr: String = "",
-    val lecture: String = "",
-    val highlighted: List<Int> = emptyList()
+    val lecture: String = ""
 )
 
 @Serializable

@@ -60,7 +60,9 @@ fun HorizontalScrollableList(
                         else if(path.startsWith("Vocab")) {
                             navController.navigate(Screen.VocabCategory.route(path))
                         }
-
+                        else if(path.startsWith("Grammar")) {
+                            navController.navigate(Screen.GrammarCategory.route(path))
+                        }
                     },
                 contentAlignment = Alignment.Center
             ) {

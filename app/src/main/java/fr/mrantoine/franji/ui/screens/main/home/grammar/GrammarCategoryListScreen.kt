@@ -22,14 +22,14 @@ import fr.mrantoine.franji.ui.components.navigation.Tree
 import fr.mrantoine.franji.ui.screens.main.cards.buildMap
 
 @Composable
-fun VocabCategoryListScreen(
+fun GrammarCategoryListScreen(
     navController: NavController
 ) {
     var paths by remember { mutableStateOf<Array<String>>(emptyArray()) }
     var maps by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
 
     LaunchedEffect(Unit) {
-        paths = CategoryStorage.getCategoriesPaths("Vocab")
+        paths = CategoryStorage.getCategoriesPaths("Grammar")
         maps = buildMap(paths)
     }
 
@@ -37,7 +37,7 @@ fun VocabCategoryListScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 2
+                selectedCategoryIndex = 3
             )
         },
         bottomBar = {
@@ -56,7 +56,7 @@ fun VocabCategoryListScreen(
             Tree(
                 treeData = maps,
                 onClick = {arg ->
-                    navController.navigate(Screen.VocabCategory.route("Vocab/$arg"))
+                    navController.navigate(Screen.GrammarCategory.route("Grammar/$arg"))
                 }
             )
         }

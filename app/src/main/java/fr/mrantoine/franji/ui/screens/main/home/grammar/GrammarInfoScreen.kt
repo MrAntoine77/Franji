@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,26 +31,24 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import fr.mrantoine.franji.Screen
-import fr.mrantoine.franji.storage.Kanji
-import fr.mrantoine.franji.storage.KanjiStorage
-import fr.mrantoine.franji.storage.Vocab
-import fr.mrantoine.franji.storage.VocabStorage
+import fr.mrantoine.franji.storage.Grammar
+import fr.mrantoine.franji.storage.GrammarStorage
+import fr.mrantoine.franji.ui.components.HighlightedText
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.theme.Dimens
 
 
 @Composable
-fun VocabInfoScreen(
+fun GrammarInfoScreen(
     navController: NavController,
-    vocabId: String
+    grammarId: String
 ) {
     Scaffold(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 2
+                selectedCategoryIndex = 3
             )
         },
         bottomBar = {
@@ -61,92 +60,98 @@ fun VocabInfoScreen(
         }
     ) { innerPadding ->
         val scrollState = rememberLazyListState()
-        var vocab by remember { mutableStateOf(Vocab()) }
+        var grammar by remember { mutableStateOf(Grammar()) }
 
         LaunchedEffect(Unit) {
-            vocab = VocabStorage.getVocabById(vocabId)
+            grammar = GrammarStorage.getGrammarById(grammarId)
         }
 
         LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(innerPadding)      // padding fourni par le Scaffold
+                .padding(Dimens.s),
             state = scrollState,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             item {
                 Text(
-                    text = vocab.jp,
-                    fontSize = 48.sp,
+                    text = grammar.title,
+                    fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center
+                    lineHeight = 38.sp,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+            item {
+                Text(
+                    text = grammar.subtitle,
+                    fontSize = 26.sp,
+                    lineHeight = 34.sp,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
             item( ) {Spacer(modifier = Modifier.height(Dimens.m))}
             item {
                 Text(
-                    text = vocab.lecture,
-                    fontSize = 16.sp,
-                    color = Color.Gray,
-                    textAlign = TextAlign.Center
-                )
-            }
-            item( ) {Spacer(modifier = Modifier.height(Dimens.m))}
-            item {
-                Text(
-                    text = vocab.fr,
+                    modifier = Modifier.fillMaxWidth(),
+                    text = grammar.desc,
                     fontSize = 20.sp,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Start
                 )
+
+
             }
             item( ) {Spacer(modifier = Modifier.height(Dimens.m))}
-            if( vocab.kanji.size > 0) {
+
+            if(grammar.examples.isNotEmpty()) {
                 item {
                     Text(
-                        text = "Kanjis :",
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = Dimens.m),
+                        modifier = Modifier.fillMaxWidth(),
+                        text = "Exemples :",
+                        fontSize = 20.sp,
                         textAlign = TextAlign.Start
                     )
                 }
-                vocab.kanji.forEach { kanjiId ->
+                grammar.examples.forEach { example ->
+                    item( ) {Spacer(modifier = Modifier.height(Dimens.s))}
                     item {
-                        Column() {
-                            var kanji by remember { mutableStateOf(Kanji()) }
-
-                            LaunchedEffect(Unit) {
-                                kanji = KanjiStorage.getKanjiById(kanjiId)
-                            }
-
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable { navController.navigate(Screen.KanjiInfo.route(kanjiId)) }
-                                    .padding(vertical = Dimens.s, horizontal = Dimens.m),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.SpaceBetween
-                            ) {
-                                Text(
-                                    text = kanji.kanji,
-                                    fontSize = 36.sp,
-                                    fontWeight = FontWeight.Bold
-                                )
-                                Text(
-                                    text = kanji.lectures.getOrNull(0)?.fr?.getOrNull(0) ?: "",
-                                    fontSize = 20.sp,
-                                    color = Color.Gray,
-                                    fontStyle = FontStyle.Italic
-                                )
-                            }
-                            HorizontalDivider(
-                                color = Color.LightGray,
-                                thickness = 1.dp
-                            )
-                        }
+                        HighlightedText(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = example.jp,
+                            fontSize = 20.sp,
+                        )
+                    }
+                    item {
+                        HighlightedText(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = example.lecture,
+                            fontSize = 20.sp,
+                            fontStyle = FontStyle.Italic,
+                            color = Color.Gray
+                        )
+                    }
+                    item {
+                        Text(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = example.fr,
+                            fontSize = 20.sp,
+                            textAlign = TextAlign.Start
+                        )
+                    }
+                    item {
+                        HorizontalDivider(
+                            color = Color.LightGray,
+                            thickness = 1.dp
+                        )
                     }
                 }
+
             }
+
+
         }
     }
 }
