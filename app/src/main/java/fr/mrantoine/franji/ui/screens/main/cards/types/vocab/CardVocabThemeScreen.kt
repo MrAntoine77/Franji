@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.Vocab
 import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
@@ -86,7 +87,7 @@ fun CardVocabThemeScreen(
                         textAlign = TextAlign.Center
                     )
                     Text(
-                        text = lecture,
+                        text = if(SettingsStorage.isRomaji()) lecture.romaji else lecture.kana,
                         fontSize = 20.sp,
                         modifier = Modifier
                             .fillMaxWidth()

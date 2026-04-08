@@ -16,7 +16,7 @@ import java.io.File
 data class Vocab(
     val fr: String = "",
     val jp: String = "",
-    val lecture: String = "",
+    val lecture: Pronunciation = Pronunciation(),
     val id: String = "",
     val kanji: List<String> = emptyList()
 )

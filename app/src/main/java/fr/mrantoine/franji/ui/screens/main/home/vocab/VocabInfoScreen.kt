@@ -33,6 +33,7 @@ import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
+import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.Vocab
 import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
@@ -85,7 +86,7 @@ fun VocabInfoScreen(
             item( ) {Spacer(modifier = Modifier.height(Dimens.m))}
             item {
                 Text(
-                    text = vocab.lecture,
+                    text = if(SettingsStorage.isRomaji()) vocab.lecture.romaji else vocab.lecture.kana,
                     fontSize = 16.sp,
                     color = Color.Gray,
                     textAlign = TextAlign.Center
