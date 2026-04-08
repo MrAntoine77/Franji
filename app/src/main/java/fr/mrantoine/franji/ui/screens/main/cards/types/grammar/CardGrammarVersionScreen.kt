@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.storage.Grammar
 import fr.mrantoine.franji.storage.GrammarItem
 import fr.mrantoine.franji.storage.GrammarStorage
+import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
 import fr.mrantoine.franji.ui.components.HighlightedText
 import fr.mrantoine.franji.ui.theme.Dimens
@@ -91,7 +92,7 @@ fun CardGrammarVersionScreen(
                         textAlign = TextAlign.Center
                     )
                     HighlightedText(
-                        text = lecture,
+                        text = if(SettingsStorage.isRomaji()) lecture.romaji else lecture.kana,
                         fontSize = 20.sp,
                         modifier = Modifier
                             .fillMaxWidth()

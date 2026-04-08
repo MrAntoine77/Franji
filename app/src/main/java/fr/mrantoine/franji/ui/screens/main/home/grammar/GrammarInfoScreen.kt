@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.storage.Grammar
 import fr.mrantoine.franji.storage.GrammarStorage
+import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.ui.components.HighlightedText
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
@@ -127,7 +128,7 @@ fun GrammarInfoScreen(
                     item {
                         HighlightedText(
                             modifier = Modifier.fillMaxWidth(),
-                            text = example.lecture,
+                            text = if(SettingsStorage.isRomaji()) example.lecture.romaji else example.lecture.kana,
                             fontSize = 20.sp,
                             fontStyle = FontStyle.Italic,
                             color = Color.Gray
