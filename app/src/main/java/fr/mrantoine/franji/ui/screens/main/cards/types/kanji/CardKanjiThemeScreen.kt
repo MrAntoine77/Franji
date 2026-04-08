@@ -42,12 +42,12 @@ fun CardKanjiThemeScreen(
 
     var lottie by remember { mutableStateOf<String>("{}") }
     var kanji by remember { mutableStateOf(Kanji()) }
+    val scrollState = rememberLazyListState()
 
-    LaunchedEffect(!isRevealed.value) {
+    LaunchedEffect(cardId) {
         lottie = KanjiStorage.getLottieByKanjiId(cardId)
-    }
-    LaunchedEffect(!isRevealed.value) {
         kanji = KanjiStorage.getKanjiById(cardId)
+        scrollState.scrollToItem(0)
     }
 
     val hint = kanji.lectures.firstOrNull()?.let { lecture ->
@@ -76,7 +76,6 @@ fun CardKanjiThemeScreen(
     if(!isRevealed.value){
         DrawArea(kanji.angles, isRevealed, lottie)
     }
-    val scrollState = rememberLazyListState()
     if(isRevealed.value) {
         LazyColumn(
             modifier = Modifier

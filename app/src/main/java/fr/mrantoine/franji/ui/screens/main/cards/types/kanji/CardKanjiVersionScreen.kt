@@ -41,12 +41,12 @@ fun CardKanjiVersionScreen(
 
     var lottie by remember { mutableStateOf<String>("{}") }
     var kanji by remember { mutableStateOf(Kanji()) }
+    val scrollState = rememberLazyListState()
 
-    LaunchedEffect(!isRevealed.value) {
+    LaunchedEffect(cardId) {
         lottie = KanjiStorage.getLottieByKanjiId(cardId)
-    }
-    LaunchedEffect(!isRevealed.value) {
         kanji = KanjiStorage.getKanjiById(cardId)
+        scrollState.scrollToItem(0)
     }
 
     val hint = kanji.kanji
@@ -69,8 +69,6 @@ fun CardKanjiVersionScreen(
         thickness = 1.dp,
         modifier = Modifier.fillMaxWidth()
     )
-
-    val scrollState = rememberLazyListState()
     if(isRevealed.value) {
         LazyColumn(
             modifier = Modifier

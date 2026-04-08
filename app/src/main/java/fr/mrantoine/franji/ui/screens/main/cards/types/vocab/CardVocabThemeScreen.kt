@@ -38,9 +38,11 @@ fun CardVocabThemeScreen(
 ) {
 
     var vocab by remember { mutableStateOf(Vocab()) }
+    val scrollState = rememberLazyListState()
 
-    LaunchedEffect(isRevealed.value == false) {
+    LaunchedEffect(cardId) {
         vocab = VocabStorage.getVocabById(cardId)
+        scrollState.scrollToItem(0)
     }
     val hint = vocab.fr
 
@@ -62,8 +64,6 @@ fun CardVocabThemeScreen(
         thickness = 1.dp,
         modifier = Modifier.fillMaxWidth()
     )
-
-    val scrollState = rememberLazyListState()
     if(isRevealed.value) {
         LazyColumn(
             modifier = Modifier

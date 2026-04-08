@@ -42,11 +42,13 @@ fun CardGrammarThemeScreen(
 ) {
     var grammar by remember { mutableStateOf(Grammar()) }
     var grammarExample by remember { mutableStateOf(GrammarItem()) }
+    val scrollState = rememberLazyListState()
 
     LaunchedEffect(cardId) {
 
         grammar = GrammarStorage.getGrammarById(cardId)
         grammarExample = grammar.examples.random()
+        scrollState.scrollToItem(0)
 
     }
 
@@ -71,7 +73,7 @@ fun CardGrammarThemeScreen(
         modifier = Modifier.fillMaxWidth()
     )
 
-    val scrollState = rememberLazyListState()
+
     if(isRevealed.value) {
         LazyColumn(
             modifier = Modifier
