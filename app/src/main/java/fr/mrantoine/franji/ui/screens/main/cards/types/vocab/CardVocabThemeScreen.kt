@@ -2,6 +2,7 @@ package fr.mrantoine.franji.ui.screens.main.cards.types.vocab
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -47,6 +48,7 @@ fun CardVocabThemeScreen(
         color = MaterialTheme.colorScheme.primary,
         textColor = Color.White
     )
+    Spacer(modifier = Modifier.height(Dimens.s))
     Text(
         text = hint,
         fontSize = 32.sp,

@@ -87,7 +87,6 @@ fun DrawArea(angles: List<Float>, isRevealed: MutableState<Boolean>, lottie: Str
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-        Spacer(modifier = Modifier.height(48.dp))
         Box(
             modifier = Modifier
                 .fillMaxWidth(1f)

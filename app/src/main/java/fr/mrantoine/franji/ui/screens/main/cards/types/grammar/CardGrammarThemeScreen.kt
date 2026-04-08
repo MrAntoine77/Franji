@@ -28,6 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.storage.Grammar
+import fr.mrantoine.franji.storage.GrammarItem
 import fr.mrantoine.franji.storage.GrammarStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
 import fr.mrantoine.franji.ui.components.HighlightedText
@@ -39,12 +40,16 @@ fun CardGrammarThemeScreen(
     isRevealed: MutableState<Boolean>,
 ) {
     var grammar by remember { mutableStateOf(Grammar()) }
+    var grammarExample by remember { mutableStateOf(GrammarItem()) }
 
-    LaunchedEffect(isRevealed.value == false) {
+    LaunchedEffect(cardId) {
+
         grammar = GrammarStorage.getGrammarById(cardId)
+        grammarExample = grammar.examples.random()
+
     }
-    val example = grammar.examples.firstOrNull()
-    val hint = example?.fr ?: ""
+
+    val hint = grammarExample.fr
 
     CardTypeTag(
         text = "Grammaire",
@@ -74,13 +79,13 @@ fun CardGrammarThemeScreen(
         ) {
 
             item {
-                val translation = example?.jp
-                val lecture = example?.lecture
+                val translation = grammarExample.jp
+                val lecture = grammarExample.lecture
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     HighlightedText(
-                        text = translation ?: "",
+                        text = translation,
                         fontSize = 40.sp,
                         lineHeight = 48.sp,
                         modifier = Modifier
@@ -89,7 +94,7 @@ fun CardGrammarThemeScreen(
                         textAlign = TextAlign.Center
                     )
                     HighlightedText(
-                        text = lecture ?: "",
+                        text = lecture,
                         fontSize = 20.sp,
                         modifier = Modifier
                             .fillMaxWidth()

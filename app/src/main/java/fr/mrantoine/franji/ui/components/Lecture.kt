@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,14 +20,27 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import fr.mrantoine.franji.storage.Lecture
+import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
 fun Lecture(
-    french: List<String> = emptyList(),
-    kun: List<String> = emptyList(),
-    ON: List<String> = emptyList()
+    lecture: Lecture,
 ) {
+    val french = lecture.fr
+    val kun: List<String> = if (SettingsStorage.isRomaji()) {
+        lecture.kun.map { it.romaji }
+    } else {
+        lecture.kun.map { it.kana }
+    }
+
+    val ON: List<String> = if (SettingsStorage.isRomaji()) {
+        lecture.ON.map { it.romaji }
+    } else {
+        lecture.ON.map { it.kana }
+    }
+
     Box(modifier = Modifier.padding(Dimens.m)) {
         Row(
             modifier = Modifier
@@ -58,7 +72,7 @@ fun Lecture(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "On:",
+                            text = "ON:",
                             fontWeight = FontWeight.Bold,
                             fontSize = 14.sp
                         )
@@ -68,6 +82,12 @@ fun Lecture(
                             textAlign = TextAlign.Right
                         )
                     }
+                }
+                if(ON.isNotEmpty() and kun.isNotEmpty()) {
+                    HorizontalDivider(
+                        color = Color.Gray,
+                        thickness = 1.dp
+                    )
                 }
                 if(kun.isNotEmpty()){
                     Row(

@@ -14,8 +14,14 @@ import java.io.File
 @Serializable
 data class Lecture(
     val fr: List<String> = emptyList(),
-    val ON: List<String> = emptyList(),
-    val kun: List<String> = emptyList()
+    val ON: List<Pronunciation> = emptyList(),
+    val kun: List<Pronunciation> = emptyList()
+)
+
+@Serializable
+data class Pronunciation(
+    val romaji: String = "",
+    val kana: String = "",
 )
 
 @Serializable

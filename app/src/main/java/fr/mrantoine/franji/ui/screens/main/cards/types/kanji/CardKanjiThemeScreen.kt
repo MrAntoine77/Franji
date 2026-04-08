@@ -2,6 +2,7 @@ package fr.mrantoine.franji.ui.screens.main.cards.types.kanji
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -26,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
+import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
 import fr.mrantoine.franji.ui.components.DrawArea
 import fr.mrantoine.franji.ui.components.Lecture
@@ -57,6 +59,7 @@ fun CardKanjiThemeScreen(
         color = MaterialTheme.colorScheme.primary,
         textColor = Color.White
     )
+    Spacer(modifier = Modifier.height(Dimens.s))
     Text(
         text = hint,
         fontSize = 32.sp,
@@ -82,34 +85,41 @@ fun CardKanjiThemeScreen(
         ) {
 
             item {
-                val translation = kanji.lectures.firstOrNull()?.let { lecture ->
-                    lecture.kun.firstOrNull()?.takeIf { it.isNotEmpty() }
-                        ?: lecture.ON.firstOrNull()?.takeIf { it.isNotEmpty() }
-                        ?: ""
-                } ?: ""
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = translation,
-                        fontSize = 20.sp,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = Dimens.l),
-                        textAlign = TextAlign.Center
-                    )
-                    Lottie(
-                        data = lottie,
-                        speed = 2f
-                    )
+
+                val lecture = kanji.lectures.firstOrNull()
+                if(lecture != null) {
+                    val jp: String =
+                        if (SettingsStorage.isRomaji())
+                            lecture.kun.firstOrNull { it.romaji.isNotEmpty() }?.romaji
+                                ?: lecture.ON.firstOrNull { it.romaji.isNotEmpty() }?.romaji
+                                ?: ""
+                        else
+                            lecture.kun.firstOrNull { it.kana.isNotEmpty() }?.kana
+                                ?: lecture.ON.firstOrNull { it.kana.isNotEmpty() }?.kana
+                                ?: ""
+
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Lottie(
+                            data = lottie,
+                            speed = 2f
+                        )
+                        Text(
+                            text = jp,
+                            fontSize = 32.sp,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(bottom = Dimens.m),
+                            textAlign = TextAlign.Center
+                        )
+                    }
                 }
             }
-            items(kanji.lectures.size) { index ->
-                Lecture(
-                    french = kanji.lectures[index].fr,
-                    ON = kanji.lectures[index].ON,
-                    kun = kanji.lectures[index].kun
-                )
+            kanji.lectures.forEach { lecture ->
+                item {
+                    Lecture(lecture)
+                }
             }
         }
     }

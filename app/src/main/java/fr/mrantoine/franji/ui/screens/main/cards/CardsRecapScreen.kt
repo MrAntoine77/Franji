@@ -67,6 +67,56 @@ fun CardsRecapScreen(
             )
 
             Spacer(modifier = Modifier.height(Dimens.m))
+
+            val total = cardsList.size
+            val totalKanji = cardsList.count { it.startsWith("kanji") }
+            val totalVocab = cardsList.count { it.startsWith("vocab") }
+            val totalGrammar = cardsList.count { it.startsWith("grammar") }
+
+
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Total de kanjis"
+                )
+                Text(
+                    text = if(mode == Mode.BOTH) (totalKanji * 2).toString() else totalKanji.toString(),
+                )
+
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Total de mots de vocabulaire"
+                )
+                Text(
+                    text = if(mode == Mode.BOTH) (totalVocab * 2).toString() else totalVocab.toString(),
+                )
+
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Total de leçons de grammaire"
+                )
+                Text(
+                    text = if(mode == Mode.BOTH) (totalGrammar * 2).toString() else totalGrammar.toString(),
+                )
+
+            }
             Row(
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -78,7 +128,8 @@ fun CardsRecapScreen(
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = if(mode == Mode.BOTH) (cardsList.size * 2).toString() else cardsList.size.toString(),
+                    text = if(mode == Mode.BOTH) (total * 2).toString() else total.toString(),
+                    fontWeight = FontWeight.Bold
                 )
 
             }
@@ -88,8 +139,8 @@ fun CardsRecapScreen(
                 horizontalAlignment = Alignment.Start
             ) {
                 Text("Choisissez un mode :")
-                var fr_flag = "\uD83C\uDDEB\uD83C\uDDF7"
-                var jp_flag = "\uD83C\uDDEF\uD83C\uDDF5"
+                val fr_flag = "\uD83C\uDDEB\uD83C\uDDF7"
+                val jp_flag = "\uD83C\uDDEF\uD83C\uDDF5"
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     RadioButton(
                         selected = mode == Mode.THEME,
@@ -111,7 +162,7 @@ fun CardsRecapScreen(
                         selected = mode == Mode.BOTH,
                         onClick = { mode = Mode.BOTH }
                     )
-                    Text("$fr_flag ↔ $jp_flag Les deux")
+                    Text("$jp_flag ↔ $fr_flag Les deux")
                 }
             }
             Box(

@@ -83,13 +83,10 @@ fun KanjiInfoScreen(
                     speed = 2f
                 )
             }
-
-            items(kanji.lectures.size) { index ->
-                Lecture(
-                    french = kanji.lectures[index].fr,
-                    ON = kanji.lectures[index].ON,
-                    kun = kanji.lectures[index].kun
-                )
+            kanji.lectures.forEach { lecture ->
+                item {
+                    Lecture(lecture)
+                }
             }
             if(kanji.vocab.size > 0)
             {

@@ -2,6 +2,7 @@ package fr.mrantoine.franji.ui.screens.main.cards.types.grammar
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -25,6 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.storage.Grammar
+import fr.mrantoine.franji.storage.GrammarItem
 import fr.mrantoine.franji.storage.GrammarStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
 import fr.mrantoine.franji.ui.components.HighlightedText
@@ -37,18 +39,21 @@ fun CardGrammarVersionScreen(
     isRevealed: MutableState<Boolean>,
 ) {
     var grammar by remember { mutableStateOf(Grammar()) }
+    var grammarExample by remember { mutableStateOf(GrammarItem()) }
 
-    LaunchedEffect(isRevealed.value == false) {
+    LaunchedEffect(cardId) {
         grammar = GrammarStorage.getGrammarById(cardId)
+        grammarExample = grammar.examples.random()
     }
-    val example = grammar.examples.firstOrNull()
-    val hint = example?.jp ?: ""
+
+    val hint = grammarExample.jp
 
     CardTypeTag(
         text = "Grammaire",
         color = MaterialTheme.colorScheme.primary,
         textColor = Color.White
     )
+    Spacer(modifier = Modifier.height(Dimens.s))
     HighlightedText(
         text = hint,
         fontSize = 32.sp,
@@ -71,13 +76,13 @@ fun CardGrammarVersionScreen(
         ) {
 
             item {
-                val translation = example?.fr
-                val lecture = example?.lecture
+                val translation = grammarExample.fr
+                val lecture = grammarExample.lecture
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = translation ?: "",
+                        text = translation,
                         fontSize = 32.sp,
                         lineHeight = 40.sp,
                         modifier = Modifier
@@ -86,7 +91,7 @@ fun CardGrammarVersionScreen(
                         textAlign = TextAlign.Center
                     )
                     HighlightedText(
-                        text = lecture ?: "",
+                        text = lecture,
                         fontSize = 20.sp,
                         modifier = Modifier
                             .fillMaxWidth()
