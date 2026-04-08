@@ -29,7 +29,7 @@ Elle repose sur un système de cartes, couvre le kanji, le vocabulaire et la gra
 
 ## 🚀 Installation
 /!\ L'API n'est pas encore publiée /!\
-- clonez le dépot
+- Clonez le dépot
   ```git clone https://github.com/MrAntoine77/Franji.git```
 - Ouvrez le projet dans Android Studio.
 - Lancez l’application sur un émulateur ou un appareil physique Android.
