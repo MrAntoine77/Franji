@@ -7,6 +7,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavType
 import fr.mrantoine.franji.ui.screens.auth.SplashScreen
 import fr.mrantoine.franji.ui.screens.auth.WelcomeScreen
@@ -93,16 +95,15 @@ sealed class Screen(val route: String) {
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val insetsController = WindowInsetsControllerCompat(window, window.decorView)
+        insetsController.isAppearanceLightStatusBars = true
+
         setContent {
             FranjiTheme(dynamicColor = false) {
-                /*window.insetsController?.setSystemBarsAppearance(
-                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
-                    WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
-                )*/
-
 
                 val navController = rememberNavController()
-
 
                 NavHost(
                     navController = navController,

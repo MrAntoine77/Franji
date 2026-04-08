@@ -14,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Create
 import androidx.compose.material.icons.outlined.Face
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.HorizontalDivider
@@ -82,8 +83,8 @@ fun BottomBar(
         ) {
             val items = listOf(
                 "Accueil" to Icons.Outlined.Home,
-                "Cartes" to Icons.Outlined.Menu,
-                "Révision" to Icons.Outlined.Create,
+                "Révision" to Icons.Outlined.Menu,
+                "Quizz" to Icons.Outlined.Info,
                 "Profile" to Icons.Outlined.Face,
                 "Recherche" to Icons.Outlined.Search
             )

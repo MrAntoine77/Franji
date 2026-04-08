@@ -83,7 +83,7 @@ fun VocabInfoScreen(
                     textAlign = TextAlign.Center
                 )
             }
-            item( ) {Spacer(modifier = Modifier.height(Dimens.m))}
+            item {Spacer(modifier = Modifier.height(Dimens.m))}
             item {
                 Text(
                     text = if(SettingsStorage.isRomaji()) vocab.lecture.romaji else vocab.lecture.kana,
@@ -92,7 +92,7 @@ fun VocabInfoScreen(
                     textAlign = TextAlign.Center
                 )
             }
-            item( ) {Spacer(modifier = Modifier.height(Dimens.m))}
+            item {Spacer(modifier = Modifier.height(Dimens.m))}
             item {
                 Text(
                     text = vocab.fr,
@@ -100,7 +100,7 @@ fun VocabInfoScreen(
                     textAlign = TextAlign.Center
                 )
             }
-            item( ) {Spacer(modifier = Modifier.height(Dimens.m))}
+            item {Spacer(modifier = Modifier.height(Dimens.m))}
             if( vocab.kanji.size > 0) {
                 item {
                     Text(
@@ -113,7 +113,7 @@ fun VocabInfoScreen(
                 }
                 vocab.kanji.forEach { kanjiId ->
                     item {
-                        Column() {
+                        Column {
                             var kanji by remember { mutableStateOf(Kanji()) }
 
                             LaunchedEffect(Unit) {
