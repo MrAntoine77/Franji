@@ -25,6 +25,7 @@ import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.storage.GrammarStorage
 import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.storage.MainPageStorage
+import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.VocabStorage
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -48,19 +49,24 @@ fun SplashScreen(
         }
 
         val loadingJob = launch {
-            val clearCache = false
+            //Clear Cache
+            val clearCache = true
             if(clearCache) {
                 CategoryStorage.clearCache(context)
                 KanjiStorage.clearCache(context)
                 VocabStorage.clearCache(context)
+
                 MainPageStorage.clearCache(context)
+                SettingsStorage.clearCache(context)
             }
 
-
+            //Load Cache
             CategoryStorage.loadCache(context)
             KanjiStorage.loadCache(context)
             VocabStorage.loadCache(context)
+
             MainPageStorage.loadCache(context)
+            SettingsStorage.loadCache(context)
 
             //CategoryStorage Loading
             CategoryStorage.getCategoriesPaths()
@@ -94,10 +100,13 @@ fun SplashScreen(
             MainPageStorage.getMainPage("Vocabulaire")
             MainPageStorage.getMainPage("Grammaire")
 
+            //Save Cache
             CategoryStorage.saveCache(context)
             KanjiStorage.saveCache(context)
             VocabStorage.saveCache(context)
+
             MainPageStorage.saveCache(context)
+            SettingsStorage.saveCache(context)
         }
 
 

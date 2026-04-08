@@ -1,43 +1,55 @@
 package fr.mrantoine.franji.storage
 
-import IP_ADDRESS
-import PORT
 import android.content.Context
-import client
-
-import io.ktor.client.call.body
-import io.ktor.client.request.get
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.io.File
-import kotlin.collections.mutableMapOf
 
 
 @Serializable
 data class SettingsCache(
-    val isRomaji: Boolean = false,
+    var isRomaji: Boolean = false,
 )
 
 object SettingsStorage {
-    private val settings = SettingsCache()
+    private var settings = SettingsCache()
 
     fun isRomaji(): Boolean {
         return settings.isRomaji
     }
 
+    fun setRomaji(isRomaji: Boolean) {
+        settings.isRomaji = isRomaji
+    }
+
     private val cache_file_path = "settings_cache.json"
 
     fun clearCache(context: Context) {
-
+        val cacheFile = File(context.filesDir, cache_file_path)
+        if (cacheFile.exists()) {
+            cacheFile.delete()
+        }
     }
 
     fun saveCache(context: Context) {
-
+        val file = File(context.filesDir, cache_file_path)
+        val jsonText = Json.encodeToString(SettingsCache.serializer(), settings)
+        file.writeText(jsonText)
     }
 
     fun loadCache(context: Context) {
+        val file = File(context.filesDir, cache_file_path)
+        if (!file.exists()) {
+            settings = SettingsCache()
+            return
+        }
+        val jsonText = file.readText()
 
+        try {
+            settings = Json.decodeFromString(SettingsCache.serializer(), jsonText)
+        } catch (e: Exception) {
+            settings = SettingsCache()
+        }
     }
 }
 
