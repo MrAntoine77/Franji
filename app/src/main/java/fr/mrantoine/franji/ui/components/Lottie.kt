@@ -17,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.core.graphics.BlendModeColorFilterCompat
 import androidx.core.graphics.BlendModeCompat
 import com.airbnb.lottie.LottieProperty
@@ -29,13 +30,24 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+
+
+fun multiplyStrokeWidths(json: String, multiplier: Float): String {
+    // FONCTION SENSIBLE, nécessite un JSON avec une épaisseur de trait = a 3
+    val target = "\"k\":3"
+    val replacement = "\"k\":${3f * multiplier}"
+    return json.replace(target, replacement)
+}
 @Composable
 fun Lottie(
-    data: String = "{}",
+    data: String,
     autoPlay: Boolean = false,
+    replayable: Boolean = true,
     color: Color = Color.Black,
     speed: Float = 1f,
-    lines: Int = 0
+    lines: Int = 0,
+    lineMultiplier: Float = 1f
+
 ) {
     Box(
         modifier = Modifier
@@ -44,11 +56,12 @@ fun Lottie(
         contentAlignment = Alignment.Center
     ) {
         ClickToPlayLottie(
-            lottieJson = data,
+            lottieJson = multiplyStrokeWidths(data, lineMultiplier),
             autoPlay = autoPlay,
             color = color,
             speed = speed,
-            lines = lines
+            lines = lines,
+            replayable = replayable
         )
     }
 }
@@ -59,7 +72,8 @@ fun ClickToPlayLottie(
     autoPlay: Boolean,
     color: Color,
     speed: Float,
-    lines: Int = 0
+    lines: Int = 0,
+    replayable: Boolean
 ) {
     val composition by rememberLottieComposition(
         LottieCompositionSpec.JsonString(lottieJson)
@@ -116,20 +130,22 @@ fun ClickToPlayLottie(
                 indication = null,
                 interactionSource = remember { MutableInteractionSource() }
             ) {
-                animationJob?.cancel()
-                animationJob = scope.launch {
-                    progress = 0f
-                    val duration = (composition?.duration ?: 1000).toLong()
-                    val start = System.currentTimeMillis()
+                if(replayable) {
+                    animationJob?.cancel()
+                    animationJob = scope.launch {
+                        progress = 0f
+                        val duration = (composition?.duration ?: 1000).toLong()
+                        val start = System.currentTimeMillis()
 
-                    while (true) {
-                        val elapsed = System.currentTimeMillis() - start
-                        val raw = (elapsed.toFloat() / duration) * speed
-                        progress = raw.coerceIn(0f, maxProgress)
-                        if (raw >= maxProgress) break
-                        delay(16)
+                        while (true) {
+                            val elapsed = System.currentTimeMillis() - start
+                            val raw = (elapsed.toFloat() / duration) * speed
+                            progress = raw.coerceIn(0f, maxProgress)
+                            if (raw >= maxProgress) break
+                            delay(16)
+                        }
+                        progress = maxProgress
                     }
-                    progress = maxProgress
                 }
             },
         contentAlignment = Alignment.Center
