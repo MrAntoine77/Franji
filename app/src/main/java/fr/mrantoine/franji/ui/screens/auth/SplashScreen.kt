@@ -4,11 +4,14 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -39,6 +42,7 @@ import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.Lottie
+import fr.mrantoine.franji.ui.theme.Dimens
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -145,7 +149,7 @@ fun SplashScreen(
         ) {
             Box(
                 modifier = Modifier
-                    .fillMaxWidth(0.7f)
+                    .fillMaxWidth(0.55f)
                     .aspectRatio(1f)
             ) {
                 Box(
@@ -165,13 +169,13 @@ fun SplashScreen(
                             autoPlay = true,
                             color = MaterialTheme.colorScheme.primary,
                             speed = 3f,
-                            lineMultiplier = 2.2f,
+                            lineMultiplier = 2.8f,
                             replayable = false
                         )
                     }
                 }
             }
-
+            Spacer(modifier = Modifier.height(Dimens.s))
             Text(text = "Mura Studio", color = Color.White, fontSize = 48.sp)
         }
 

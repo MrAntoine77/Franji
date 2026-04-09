@@ -45,7 +45,6 @@ fun AllScreen(
     ) { innerPadding ->
         val scrollState = rememberLazyListState()
         var kanjiPages by remember { mutableStateOf(MainPage()) }
-        var kanaPages by remember { mutableStateOf(MainPage()) }
         var vocabPages by remember { mutableStateOf(MainPage()) }
         var grammarPages by remember { mutableStateOf(MainPage()) }
 
