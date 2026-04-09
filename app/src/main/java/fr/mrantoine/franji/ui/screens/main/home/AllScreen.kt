@@ -93,7 +93,7 @@ fun AllScreen(
             item {
                 HeaderRow(
                     text = "Grammaire",
-                    onClick = { navController.navigate(Screen.GrammarCategory.route) }
+                    onClick = { navController.navigate(Screen.GrammarCategoryList.route) }
                 )
             }
             item {
