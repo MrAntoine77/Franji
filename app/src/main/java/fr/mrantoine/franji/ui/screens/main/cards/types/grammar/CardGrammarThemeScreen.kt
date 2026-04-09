@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.screens.main.cards.types.grammar
 
+import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,6 +16,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -24,6 +26,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,25 +34,32 @@ import fr.mrantoine.franji.storage.Grammar
 import fr.mrantoine.franji.storage.GrammarItem
 import fr.mrantoine.franji.storage.GrammarStorage
 import fr.mrantoine.franji.storage.SettingsStorage
+import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
 import fr.mrantoine.franji.ui.components.HighlightedText
 import fr.mrantoine.franji.ui.theme.Dimens
+import java.util.Locale
 
 @Composable
 fun CardGrammarThemeScreen(
     cardId: String,
-    isRevealed: MutableState<Boolean>,
+    isRevealed: MutableState<Boolean>
 ) {
     var grammar by remember { mutableStateOf(Grammar()) }
     var grammarExample by remember { mutableStateOf(GrammarItem()) }
     val scrollState = rememberLazyListState()
 
     LaunchedEffect(cardId) {
-
         grammar = GrammarStorage.getGrammarById(cardId)
         grammarExample = grammar.examples.random()
         scrollState.scrollToItem(0)
 
+    }
+
+    LaunchedEffect( isRevealed.value) {
+        if (isRevealed.value) {
+            TtsStorage.speak(grammarExample.lecture.kana)
+        }
     }
 
     val hint = grammarExample.fr

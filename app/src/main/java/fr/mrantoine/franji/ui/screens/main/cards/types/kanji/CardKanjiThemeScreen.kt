@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.screens.main.cards.types.kanji
 
+import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -22,32 +23,43 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.storage.SettingsStorage
+import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
 import fr.mrantoine.franji.ui.components.DrawArea
 import fr.mrantoine.franji.ui.components.Lecture
 import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.theme.Dimens
+import java.util.Locale
 
 @Composable
 fun CardKanjiThemeScreen(
     cardId: String,
-    isRevealed: MutableState<Boolean>,
+    isRevealed: MutableState<Boolean>
 ) {
 
-    var lottie by remember { mutableStateOf<String>("{}") }
+    var lottie by remember { mutableStateOf("{}") }
     var kanji by remember { mutableStateOf(Kanji()) }
+    var jp by remember { mutableStateOf("") }
     val scrollState = rememberLazyListState()
+
 
     LaunchedEffect(cardId) {
         lottie = KanjiStorage.getLottieByKanjiId(cardId)
         kanji = KanjiStorage.getKanjiById(cardId)
         scrollState.scrollToItem(0)
+    }
+
+    LaunchedEffect( jp) {
+        if (isRevealed.value) {
+            TtsStorage.speak(jp)
+        }
     }
 
     val hint = kanji.lectures.firstOrNull()?.let { lecture ->
@@ -87,7 +99,7 @@ fun CardKanjiThemeScreen(
 
                 val lecture = kanji.lectures.firstOrNull()
                 if(lecture != null) {
-                    val jp: String =
+                    jp =
                         if (SettingsStorage.isRomaji())
                             lecture.kun.firstOrNull { it.romaji.isNotEmpty() }?.romaji
                                 ?: lecture.ON.firstOrNull { it.romaji.isNotEmpty() }?.romaji
