@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavController
+import fr.mrantoine.franji.Screen
 
 @Composable
 fun HomeTopBar(
@@ -19,7 +20,8 @@ fun HomeTopBar(
     Column(modifier = Modifier.statusBarsPadding()) {
         SearchBar(
             value = searchText,
-            onValueChange = { searchText = it }
+            onValueChange = { searchText = it },
+            onSettingsClick = { navController.navigate(Screen.Settings.route) }
         )
         CategoryBar(navController = navController, selectedCategoryIndex = selectedCategoryIndex)
     }

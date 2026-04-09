@@ -22,6 +22,10 @@ object SettingsStorage {
         settings.isRomaji = isRomaji
     }
 
+    fun toggleRomaji() {
+        settings.isRomaji = !settings.isRomaji
+    }
+
     private val cache_file_path = "settings_cache.json"
 
     fun clearCache(context: Context) {

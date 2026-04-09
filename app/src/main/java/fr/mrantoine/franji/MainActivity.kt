@@ -32,6 +32,7 @@ import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiInfoScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabCategoryListScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabCategoryScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabInfoScreen
+import fr.mrantoine.franji.ui.screens.main.settings.SettingsScreen
 
 
 sealed class Screen(val route: String) {
@@ -41,6 +42,7 @@ sealed class Screen(val route: String) {
     data object Register : Screen("register")
     data object Login : Screen("login")
     data object HomeAll : Screen("home_all")
+    data object Settings : Screen("settings")
 
     data object KanjiCategoryList : Screen("kanji_category_list")
     data object KanjiCategory : Screen("kanji_category/{categoryPath}") {
@@ -127,6 +129,9 @@ class MainActivity : ComponentActivity() {
                     }
                     composable(Screen.HomeAll.route) {
                         AllScreen(navController)
+                    }
+                    composable(Screen.Settings.route) {
+                        SettingsScreen(navController)
                     }
                     composable(Screen.KanjiCategoryList.route) {
                         KanjiCategoryListScreen(navController)
