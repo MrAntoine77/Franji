@@ -21,8 +21,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
+import fr.mrantoine.franji.storage.UserStorage
 import fr.mrantoine.franji.ui.components.navigation.ThemedButton
 import fr.mrantoine.franji.ui.theme.Dimens
+import kotlinx.coroutines.launch
 
 @Composable
 fun RegisterScreen(
@@ -98,9 +100,17 @@ fun RegisterScreen(
             }
             Spacer(modifier = Modifier.height(Dimens.m))
 
+            val scope = rememberCoroutineScope()
             ThemedButton(
                 text = "S'inscrire",
-                onClick = { navController.navigate(Screen.HomeAll.route) }
+                onClick = {
+                    scope.launch {
+                        val response = UserStorage.register(username = username, email = email, password = password)
+                        if (response.message == "User registered") {
+                            navController.navigate(Screen.Login.route)
+                        }
+                    }
+                }
             )
             Spacer(modifier = Modifier.height(Dimens.s))
             ThemedButton(

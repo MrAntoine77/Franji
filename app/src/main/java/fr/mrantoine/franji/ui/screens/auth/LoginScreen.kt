@@ -17,8 +17,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
+import fr.mrantoine.franji.storage.UserStorage
 import fr.mrantoine.franji.ui.components.navigation.ThemedButton
 import fr.mrantoine.franji.ui.theme.Dimens
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 @Composable
 fun LoginScreen(
@@ -26,6 +29,8 @@ fun LoginScreen(
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+
+
 
     BackHandler() {
         navController.navigate(Screen.Welcome.route)
@@ -56,10 +61,17 @@ fun LoginScreen(
                 visualTransformation = PasswordVisualTransformation()
             )
             Spacer(modifier = Modifier.height(Dimens.m))
-
+            val scope = rememberCoroutineScope()
             ThemedButton(
                 text = "Se connecter",
-                onClick = {navController.navigate(Screen.HomeAll.route)}
+                onClick = {
+                    scope.launch {
+                        val response = UserStorage.login(email = email, password = password)
+                        if (response.message == "Login successful") {
+                            navController.navigate(Screen.HomeAll.route)
+                        }
+                    }
+                }
             )
             Spacer(modifier = Modifier.height(Dimens.s))
             ThemedButton(
