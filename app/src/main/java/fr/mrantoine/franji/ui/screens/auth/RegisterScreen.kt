@@ -18,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
@@ -101,13 +102,18 @@ fun RegisterScreen(
             Spacer(modifier = Modifier.height(Dimens.m))
 
             val scope = rememberCoroutineScope()
+            var errorMessage by remember { mutableStateOf<String?>(null) }
+
             ThemedButton(
                 text = "S'inscrire",
                 onClick = {
                     scope.launch {
                         val response = UserStorage.register(username = username, email = email, password = password)
-                        if (response.message == "User registered") {
+                        if (response.success) {
+                            errorMessage = null
                             navController.navigate(Screen.Login.route)
+                        } else {
+                            errorMessage = response.message
                         }
                     }
                 }
@@ -118,6 +124,13 @@ fun RegisterScreen(
                 onClick = { navController.navigate(Screen.Login.route) },
                 isPrimary = false
             )
+            if (errorMessage != null) {
+                Spacer(modifier = Modifier.height(Dimens.s))
+                Text(
+                    text = errorMessage ?: "",
+                    color = Color.Red
+                )
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.graphics.Color
 
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavController
@@ -29,8 +30,6 @@ fun LoginScreen(
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-
-
 
     BackHandler() {
         navController.navigate(Screen.Welcome.route)
@@ -62,13 +61,18 @@ fun LoginScreen(
             )
             Spacer(modifier = Modifier.height(Dimens.m))
             val scope = rememberCoroutineScope()
+            var errorMessage by remember { mutableStateOf<String?>(null) }
             ThemedButton(
                 text = "Se connecter",
                 onClick = {
                     scope.launch {
                         val response = UserStorage.login(email = email, password = password)
+
                         if (response.message == "Login successful") {
+                            errorMessage = null
                             navController.navigate(Screen.HomeAll.route)
+                        } else {
+                            errorMessage = response.message
                         }
                     }
                 }
@@ -79,7 +83,13 @@ fun LoginScreen(
                 onClick = {navController.navigate(Screen.Register.route)},
                 isPrimary = false
             )
-
+            if (errorMessage != null) {
+                Spacer(modifier = Modifier.height(Dimens.s))
+                Text(
+                    text = errorMessage ?: "",
+                    color = Color.Red
+                )
+            }
         }
     }
 }

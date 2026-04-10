@@ -46,7 +46,14 @@ data class RegisterRequest(
 @Serializable
 data class RegisterResponse(
     val message: String,
-    val user: User
+    val user: User,
+    val success: Boolean
+)
+
+
+@Serializable
+data class ErrorResponse(
+    val detail: String
 )
 
 
@@ -63,7 +70,7 @@ object UserStorage {
         } catch (e: Exception) {
             e.printStackTrace()
             LoginResponse(
-                message = "Bad Request",
+                message = "Email ou mot de passe incorrect",
                 user = User()
             )
         }
@@ -81,21 +88,25 @@ object UserStorage {
                     )
                 )
             }.body()
+
         } catch (e: ClientRequestException) {
             val errorBody = e.response.bodyAsText()
             RegisterResponse(
                 message = errorBody,
-                user = User()
+                user = User(),
+                success = false
             )
+
         } catch (e: Exception) {
             e.printStackTrace()
+
             RegisterResponse(
-                message = "Bad Request",
-                user = User()
+                message = "Network error",
+                user = User(),
+                success = false
             )
         }
     }
-
 
 
 }
