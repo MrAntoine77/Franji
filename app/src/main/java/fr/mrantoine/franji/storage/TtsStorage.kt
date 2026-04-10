@@ -32,7 +32,7 @@ object TtsStorage {
     }
 
     fun speak(text: String, id: String = "tts") {
-        val charsToRemove = setOf('(', ')', '[', ']', '-')
+        val charsToRemove = setOf('(', ')', '[', ']', '-', '{', '}')
         val filteredText = text.filterNot { it in charsToRemove }
 
         if (isReady) {
