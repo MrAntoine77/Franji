@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.storage.Lecture
 import fr.mrantoine.franji.storage.SettingsStorage
+import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
@@ -76,11 +77,16 @@ fun Lecture(
                             fontWeight = FontWeight.Bold,
                             fontSize = 14.sp
                         )
-                        Text(
-                            text = ON.joinToString("\n"),
-                            fontSize = 14.sp,
-                            textAlign = TextAlign.Right
-                        )
+                        Column {
+                            ON.forEach { lecture ->
+                                ClickableAnimatedText(
+                                    text = lecture,
+                                    fontSize = 16.sp,
+                                    textAlign = TextAlign.Right,
+                                    onClick = { TtsStorage.speak(lecture) }
+                                )
+                            }
+                        }
                     }
                 }
                 if(ON.isNotEmpty() and kun.isNotEmpty()) {
@@ -100,11 +106,16 @@ fun Lecture(
                             fontWeight = FontWeight.Bold,
                             fontSize = 14.sp
                         )
-                        Text(
-                            text = kun.joinToString("\n"),
-                            fontSize = 14.sp,
-                            textAlign = TextAlign.Right
-                        )
+                        Column {
+                            kun.forEach { lecture->
+                                ClickableAnimatedText(
+                                    text = lecture,
+                                    fontSize = 16.sp,
+                                    textAlign = TextAlign.Right,
+                                    onClick = { TtsStorage.speak(lecture) }
+                                )
+                            }
+                        }
                     }
                 }
             }

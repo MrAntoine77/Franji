@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -34,8 +35,10 @@ import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.storage.SettingsStorage
+import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.storage.Vocab
 import fr.mrantoine.franji.storage.VocabStorage
+import fr.mrantoine.franji.ui.components.ClickableAnimatedText
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.theme.Dimens
@@ -76,20 +79,23 @@ fun VocabInfoScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             item {
-                Text(
+                ClickableAnimatedText(
                     text = vocab.jp,
                     fontSize = 48.sp,
                     fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    onClick = { TtsStorage.speak(vocab.lecture.kana) }
+
                 )
             }
             item {Spacer(modifier = Modifier.height(Dimens.m))}
             item {
-                Text(
+                ClickableAnimatedText(
                     text = if(SettingsStorage.isRomaji()) vocab.lecture.romaji else vocab.lecture.kana,
                     fontSize = 16.sp,
                     color = Color.Gray,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    onClick = { TtsStorage.speak(vocab.lecture.kana) }
                 )
             }
             item {Spacer(modifier = Modifier.height(Dimens.m))}

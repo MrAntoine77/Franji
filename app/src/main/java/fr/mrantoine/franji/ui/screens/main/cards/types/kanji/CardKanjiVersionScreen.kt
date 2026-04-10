@@ -31,6 +31,7 @@ import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
+import fr.mrantoine.franji.ui.components.ClickableAnimatedText
 import fr.mrantoine.franji.ui.components.Lecture
 import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.theme.Dimens
@@ -111,13 +112,14 @@ fun CardKanjiVersionScreen(
                             data = lottie,
                             speed = 2f
                         )
-                        Text(
+                        ClickableAnimatedText(
                             text = jp,
                             fontSize = 32.sp,
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(bottom = Dimens.m),
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
+                            onClick = { TtsStorage.speak(jp) }
                         )
                         Text(
                             text = fr,
