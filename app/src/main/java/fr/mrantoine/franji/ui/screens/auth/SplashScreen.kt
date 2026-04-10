@@ -40,6 +40,7 @@ import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.storage.MainPageStorage
 import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.TtsStorage
+import fr.mrantoine.franji.storage.UserStorage
 import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.theme.Dimens
@@ -74,6 +75,8 @@ fun SplashScreen(
 
                 MainPageStorage.clearCache(context)
                 SettingsStorage.clearCache(context)
+
+                UserStorage.removeToken(context)
             }
             //Init TTS
             TtsStorage.init(context)
@@ -132,7 +135,12 @@ fun SplashScreen(
         splashMinDelay.join()
         loadingJob.join()
 
-        navController.navigate(Screen.Welcome.route)
+        if(UserStorage.loadToken(context = context) != null) {
+            navController.navigate(Screen.HomeAll.route)
+        }
+        else {
+            navController.navigate(Screen.Welcome.route)
+        }
     }
 
     Box(

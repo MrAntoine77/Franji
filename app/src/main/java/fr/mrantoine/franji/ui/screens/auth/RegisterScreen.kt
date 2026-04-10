@@ -34,6 +34,7 @@ fun RegisterScreen(
     var email by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var password_again by remember { mutableStateOf("") }
 
     var acceptTerms by remember { mutableStateOf(false) }
     var subscribeNewsletter by remember { mutableStateOf(false) }
@@ -77,6 +78,14 @@ fun RegisterScreen(
                 visualTransformation = PasswordVisualTransformation()
             )
             Spacer(modifier = Modifier.height(Dimens.m))
+            OutlinedTextField(
+                value = password_again,
+                onValueChange = { password_again = it },
+                label = { Text("Retapez le mot de passe") },
+                modifier = Modifier.fillMaxWidth(),
+                visualTransformation = PasswordVisualTransformation()
+            )
+            Spacer(modifier = Modifier.height(Dimens.m))
 
             Row(
                 verticalAlignment = Alignment.CenterVertically
@@ -88,7 +97,6 @@ fun RegisterScreen(
                 Spacer(modifier = Modifier.width(Dimens.s))
                 Text("J'accepte les conditions d'utilisation")
             }
-
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -107,15 +115,27 @@ fun RegisterScreen(
             ThemedButton(
                 text = "S'inscrire",
                 onClick = {
-                    scope.launch {
-                        val response = UserStorage.register(username = username, email = email, password = password)
-                        if (response.success) {
-                            errorMessage = null
-                            navController.navigate(Screen.Login.route)
-                        } else {
-                            errorMessage = response.message
+                    errorMessage = null
+                    if(email == "" || username == "" || password == "" || password_again == "") {
+                        errorMessage = "Merci de remplir les informations d'inscription"
+                    }
+                    else if(password != password_again) {
+                        errorMessage = "Les mots de passe ne correspondent pas"
+                    }
+                    else if(!acceptTerms) {
+                        errorMessage = "Merci de lire et accepter les conditions d'utilisation"
+                    }
+                    else {
+                        scope.launch {
+                            val response = UserStorage.register(username = username, email = email, password = password)
+                            if (response.success) {
+                                navController.navigate(Screen.Login.route)
+                            } else {
+                                errorMessage = response.message
+                            }
                         }
                     }
+
                 }
             )
             Spacer(modifier = Modifier.height(Dimens.s))
@@ -131,6 +151,10 @@ fun RegisterScreen(
                     color = Color.Red
                 )
             }
+            ThemedButton(
+                text = "DEBUG BYPASS",
+                onClick = { navController.navigate(Screen.HomeAll.route) }
+            )
         }
     }
 }

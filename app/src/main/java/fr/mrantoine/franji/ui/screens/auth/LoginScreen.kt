@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.screens.auth
 
+import android.content.Context
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -14,6 +15,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavController
@@ -30,6 +32,7 @@ fun LoginScreen(
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    val context = LocalContext.current
 
     BackHandler() {
         navController.navigate(Screen.Welcome.route)
@@ -68,8 +71,13 @@ fun LoginScreen(
                     scope.launch {
                         val response = UserStorage.login(email = email, password = password)
 
-                        if (response.message == "Login successful") {
+                        if (response.success) {
                             errorMessage = null
+
+                            if (response.success && response.access_token != null) {
+                                UserStorage.saveToken(context, response.access_token)
+                            }
+
                             navController.navigate(Screen.HomeAll.route)
                         } else {
                             errorMessage = response.message
@@ -90,6 +98,11 @@ fun LoginScreen(
                     color = Color.Red
                 )
             }
+            ThemedButton(
+                text = "DEBUG BYPASS",
+                onClick = { navController.navigate(Screen.HomeAll.route) },
+                isPrimary = false
+            )
         }
     }
 }

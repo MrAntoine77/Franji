@@ -33,7 +33,9 @@ data class LoginRequest(
 @Serializable
 data class LoginResponse(
     val message: String,
-    val user: User
+    val success: Boolean,
+    val access_token: String? = null,
+    val token_type: String? = null
 )
 
 @Serializable
@@ -46,7 +48,6 @@ data class RegisterRequest(
 @Serializable
 data class RegisterResponse(
     val message: String,
-    val user: User,
     val success: Boolean
 )
 
@@ -58,20 +59,23 @@ data class ErrorResponse(
 
 
 object UserStorage {
-    private var getVocabByIdCache = mutableMapOf<String, Vocab>()
-
-
     suspend fun login(email: String, password: String): LoginResponse {
         return try {
             client.post("http://$IP_ADDRESS:$PORT/user/login") {
                 contentType(ContentType.Application.Json)
                 setBody(LoginRequest(email, password))
             }.body()
+        } catch (e: ClientRequestException) {
+            val errorBody = e.response.bodyAsText()
+            LoginResponse(
+                message = errorBody,
+                success = false
+            )
         } catch (e: Exception) {
             e.printStackTrace()
             LoginResponse(
-                message = "Email ou mot de passe incorrect",
-                user = User()
+                message = "Network error",
+                success = false
             )
         }
     }
@@ -88,12 +92,10 @@ object UserStorage {
                     )
                 )
             }.body()
-
         } catch (e: ClientRequestException) {
             val errorBody = e.response.bodyAsText()
             RegisterResponse(
                 message = errorBody,
-                user = User(),
                 success = false
             )
 
@@ -102,11 +104,27 @@ object UserStorage {
 
             RegisterResponse(
                 message = "Network error",
-                user = User(),
                 success = false
             )
         }
     }
 
+    private const val TOKEN_FILE = "jwt_token.txt"
 
+    fun saveToken(context: Context, token: String) {
+        val file = File(context.filesDir, TOKEN_FILE)
+        file.writeText(token)
+    }
+
+    fun loadToken(context: Context): String? {
+        val file = File(context.filesDir, TOKEN_FILE)
+        return if (file.exists()) file.readText() else null
+    }
+
+    fun removeToken(context: Context) {
+        val file = File(context.filesDir, TOKEN_FILE)
+        if (file.exists()) {
+            file.delete()
+        }
+    }
 }
