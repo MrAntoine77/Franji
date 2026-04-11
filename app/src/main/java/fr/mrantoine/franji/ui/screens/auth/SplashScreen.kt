@@ -68,7 +68,7 @@ fun SplashScreen(
         val loadingJob = launch {
             //Clear Cache
             val clearCache = true
-            if(clearCache) {
+            if (clearCache) {
                 CategoryStorage.clearCache(context)
                 KanjiStorage.clearCache(context)
                 VocabStorage.clearCache(context)
@@ -99,6 +99,7 @@ fun SplashScreen(
             CategoryStorage.getCategoryIds("Kanji/JLPT5/Tout")
             CategoryStorage.getCategoryIds("Kanji/JLPT5/1-20")
             CategoryStorage.getCategoryIds("Kanji/JLPT5/21-40")
+
             kanjiIdList.forEach { kanji ->
                 KanjiStorage.getKanjiById(kanji)
                 KanjiStorage.getLottieByKanjiId(kanji)
@@ -128,6 +129,8 @@ fun SplashScreen(
 
             MainPageStorage.saveCache(context)
             SettingsStorage.saveCache(context)
+
+
         }
 
 
