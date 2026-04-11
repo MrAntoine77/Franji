@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
@@ -38,71 +39,82 @@ fun LoginScreen(
         navController.navigate(Screen.Welcome.route)
     }
 
-    Column(modifier = Modifier.statusBarsPadding()) {
-        TopBar(
-            showBack = true,
-            title = "Se connecter",
-            onBackClick = {navController.navigate(Screen.Welcome.route)}
-        )
-        Column(
-            modifier = Modifier.padding(Dimens.m)
-        ) {
-            OutlinedTextField(
-                value = email,
-                onValueChange = { email = it },
-                label = { Text("Adresse e-mail") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = Dimens.s)
+    Scaffold(
+        topBar = {
+            TopBar(
+                showBack = true,
+                modifier = Modifier.statusBarsPadding(),
+                title = "Se connecter",
+                onBackClick = {navController.navigate(Screen.Welcome.route)}
             )
-            OutlinedTextField(
-                value = password,
-                onValueChange = { password = it },
-                label = { Text("Mot de passe") },
-                modifier = Modifier.fillMaxWidth(),
-                visualTransformation = PasswordVisualTransformation()
-            )
-            Spacer(modifier = Modifier.height(Dimens.m))
-            val scope = rememberCoroutineScope()
-            var errorMessage by remember { mutableStateOf<String?>(null) }
-            ThemedButton(
-                text = "Se connecter",
-                onClick = {
-                    scope.launch {
-                        val response = UserStorage.login(email = email, password = password)
+        }
+    ) { innerPadding ->
+        Column(modifier = Modifier.padding(innerPadding)) {
+            Column(
+                modifier = Modifier.padding(Dimens.m)
+            ) {
+                OutlinedTextField(
+                    value = email,
+                    onValueChange = { email = it },
+                    label = { Text("Adresse e-mail") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = Dimens.s)
+                )
+                OutlinedTextField(
+                    value = password,
+                    onValueChange = { password = it },
+                    label = { Text("Mot de passe") },
+                    modifier = Modifier.fillMaxWidth(),
+                    visualTransformation = PasswordVisualTransformation()
+                )
+                Spacer(modifier = Modifier.height(Dimens.m))
+                val scope = rememberCoroutineScope()
+                var errorMessage by remember { mutableStateOf<String?>(null) }
+                ThemedButton(
+                    text = "Se connecter",
+                    onClick = {
+                        scope.launch {
+                            val response = UserStorage.login(email = email, password = password)
 
-                        if (response.success) {
-                            errorMessage = null
+                            if (response.success) {
+                                errorMessage = null
 
-                            if (response.access_token != null) {
-                                UserStorage.saveToken(context, response.access_token)
+                                if (response.access_token != null) {
+                                    UserStorage.saveToken(context, response.access_token)
+                                }
+
+                                navController.navigate(Screen.HomeAll.route)
+                            } else {
+                                errorMessage = response.message
                             }
-
-                            navController.navigate(Screen.HomeAll.route)
-                        } else {
-                            errorMessage = response.message
                         }
                     }
-                }
-            )
-            Spacer(modifier = Modifier.height(Dimens.s))
-            ThemedButton(
-                text = "Créer un compte",
-                onClick = {navController.navigate(Screen.Register.route)},
-                isPrimary = false
-            )
-            if (errorMessage != null) {
-                Spacer(modifier = Modifier.height(Dimens.s))
-                Text(
-                    text = errorMessage ?: "",
-                    color = Color.Red
                 )
+                Spacer(modifier = Modifier.height(Dimens.s))
+                ThemedButton(
+                    text = "Créer un compte",
+                    onClick = {navController.navigate(Screen.Register.route)},
+                    isPrimary = false
+                )
+                if (errorMessage != null) {
+                    Spacer(modifier = Modifier.height(Dimens.s))
+                    Text(
+                        text = errorMessage ?: "",
+                        color = Color.Red
+                    )
+                }
+                /*ThemedButton(
+                    text = "DEBUG BYPASS",
+                    onClick = { navController.navigate(Screen.HomeAll.route) },
+                    isPrimary = false
+                )*/
             }
-            /*ThemedButton(
-                text = "DEBUG BYPASS",
-                onClick = { navController.navigate(Screen.HomeAll.route) },
-                isPrimary = false
-            )*/
         }
     }
+
+
+
+
+
 }

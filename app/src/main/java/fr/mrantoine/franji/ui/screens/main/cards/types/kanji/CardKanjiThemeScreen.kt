@@ -67,7 +67,7 @@ fun CardKanjiThemeScreen(
     CardTypeTag(
         text = "Kanji",
         color = MaterialTheme.colorScheme.primary,
-        textColor = Color.White
+        textColor = MaterialTheme.colorScheme.onPrimary
     )
     Spacer(modifier = Modifier.height(Dimens.s))
     Text(
@@ -78,7 +78,7 @@ fun CardKanjiThemeScreen(
         modifier = Modifier.fillMaxWidth()
     )
     HorizontalDivider(
-        color = Color.Gray,
+        color = MaterialTheme.colorScheme.secondary,
         thickness = 1.dp,
         modifier = Modifier.fillMaxWidth()
     )

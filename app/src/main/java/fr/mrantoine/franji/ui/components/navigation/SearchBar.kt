@@ -72,7 +72,7 @@ fun SearchBar(
         ) {
             Icon(
                 imageVector = Icons.Outlined.Settings,
-                tint = Color.Gray,
+                tint = MaterialTheme.colorScheme.secondary,
                 contentDescription = "Settings",
                 modifier = Modifier.fillMaxHeight(0.9f).aspectRatio(1f)
             )

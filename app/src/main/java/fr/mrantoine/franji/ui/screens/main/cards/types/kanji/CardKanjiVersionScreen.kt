@@ -65,7 +65,7 @@ fun CardKanjiVersionScreen(
     CardTypeTag(
         text = "Kanji",
         color = MaterialTheme.colorScheme.primary,
-        textColor = Color.White
+        textColor = MaterialTheme.colorScheme.onPrimary
     )
     Spacer(modifier = Modifier.height(Dimens.s))
     ClickableAnimatedText(
@@ -77,7 +77,7 @@ fun CardKanjiVersionScreen(
         onClick = { TtsStorage.speak( jp) }
     )
     HorizontalDivider(
-        color = Color.Gray,
+        color = MaterialTheme.colorScheme.secondary,
         thickness = 1.dp,
         modifier = Modifier.fillMaxWidth()
     )

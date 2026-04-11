@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -47,7 +48,7 @@ fun Lecture(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(
-                    color = Color.LightGray,
+                    color = MaterialTheme.colorScheme.tertiary,
                     shape = RoundedCornerShape(8.dp)
                 )
                 .padding(Dimens.m),
@@ -91,7 +92,7 @@ fun Lecture(
                 }
                 if(ON.isNotEmpty() and kun.isNotEmpty()) {
                     HorizontalDivider(
-                        color = Color.Gray,
+                        color = MaterialTheme.colorScheme.secondary,
                         thickness = 1.dp
                     )
                 }

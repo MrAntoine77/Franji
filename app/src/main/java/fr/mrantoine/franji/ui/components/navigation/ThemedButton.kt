@@ -21,8 +21,8 @@ fun ThemedButton(
     onClick: () -> Unit,
     isPrimary: Boolean = true
 ) {
-    val backgroundColor = if (isPrimary) MaterialTheme.colorScheme.primary else Color.White
-    val contentColor = if (isPrimary) Color.White else Color.Black
+    val backgroundColor = if (isPrimary) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onPrimary
+    val contentColor = if (isPrimary) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onBackground
 
     Button(
         onClick = onClick,

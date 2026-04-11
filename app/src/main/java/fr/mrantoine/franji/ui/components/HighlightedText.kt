@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.sp
 fun HighlightedText(
     modifier: Modifier = Modifier,
     text: String,
-    color: Color = Color.Black,
+    color: Color = MaterialTheme.colorScheme.onBackground,
     highlightColor: Color = MaterialTheme.colorScheme.primary,
     fontSize: androidx.compose.ui.unit.TextUnit = 16.sp,
     lineHeight: androidx.compose.ui.unit.TextUnit = 16.sp,

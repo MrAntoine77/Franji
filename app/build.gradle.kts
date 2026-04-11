@@ -72,6 +72,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
     // Transitions
     implementation("com.google.accompanist:accompanist-navigation-animation:0.32.0")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.36.0")
     //
     implementation("androidx.activity:activity-compose:1.9.1")
 

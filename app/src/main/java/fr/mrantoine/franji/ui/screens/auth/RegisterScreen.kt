@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 
@@ -43,118 +44,127 @@ fun RegisterScreen(
         navController.navigate(Screen.Welcome.route)
     }
 
-    Column(modifier = Modifier.statusBarsPadding()) {
-        TopBar(
-            showBack = true,
-            title = "Créer un compte",
-            onBackClick = { navController.navigate(Screen.Welcome.route) }
-        )
-        Column(
-            modifier = Modifier.padding(Dimens.m)
-        ) {
-            OutlinedTextField(
-            value = email,
-            onValueChange = { email = it },
-            label = { Text("Adresse e-mail") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = Dimens.s)
-        )
 
-            OutlinedTextField(
-                value = username,
-                onValueChange = { username = it },
-                label = { Text("Nom d'utilisateur") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = Dimens.s)
+    Scaffold(
+        topBar = {
+            TopBar(
+                modifier = Modifier.statusBarsPadding(),
+                showBack = true,
+                title = "Créer un compte",
+                onBackClick = { navController.navigate(Screen.Welcome.route) }
             )
+        }
+    ) { innerPadding ->
+        Column(modifier = Modifier.padding(innerPadding)) {
 
-            OutlinedTextField(
-                value = password,
-                onValueChange = { password = it },
-                label = { Text("Mot de passe") },
-                modifier = Modifier.fillMaxWidth(),
-                visualTransformation = PasswordVisualTransformation()
-            )
-            Spacer(modifier = Modifier.height(Dimens.m))
-            OutlinedTextField(
-                value = password_again,
-                onValueChange = { password_again = it },
-                label = { Text("Retapez le mot de passe") },
-                modifier = Modifier.fillMaxWidth(),
-                visualTransformation = PasswordVisualTransformation()
-            )
-            Spacer(modifier = Modifier.height(Dimens.m))
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically
+            Column(
+                modifier = Modifier.padding(Dimens.m)
             ) {
-                Checkbox(
-                    checked = acceptTerms,
-                    onCheckedChange = { acceptTerms = it }
+                OutlinedTextField(
+                    value = email,
+                    onValueChange = { email = it },
+                    label = { Text("Adresse e-mail") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = Dimens.s)
                 )
-                Spacer(modifier = Modifier.width(Dimens.s))
-                Text("J'accepte les conditions d'utilisation")
-            }
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Checkbox(
-                    checked = subscribeNewsletter,
-                    onCheckedChange = { subscribeNewsletter = it }
+
+                OutlinedTextField(
+                    value = username,
+                    onValueChange = { username = it },
+                    label = { Text("Nom d'utilisateur") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = Dimens.s)
                 )
-                Spacer(modifier = Modifier.width(Dimens.s))
-                Text("S'abonner à la newsletter")
-            }
-            Spacer(modifier = Modifier.height(Dimens.m))
 
-            val scope = rememberCoroutineScope()
-            var errorMessage by remember { mutableStateOf<String?>(null) }
+                OutlinedTextField(
+                    value = password,
+                    onValueChange = { password = it },
+                    label = { Text("Mot de passe") },
+                    modifier = Modifier.fillMaxWidth(),
+                    visualTransformation = PasswordVisualTransformation()
+                )
+                Spacer(modifier = Modifier.height(Dimens.m))
+                OutlinedTextField(
+                    value = password_again,
+                    onValueChange = { password_again = it },
+                    label = { Text("Retapez le mot de passe") },
+                    modifier = Modifier.fillMaxWidth(),
+                    visualTransformation = PasswordVisualTransformation()
+                )
+                Spacer(modifier = Modifier.height(Dimens.m))
 
-            ThemedButton(
-                text = "S'inscrire",
-                onClick = {
-                    errorMessage = null
-                    if(email == "" || username == "" || password == "" || password_again == "") {
-                        errorMessage = "Merci de remplir les informations d'inscription"
-                    }
-                    else if(password != password_again) {
-                        errorMessage = "Les mots de passe ne correspondent pas"
-                    }
-                    else if(!acceptTerms) {
-                        errorMessage = "Merci de lire et accepter les conditions d'utilisation"
-                    }
-                    else {
-                        scope.launch {
-                            val response = UserStorage.register(username = username, email = email, password = password)
-                            if (response.success) {
-                                navController.navigate(Screen.Login.route)
-                            } else {
-                                errorMessage = response.message
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = acceptTerms,
+                        onCheckedChange = { acceptTerms = it }
+                    )
+                    Spacer(modifier = Modifier.width(Dimens.s))
+                    Text("J'accepte les conditions d'utilisation")
+                }
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = subscribeNewsletter,
+                        onCheckedChange = { subscribeNewsletter = it }
+                    )
+                    Spacer(modifier = Modifier.width(Dimens.s))
+                    Text("S'abonner à la newsletter")
+                }
+                Spacer(modifier = Modifier.height(Dimens.m))
+
+                val scope = rememberCoroutineScope()
+                var errorMessage by remember { mutableStateOf<String?>(null) }
+
+                ThemedButton(
+                    text = "S'inscrire",
+                    onClick = {
+                        errorMessage = null
+                        if(email == "" || username == "" || password == "" || password_again == "") {
+                            errorMessage = "Merci de remplir les informations d'inscription"
+                        }
+                        else if(password != password_again) {
+                            errorMessage = "Les mots de passe ne correspondent pas"
+                        }
+                        else if(!acceptTerms) {
+                            errorMessage = "Merci de lire et accepter les conditions d'utilisation"
+                        }
+                        else {
+                            scope.launch {
+                                val response = UserStorage.register(username = username, email = email, password = password)
+                                if (response.success) {
+                                    navController.navigate(Screen.Login.route)
+                                } else {
+                                    errorMessage = response.message
+                                }
                             }
                         }
-                    }
 
-                }
-            )
-            Spacer(modifier = Modifier.height(Dimens.s))
-            ThemedButton(
-                text = "Déja un compte ?",
-                onClick = { navController.navigate(Screen.Login.route) },
-                isPrimary = false
-            )
-            if (errorMessage != null) {
-                Spacer(modifier = Modifier.height(Dimens.s))
-                Text(
-                    text = errorMessage ?: "",
-                    color = Color.Red
+                    }
                 )
+                Spacer(modifier = Modifier.height(Dimens.s))
+                ThemedButton(
+                    text = "Déja un compte ?",
+                    onClick = { navController.navigate(Screen.Login.route) },
+                    isPrimary = false
+                )
+                if (errorMessage != null) {
+                    Spacer(modifier = Modifier.height(Dimens.s))
+                    Text(
+                        text = errorMessage ?: "",
+                        color = Color.Red
+                    )
+                }
+                /*ThemedButton(
+                    text = "DEBUG BYPASS",
+                    onClick = { navController.navigate(Screen.HomeAll.route) }
+                )*/
             }
-            /*ThemedButton(
-                text = "DEBUG BYPASS",
-                onClick = { navController.navigate(Screen.HomeAll.route) }
-            )*/
         }
+
     }
 }

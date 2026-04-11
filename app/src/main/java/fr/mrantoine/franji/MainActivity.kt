@@ -7,6 +7,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavType
@@ -17,6 +20,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import fr.mrantoine.franji.ui.screens.auth.*
 import fr.mrantoine.franji.ui.screens.main.cards.CardsListScreen
 import fr.mrantoine.franji.ui.screens.main.cards.CardsPlayingScreen
@@ -98,11 +102,28 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        /*WindowCompat.setDecorFitsSystemWindows(window, false)
         val insetsController = WindowInsetsControllerCompat(window, window.decorView)
-        insetsController.isAppearanceLightStatusBars = true
+        insetsController.isAppearanceLightStatusBars = true*/
 
         setContent {
+            val darkTheme = isSystemInDarkTheme()
+            val systemUiController = rememberSystemUiController()
+
+            SideEffect {
+                systemUiController.setStatusBarColor(
+                    color = Color.Transparent,
+                    darkIcons = !darkTheme
+                )
+                systemUiController.setNavigationBarColor(
+                    color = Color.Transparent,
+                    darkIcons = !darkTheme
+                )
+            }
+
+
+
+
             FranjiTheme(dynamicColor = false) {
 
                 val navController = rememberNavController()

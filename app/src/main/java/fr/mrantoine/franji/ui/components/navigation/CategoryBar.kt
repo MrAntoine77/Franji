@@ -25,8 +25,8 @@ fun CategoryBarItem(
     onClick: () -> Unit,
     isSelected: Boolean = false
 ) {
-    val contentColor = if (isSelected) MaterialTheme.colorScheme.primary else Color.Gray
-    val textColor = if (isSelected) Color.Black else Color.Gray
+    val contentColor = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
+    val textColor = if (isSelected) MaterialTheme.colorScheme.onBackground else MaterialTheme.colorScheme.secondary
 
     Column(
         modifier = modifier

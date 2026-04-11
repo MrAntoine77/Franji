@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -43,7 +44,7 @@ fun Lottie(
     data: String,
     autoPlay: Boolean = false,
     replayable: Boolean = true,
-    color: Color = Color.Black,
+    color: Color = MaterialTheme.colorScheme.onBackground,
     speed: Float = 1f,
     lines: Int = 0,
     lineMultiplier: Float = 1f

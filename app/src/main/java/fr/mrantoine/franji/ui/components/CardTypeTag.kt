@@ -25,7 +25,7 @@ import fr.mrantoine.franji.ui.theme.Dimens
 @Composable
 fun CardTypeTag(
     color: Color = MaterialTheme.colorScheme.primary,
-    textColor: Color = Color.White,
+    textColor: Color = MaterialTheme.colorScheme.onPrimary,
     text: String
 ) {
     Box(

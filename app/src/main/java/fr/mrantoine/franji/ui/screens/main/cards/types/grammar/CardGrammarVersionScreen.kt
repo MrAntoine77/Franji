@@ -68,7 +68,7 @@ fun CardGrammarVersionScreen(
     CardTypeTag(
         text = "Grammaire",
         color = MaterialTheme.colorScheme.primary,
-        textColor = Color.White
+        textColor = MaterialTheme.colorScheme.onPrimary
     )
     Spacer(modifier = Modifier.height(Dimens.s))
     ClickableAnimatedText(
@@ -80,7 +80,7 @@ fun CardGrammarVersionScreen(
         onClick = { TtsStorage.speak(grammarExample.lecture.kana) }
     )
     HorizontalDivider(
-        color = Color.Gray,
+        color = MaterialTheme.colorScheme.secondary,
         thickness = 1.dp,
         modifier = Modifier.fillMaxWidth(),
     )

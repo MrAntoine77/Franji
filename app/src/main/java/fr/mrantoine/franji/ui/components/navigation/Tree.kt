@@ -63,7 +63,7 @@ fun TreeNode(
             }
             Text(
                 text = text,
-                color = if (isExpanded) Color.Black else Color.Gray,
+                color = if (isExpanded) MaterialTheme.colorScheme.onBackground else MaterialTheme.colorScheme.secondary,
                 fontWeight = if (isExpanded) FontWeight.SemiBold else FontWeight.Normal,
                 fontSize = 20.sp
             )
@@ -72,7 +72,7 @@ fun TreeNode(
             Icon(
                 imageVector = if (isExpanded) Icons.Default.KeyboardArrowDown else Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = text,
-                tint = Color.Black,
+                tint = MaterialTheme.colorScheme.onBackground,
             )
         }
     }
@@ -156,8 +156,8 @@ fun Tree(
         HorizontalDivider(
             color = when {
                 (isNode and isSelected) -> MaterialTheme.colorScheme.primary
-                (isNode and !isSelected) -> Color.Gray
-                else -> Color.LightGray
+                (isNode and !isSelected) -> MaterialTheme.colorScheme.secondary
+                else -> MaterialTheme.colorScheme.tertiary
             },
             thickness = 1.dp
         )

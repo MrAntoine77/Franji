@@ -43,6 +43,12 @@ data class Kanji(
 )
 
 @Serializable
+data class Lottie(
+    val id: String = "",
+    val data: String = "{}"
+)
+
+@Serializable
 data class KanjiCache(
     val byId: Map<String, Kanji>,
     val byChar: Map<String, Kanji>,
@@ -81,20 +87,32 @@ object KanjiStorage {
         }
     }
 
-    suspend fun getLottieByKanjiId(kanji_id: String): String {
-        getLottieByKanjiIdCache[kanji_id]?.let { return it }
+    suspend fun getLottieByKanjiId(kanjiId: String): String {
+        getLottieByKanjiIdCache[kanjiId]?.let { return it }
 
         val result = try {
-            client.get("$ADDRESS/lottie/$kanji_id")
-                .body<String>()
-                .trimIndent()
+            client.get("$ADDRESS/lottie/id")
+            { url { parameters.append("kanji_id", kanjiId) } }.body()
         } catch (e: Exception) {
             e.printStackTrace()
-            "{}"
+            Lottie()
         }
-        getLottieByKanjiIdCache[kanji_id] = result
-        return result
+        getLottieByKanjiIdCache[kanjiId] = result.data
+        return result.data
     }
+
+    suspend fun loadAllLotties() {
+        val result = try {
+            client.get("$ADDRESS/lottie").body()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emptyList<Lottie>()
+        }
+        result.forEach { lottie ->
+            getLottieByKanjiIdCache[lottie.id] = lottie.data
+        }
+    }
+
 
     private val cache_file_path = "kanji_cache.json"
     fun clearCache(context: Context) {

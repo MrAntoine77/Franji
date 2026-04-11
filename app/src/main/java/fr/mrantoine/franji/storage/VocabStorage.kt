@@ -43,6 +43,20 @@ object VocabStorage {
         return result
     }
 
+    suspend fun loadAllVocab()  {
+        val result = try {
+            client.get("$ADDRESS/vocab").body()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emptyList<Vocab>()
+        }
+        result.forEach { vocab ->
+            getVocabByIdCache[vocab.id] = vocab
+        }
+    }
+
+
+
     private val cache_file_path = "vocab_cache.json"
     fun clearCache(context: Context) {
         getVocabByIdCache.clear()

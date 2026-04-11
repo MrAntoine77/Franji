@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -93,7 +94,7 @@ fun VocabInfoScreen(
                 ClickableAnimatedText(
                     text = if(SettingsStorage.isRomaji()) vocab.lecture.romaji else vocab.lecture.kana,
                     fontSize = 16.sp,
-                    color = Color.Gray,
+                    color = MaterialTheme.colorScheme.secondary,
                     textAlign = TextAlign.Center,
                     onClick = { TtsStorage.speak(vocab.lecture.kana) }
                 )
@@ -142,12 +143,12 @@ fun VocabInfoScreen(
                                 Text(
                                     text = kanji.lectures.getOrNull(0)?.fr?.getOrNull(0) ?: "",
                                     fontSize = 20.sp,
-                                    color = Color.Gray,
+                                    color = MaterialTheme.colorScheme.secondary,
                                     fontStyle = FontStyle.Italic
                                 )
                             }
                             HorizontalDivider(
-                                color = Color.LightGray,
+                                color = MaterialTheme.colorScheme.tertiary,
                                 thickness = 1.dp
                             )
                         }

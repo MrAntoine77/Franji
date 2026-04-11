@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun ClickableAnimatedText(
     text: String,
-    color: Color = Color.Black,
+    color: Color = MaterialTheme.colorScheme.onBackground,
     clickedColor: Color = MaterialTheme.colorScheme.primary,
     modifier: Modifier = Modifier,
     fontSize: TextUnit = 16.sp,

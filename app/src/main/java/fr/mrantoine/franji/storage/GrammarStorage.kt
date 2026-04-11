@@ -48,6 +48,19 @@ object GrammarStorage {
         return result
     }
 
+    suspend fun loadAllGrammar()  {
+        val result = try {
+            client.get("$ADDRESS/grammar").body()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emptyList<Grammar>()
+        }
+        result.forEach { grammar ->
+            getGrammarByIdCache[grammar.id] = grammar
+        }
+    }
+
+
     private val cache_file_path = "grammar_cache.json"
     fun clearCache(context: Context) {
         getGrammarByIdCache.clear()

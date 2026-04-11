@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -67,6 +68,7 @@ fun KanjiInfoScreen(
             kanji = KanjiStorage.getKanjiById(kanjiId)
             kanji.let {
                 lottie = KanjiStorage.getLottieByKanjiId(it.id)
+                print(lottie)
             }
         }
         LazyColumn(
@@ -123,12 +125,12 @@ fun KanjiInfoScreen(
                                 Text(
                                     text = vocab.fr,
                                     fontSize = 20.sp,
-                                    color = Color.Gray,
+                                    color = MaterialTheme.colorScheme.secondary,
                                     textAlign = TextAlign.End
                                 )
                             }
                             HorizontalDivider(
-                                color = Color.LightGray,
+                                color = MaterialTheme.colorScheme.tertiary,
                                 thickness = 1.dp
                             )
                         }

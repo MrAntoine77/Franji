@@ -134,7 +134,7 @@ fun GrammarInfoScreen(
                             text = if(SettingsStorage.isRomaji()) example.lecture.romaji else example.lecture.kana,
                             fontSize = 20.sp,
                             fontStyle = FontStyle.Italic,
-                            color = Color.Gray,
+                            color = MaterialTheme.colorScheme.secondary,
                             onClick = { TtsStorage.speak(example.lecture.kana) }
                         )
                     }
@@ -148,7 +148,7 @@ fun GrammarInfoScreen(
                     }
                     item {
                         HorizontalDivider(
-                            color = Color.LightGray,
+                            color = MaterialTheme.colorScheme.tertiary,
                             thickness = 1.dp
                         )
                     }

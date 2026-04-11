@@ -78,7 +78,7 @@ fun CardsListScreen(
                     onValueChange = { searchText = it }
                 )
                 HorizontalDivider(
-                    color = Color.Gray,
+                    color = MaterialTheme.colorScheme.secondary,
                     thickness = 2.dp
                 )
             }

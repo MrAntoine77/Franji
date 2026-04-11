@@ -68,7 +68,7 @@ fun CardGrammarThemeScreen(
     CardTypeTag(
         text = "Grammaire",
         color = MaterialTheme.colorScheme.primary,
-        textColor = Color.White
+        textColor = MaterialTheme.colorScheme.onPrimary
     )
     Spacer(modifier = Modifier.height(Dimens.s))
     Text(
@@ -79,7 +79,7 @@ fun CardGrammarThemeScreen(
         modifier = Modifier.fillMaxWidth()
     )
     HorizontalDivider(
-        color = Color.Gray,
+        color = MaterialTheme.colorScheme.secondary,
         thickness = 1.dp,
         modifier = Modifier.fillMaxWidth()
     )

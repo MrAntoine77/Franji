@@ -34,7 +34,7 @@ fun TopBar(
         ){
             if (showBack) {
                 IconButton(onClick = {
-                    if (onBackClick != null) {
+                    if (onBackClick != {}) {
                         onBackClick()
                     } else {
                         backDispatcher?.onBackPressed()
@@ -66,7 +66,7 @@ fun TopBar(
             }
         }
         HorizontalDivider(
-            color = Color.Gray,
+            color = MaterialTheme.colorScheme.secondary,
             thickness = 2.dp
         )
     }

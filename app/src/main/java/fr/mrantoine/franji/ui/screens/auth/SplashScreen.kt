@@ -103,24 +103,16 @@ fun SplashScreen(
             CategoryStorage.getCategoryIds("Kanji/JLPT5/1-20")
             CategoryStorage.getCategoryIds("Kanji/JLPT5/21-40")
 
-            kanjiIdList.forEach { kanji ->
-                //KanjiStorage.getKanjiById(kanji)
-                KanjiStorage.getLottieByKanjiId(kanji)
-            }
-
             KanjiStorage.loadAllKanji()
+            KanjiStorage.loadAllLotties()
 
             //VocabStorage Loading
             val vocabListId = CategoryStorage.getCategoryIds("Vocab/Tout/Tout")
-            vocabListId.forEach { vocab ->
-                VocabStorage.getVocabById(vocab)
-            }
+            VocabStorage.loadAllVocab()
 
             //GrammarStorage Loading
             val grammarListId = CategoryStorage.getCategoryIds("Grammar/Tout/Tout")
-            grammarListId.forEach { grammar ->
-                GrammarStorage.getGrammarById(grammar)
-            }
+            GrammarStorage.loadAllGrammar()
 
             //MainPageStorage Loading
             MainPageStorage.getMainPage("Kanji")

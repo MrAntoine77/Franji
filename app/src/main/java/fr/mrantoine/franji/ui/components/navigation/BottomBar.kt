@@ -37,7 +37,7 @@ fun BottomBarItem(
     onClick: () -> Unit,
     isSelected: Boolean = false
 ) {
-    val contentColor = if (isSelected) MaterialTheme.colorScheme.primary else Color.Gray
+    val contentColor = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
 
     Column(
         modifier = modifier
@@ -72,7 +72,7 @@ fun BottomBar(
         modifier = modifier.background(MaterialTheme.colorScheme.background)
     ) {
         HorizontalDivider(
-            color = Color.Gray,
+            color = MaterialTheme.colorScheme.secondary,
             thickness = 2.dp
         )
         Row(

@@ -29,7 +29,7 @@ fun HeaderRow(
     ) {
         Text(
             text = text,
-            color = Color.Black,
+            color = MaterialTheme.colorScheme.onBackground,
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp
         )

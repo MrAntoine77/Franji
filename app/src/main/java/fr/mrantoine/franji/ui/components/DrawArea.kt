@@ -7,6 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -30,7 +31,13 @@ import kotlin.math.atan2
 import kotlin.math.min
 
 @Composable
-fun DrawArea(angles: List<Float>, isRevealed: MutableState<Boolean>, lottie: String) {
+fun DrawArea(
+    angles: List<Float>,
+    isRevealed: MutableState<Boolean>,
+    lottie: String,
+    drawColor: Color = MaterialTheme.colorScheme.onBackground
+
+) {
     var paths by remember { mutableStateOf(listOf<List<Offset>>()) }
     var currentPath by remember { mutableStateOf(listOf<Offset>()) }
 
@@ -97,7 +104,7 @@ fun DrawArea(angles: List<Float>, isRevealed: MutableState<Boolean>, lottie: Str
                     Lottie(
                         data = lottie,
                         autoPlay = true,
-                        color = Color.LightGray,
+                        color = MaterialTheme.colorScheme.tertiary,
                         speed = 1.5f,
                         lines = fails)
                 }
@@ -143,7 +150,7 @@ fun DrawArea(angles: List<Float>, isRevealed: MutableState<Boolean>, lottie: Str
                     paths.forEach { path ->
                         for (i in 0 until path.size - 1) {
                             drawLine(
-                                color = Color.Black,
+                                color = drawColor,
                                 start = path[i],
                                 end = path[i + 1],
                                 strokeWidth = 8.dp.toPx(),
@@ -154,7 +161,7 @@ fun DrawArea(angles: List<Float>, isRevealed: MutableState<Boolean>, lottie: Str
 
                     for (i in 0 until currentPath.size - 1) {
                         drawLine(
-                            color = Color.Black,
+                            color = drawColor,
                             start = currentPath[i],
                             end = currentPath[i + 1],
                             strokeWidth = 8.dp.toPx(),
