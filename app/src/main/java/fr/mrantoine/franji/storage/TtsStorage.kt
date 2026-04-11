@@ -43,6 +43,12 @@ object TtsStorage {
         }
     }
 
+    fun stop() {
+        if (tts != null) {
+            tts?.stop()
+        }
+    }
+
     fun shutdown() {
         tts?.shutdown()
         tts = null

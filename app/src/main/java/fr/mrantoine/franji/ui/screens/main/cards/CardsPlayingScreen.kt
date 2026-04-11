@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
+import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.navigation.EaseBar
 import fr.mrantoine.franji.ui.components.navigation.TopBar
 import fr.mrantoine.franji.ui.screens.main.cards.types.grammar.CardGrammarThemeScreen
@@ -87,6 +88,7 @@ fun CardsPlayingScreen(
 
 
         fun nextCard(ok: Boolean) {
+            TtsStorage.stop()
             if (ok && cardslist.size == 1) {
                 navController.navigate(Screen.CardsList.route)
             } else {
