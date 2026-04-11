@@ -1,8 +1,7 @@
 package fr.mrantoine.franji.storage
 
+import ADDRESS
 import android.content.Context
-import IP_ADDRESS
-import PORT
 import client
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -33,7 +32,7 @@ object VocabStorage {
     suspend fun getVocabById(vocabId: String): Vocab {
         getVocabByIdCache[vocabId]?.let { return it }
         val result = try {
-            client.get("http://$IP_ADDRESS:$PORT/vocab/id") {
+            client.get("$ADDRESS/vocab/id") {
                 url { parameters.append("vocab_id", vocabId) }
             }.body()
         } catch (e: Exception) {

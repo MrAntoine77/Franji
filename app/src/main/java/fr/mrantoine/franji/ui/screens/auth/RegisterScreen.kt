@@ -151,10 +151,10 @@ fun RegisterScreen(
                     color = Color.Red
                 )
             }
-            ThemedButton(
+            /*ThemedButton(
                 text = "DEBUG BYPASS",
                 onClick = { navController.navigate(Screen.HomeAll.route) }
-            )
+            )*/
         }
     }
 }

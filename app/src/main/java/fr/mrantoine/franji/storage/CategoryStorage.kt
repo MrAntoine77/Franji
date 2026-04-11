@@ -1,7 +1,6 @@
 package fr.mrantoine.franji.storage
 
-import IP_ADDRESS
-import PORT
+import ADDRESS
 import android.content.Context
 import client
 
@@ -28,7 +27,7 @@ object CategoryStorage {
 
         val result = try {
             val filtered_path = if(path == "") "" else "/$path"
-            client.get("http://$IP_ADDRESS:$PORT/categories/paths/$path").body<Array<String>>()
+            client.get("$ADDRESS/categories/paths/$path").body<Array<String>>()
         } catch (e: Exception) {
             e.printStackTrace()
             emptyArray()
@@ -44,7 +43,7 @@ object CategoryStorage {
         }
 
         val result = try {
-            client.get("http://$IP_ADDRESS:$PORT/categories/id/$path").body<Array<String>>()
+            client.get("$ADDRESS/categories/id/$path").body<Array<String>>()
         } catch (e: Exception) {
             e.printStackTrace()
             emptyArray()

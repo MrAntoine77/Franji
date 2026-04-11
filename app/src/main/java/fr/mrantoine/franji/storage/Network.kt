@@ -10,6 +10,11 @@ import kotlinx.serialization.json.Json
 var IP_ADDRESS = "192.168.1.182"
 var PORT = "8000"
 
+
+//var ADDRESS = "http://$IP_ADDRESS:$PORT"
+
+var ADDRESS = "https://franjiapi-production.up.railway.app"
+
 val client = HttpClient(CIO) {
     install(ContentNegotiation) {
         json(Json {

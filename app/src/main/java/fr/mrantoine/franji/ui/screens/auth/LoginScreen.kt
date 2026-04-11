@@ -74,7 +74,7 @@ fun LoginScreen(
                         if (response.success) {
                             errorMessage = null
 
-                            if (response.success && response.access_token != null) {
+                            if (response.access_token != null) {
                                 UserStorage.saveToken(context, response.access_token)
                             }
 
@@ -98,11 +98,11 @@ fun LoginScreen(
                     color = Color.Red
                 )
             }
-            ThemedButton(
+            /*ThemedButton(
                 text = "DEBUG BYPASS",
                 onClick = { navController.navigate(Screen.HomeAll.route) },
                 isPrimary = false
-            )
+            )*/
         }
     }
 }

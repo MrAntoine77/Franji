@@ -1,8 +1,7 @@
 package fr.mrantoine.franji.storage
 
+import ADDRESS
 import android.content.Context
-import IP_ADDRESS
-import PORT
 import client
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -58,7 +57,7 @@ object KanjiStorage {
     suspend fun getKanjiById(kanjiId: String): Kanji {
         getKanjiByIdCache[kanjiId]?.let { return it }
         val result = try {
-            client.get("http://$IP_ADDRESS:$PORT/kanji/kanji_data/id") {
+            client.get("$ADDRESS/kanji/kanji_data/id") {
                 url { parameters.append("kanji_id", kanjiId) }
             }.body()
         } catch (e: Exception) {
@@ -69,25 +68,24 @@ object KanjiStorage {
         return result
     }
 
-    suspend fun getKanjiByChar(kanjiChar: String): Kanji {
-        getKanjiByCharCache[kanjiChar]?.let { return it }
+    suspend fun loadAllKanji() {
+
         val result = try {
-            client.get("http://$IP_ADDRESS:$PORT/kanji/kanji_data/char") {
-                url { parameters.append("kanji_char", kanjiChar) }
-            }.body()
+            client.get("$ADDRESS/kanji/kanji_data").body()
         } catch (e: Exception) {
             e.printStackTrace()
-            Kanji()
+            emptyList<Kanji>()
         }
-        getKanjiByCharCache[kanjiChar] = result
-        return result
+        result.forEach { kanji ->
+            getKanjiByIdCache[kanji.id] = kanji
+        }
     }
 
     suspend fun getLottieByKanjiId(kanji_id: String): String {
         getLottieByKanjiIdCache[kanji_id]?.let { return it }
 
         val result = try {
-            client.get("http://$IP_ADDRESS:$PORT/lottie/$kanji_id")
+            client.get("$ADDRESS/lottie/$kanji_id")
                 .body<String>()
                 .trimIndent()
         } catch (e: Exception) {

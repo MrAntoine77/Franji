@@ -1,8 +1,7 @@
 package fr.mrantoine.franji.storage
 
+import ADDRESS
 import android.content.Context
-import IP_ADDRESS
-import PORT
 import client
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -38,7 +37,7 @@ object GrammarStorage {
     suspend fun getGrammarById(grammarId: String): Grammar {
         getGrammarByIdCache[grammarId]?.let { return it }
         val result = try {
-            client.get("http://$IP_ADDRESS:$PORT/grammar/id") {
+            client.get("$ADDRESS/grammar/id") {
                 url { parameters.append("grammar_id", grammarId) }
             }.body()
         } catch (e: Exception) {

@@ -67,11 +67,12 @@ fun SplashScreen(
 
         val loadingJob = launch {
             //Clear Cache
-            val clearCache = true
+            val clearCache = false
             if (clearCache) {
                 CategoryStorage.clearCache(context)
                 KanjiStorage.clearCache(context)
                 VocabStorage.clearCache(context)
+                GrammarStorage.clearCache(context)
 
                 MainPageStorage.clearCache(context)
                 SettingsStorage.clearCache(context)
@@ -85,6 +86,7 @@ fun SplashScreen(
             CategoryStorage.loadCache(context)
             KanjiStorage.loadCache(context)
             VocabStorage.loadCache(context)
+            GrammarStorage.loadCache(context)
 
             MainPageStorage.loadCache(context)
             SettingsStorage.loadCache(context)
@@ -93,6 +95,7 @@ fun SplashScreen(
             CategoryStorage.getCategoriesPaths()
             CategoryStorage.getCategoriesPaths("Kanji")
             CategoryStorage.getCategoriesPaths("Vocab")
+            CategoryStorage.getCategoriesPaths("Grammar")
 
             //KanjiStorage Loading
             val kanjiIdList = CategoryStorage.getCategoryIds("Kanji/Tout/Tout")
@@ -101,9 +104,11 @@ fun SplashScreen(
             CategoryStorage.getCategoryIds("Kanji/JLPT5/21-40")
 
             kanjiIdList.forEach { kanji ->
-                KanjiStorage.getKanjiById(kanji)
+                //KanjiStorage.getKanjiById(kanji)
                 KanjiStorage.getLottieByKanjiId(kanji)
             }
+
+            KanjiStorage.loadAllKanji()
 
             //VocabStorage Loading
             val vocabListId = CategoryStorage.getCategoryIds("Vocab/Tout/Tout")
@@ -126,11 +131,10 @@ fun SplashScreen(
             CategoryStorage.saveCache(context)
             KanjiStorage.saveCache(context)
             VocabStorage.saveCache(context)
+            GrammarStorage.saveCache(context)
 
             MainPageStorage.saveCache(context)
             SettingsStorage.saveCache(context)
-
-
         }
 
 

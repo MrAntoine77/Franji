@@ -1,7 +1,6 @@
 package fr.mrantoine.franji.storage
 
-import IP_ADDRESS
-import PORT
+import ADDRESS
 import android.content.Context
 import client
 import io.ktor.client.call.body
@@ -38,7 +37,7 @@ object MainPageStorage {
         getMainPageCache[path]?.let { return it }
 
         val result = try {
-            client.get("http://$IP_ADDRESS:$PORT/main_page/$path").body()
+            client.get("$ADDRESS/main_page/$path").body()
         } catch (e: Exception) {
             e.printStackTrace()
             MainPage()

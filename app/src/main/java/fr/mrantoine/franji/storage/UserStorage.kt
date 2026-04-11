@@ -1,20 +1,16 @@
 package fr.mrantoine.franji.storage
 
+import ADDRESS
 import android.content.Context
-import IP_ADDRESS
-import PORT
 import client
 import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
-import io.ktor.client.request.get
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import java.io.File
 
 @Serializable
@@ -61,7 +57,7 @@ data class ErrorResponse(
 object UserStorage {
     suspend fun login(email: String, password: String): LoginResponse {
         return try {
-            client.post("http://$IP_ADDRESS:$PORT/user/login") {
+            client.post("$ADDRESS/user/login") {
                 contentType(ContentType.Application.Json)
                 setBody(LoginRequest(email, password))
             }.body()
@@ -82,7 +78,7 @@ object UserStorage {
 
     suspend fun register(username: String, email: String, password: String): RegisterResponse {
         return try {
-            client.post("http://$IP_ADDRESS:$PORT/user/register") {
+            client.post("$ADDRESS/user/register") {
                 contentType(ContentType.Application.Json)
                 setBody(
                     RegisterRequest(
