@@ -36,6 +36,7 @@ import fr.mrantoine.franji.storage.GrammarStorage
 import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
+import fr.mrantoine.franji.ui.components.ClickableAnimatedText
 import fr.mrantoine.franji.ui.components.HighlightedText
 import fr.mrantoine.franji.ui.theme.Dimens
 import java.util.Locale
@@ -97,22 +98,25 @@ fun CardGrammarThemeScreen(
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    HighlightedText(
+                    ClickableAnimatedText(
                         text = translation,
                         fontSize = 40.sp,
                         lineHeight = 48.sp,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = Dimens.l),
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        onClick = { TtsStorage.speak(lecture.kana) }
+
                     )
-                    HighlightedText(
+                    ClickableAnimatedText(
                         text = if(SettingsStorage.isRomaji()) lecture.romaji else lecture.kana,
                         fontSize = 20.sp,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = Dimens.l),
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        onClick = { TtsStorage.speak(lecture.kana) }
                     )
                 }
             }

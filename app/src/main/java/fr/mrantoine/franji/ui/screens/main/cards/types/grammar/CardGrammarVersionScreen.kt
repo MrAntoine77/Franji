@@ -35,6 +35,7 @@ import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
+import fr.mrantoine.franji.ui.components.ClickableAnimatedText
 import fr.mrantoine.franji.ui.components.HighlightedText
 import fr.mrantoine.franji.ui.theme.Dimens
 import org.w3c.dom.Text
@@ -70,12 +71,13 @@ fun CardGrammarVersionScreen(
         textColor = Color.White
     )
     Spacer(modifier = Modifier.height(Dimens.s))
-    HighlightedText(
+    ClickableAnimatedText(
         text = hint,
         fontSize = 32.sp,
         lineHeight = 40.sp,
         textAlign = TextAlign.Center,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
+        onClick = { TtsStorage.speak(grammarExample.lecture.kana) }
     )
     HorizontalDivider(
         color = Color.Gray,
@@ -106,13 +108,14 @@ fun CardGrammarVersionScreen(
                             .padding(top = Dimens.l),
                         textAlign = TextAlign.Center
                     )
-                    HighlightedText(
+                    ClickableAnimatedText(
                         text = if(SettingsStorage.isRomaji()) lecture.romaji else lecture.kana,
                         fontSize = 20.sp,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = Dimens.l),
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        onClick = { TtsStorage.speak(grammarExample.lecture.kana) }
                     )
                 }
             }

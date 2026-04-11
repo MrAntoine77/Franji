@@ -67,7 +67,7 @@ fun SplashScreen(
 
         val loadingJob = launch {
             //Clear Cache
-            val clearCache = false
+            val clearCache = true
             if(clearCache) {
                 CategoryStorage.clearCache(context)
                 KanjiStorage.clearCache(context)
@@ -80,7 +80,6 @@ fun SplashScreen(
             }
             //Init TTS
             TtsStorage.init(context)
-
 
             //Load Cache
             CategoryStorage.loadCache(context)

@@ -50,7 +50,7 @@ fun ClickableAnimatedText(
         label = "textColorAnimation"
     )
 
-    Text(
+    HighlightedText(
         text = text,
         modifier = modifier.clickable(
                 interactionSource = remember { MutableInteractionSource() },

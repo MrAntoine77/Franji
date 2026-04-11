@@ -47,9 +47,10 @@ fun CardKanjiThemeScreen(
 
     var lottie by remember { mutableStateOf("{}") }
     var kanji by remember { mutableStateOf(Kanji()) }
-    var jp by remember { mutableStateOf("") }
     val scrollState = rememberLazyListState()
 
+    val hint = kanji.main_lecture.fr
+    val jp = if (SettingsStorage.isRomaji()) kanji.main_lecture.romaji else kanji.main_lecture.kana
 
     LaunchedEffect(cardId) {
         lottie = KanjiStorage.getLottieByKanjiId(cardId)
@@ -57,15 +58,11 @@ fun CardKanjiThemeScreen(
         scrollState.scrollToItem(0)
     }
 
-    LaunchedEffect( jp) {
+    LaunchedEffect( isRevealed.value) {
         if (isRevealed.value) {
             TtsStorage.speak(jp)
         }
     }
-
-    val hint = kanji.lectures.firstOrNull()?.let { lecture ->
-        lecture.fr.firstOrNull()?.takeIf { it.isNotEmpty() } ?: ""
-    } ?: ""
 
     CardTypeTag(
         text = "Kanji",
@@ -97,36 +94,23 @@ fun CardKanjiThemeScreen(
         ) {
 
             item {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Lottie(
+                        data = lottie,
+                        speed = 2f
+                    )
+                    ClickableAnimatedText(
+                        text = jp,
+                        fontSize = 32.sp,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = Dimens.m),
+                        textAlign = TextAlign.Center,
+                        onClick = { TtsStorage.speak(jp) }
+                    )
 
-                val lecture = kanji.lectures.firstOrNull()
-                if(lecture != null) {
-                    jp =
-                        if (SettingsStorage.isRomaji())
-                            lecture.kun.firstOrNull { it.romaji.isNotEmpty() }?.romaji
-                                ?: lecture.ON.firstOrNull { it.romaji.isNotEmpty() }?.romaji
-                                ?: ""
-                        else
-                            lecture.kun.firstOrNull { it.kana.isNotEmpty() }?.kana
-                                ?: lecture.ON.firstOrNull { it.kana.isNotEmpty() }?.kana
-                                ?: ""
-
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Lottie(
-                            data = lottie,
-                            speed = 2f
-                        )
-                        ClickableAnimatedText(
-                            text = jp,
-                            fontSize = 32.sp,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(bottom = Dimens.m),
-                            textAlign = TextAlign.Center,
-                            onClick = { TtsStorage.speak(jp) }
-                        )
-                    }
                 }
             }
             kanji.lectures.forEach { lecture ->

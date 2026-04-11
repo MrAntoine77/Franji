@@ -25,8 +25,18 @@ data class Pronunciation(
 )
 
 @Serializable
+data class MainLecture(
+    val fr: String = "",
+    val romaji: String = "",
+    val kana: String = ""
+)
+
+
+
+@Serializable
 data class Kanji(
     val kanji: String = "",
+    val main_lecture: MainLecture = MainLecture(),
     val lectures: List<Lecture> = emptyList(),
     val id: String = "",
     val angles: List<Float> = emptyList(),

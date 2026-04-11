@@ -44,8 +44,11 @@ fun CardKanjiVersionScreen(
 
     var lottie by remember { mutableStateOf<String>("{}") }
     var kanji by remember { mutableStateOf(Kanji()) }
-    var jp by remember { mutableStateOf("") }
     val scrollState = rememberLazyListState()
+
+    val hint = kanji.kanji
+    val jp = if (SettingsStorage.isRomaji()) kanji.main_lecture.romaji else kanji.main_lecture.kana
+    val fr: String =  kanji.main_lecture.fr
 
     LaunchedEffect(cardId) {
         lottie = KanjiStorage.getLottieByKanjiId(cardId)
@@ -53,13 +56,11 @@ fun CardKanjiVersionScreen(
         scrollState.scrollToItem(0)
     }
 
-    LaunchedEffect( jp) {
+    LaunchedEffect( isRevealed.value) {
         if (isRevealed.value) {
             TtsStorage.speak(jp)
         }
     }
-
-    val hint = kanji.kanji
 
     CardTypeTag(
         text = "Kanji",
@@ -67,12 +68,13 @@ fun CardKanjiVersionScreen(
         textColor = Color.White
     )
     Spacer(modifier = Modifier.height(Dimens.s))
-    Text(
+    ClickableAnimatedText(
         text = hint,
         fontSize = 32.sp,
         lineHeight = 40.sp,
         textAlign = TextAlign.Center,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
+        onClick = { TtsStorage.speak( jp) }
     )
     HorizontalDivider(
         color = Color.Gray,
@@ -87,49 +89,31 @@ fun CardKanjiVersionScreen(
         ) {
 
             item {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Lottie(
+                        data = lottie,
+                        speed = 2f
+                    )
+                    ClickableAnimatedText(
+                        text = jp,
+                        fontSize = 32.sp,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = Dimens.m),
+                        textAlign = TextAlign.Center,
+                        onClick = { TtsStorage.speak(jp) }
+                    )
+                    Text(
+                        text = fr,
+                        fontSize = 32.sp,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = Dimens.l),
+                        textAlign = TextAlign.Center
+                    )
 
-                val lecture = kanji.lectures.firstOrNull()
-
-                if(lecture != null) {
-
-                    jp =
-                        if (SettingsStorage.isRomaji())
-                            lecture.kun.firstOrNull { it.romaji.isNotEmpty() }?.romaji
-                                ?: lecture.ON.firstOrNull { it.romaji.isNotEmpty() }?.romaji
-                                ?: ""
-                        else
-                            lecture.kun.firstOrNull { it.kana.isNotEmpty() }?.kana
-                                ?: lecture.ON.firstOrNull { it.kana.isNotEmpty() }?.kana
-                                ?: ""
-
-                    val fr: String = lecture.fr.firstOrNull() ?: ""
-
-
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Lottie(
-                            data = lottie,
-                            speed = 2f
-                        )
-                        ClickableAnimatedText(
-                            text = jp,
-                            fontSize = 32.sp,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(bottom = Dimens.m),
-                            textAlign = TextAlign.Center,
-                            onClick = { TtsStorage.speak(jp) }
-                        )
-                        Text(
-                            text = fr,
-                            fontSize = 32.sp,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(bottom = Dimens.l),
-                            textAlign = TextAlign.Center
-                        )
-                    }
                 }
             }
             kanji.lectures.forEach { lecture ->

@@ -65,12 +65,13 @@ fun CardVocabVersionScreen(
         textColor = Color.White
     )
     Spacer(modifier = Modifier.height(Dimens.s))
-    Text(
+    ClickableAnimatedText(
         text = hint,
         fontSize = 32.sp,
         lineHeight = 40.sp,
         textAlign = TextAlign.Center,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
+        onClick = { TtsStorage.speak( vocab.lecture.kana) }
     )
     HorizontalDivider(
         color = Color.Gray,

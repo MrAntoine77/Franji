@@ -34,6 +34,8 @@ import androidx.navigation.NavController
 import fr.mrantoine.franji.storage.Grammar
 import fr.mrantoine.franji.storage.GrammarStorage
 import fr.mrantoine.franji.storage.SettingsStorage
+import fr.mrantoine.franji.storage.TtsStorage
+import fr.mrantoine.franji.ui.components.ClickableAnimatedText
 import fr.mrantoine.franji.ui.components.HighlightedText
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
@@ -119,19 +121,21 @@ fun GrammarInfoScreen(
                 grammar.examples.forEach { example ->
                     item( ) {Spacer(modifier = Modifier.height(Dimens.s))}
                     item {
-                        HighlightedText(
+                        ClickableAnimatedText(
                             modifier = Modifier.fillMaxWidth(),
                             text = example.jp,
                             fontSize = 20.sp,
+                            onClick = { TtsStorage.speak(example.lecture.kana) }
                         )
                     }
                     item {
-                        HighlightedText(
+                        ClickableAnimatedText(
                             modifier = Modifier.fillMaxWidth(),
                             text = if(SettingsStorage.isRomaji()) example.lecture.romaji else example.lecture.kana,
                             fontSize = 20.sp,
                             fontStyle = FontStyle.Italic,
-                            color = Color.Gray
+                            color = Color.Gray,
+                            onClick = { TtsStorage.speak(example.lecture.kana) }
                         )
                     }
                     item {
