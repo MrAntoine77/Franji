@@ -97,20 +97,26 @@ fun SplashScreen(
             CategoryStorage.getCategoriesPaths("Grammar")
 
             //KanjiStorage Loading
-            val kanjiIdList = CategoryStorage.getCategoryIds("Kanji/Tout/Tout")
-            CategoryStorage.getCategoryIds("Kanji/JLPT5/Tout")
-            CategoryStorage.getCategoryIds("Kanji/JLPT5/1-20")
-            CategoryStorage.getCategoryIds("Kanji/JLPT5/21-40")
+            CategoryStorage.getCategoryIds("Kanji/JLPT5")
+            CategoryStorage.getCategoryIds("Kanji/JLPT4")
+            CategoryStorage.getCategoryIds("Kanji/JLPT3")
+            CategoryStorage.getCategoryIds("Kanji/JLPT2")
+            CategoryStorage.getCategoryIds("Kanji/JLPT1")
+
 
             KanjiStorage.loadAllKanji()
             KanjiStorage.loadAllLotties()
 
             //VocabStorage Loading
-            val vocabListId = CategoryStorage.getCategoryIds("Vocab/Tout/Tout")
+            CategoryStorage.getCategoryIds("Vocab/JLPT5")
+            CategoryStorage.getCategoryIds("Vocab/JLPT4")
+            CategoryStorage.getCategoryIds("Vocab/JLPT3")
+            CategoryStorage.getCategoryIds("Vocab/JLPT2")
+            CategoryStorage.getCategoryIds("Vocab/JLPT1")
             VocabStorage.loadAllVocab()
 
             //GrammarStorage Loading
-            val grammarListId = CategoryStorage.getCategoryIds("Grammar/Tout/Tout")
+            CategoryStorage.getCategoryIds("Grammar/Tout/Tout")
             GrammarStorage.loadAllGrammar()
 
             //MainPageStorage Loading
@@ -131,6 +137,9 @@ fun SplashScreen(
 
         splashMinDelay.join()
         loadingJob.join()
+
+
+        navController.navigate(Screen.HomeAll.route) /// DEBUG
 
         if(UserStorage.loadToken(context = context) != null) {
             navController.navigate(Screen.HomeAll.route)

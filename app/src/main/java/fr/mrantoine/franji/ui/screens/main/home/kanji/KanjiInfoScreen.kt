@@ -33,6 +33,7 @@ import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.storage.Vocab
 import fr.mrantoine.franji.storage.VocabStorage
+import fr.mrantoine.franji.ui.components.HighlightedText
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.components.Lecture
@@ -85,11 +86,10 @@ fun KanjiInfoScreen(
                     speed = 2f
                 )
             }
-            kanji.lectures.forEach { lecture ->
-                item {
-                    Lecture(lecture)
-                }
+            item {
+                Lecture(kanji.lectures)
             }
+
             if(kanji.vocab.size > 0)
             {
                 item {
@@ -117,8 +117,8 @@ fun KanjiInfoScreen(
                                 verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
-                                Text(
-                                    text = vocab.jp,
+                                HighlightedText(
+                                    text = vocab.jp.replace("${kanji.kanji}","{${kanji.kanji}}"),
                                     fontSize = 36.sp,
                                     fontWeight = FontWeight.Bold
                                 )

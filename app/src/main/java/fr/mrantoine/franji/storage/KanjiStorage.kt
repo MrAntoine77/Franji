@@ -36,7 +36,7 @@ data class MainLecture(
 data class Kanji(
     val kanji: String = "",
     val main_lecture: MainLecture = MainLecture(),
-    val lectures: List<Lecture> = emptyList(),
+    val lectures: Lecture = Lecture(),
     val id: String = "",
     val angles: List<Float> = emptyList(),
     val vocab: List<String> = emptyList()

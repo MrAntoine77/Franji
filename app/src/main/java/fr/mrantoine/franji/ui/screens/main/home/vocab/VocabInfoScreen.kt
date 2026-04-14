@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -25,7 +24,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -104,11 +102,12 @@ fun VocabInfoScreen(
                 Text(
                     text = vocab.fr,
                     fontSize = 20.sp,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(horizontal = Dimens.m)
                 )
             }
             item {Spacer(modifier = Modifier.height(Dimens.m))}
-            if( vocab.kanji.size > 0) {
+            if(vocab.kanji.isNotEmpty()) {
                 item {
                     Text(
                         text = "Kanjis :",
@@ -141,7 +140,7 @@ fun VocabInfoScreen(
                                     fontWeight = FontWeight.Bold
                                 )
                                 Text(
-                                    text = kanji.lectures.getOrNull(0)?.fr?.getOrNull(0) ?: "",
+                                    text = kanji.lectures.fr.firstOrNull() ?: "",
                                     fontSize = 20.sp,
                                     color = MaterialTheme.colorScheme.secondary,
                                     fontStyle = FontStyle.Italic

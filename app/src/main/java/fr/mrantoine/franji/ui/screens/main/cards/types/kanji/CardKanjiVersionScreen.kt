@@ -116,11 +116,10 @@ fun CardKanjiVersionScreen(
 
                 }
             }
-            kanji.lectures.forEach { lecture ->
-                item {
-                    Lecture(lecture)
-                }
+            item {
+                Lecture(kanji.lectures)
             }
+
         }
     }
 }
