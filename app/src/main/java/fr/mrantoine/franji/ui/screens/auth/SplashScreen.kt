@@ -67,8 +67,7 @@ fun SplashScreen(
 
         val loadingJob = launch {
             //Clear Cache
-            val clearCache = false
-            if (clearCache) {
+            if (SettingsStorage.isRestCacheOnLaunch()) {
                 CategoryStorage.clearCache(context)
                 KanjiStorage.clearCache(context)
                 VocabStorage.clearCache(context)

@@ -44,7 +44,7 @@ import kotlinx.coroutines.launch
 fun SettingsScreen(
     navController: NavController,
 ) {
-    var isEnabled by remember { mutableStateOf(SettingsStorage.isRomaji()) }
+    var isRomajiEnabled by remember { mutableStateOf(SettingsStorage.isRomaji()) }
     var isEdited by remember { mutableStateOf(false) }
     val context = LocalContext.current
 
@@ -101,7 +101,7 @@ fun SettingsScreen(
                         .clickable {
                             var toggle = !SettingsStorage.isRomaji()
                             SettingsStorage.setRomaji(toggle)
-                            isEnabled = toggle
+                            isRomajiEnabled = toggle
                             isEdited = true
                                    },
                     verticalAlignment = Alignment.CenterVertically
@@ -118,7 +118,7 @@ fun SettingsScreen(
                             style = MaterialTheme.typography.bodyLarge
                         )
                         Switch(
-                            checked = isEnabled,
+                            checked = isRomajiEnabled,
                             onCheckedChange = null
                         )
                     }

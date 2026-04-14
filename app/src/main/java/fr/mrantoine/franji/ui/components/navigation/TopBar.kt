@@ -28,7 +28,7 @@ fun TopBar(
             modifier = modifier
                 .fillMaxWidth()
                 .height(56.dp)
-                .statusBarsPadding(), // padding pour la status bar
+                .statusBarsPadding(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ){

@@ -9,6 +9,7 @@ import java.io.File
 @Serializable
 data class SettingsCache(
     var isRomaji: Boolean = false,
+    var restCacheOnLaunch: Boolean = true,
 )
 
 object SettingsStorage {
@@ -22,8 +23,12 @@ object SettingsStorage {
         settings.isRomaji = isRomaji
     }
 
-    fun toggleRomaji() {
-        settings.isRomaji = !settings.isRomaji
+    fun isRestCacheOnLaunch(): Boolean {
+        return settings.restCacheOnLaunch
+    }
+
+    fun setRestCacheOnLaunch(reset: Boolean) {
+        settings.restCacheOnLaunch = reset
     }
 
     private val cache_file_path = "settings_cache.json"

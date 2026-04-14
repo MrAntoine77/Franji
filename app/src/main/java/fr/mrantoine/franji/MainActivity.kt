@@ -36,6 +36,9 @@ import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiInfoScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabCategoryListScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabCategoryScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabInfoScreen
+import fr.mrantoine.franji.ui.screens.main.profile.ProfileScreen
+import fr.mrantoine.franji.ui.screens.main.quizz.QuizzListScreen
+import fr.mrantoine.franji.ui.screens.main.search.SearchScreen
 import fr.mrantoine.franji.ui.screens.main.settings.SettingsScreen
 
 
@@ -95,16 +98,17 @@ sealed class Screen(val route: String) {
             return "cards_playing/$encodedCards/$encodedTitle/$encodedMode"
         }
     }
+
+
+    data object QuizzList : Screen("quizz_list")
+    data object Profile : Screen("profile")
+    data object Search : Screen("search")
 }
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        /*WindowCompat.setDecorFitsSystemWindows(window, false)
-        val insetsController = WindowInsetsControllerCompat(window, window.decorView)
-        insetsController.isAppearanceLightStatusBars = true*/
 
         setContent {
             val darkTheme = isSystemInDarkTheme()
@@ -300,6 +304,15 @@ class MainActivity : ComponentActivity() {
                             title = title,
                             mode = mode
                         )
+                    }
+                    composable(Screen.QuizzList.route) {
+                        QuizzListScreen(navController)
+                    }
+                    composable(Screen.Profile.route) {
+                        ProfileScreen(navController)
+                    }
+                    composable(Screen.Search.route) {
+                        SearchScreen(navController)
                     }
                 }
             }
