@@ -34,7 +34,6 @@ fun SearchScreen(
         },
         bottomBar = {
             BottomBar(
-                modifier = Modifier.navigationBarsPadding(),
                 selectedIndex = 4,
                 navController = navController
             )

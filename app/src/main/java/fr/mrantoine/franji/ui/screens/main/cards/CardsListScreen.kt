@@ -85,7 +85,6 @@ fun CardsListScreen(
         },
         bottomBar = {
             BottomBar(
-                modifier = Modifier.navigationBarsPadding(),
                 selectedIndex = 1,
                 navController = navController
             )

@@ -56,7 +56,6 @@ fun GrammarInfoScreen(
         },
         bottomBar = {
             BottomBar(
-                modifier = Modifier.navigationBarsPadding(),
                 selectedIndex = 0,
                 navController = navController
             )

@@ -91,32 +91,23 @@ fun SplashScreen(
             SettingsStorage.loadCache(context)
 
             //CategoryStorage Loading
-            CategoryStorage.getCategoriesPaths()
             CategoryStorage.getCategoriesPaths("Kanji")
             CategoryStorage.getCategoriesPaths("Vocab")
             CategoryStorage.getCategoriesPaths("Grammar")
 
+            val paths = CategoryStorage.getCategoriesPaths()
+            paths.forEach { path ->
+                CategoryStorage.getCategoryIds(path)
+            }
+
             //KanjiStorage Loading
-            CategoryStorage.getCategoryIds("Kanji/JLPT5")
-            CategoryStorage.getCategoryIds("Kanji/JLPT4")
-            CategoryStorage.getCategoryIds("Kanji/JLPT3")
-            CategoryStorage.getCategoryIds("Kanji/JLPT2")
-            CategoryStorage.getCategoryIds("Kanji/JLPT1")
-
-
             KanjiStorage.loadAllKanji()
             KanjiStorage.loadAllLotties()
 
             //VocabStorage Loading
-            CategoryStorage.getCategoryIds("Vocab/JLPT5")
-            CategoryStorage.getCategoryIds("Vocab/JLPT4")
-            CategoryStorage.getCategoryIds("Vocab/JLPT3")
-            CategoryStorage.getCategoryIds("Vocab/JLPT2")
-            CategoryStorage.getCategoryIds("Vocab/JLPT1")
             VocabStorage.loadAllVocab()
 
             //GrammarStorage Loading
-            CategoryStorage.getCategoryIds("Grammar/Tout/Tout")
             GrammarStorage.loadAllGrammar()
 
             //MainPageStorage Loading
@@ -139,13 +130,13 @@ fun SplashScreen(
         loadingJob.join()
 
 
-        navController.navigate(Screen.HomeAll.route) /// DEBUG
 
         if(UserStorage.loadToken(context = context) != null) {
             navController.navigate(Screen.HomeAll.route)
         }
         else {
-            navController.navigate(Screen.Welcome.route)
+            navController.navigate(Screen.HomeAll.route)
+            //navController.navigate(Screen.Welcome.route)
         }
     }
 

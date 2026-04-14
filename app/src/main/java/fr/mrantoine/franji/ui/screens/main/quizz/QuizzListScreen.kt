@@ -34,7 +34,6 @@ fun QuizzListScreen(
         },
         bottomBar = {
             BottomBar(
-                modifier = Modifier.navigationBarsPadding(),
                 selectedIndex = 2,
                 navController = navController
             )

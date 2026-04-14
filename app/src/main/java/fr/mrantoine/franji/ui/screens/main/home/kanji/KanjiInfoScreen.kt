@@ -54,7 +54,6 @@ fun KanjiInfoScreen(
         },
         bottomBar = {
             BottomBar(
-                modifier = Modifier.navigationBarsPadding(),
                 selectedIndex = 0,
                 navController = navController
             )
@@ -69,7 +68,6 @@ fun KanjiInfoScreen(
             kanji = KanjiStorage.getKanjiById(kanjiId)
             kanji.let {
                 lottie = KanjiStorage.getLottieByKanjiId(it.id)
-                print(lottie)
             }
         }
         LazyColumn(

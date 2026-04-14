@@ -69,7 +69,7 @@ fun BottomBar(
     selectedIndex: Int = 0,
 ) {
     Column(
-        modifier = modifier.background(MaterialTheme.colorScheme.background)
+        modifier = modifier.background(MaterialTheme.colorScheme.background).navigationBarsPadding()
     ) {
         HorizontalDivider(
             color = MaterialTheme.colorScheme.secondary,

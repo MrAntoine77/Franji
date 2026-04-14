@@ -34,7 +34,6 @@ fun ProfileScreen(
         },
         bottomBar = {
             BottomBar(
-                modifier = Modifier.navigationBarsPadding(),
                 selectedIndex = 3,
                 navController = navController
             )
