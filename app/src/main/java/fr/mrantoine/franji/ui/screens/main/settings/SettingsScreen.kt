@@ -40,13 +40,47 @@ import fr.mrantoine.franji.ui.theme.Dimens
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
+
+
+data class SettingItem(
+    val title: String,
+    val checked: Boolean,
+    val onToggle: (Boolean) -> Unit
+)
+
 @Composable
 fun SettingsScreen(
     navController: NavController,
 ) {
-    var isRomajiEnabled by remember { mutableStateOf(SettingsStorage.isRomaji()) }
-    var isEdited by remember { mutableStateOf(false) }
     val context = LocalContext.current
+
+    var isEdited by remember { mutableStateOf(false) }
+
+    var isRomajiEnabled by remember { mutableStateOf(SettingsStorage.isRomaji()) }
+    var isRestCacheOnLaunch by remember { mutableStateOf(SettingsStorage.isRestCacheOnLaunch()) }
+
+    val settings = remember(isRomajiEnabled, isRestCacheOnLaunch) {
+        listOf(
+            SettingItem(
+                title = "Caractères Romaji",
+                checked = isRomajiEnabled,
+                onToggle = { value ->
+                    SettingsStorage.setRomaji(value)
+                    isRomajiEnabled = value
+                    isEdited = true
+                }
+            ),
+            SettingItem(
+                title = "Rest cache au lancement",
+                checked = isRestCacheOnLaunch,
+                onToggle = { value ->
+                    SettingsStorage.setRestCacheOnLaunch(value)
+                    isRestCacheOnLaunch = value
+                    isEdited = true
+                }
+            )
+        )
+    }
 
     BackHandler(enabled = isEdited) {
         Toast.makeText(
@@ -56,15 +90,28 @@ fun SettingsScreen(
         ).show()
     }
 
-
     Scaffold(
         topBar = {
             Column(modifier = Modifier.statusBarsPadding()) {
-                TopBar("Paramètres")
+                TopBar(
+                    title = "Paramètres",
+                    showBack = true,
+                    onBackClick = {
+                        if (isEdited) {
+                            Toast.makeText(
+                                context,
+                                "Vous devez sauvegarder vos modifications avant de quitter",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            navController.popBackStack()
+                        }
+                    }
+                )
             }
         },
         bottomBar = {
-            if(isEdited) {
+            if (isEdited) {
                 Box(
                     modifier = Modifier
                         .navigationBarsPadding()
@@ -79,46 +126,39 @@ fun SettingsScreen(
                             isEdited = false
                         }
                     )
-
                 }
             }
-
         }
     ) { innerPadding ->
-        val scrollState = rememberLazyListState()
 
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
-            state = scrollState,
             verticalArrangement = Arrangement.spacedBy(Dimens.m)
         ) {
-            item {
+            items(settings.size) { index ->
+                val item = settings[index]
+
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable {
-                            var toggle = !SettingsStorage.isRomaji()
-                            SettingsStorage.setRomaji(toggle)
-                            isRomajiEnabled = toggle
-                            isEdited = true
-                                   },
+                        .clickable { item.onToggle(!item.checked) },
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(Dimens.m),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.SpaceBetween
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "Caractères Romaji",
+                            text = item.title,
                             style = MaterialTheme.typography.bodyLarge
                         )
                         Switch(
-                            checked = isRomajiEnabled,
+                            checked = item.checked,
                             onCheckedChange = null
                         )
                     }
@@ -127,15 +167,4 @@ fun SettingsScreen(
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 

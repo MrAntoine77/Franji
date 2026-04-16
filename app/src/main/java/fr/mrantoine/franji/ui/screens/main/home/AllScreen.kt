@@ -1,5 +1,8 @@
 package fr.mrantoine.franji.ui.screens.main.home
 
+import android.app.Activity
+import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -12,8 +15,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.MainPage
@@ -23,11 +28,36 @@ import fr.mrantoine.franji.ui.components.navigation.HeaderRow
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.components.navigation.HorizontalScrollableList
 import fr.mrantoine.franji.ui.theme.Dimens
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun AllScreen(
     navController: NavController,
 ) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    var backPressedOnce by remember { mutableStateOf(false) }
+
+    BackHandler {
+        if (backPressedOnce) {
+            (context as? Activity)?.finish()
+        } else {
+            backPressedOnce = true
+
+            Toast.makeText(
+                context,
+                "Appuie encore une fois pour quitter",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            scope.launch {
+                delay(2000)
+                backPressedOnce = false
+            }
+        }
+    }
+
     Scaffold(
         topBar = {
             HomeTopBar(
@@ -47,15 +77,11 @@ fun AllScreen(
         var vocabPages by remember { mutableStateOf(MainPage()) }
         var grammarPages by remember { mutableStateOf(MainPage()) }
 
-
-
         LaunchedEffect(Unit) {
             kanjiPages = MainPageStorage.getMainPage("Kanji")
             vocabPages = MainPageStorage.getMainPage("Vocabulaire")
             grammarPages = MainPageStorage.getMainPage("Grammaire")
         }
-
-
 
         LazyColumn(
             modifier = Modifier

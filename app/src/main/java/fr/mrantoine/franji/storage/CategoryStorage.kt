@@ -104,9 +104,9 @@ object CategoryStorage {
             val loadedCache = Json.decodeFromString<CategoryCache>(jsonString)
 
             keysCache.clear()
-            categoryByPathCache.putAll(loadedCache.keys)
+            keysCache.putAll(loadedCache.keys)
 
-            keysCache.clear()
+            categoryByPathCache.clear()
             categoryByPathCache.putAll(loadedCache.categories)
         } catch (e: Exception) {
             e.printStackTrace()

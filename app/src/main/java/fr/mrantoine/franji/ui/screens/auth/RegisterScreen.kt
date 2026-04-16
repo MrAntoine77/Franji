@@ -44,7 +44,6 @@ fun RegisterScreen(
         navController.navigate(Screen.Welcome.route)
     }
 
-
     Scaffold(
         topBar = {
             TopBar(

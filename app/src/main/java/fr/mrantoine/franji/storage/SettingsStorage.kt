@@ -9,7 +9,7 @@ import java.io.File
 @Serializable
 data class SettingsCache(
     var isRomaji: Boolean = false,
-    var restCacheOnLaunch: Boolean = true,
+    var restCacheOnLaunch: Boolean = false,
 )
 
 object SettingsStorage {

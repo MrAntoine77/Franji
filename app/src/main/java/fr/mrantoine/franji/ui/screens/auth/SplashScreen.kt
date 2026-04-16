@@ -66,29 +66,30 @@ fun SplashScreen(
         }
 
         val loadingJob = launch {
-            //Clear Cache
+            //Settings Load
+            SettingsStorage.loadCache(context)
+
+            //Cleat cache
             if (SettingsStorage.isRestCacheOnLaunch()) {
+                //SettingsStorage.clearCache(context)
+                MainPageStorage.clearCache(context)
                 CategoryStorage.clearCache(context)
                 KanjiStorage.clearCache(context)
                 VocabStorage.clearCache(context)
                 GrammarStorage.clearCache(context)
-
-                MainPageStorage.clearCache(context)
-                SettingsStorage.clearCache(context)
-
                 UserStorage.removeToken(context)
             }
             //Init TTS
             TtsStorage.init(context)
 
             //Load Cache
+            MainPageStorage.loadCache(context)
             CategoryStorage.loadCache(context)
             KanjiStorage.loadCache(context)
             VocabStorage.loadCache(context)
             GrammarStorage.loadCache(context)
 
-            MainPageStorage.loadCache(context)
-            SettingsStorage.loadCache(context)
+
 
             //CategoryStorage Loading
             CategoryStorage.getKeys("")
@@ -114,13 +115,13 @@ fun SplashScreen(
             MainPageStorage.getMainPage("Grammaire")
 
             //Save Cache
+            MainPageStorage.saveCache(context)
+            SettingsStorage.saveCache(context)
+
             CategoryStorage.saveCache(context)
             KanjiStorage.saveCache(context)
             VocabStorage.saveCache(context)
             GrammarStorage.saveCache(context)
-
-            MainPageStorage.saveCache(context)
-            SettingsStorage.saveCache(context)
         }
 
 

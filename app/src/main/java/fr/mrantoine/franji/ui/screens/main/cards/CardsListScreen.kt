@@ -76,7 +76,8 @@ fun CardsListScreen(
             {
                 SearchBar(
                     value = searchText,
-                    onValueChange = { searchText = it }
+                    onValueChange = { searchText = it },
+                    onSettingsClick = { navController.navigate(Screen.Settings.route) }
                 )
                 HorizontalDivider(
                     color = MaterialTheme.colorScheme.secondary,
