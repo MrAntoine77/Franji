@@ -75,15 +75,16 @@ object KanjiStorage {
     }
 
     suspend fun loadAllKanji() {
-
-        val result = try {
-            client.get("$ADDRESS/kanji/kanji_data").body()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emptyList<Kanji>()
-        }
-        result.forEach { kanji ->
-            getKanjiByIdCache[kanji.id] = kanji
+        if(getKanjiByIdCache.isEmpty()) {
+            val result = try {
+                client.get("$ADDRESS/kanji/kanji_data").body()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                emptyList<Kanji>()
+            }
+            result.forEach { kanji ->
+                getKanjiByIdCache[kanji.id] = kanji
+            }
         }
     }
 
@@ -102,14 +103,16 @@ object KanjiStorage {
     }
 
     suspend fun loadAllLotties() {
-        val result = try {
-            client.get("$ADDRESS/lottie").body()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emptyList<Lottie>()
-        }
-        result.forEach { lottie ->
-            getLottieByKanjiIdCache[lottie.id] = lottie.data
+        if(getLottieByKanjiIdCache.isEmpty()) {
+            val result = try {
+                client.get("$ADDRESS/lottie").body()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                emptyList<Lottie>()
+            }
+            result.forEach { lottie ->
+                getLottieByKanjiIdCache[lottie.id] = lottie.data
+            }
         }
     }
 

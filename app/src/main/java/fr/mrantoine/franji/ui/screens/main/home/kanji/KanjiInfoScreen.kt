@@ -101,37 +101,36 @@ fun KanjiInfoScreen(
                 }
                 kanji.vocab.forEach { vocabId ->
                     item {
-                        Column() {
-                            var vocab by remember { mutableStateOf(Vocab()) }
+                        var vocab by remember { mutableStateOf(Vocab()) }
 
-                            LaunchedEffect(Unit) {
-                                vocab = VocabStorage.getVocabById(vocabId)
-                            }
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable { navController.navigate(Screen.VocabInfo.route(vocabId)) }
-                                    .padding(vertical = Dimens.s, horizontal = Dimens.m),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.SpaceBetween
-                            ) {
-                                HighlightedText(
-                                    text = vocab.jp.replace("${kanji.kanji}","{${kanji.kanji}}"),
-                                    fontSize = 36.sp,
-                                    fontWeight = FontWeight.Bold
-                                )
-                                Text(
-                                    text = vocab.fr,
-                                    fontSize = 20.sp,
-                                    color = MaterialTheme.colorScheme.secondary,
-                                    textAlign = TextAlign.End
-                                )
-                            }
-                            HorizontalDivider(
-                                color = MaterialTheme.colorScheme.tertiary,
-                                thickness = 1.dp
+                        LaunchedEffect(Unit) {
+                            vocab = VocabStorage.getVocabById(vocabId)
+                        }
+
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable { navController.navigate(Screen.VocabInfo.route(vocabId)) }
+                                .padding(vertical = Dimens.s, horizontal = Dimens.m),
+                            verticalArrangement = Arrangement.spacedBy(4.dp)
+                        ) {
+                            HighlightedText(
+                                text = vocab.jp.replace(kanji.kanji, "{${kanji.kanji}}"),
+                                fontSize = 36.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+
+                            Text(
+                                text = vocab.fr,
+                                fontSize = 20.sp,
+                                color = MaterialTheme.colorScheme.secondary,
                             )
                         }
+
+                        HorizontalDivider(
+                            color = MaterialTheme.colorScheme.tertiary,
+                            thickness = 1.dp
+                        )
                     }
                 }
             }

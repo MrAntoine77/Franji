@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -96,8 +97,12 @@ fun CardGrammarVersionScreen(
             item {
                 val translation = grammarExample.fr
                 val lecture = grammarExample.lecture
+                val desc = grammar.desc
+                val title = grammar.title
+                val subtitle = grammar.subtitle
                 Column(
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.padding(horizontal = Dimens.m)
                 ) {
                     Text(
                         text = translation,
@@ -113,9 +118,37 @@ fun CardGrammarVersionScreen(
                         fontSize = 20.sp,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = Dimens.l),
+                            .padding(horizontal = Dimens.m),
                         textAlign = TextAlign.Center,
                         onClick = { TtsStorage.speak(grammarExample.lecture.kana) }
+                    )
+                    Text(
+                        text = title,
+                        fontSize = 24.sp,
+                        lineHeight = 24.sp,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = Dimens.l),
+                        textAlign = TextAlign.Start
+                    )
+                    Text(
+                        text = subtitle,
+                        fontSize = 24.sp,
+                        lineHeight = 24.sp,
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        textAlign = TextAlign.Start,
+                        color = MaterialTheme.colorScheme.secondary,
+                        fontStyle = FontStyle.Italic
+                    )
+                    Text(
+                        text = desc,
+                        fontSize = 20.sp,
+                        lineHeight = 24.sp,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = Dimens.l),
+                        textAlign = TextAlign.Justify
                     )
                 }
             }

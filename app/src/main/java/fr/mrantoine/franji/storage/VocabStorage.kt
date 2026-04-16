@@ -44,14 +44,16 @@ object VocabStorage {
     }
 
     suspend fun loadAllVocab()  {
-        val result = try {
-            client.get("$ADDRESS/vocab").body()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emptyList<Vocab>()
-        }
-        result.forEach { vocab ->
-            getVocabByIdCache[vocab.id] = vocab
+        if(getVocabByIdCache.isEmpty()) {
+            val result = try {
+                client.get("$ADDRESS/vocab").body()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                emptyList<Vocab>()
+            }
+            result.forEach { vocab ->
+                getVocabByIdCache[vocab.id] = vocab
+            }
         }
     }
 

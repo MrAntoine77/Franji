@@ -110,7 +110,6 @@ fun CardsPlayingScreen(
             topBar = {
                 val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
                 TopBar(
-                    modifier = Modifier.statusBarsPadding(),
                     title = title,
                     showBack = true,
                     onBackClick = {backDispatcher?.onBackPressed()}

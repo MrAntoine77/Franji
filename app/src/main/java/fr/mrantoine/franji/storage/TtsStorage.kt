@@ -14,14 +14,13 @@ object TtsStorage {
     private var pendingId: String? = null
 
     fun init(context: Context) {
-        if (tts != null) return  // déjà initialisé
+        if (tts != null) return
 
         tts = TextToSpeech(context.applicationContext) { status ->
             if (status == TextToSpeech.SUCCESS) {
                 tts?.language = Locale.JAPANESE
                 isReady = true
 
-                // Si du texte attendait avant initialisation
                 if (pendingText != null) {
                     tts?.speak(pendingText, TextToSpeech.QUEUE_FLUSH, null, pendingId)
                     pendingText = null

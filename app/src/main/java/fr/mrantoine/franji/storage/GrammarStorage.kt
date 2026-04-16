@@ -49,14 +49,16 @@ object GrammarStorage {
     }
 
     suspend fun loadAllGrammar()  {
-        val result = try {
-            client.get("$ADDRESS/grammar").body()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emptyList<Grammar>()
-        }
-        result.forEach { grammar ->
-            getGrammarByIdCache[grammar.id] = grammar
+        if(getGrammarByIdCache.isEmpty()) {
+            val result = try {
+                client.get("$ADDRESS/grammar").body()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                emptyList<Grammar>()
+            }
+            result.forEach { grammar ->
+                getGrammarByIdCache[grammar.id] = grammar
+            }
         }
     }
 

@@ -70,8 +70,9 @@ fun CardsListScreen(
         topBar = {
             Column(
                 modifier = Modifier
+                    .background(MaterialTheme.colorScheme.background)
                     .statusBarsPadding()
-                    .background(MaterialTheme.colorScheme.background))
+            )
             {
                 SearchBar(
                     value = searchText,
