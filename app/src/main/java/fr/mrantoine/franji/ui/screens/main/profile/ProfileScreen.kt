@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.screens.main.profile
 
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -19,6 +20,7 @@ import fr.mrantoine.franji.ui.components.navigation.TopBar
 fun ProfileScreen(
     navController: NavController
 ) {
+    val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
     Scaffold(
         topBar = {
             Column(
@@ -28,7 +30,8 @@ fun ProfileScreen(
             {
                 TopBar(
                     title = "Profile",
-                    showBack = true
+                    showBack = true,
+                    onBackClick =  { backDispatcher?.onBackPressed() }
                 )
             }
         },

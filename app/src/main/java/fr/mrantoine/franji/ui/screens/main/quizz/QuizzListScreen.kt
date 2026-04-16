@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.screens.main.quizz
 
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -15,10 +16,17 @@ import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.TopBar
 
 
+
+
+
+
+
+
 @Composable
 fun QuizzListScreen(
     navController: NavController
 ) {
+    val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
     Scaffold(
         topBar = {
             Column(
@@ -28,7 +36,8 @@ fun QuizzListScreen(
             {
                 TopBar(
                     title = "Quizz",
-                    showBack = true
+                    showBack = true,
+                    onBackClick =  { backDispatcher?.onBackPressed() }
                 )
             }
         },
