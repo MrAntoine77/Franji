@@ -56,7 +56,7 @@ fun CategoryBar(
 ) {
     val items = listOf(
         "Tout",
-        "Kanji & Kana",
+        "Kanji",
         "Vocabulaire",
         "Grammaire"
     )

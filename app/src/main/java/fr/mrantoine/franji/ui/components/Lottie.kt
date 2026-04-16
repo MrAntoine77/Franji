@@ -48,7 +48,6 @@ fun Lottie(
     speed: Float = 1f,
     lines: Int = 0,
     lineMultiplier: Float = 1f
-
 ) {
     Box(
         modifier = Modifier
