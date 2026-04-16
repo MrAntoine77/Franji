@@ -91,14 +91,12 @@ fun SplashScreen(
             SettingsStorage.loadCache(context)
 
             //CategoryStorage Loading
-            CategoryStorage.getCategoriesPaths("Kanji")
-            CategoryStorage.getCategoriesPaths("Vocab")
-            CategoryStorage.getCategoriesPaths("Grammar")
+            CategoryStorage.getKeys("")
+            CategoryStorage.getKeys("Kanji")
+            CategoryStorage.getKeys("Vocab")
+            CategoryStorage.getKeys("Grammar")
 
-            val paths = CategoryStorage.getCategoriesPaths()
-            paths.forEach { path ->
-                CategoryStorage.getCategoryIds(path)
-            }
+            CategoryStorage.loadAll()
 
             //KanjiStorage Loading
             KanjiStorage.loadAllKanji()

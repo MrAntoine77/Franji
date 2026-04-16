@@ -29,7 +29,7 @@ fun VocabCategoryListScreen(
     var maps by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
 
     LaunchedEffect(Unit) {
-        paths = CategoryStorage.getCategoriesPaths("Vocab")
+        paths = CategoryStorage.getKeys("Vocab")
         maps = buildMap(paths)
     }
 
@@ -55,7 +55,7 @@ fun VocabCategoryListScreen(
             Tree(
                 treeData = maps,
                 onClick = {arg ->
-                    navController.navigate(Screen.VocabCategory.route("Vocab/$arg"))
+                    navController.navigate(Screen.VocabCategory.route(arg))
                 }
             )
         }

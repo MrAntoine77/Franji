@@ -15,49 +15,67 @@ import kotlin.collections.mutableMapOf
 
 @Serializable
 data class CategoryCache(
-    val categories: Map<String, Array<String>>,
-    val ids: Map<String, Array<String>>
+    val keys: Map<String, Array<String>>,
+    val categories: Map<String, Array<String>>
+
+
+
 )
 object CategoryStorage {
-    private val getCategoriesPathsCache = mutableMapOf<String, Array<String>>()
-    suspend fun getCategoriesPaths(path: String = ""): Array<String> {
-        getCategoriesPathsCache[path]?.let {
+    private val keysCache = mutableMapOf<String, Array<String>>()
+    suspend fun getKeys(prefix: String = ""): Array<String> {
+        keysCache[prefix]?.let {
             return it
         }
 
         val result = try {
-            client.get("$ADDRESS/categories/paths/$path").body<Array<String>>()
+            client.get("$ADDRESS/categories/keys")
+            { url { parameters.append("prefix", prefix) } }.body<Array<String>>()
         } catch (e: Exception) {
             e.printStackTrace()
             emptyArray()
         }
-        getCategoriesPathsCache[path] = result
+        keysCache[prefix] = result
         return result
     }
 
-    private val getCategoryIdsCache = mutableMapOf<String, Array<String>>()
-    suspend fun getCategoryIds(path: String): Array<String> {
-        getCategoryIdsCache[path]?.let {
+    private val categoryByPathCache = mutableMapOf<String, Array<String>>()
+    suspend fun getCategoryByPath(path: String): Array<String> {
+        categoryByPathCache[path]?.let {
             return it
         }
 
         val result = try {
-            client.get("$ADDRESS/categories/id/$path").body<Array<String>>()
+            client.get("$ADDRESS/categories/path")
+            { url { parameters.append("path", path) } }.body<Array<String>>()
         } catch (e: Exception) {
             e.printStackTrace()
             emptyArray()
         }
-        getCategoryIdsCache[path] = result
+        categoryByPathCache[path] = result
         return result
     }
 
 
+    suspend fun loadAll() {
+        if(categoryByPathCache.isEmpty()) {
+            val result = try {
+                client.get("$ADDRESS/categories").body<Map<String, Array<String>>>()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                emptyMap()
+            }
+            result.forEach { (key, value) ->
+                categoryByPathCache[key] = value
+            }
+        }
+    }
 
     private val cache_file_path = "categories_cache.json"
 
     fun clearCache(context: Context) {
-        getCategoriesPathsCache.clear()
-        getCategoryIdsCache.clear()
+        keysCache.clear()
+        categoryByPathCache.clear()
 
         val cacheFile = File(context.filesDir, cache_file_path)
         if (cacheFile.exists()) {
@@ -69,8 +87,8 @@ object CategoryStorage {
         val cacheFile = File(context.filesDir, cache_file_path)
 
         val serializableCache = CategoryCache(
-            categories = getCategoriesPathsCache.toMap(),
-            ids = getCategoryIdsCache.toMap()
+            keys = keysCache.toMap(),
+            categories = categoryByPathCache.toMap()
         )
 
         val jsonString = Json.encodeToString(serializableCache)
@@ -85,11 +103,11 @@ object CategoryStorage {
             val jsonString = cacheFile.readText()
             val loadedCache = Json.decodeFromString<CategoryCache>(jsonString)
 
-            getCategoriesPathsCache.clear()
-            getCategoriesPathsCache.putAll(loadedCache.categories)
+            keysCache.clear()
+            categoryByPathCache.putAll(loadedCache.keys)
 
-            getCategoryIdsCache.clear()
-            getCategoryIdsCache.putAll(loadedCache.ids)
+            keysCache.clear()
+            categoryByPathCache.putAll(loadedCache.categories)
         } catch (e: Exception) {
             e.printStackTrace()
         }

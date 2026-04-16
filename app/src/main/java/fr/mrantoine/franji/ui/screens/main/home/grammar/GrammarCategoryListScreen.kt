@@ -29,7 +29,7 @@ fun GrammarCategoryListScreen(
     var maps by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
 
     LaunchedEffect(Unit) {
-        paths = CategoryStorage.getCategoriesPaths("Grammar")
+        paths = CategoryStorage.getKeys("Grammar")
         maps = buildMap(paths)
     }
 
@@ -55,7 +55,7 @@ fun GrammarCategoryListScreen(
             Tree(
                 treeData = maps,
                 onClick = {arg ->
-                    navController.navigate(Screen.GrammarCategory.route("Grammar/$arg"))
+                    navController.navigate(Screen.GrammarCategory.route(arg))
                 }
             )
         }

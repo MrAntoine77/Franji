@@ -29,7 +29,7 @@ fun KanjiCategoryListScreen(
     var maps by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
     
     LaunchedEffect(Unit) {
-        paths = CategoryStorage.getCategoriesPaths("Kanji")
+        paths = CategoryStorage.getKeys("Kanji")
         maps = buildMap(paths)
     }
 
@@ -55,7 +55,7 @@ fun KanjiCategoryListScreen(
             Tree(
                 treeData = maps,
                 onClick = {arg ->
-                    navController.navigate(Screen.KanjiCategory.route("Kanji/$arg"))
+                    navController.navigate(Screen.KanjiCategory.route(arg))
                 }
             )
         }

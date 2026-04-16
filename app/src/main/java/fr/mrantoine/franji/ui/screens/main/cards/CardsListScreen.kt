@@ -61,7 +61,7 @@ fun CardsListScreen(
 
 
     LaunchedEffect(Unit) {
-        paths = CategoryStorage.getCategoriesPaths()
+        paths = CategoryStorage.getKeys()
         maps = buildMap(paths)
     }
 

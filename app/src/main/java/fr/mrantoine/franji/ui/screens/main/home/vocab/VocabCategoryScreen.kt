@@ -64,7 +64,7 @@ fun VocabCategoryScreen(
         val vocab_list = remember { mutableStateListOf<Vocab>() }
 
         LaunchedEffect(Unit) {
-            vocab_list_id = CategoryStorage.getCategoryIds(categoryPath)
+            vocab_list_id = CategoryStorage.getCategoryByPath(categoryPath)
             vocab_list_id.forEach { vocabId ->
                 vocab_list.add(VocabStorage.getVocabById(vocabId))
             }

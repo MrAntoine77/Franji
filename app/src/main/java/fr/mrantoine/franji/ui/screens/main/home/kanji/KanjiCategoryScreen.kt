@@ -59,7 +59,7 @@ fun KanjiCategoryScreen(
         val kanji_list = remember { mutableStateListOf<Kanji>() }
 
         LaunchedEffect(Unit) {
-            kanji_list_id = CategoryStorage.getCategoryIds(categoryPath)
+            kanji_list_id = CategoryStorage.getCategoryByPath(categoryPath)
             kanji_list_id.forEach { kanjiId ->
                 kanji_list.add(KanjiStorage.getKanjiById(kanjiId))
             }

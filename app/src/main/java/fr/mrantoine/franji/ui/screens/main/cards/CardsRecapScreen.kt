@@ -44,7 +44,7 @@ fun CardsRecapScreen(
     var cardsList by remember { mutableStateOf(emptyArray<String>()) }
     var mode by remember { mutableStateOf(Mode.THEME) }
     LaunchedEffect(Unit) {
-        cardsList = CategoryStorage.getCategoryIds(cardsPath)
+        cardsList = CategoryStorage.getCategoryByPath(cardsPath)
     }
 
 

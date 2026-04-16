@@ -62,10 +62,11 @@ fun GrammarCategoryScreen(
         val grammar_list = remember { mutableStateListOf<Grammar>() }
 
         LaunchedEffect(Unit) {
-            grammar_list_id = CategoryStorage.getCategoryIds(categoryPath)
+            grammar_list_id = CategoryStorage.getCategoryByPath(categoryPath)
             grammar_list_id.forEach { grammarId ->
                 grammar_list.add(GrammarStorage.getGrammarById(grammarId))
             }
+            print("jaj")
         }
 
         Box(
