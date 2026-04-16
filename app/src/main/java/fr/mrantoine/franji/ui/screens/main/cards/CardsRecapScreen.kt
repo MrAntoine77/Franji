@@ -35,6 +35,35 @@ import fr.mrantoine.franji.ui.components.navigation.ThemedButton
 import fr.mrantoine.franji.ui.components.navigation.TopBar
 import fr.mrantoine.franji.ui.theme.Dimens
 
+
+
+fun formatDuration(seconds: Int): String {
+    return when {
+        seconds < 60 -> {
+            "${seconds}s"
+        }
+        seconds < 3600 -> {
+            val minutes = seconds / 60
+            val remainingSeconds = seconds % 60
+            if (remainingSeconds == 0) {
+                "${minutes}min"
+            } else {
+                "${minutes}min ${remainingSeconds}s"
+            }
+        }
+        else -> {
+            val hours = seconds / 3600
+            val minutes = (seconds % 3600) / 60
+
+            if (minutes == 0) {
+                "${hours}h"
+            } else {
+                "${hours}h ${minutes}min"
+            }
+        }
+    }
+}
+
 @Composable
 fun CardsRecapScreen(
     navController: NavController,
@@ -81,6 +110,8 @@ fun CardsRecapScreen(
             Spacer(modifier = Modifier.height(Dimens.m))
 
             val total = cardsList.size
+            val total_cards = if(mode == Mode.BOTH) (total * 2) else total
+            val seconds_per_cards = 5
             val totalKanji = cardsList.count { it.startsWith("kanji") }
             val totalVocab = cardsList.count { it.startsWith("vocab") }
             val totalGrammar = cardsList.count { it.startsWith("grammar") }
@@ -139,7 +170,7 @@ fun CardsRecapScreen(
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = if(mode == Mode.BOTH) (total * 2).toString() else total.toString(),
+                    text = total_cards.toString(),
                     fontWeight = FontWeight.Bold
                 )
 
@@ -189,7 +220,7 @@ fun CardsRecapScreen(
                 cardsList.shuffle()
                 ThemedButton(
                     onClick = { navController.navigate(Screen.CardsPlaying.route(cardsList, title, mode)) },
-                    text = "Commencer la révision"
+                    text = "Commencer la révision (~${formatDuration(total_cards * seconds_per_cards)})"
                 )
             }
         }
