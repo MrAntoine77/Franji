@@ -29,6 +29,8 @@ import fr.mrantoine.franji.ui.components.navigation.EaseBar
 import fr.mrantoine.franji.ui.components.navigation.TopBar
 import fr.mrantoine.franji.ui.screens.main.cards.types.grammar.CardGrammarThemeScreen
 import fr.mrantoine.franji.ui.screens.main.cards.types.grammar.CardGrammarVersionScreen
+import fr.mrantoine.franji.ui.screens.main.cards.types.kana.CardKanaThemeScreen
+import fr.mrantoine.franji.ui.screens.main.cards.types.kana.CardKanaVersionScreen
 import fr.mrantoine.franji.ui.screens.main.cards.types.kanji.CardKanjiThemeScreen
 import fr.mrantoine.franji.ui.screens.main.cards.types.kanji.CardKanjiVersionScreen
 import fr.mrantoine.franji.ui.screens.main.cards.types.vocab.CardVocabThemeScreen
@@ -187,6 +189,19 @@ fun CardsPlayingScreen(
                     }
                     else {
                         CardGrammarVersionScreen(
+                            cardId = cardslist[0].first,
+                            isRevealed = isRevealed
+                        )
+                    }
+                } else if(cardslist[0].first.startsWith("kana")) {
+                    if(cardslist[0].second == Mode.THEME) {
+                        CardKanaThemeScreen(
+                            cardId = cardslist[0].first,
+                            isRevealed = isRevealed
+                        )
+                    }
+                    else {
+                        CardKanaVersionScreen(
                             cardId = cardslist[0].first,
                             isRevealed = isRevealed
                         )

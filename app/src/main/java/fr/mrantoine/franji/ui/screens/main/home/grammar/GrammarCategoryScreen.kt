@@ -46,7 +46,7 @@ fun GrammarCategoryScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 3
+                selectedCategoryIndex = 4
             )
         },
         bottomBar = {
@@ -66,7 +66,6 @@ fun GrammarCategoryScreen(
             grammar_list_id.forEach { grammarId ->
                 grammar_list.add(GrammarStorage.getGrammarById(grammarId))
             }
-            print("jaj")
         }
 
         Box(

@@ -67,7 +67,7 @@ fun KanjiInfoScreen(
         LaunchedEffect(Unit) {
             kanji = KanjiStorage.getKanjiById(kanjiId)
             kanji.let {
-                lottie = KanjiStorage.getLottieByKanjiId(it.id)
+                lottie = KanjiStorage.getLottieById(it.id)
             }
         }
         LazyColumn(

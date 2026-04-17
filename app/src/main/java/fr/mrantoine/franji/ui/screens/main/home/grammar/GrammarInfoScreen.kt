@@ -51,7 +51,7 @@ fun GrammarInfoScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 3
+                selectedCategoryIndex = 4
             )
         },
         bottomBar = {

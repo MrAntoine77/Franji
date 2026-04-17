@@ -72,6 +72,7 @@ fun SplashScreen(
             CategoryStorage.loadAll()
 
             KanjiStorage.loadAllKanji()
+            KanjiStorage.loadAllKana()
             KanjiStorage.loadAllLotties()
 
             VocabStorage.loadAllVocab()

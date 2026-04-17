@@ -1,4 +1,4 @@
-package fr.mrantoine.franji.ui.screens.main.cards.types.kanji
+package fr.mrantoine.franji.ui.screens.main.cards.types.kana
 
 import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.layout.Box
@@ -26,6 +26,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import fr.mrantoine.franji.storage.Grammar
+import fr.mrantoine.franji.storage.GrammarItem
+import fr.mrantoine.franji.storage.GrammarStorage
+import fr.mrantoine.franji.storage.Kana
+import fr.mrantoine.franji.storage.KanaElement
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.storage.SettingsStorage
@@ -37,28 +42,31 @@ import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
-fun CardKanjiVersionScreen(
+fun CardKanaVersionScreen(
     cardId: String,
     isRevealed: MutableState<Boolean>
 ) {
 
     var lottie by remember { mutableStateOf<String>("{}") }
-    var kanji by remember { mutableStateOf(Kanji()) }
+    var kana by remember { mutableStateOf(Kana()) }
     val scrollState = rememberLazyListState()
 
-    val hint = kanji.kanji
-    val jp = if (SettingsStorage.isRomaji()) kanji.main_lecture.romaji else kanji.main_lecture.kana
-    val fr: String =  kanji.main_lecture.fr
+    var kanaExample by remember { mutableStateOf(KanaElement()) }
 
     LaunchedEffect(cardId) {
-        lottie = KanjiStorage.getLottieById(cardId)
-        kanji = KanjiStorage.getKanjiById(cardId)
+        kana = KanjiStorage.getKanaById(cardId)
+        kanaExample = kana.lectures[0]
+        lottie = KanjiStorage.getLottieById(kanaExample.id)
         scrollState.scrollToItem(0)
     }
 
+
+    val hint = kanaExample.jp
+    val fr: String =  kanaExample.fr
+
     LaunchedEffect( isRevealed.value) {
         if (isRevealed.value) {
-            TtsStorage.speak(jp)
+            TtsStorage.speak(hint)
         }
     }
 
@@ -74,7 +82,7 @@ fun CardKanjiVersionScreen(
         lineHeight = 40.sp,
         textAlign = TextAlign.Center,
         modifier = Modifier.fillMaxWidth(),
-        onClick = { TtsStorage.speak( jp) }
+        onClick = { TtsStorage.speak( hint) }
     )
     HorizontalDivider(
         color = MaterialTheme.colorScheme.secondary,
@@ -97,29 +105,17 @@ fun CardKanjiVersionScreen(
                         speed = 2f
                     )
                     ClickableAnimatedText(
-                        text = jp,
-                        fontSize = 32.sp,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = Dimens.m),
-                        textAlign = TextAlign.Center,
-                        onClick = { TtsStorage.speak(jp) }
-                    )
-                    Text(
                         text = fr,
                         fontSize = 32.sp,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(bottom = Dimens.l),
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        onClick = { TtsStorage.speak(hint) }
                     )
 
                 }
             }
-            item {
-                Lecture(kanji.lectures)
-            }
-
         }
     }
 }

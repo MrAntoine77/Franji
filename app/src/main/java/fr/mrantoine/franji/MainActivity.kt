@@ -27,6 +27,9 @@ import fr.mrantoine.franji.ui.screens.main.cards.CardsPlayingScreen
 import fr.mrantoine.franji.ui.screens.main.cards.CardsRecapScreen
 import fr.mrantoine.franji.ui.screens.main.cards.Mode
 import fr.mrantoine.franji.ui.screens.main.home.AllScreen
+import fr.mrantoine.franji.ui.screens.main.home.kana.KanaCategoryListScreen
+import fr.mrantoine.franji.ui.screens.main.home.kana.KanaCategoryScreen
+import fr.mrantoine.franji.ui.screens.main.home.kana.KanaInfoScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.GrammarCategoryListScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.GrammarCategoryScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.GrammarInfoScreen
@@ -60,6 +63,22 @@ sealed class Screen(val route: String) {
         const val ARG = "kanjiChar"
         fun route(kanjiChar: String) = "kanji_info/${Uri.encode(kanjiChar)}"
     }
+
+
+
+
+
+    data object KanaCategoryList : Screen("kana_category_list")
+    data object KanaCategory : Screen("kana_category/{categoryPath}") {
+        const val ARG = "categoryPath"
+        fun route(categoryPath: String) = "kana_category/${Uri.encode(categoryPath)}"
+    }
+    data object KanaInfo : Screen("kana_info/{kanaId}") {
+        const val ARG = "kanaId"
+        fun route(kanaId: String) = "kana_info/${Uri.encode(kanaId)}"
+    }
+
+
 
     data object VocabCategoryList : Screen("vocab_category_list")
     data object VocabCategory : Screen("vocab_category/{categoryPath}") {
@@ -188,6 +207,35 @@ class MainActivity : ComponentActivity() {
                         KanjiInfoScreen(navController, kanjiChar)
                     }
 
+                    composable(Screen.KanaCategoryList.route) {
+                        KanaCategoryListScreen(navController)
+                    }
+                    composable(
+                        route = Screen.KanaCategory.route,
+                        arguments = listOf(navArgument(Screen.KanaCategory.ARG) {
+                            type = NavType.StringType
+                        })
+                    ) { backStackEntry ->
+
+                        val categoryPath = backStackEntry.arguments
+                            ?.getString(Screen.KanaCategory.ARG)
+                            ?.let { Uri.decode(it) } ?: ""
+
+                        KanaCategoryScreen(navController, categoryPath)
+                    }
+                    composable(
+                        route = Screen.KanaInfo.route,
+                        arguments = listOf(navArgument(Screen.KanaInfo.ARG) {
+                            type = NavType.StringType
+                        })
+                    ) { backStackEntry ->
+
+                        val kanaId = backStackEntry.arguments
+                            ?.getString(Screen.KanaInfo.ARG)
+                            ?.let { Uri.decode(it) } ?: ""
+
+                        KanaInfoScreen(navController, kanaId)
+                    }
 
                     composable(Screen.VocabCategoryList.route) {
                         VocabCategoryListScreen(navController)

@@ -53,7 +53,7 @@ fun CardKanjiThemeScreen(
     val jp = if (SettingsStorage.isRomaji()) kanji.main_lecture.romaji else kanji.main_lecture.kana
 
     LaunchedEffect(cardId) {
-        lottie = KanjiStorage.getLottieByKanjiId(cardId)
+        lottie = KanjiStorage.getLottieById(cardId)
         kanji = KanjiStorage.getKanjiById(cardId)
         scrollState.scrollToItem(0)
     }

@@ -37,7 +37,7 @@ fun VocabCategoryListScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 2
+                selectedCategoryIndex = 3
             )
         },
         bottomBar = {

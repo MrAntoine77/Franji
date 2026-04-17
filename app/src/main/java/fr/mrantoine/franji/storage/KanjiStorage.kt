@@ -43,6 +43,22 @@ data class Kanji(
 )
 
 @Serializable
+data class Kana(
+    val main_id: String = "",
+    val lectures: List<KanaElement> = emptyList(),
+)
+
+@Serializable
+data class KanaElement(
+    val id: String = "",
+    val fr: String = "",
+    val jp: String = "",
+    val angles: List<Float> = emptyList(),
+)
+
+
+
+@Serializable
 data class Lottie(
     val id: String = "",
     val data: String = "{}"
@@ -50,18 +66,20 @@ data class Lottie(
 
 @Serializable
 data class KanjiCache(
-    val byId: Map<String, Kanji>,
-    val byChar: Map<String, Kanji>,
-    val lottie: Map<String, String>
+    val kanjiById: Map<String, Kanji>,
+    val kanaById: Map<String, Kana>,
+    val lottieById: Map<String, String>
 )
 
 object KanjiStorage {
-    private var getKanjiByIdCache = mutableMapOf<String, Kanji>()
-    private var getKanjiByCharCache = mutableMapOf<String, Kanji>()
-    private var getLottieByKanjiIdCache = mutableMapOf<String, String>()
+    private var kanjiByIdCache = mutableMapOf<String, Kanji>()
+    private var kanaByIdCache = mutableMapOf<String, Kana>()
 
+    private var lottieByIdCache = mutableMapOf<String, String>()
+
+    // ======================== KANJIS ============================
     suspend fun getKanjiById(kanjiId: String): Kanji {
-        getKanjiByIdCache[kanjiId]?.let { return it }
+        kanjiByIdCache[kanjiId]?.let { return it }
         val result = try {
             client.get("$ADDRESS/kanji/id") {
                 url { parameters.append("kanji_id", kanjiId) }
@@ -70,12 +88,12 @@ object KanjiStorage {
             e.printStackTrace()
             Kanji()
         }
-        getKanjiByIdCache[kanjiId] = result
+        kanjiByIdCache[kanjiId] = result
         return result
     }
 
     suspend fun loadAllKanji() {
-        if(getKanjiByIdCache.isEmpty()) {
+        if(kanjiByIdCache.isEmpty()) {
             val result = try {
                 client.get("$ADDRESS/kanji").body()
             } catch (e: Exception) {
@@ -83,13 +101,48 @@ object KanjiStorage {
                 emptyList<Kanji>()
             }
             result.forEach { kanji ->
-                getKanjiByIdCache[kanji.id] = kanji
+                kanjiByIdCache[kanji.id] = kanji
             }
         }
     }
 
-    suspend fun getLottieByKanjiId(kanjiId: String): String {
-        getLottieByKanjiIdCache[kanjiId]?.let { return it }
+
+    // ======================== KANAS ============================
+
+    suspend fun getKanaById(kanaId: String): Kana {
+        kanaByIdCache[kanaId]?.let { return it }
+        val result = try {
+            client.get("$ADDRESS/kana/id") {
+                url { parameters.append("kana_id", kanaId) }
+            }.body()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Kana()
+        }
+        kanaByIdCache[kanaId] = result
+        return result
+    }
+
+
+    suspend fun loadAllKana() {
+        if(kanaByIdCache.isEmpty()) {
+            val result = try {
+                client.get("$ADDRESS/kana").body()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                emptyList<Kana>()
+            }
+            result.forEach { kana ->
+                kanaByIdCache[kana.main_id] = kana
+            }
+        }
+    }
+
+
+    // ======================== LOTTIES ============================
+
+    suspend fun getLottieById(kanjiId: String): String {
+        lottieByIdCache[kanjiId]?.let { return it }
 
         val result = try {
             client.get("$ADDRESS/lottie/id")
@@ -98,12 +151,12 @@ object KanjiStorage {
             e.printStackTrace()
             Lottie()
         }
-        getLottieByKanjiIdCache[kanjiId] = result.data
+        lottieByIdCache[kanjiId] = result.data
         return result.data
     }
 
     suspend fun loadAllLotties() {
-        if(getLottieByKanjiIdCache.isEmpty()) {
+        if(lottieByIdCache.isEmpty()) {
             val result = try {
                 client.get("$ADDRESS/lottie").body()
             } catch (e: Exception) {
@@ -111,7 +164,7 @@ object KanjiStorage {
                 emptyList<Lottie>()
             }
             result.forEach { lottie ->
-                getLottieByKanjiIdCache[lottie.id] = lottie.data
+                lottieByIdCache[lottie.id] = lottie.data
             }
         }
     }
@@ -119,9 +172,8 @@ object KanjiStorage {
 
     private val cache_file_path = "kanji_cache.json"
     fun clearCache(context: Context) {
-        getKanjiByIdCache.clear()
-        getKanjiByCharCache.clear()
-        getLottieByKanjiIdCache.clear()
+        kanjiByIdCache.clear()
+        lottieByIdCache.clear()
 
         val cacheFile = File(context.filesDir, cache_file_path)
         if (cacheFile.exists()) {
@@ -132,9 +184,9 @@ object KanjiStorage {
         val cacheFile = File(context.filesDir, cache_file_path)
 
         val serializableCache = KanjiCache(
-            byId = getKanjiByIdCache.toMap(),
-            byChar = getKanjiByCharCache.toMap(),
-            lottie = getLottieByKanjiIdCache.toMap()
+            kanjiById = kanjiByIdCache.toMap(),
+            kanaById = kanaByIdCache.toMap(),
+            lottieById = lottieByIdCache.toMap()
         )
 
         val jsonString = Json.encodeToString(serializableCache)
@@ -148,14 +200,14 @@ object KanjiStorage {
             val jsonString = cacheFile.readText()
             val loadedCache = Json.decodeFromString<KanjiCache>(jsonString)
 
-            getKanjiByIdCache.clear()
-            getKanjiByIdCache.putAll(loadedCache.byId)
+            kanjiByIdCache.clear()
+            kanjiByIdCache.putAll(loadedCache.kanjiById)
 
-            getKanjiByCharCache.clear()
-            getKanjiByCharCache.putAll(loadedCache.byChar)
+            kanaByIdCache.clear()
+            kanaByIdCache.putAll(loadedCache.kanaById)
 
-            getLottieByKanjiIdCache.clear()
-            getLottieByKanjiIdCache.putAll(loadedCache.lottie)
+            lottieByIdCache.clear()
+            lottieByIdCache.putAll(loadedCache.lottieById)
         } catch (e: Exception) {
             e.printStackTrace()
         }

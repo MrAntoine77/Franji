@@ -1,4 +1,4 @@
-package fr.mrantoine.franji.ui.screens.main.cards.types.kanji
+package fr.mrantoine.franji.ui.screens.main.cards.types.kana
 
 import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.layout.Box
@@ -23,38 +23,44 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import fr.mrantoine.franji.storage.Kana
+import fr.mrantoine.franji.storage.KanaElement
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
 import fr.mrantoine.franji.ui.components.ClickableAnimatedText
+import fr.mrantoine.franji.ui.components.DrawArea
 import fr.mrantoine.franji.ui.components.Lecture
 import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.theme.Dimens
+import java.util.Locale
 
 @Composable
-fun CardKanjiVersionScreen(
+fun CardKanaThemeScreen(
     cardId: String,
     isRevealed: MutableState<Boolean>
 ) {
 
-    var lottie by remember { mutableStateOf<String>("{}") }
-    var kanji by remember { mutableStateOf(Kanji()) }
+    var lottie by remember { mutableStateOf("{}") }
+    var kana by remember { mutableStateOf(Kana()) }
     val scrollState = rememberLazyListState()
-
-    val hint = kanji.kanji
-    val jp = if (SettingsStorage.isRomaji()) kanji.main_lecture.romaji else kanji.main_lecture.kana
-    val fr: String =  kanji.main_lecture.fr
+    var kanaExample by remember { mutableStateOf(KanaElement()) }
 
     LaunchedEffect(cardId) {
-        lottie = KanjiStorage.getLottieById(cardId)
-        kanji = KanjiStorage.getKanjiById(cardId)
+        kana = KanjiStorage.getKanaById(cardId)
+        kanaExample = kana.lectures[0]
+        lottie = KanjiStorage.getLottieById(kanaExample.id)
         scrollState.scrollToItem(0)
     }
+
+    val hint = kanaExample.fr
+    val jp: String =  kanaExample.jp
 
     LaunchedEffect( isRevealed.value) {
         if (isRevealed.value) {
@@ -68,19 +74,22 @@ fun CardKanjiVersionScreen(
         textColor = MaterialTheme.colorScheme.onPrimary
     )
     Spacer(modifier = Modifier.height(Dimens.s))
-    ClickableAnimatedText(
+    Text(
         text = hint,
         fontSize = 32.sp,
         lineHeight = 40.sp,
         textAlign = TextAlign.Center,
-        modifier = Modifier.fillMaxWidth(),
-        onClick = { TtsStorage.speak( jp) }
+        modifier = Modifier.fillMaxWidth()
     )
     HorizontalDivider(
         color = MaterialTheme.colorScheme.secondary,
         thickness = 1.dp,
         modifier = Modifier.fillMaxWidth()
     )
+
+    if(!isRevealed.value){
+        DrawArea(kanaExample.angles, isRevealed, lottie)
+    }
     if(isRevealed.value) {
         LazyColumn(
             modifier = Modifier
@@ -96,30 +105,8 @@ fun CardKanjiVersionScreen(
                         data = lottie,
                         speed = 2f
                     )
-                    ClickableAnimatedText(
-                        text = jp,
-                        fontSize = 32.sp,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = Dimens.m),
-                        textAlign = TextAlign.Center,
-                        onClick = { TtsStorage.speak(jp) }
-                    )
-                    Text(
-                        text = fr,
-                        fontSize = 32.sp,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = Dimens.l),
-                        textAlign = TextAlign.Center
-                    )
-
                 }
             }
-            item {
-                Lecture(kanji.lectures)
-            }
-
         }
     }
 }
