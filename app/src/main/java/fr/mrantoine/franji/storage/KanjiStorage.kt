@@ -63,7 +63,7 @@ object KanjiStorage {
     suspend fun getKanjiById(kanjiId: String): Kanji {
         getKanjiByIdCache[kanjiId]?.let { return it }
         val result = try {
-            client.get("$ADDRESS/kanji/kanji_data/id") {
+            client.get("$ADDRESS/kanji/id") {
                 url { parameters.append("kanji_id", kanjiId) }
             }.body()
         } catch (e: Exception) {
@@ -77,7 +77,7 @@ object KanjiStorage {
     suspend fun loadAllKanji() {
         if(getKanjiByIdCache.isEmpty()) {
             val result = try {
-                client.get("$ADDRESS/kanji/kanji_data").body()
+                client.get("$ADDRESS/kanji").body()
             } catch (e: Exception) {
                 e.printStackTrace()
                 emptyList<Kanji>()
