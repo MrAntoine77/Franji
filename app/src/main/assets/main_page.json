@@ -1,0 +1,29 @@
+{
+    "Kanji": {
+        "width": 200,
+        "height": 200,
+        "items": [
+            {"path": "Kanji/Monde1/Total", "img": "default1_200x200", "color":"0xFFFF0000"},
+            {"path": "Kanji/Monde2/Total", "img": "default2_200x200", "color":"FF00FFFF"},
+            {"path": "Kanji/Monde3/Total", "img": "default3_200x200", "color":"FF00FF00"}
+        ]
+    },
+    "Vocabulaire": {
+        "width": 250,
+        "height": 100,
+        "items": [
+            {"path": "Vocab/Monde1/Total", "img": "default3_250x100", "color":"FF00FF00"},
+            {"path": "Vocab/Monde2/Total", "img": "default1_250x100", "color":"FFFF0000"},
+            {"path": "Vocab/Monde3/Total", "img": "default2_250x100", "color":"FF00FFFF"}
+        ]
+    },
+    "Grammaire": {
+        "width": 150,
+        "height": 250,
+        "items": [
+            {"path": "Grammar/Monde1/Total", "img": "default2_150x250", "color":"FF00FFFF"},
+            {"path": "Grammar/Monde2/Total", "img": "default3_150x250", "color":"FF00FF00"},
+            {"path": "Grammar/Monde3/Total", "img": "default1_150x250", "color":"FFFF0000"}
+        ]
+    }
+}

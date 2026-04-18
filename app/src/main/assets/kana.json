@@ -1,0 +1,2151 @@
+[
+    {
+        "main_id": "kana_h_a",
+        "lectures": [
+            {
+                "id": "kana_h_a_1",
+                "fr": "a",
+                "jp": "あ",
+                "angles": [
+                    4.15,
+                    269.71,
+                    271.01
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_i",
+        "lectures": [
+            {
+                "id": "kana_h_i_1",
+                "fr": "i",
+                "jp": "い",
+                "angles": [
+                    291.43,
+                    298.55
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_u",
+        "lectures": [
+            {
+                "id": "kana_h_u_1",
+                "fr": "u",
+                "jp": "う",
+                "angles": [
+                    325.78,
+                    283.51
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_e",
+        "lectures": [
+            {
+                "id": "kana_h_e_1",
+                "fr": "e",
+                "jp": "え",
+                "angles": [
+                    328.26,
+                    318.53
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_o",
+        "lectures": [
+            {
+                "id": "kana_h_o_1",
+                "fr": "o",
+                "jp": "お",
+                "angles": [
+                    9.66,
+                    287.02,
+                    305.64
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ka",
+        "lectures": [
+            {
+                "id": "kana_h_ka_1",
+                "fr": "ka",
+                "jp": "か",
+                "angles": [
+                    291.63,
+                    247.03,
+                    301.09
+                ]
+            },
+            {
+                "id": "kana_h_ka_2",
+                "fr": "ga",
+                "jp": "が",
+                "angles": [
+                    291.63,
+                    247.03,
+                    301.09,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ki",
+        "lectures": [
+            {
+                "id": "kana_h_ki_1",
+                "fr": "ki",
+                "jp": "き",
+                "angles": [
+                    11.0,
+                    11.62,
+                    296.09,
+                    352.53
+                ]
+            },
+            {
+                "id": "kana_h_ki_2",
+                "fr": "gi",
+                "jp": "ぎ",
+                "angles": [
+                    11.0,
+                    11.62,
+                    296.11,
+                    352.53,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ku",
+        "lectures": [
+            {
+                "id": "kana_h_ku_1",
+                "fr": "ku",
+                "jp": "く",
+                "angles": [
+                    271.18
+                ]
+            },
+            {
+                "id": "kana_h_ku_2",
+                "fr": "gu",
+                "jp": "ぐ",
+                "angles": [
+                    271.18,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ke",
+        "lectures": [
+            {
+                "id": "kana_h_ke_1",
+                "fr": "ke",
+                "jp": "け",
+                "angles": [
+                    274.8,
+                    6.01,
+                    263.01
+                ]
+            },
+            {
+                "id": "kana_h_ke_2",
+                "fr": "ge",
+                "jp": "げ",
+                "angles": [
+                    274.51,
+                    6.01,
+                    263.03,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ko",
+        "lectures": [
+            {
+                "id": "kana_h_ko_1",
+                "fr": "ko",
+                "jp": "こ",
+                "angles": [
+                    340.8,
+                    344.08
+                ]
+            },
+            {
+                "id": "kana_h_ko_2",
+                "fr": "go",
+                "jp": "ご",
+                "angles": [
+                    340.8,
+                    344.08,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_sa",
+        "lectures": [
+            {
+                "id": "kana_h_sa_1",
+                "fr": "sa",
+                "jp": "さ",
+                "angles": [
+                    14.82,
+                    297.99,
+                    348.94
+                ]
+            },
+            {
+                "id": "kana_h_sa_2",
+                "fr": "za",
+                "jp": "ざ",
+                "angles": [
+                    15.1,
+                    297.99,
+                    348.94,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_shi",
+        "lectures": [
+            {
+                "id": "kana_h_shi_1",
+                "fr": "shi",
+                "jp": "し",
+                "angles": [
+                    302.77
+                ]
+            },
+            {
+                "id": "kana_h_shi_2",
+                "fr": "ji",
+                "jp": "じ",
+                "angles": [
+                    302.77,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_su",
+        "lectures": [
+            {
+                "id": "kana_h_su_1",
+                "fr": "su",
+                "jp": "す",
+                "angles": [
+                    4.54,
+                    262.55
+                ]
+            },
+            {
+                "id": "kana_h_su_2",
+                "fr": "zu",
+                "jp": "ず",
+                "angles": [
+                    4.54,
+                    262.55,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_se",
+        "lectures": [
+            {
+                "id": "kana_h_se_1",
+                "fr": "se",
+                "jp": "せ",
+                "angles": [
+                    5.5,
+                    259.31,
+                    308.23
+                ]
+            },
+            {
+                "id": "kana_h_se_2",
+                "fr": "ze",
+                "jp": "ぜ",
+                "angles": [
+                    5.5,
+                    259.31,
+                    308.23,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_so",
+        "lectures": [
+            {
+                "id": "kana_h_so_1",
+                "fr": "so",
+                "jp": "そ",
+                "angles": [
+                    300.04
+                ]
+            },
+            {
+                "id": "kana_h_so_2",
+                "fr": "zo",
+                "jp": "ぞ",
+                "angles": [
+                    300.04,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ta",
+        "lectures": [
+            {
+                "id": "kana_h_ta_1",
+                "fr": "ta",
+                "jp": "た",
+                "angles": [
+                    8.79,
+                    251.27,
+                    354.81,
+                    350.75
+                ]
+            },
+            {
+                "id": "kana_h_ta_2",
+                "fr": "da",
+                "jp": "だ",
+                "angles": [
+                    8.79,
+                    251.27,
+                    354.81,
+                    350.75,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_chi",
+        "lectures": [
+            {
+                "id": "kana_h_chi_1",
+                "fr": "chi",
+                "jp": "ち",
+                "angles": [
+                    10.07,
+                    276.52
+                ]
+            },
+            {
+                "id": "kana_h_chi_2",
+                "fr": "ji",
+                "jp": "ぢ",
+                "angles": [
+                    10.07,
+                    276.52,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_tsu",
+        "lectures": [
+            {
+                "id": "kana_h_tsu_1",
+                "fr": "tsu",
+                "jp": "つ",
+                "angles": [
+                    306.97
+                ]
+            },
+            {
+                "id": "kana_h_tsu_2",
+                "fr": "zu",
+                "jp": "づ",
+                "angles": [
+                    306.97,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_te",
+        "lectures": [
+            {
+                "id": "kana_h_te_1",
+                "fr": "te",
+                "jp": "て",
+                "angles": [
+                    313.95
+                ]
+            },
+            {
+                "id": "kana_h_te_2",
+                "fr": "de",
+                "jp": "で",
+                "angles": [
+                    313.95,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_to",
+        "lectures": [
+            {
+                "id": "kana_h_to_1",
+                "fr": "to",
+                "jp": "と",
+                "angles": [
+                    285.84,
+                    271.76
+                ]
+            },
+            {
+                "id": "kana_h_to_2",
+                "fr": "do",
+                "jp": "ど",
+                "angles": [
+                    285.84,
+                    271.76,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_na",
+        "lectures": [
+            {
+                "id": "kana_h_na_1",
+                "fr": "na",
+                "jp": "な",
+                "angles": [
+                    9.51,
+                    248.58,
+                    310.06,
+                    290.32
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ni",
+        "lectures": [
+            {
+                "id": "kana_h_ni_1",
+                "fr": "ni",
+                "jp": "に",
+                "angles": [
+                    272.54,
+                    344.1,
+                    341.52
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_nu",
+        "lectures": [
+            {
+                "id": "kana_h_nu_1",
+                "fr": "nu",
+                "jp": "ぬ",
+                "angles": [
+                    289.49,
+                    298.98
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ne",
+        "lectures": [
+            {
+                "id": "kana_h_ne_1",
+                "fr": "ne",
+                "jp": "ね",
+                "angles": [
+                    269.32,
+                    329.91
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_no",
+        "lectures": [
+            {
+                "id": "kana_h_no_1",
+                "fr": "no",
+                "jp": "の",
+                "angles": [
+                    281.29
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ha",
+        "lectures": [
+            {
+                "id": "kana_h_ha_1",
+                "fr": "ha",
+                "jp": "は",
+                "angles": [
+                    273.36,
+                    6.07,
+                    283.09
+                ]
+            },
+            {
+                "id": "kana_h_ha_2",
+                "fr": "ba",
+                "jp": "ば",
+                "angles": [
+                    273.09,
+                    6.11,
+                    283.1,
+                    312.36,
+                    318.52
+                ]
+            },
+            {
+                "id": "kana_h_ha_3",
+                "fr": "pa",
+                "jp": "ぱ",
+                "angles": [
+                    273.36,
+                    6.07,
+                    283.09,
+                    360.0
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_hi",
+        "lectures": [
+            {
+                "id": "kana_h_hi_1",
+                "fr": "hi",
+                "jp": "ひ",
+                "angles": [
+                    337.3
+                ]
+            },
+            {
+                "id": "kana_h_hi_2",
+                "fr": "bi",
+                "jp": "び",
+                "angles": [
+                    337.3,
+                    312.36,
+                    318.52
+                ]
+            },
+            {
+                "id": "kana_h_hi_3",
+                "fr": "pi",
+                "jp": "ぴ",
+                "angles": [
+                    337.3,
+                    360.0
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_fu",
+        "lectures": [
+            {
+                "id": "kana_h_fu_1",
+                "fr": "fu",
+                "jp": "ふ",
+                "angles": [
+                    311.56,
+                    262.89,
+                    356.86,
+                    292.9
+                ]
+            },
+            {
+                "id": "kana_h_fu_2",
+                "fr": "bu",
+                "jp": "ぶ",
+                "angles": [
+                    311.61,
+                    262.9,
+                    356.86,
+                    292.9,
+                    312.36,
+                    318.52
+                ]
+            },
+            {
+                "id": "kana_h_fu_3",
+                "fr": "pu",
+                "jp": "ぷ",
+                "angles": [
+                    311.56,
+                    262.89,
+                    356.86,
+                    292.9,
+                    360.0
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_he",
+        "lectures": [
+            {
+                "id": "kana_h_he_1",
+                "fr": "he",
+                "jp": "へ",
+                "angles": [
+                    340.88
+                ]
+            },
+            {
+                "id": "kana_h_he_2",
+                "fr": "be",
+                "jp": "べ",
+                "angles": [
+                    340.89,
+                    312.36,
+                    318.52
+                ]
+            },
+            {
+                "id": "kana_h_he_3",
+                "fr": "pe",
+                "jp": "ぺ",
+                "angles": [
+                    340.89,
+                    360.0
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ho",
+        "lectures": [
+            {
+                "id": "kana_h_ho_1",
+                "fr": "ho",
+                "jp": "ほ",
+                "angles": [
+                    273.3,
+                    6.29,
+                    5.66,
+                    284.24
+                ]
+            },
+            {
+                "id": "kana_h_ho_2",
+                "fr": "bo",
+                "jp": "ぼ",
+                "angles": [
+                    273.3,
+                    6.29,
+                    5.66,
+                    284.24,
+                    312.36,
+                    318.52
+                ]
+            },
+            {
+                "id": "kana_h_ho_3",
+                "fr": "po",
+                "jp": "ぽ",
+                "angles": [
+                    273.3,
+                    6.29,
+                    5.66,
+                    284.24,
+                    360.0
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ma",
+        "lectures": [
+            {
+                "id": "kana_h_ma_1",
+                "fr": "ma",
+                "jp": "ま",
+                "angles": [
+                    4.71,
+                    6.89,
+                    288.31
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_mi",
+        "lectures": [
+            {
+                "id": "kana_h_mi_1",
+                "fr": "mi",
+                "jp": "み",
+                "angles": [
+                    318.38,
+                    241.06
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_mu",
+        "lectures": [
+            {
+                "id": "kana_h_mu_1",
+                "fr": "mu",
+                "jp": "む",
+                "angles": [
+                    7.72,
+                    301.97,
+                    305.37
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_me",
+        "lectures": [
+            {
+                "id": "kana_h_me_1",
+                "fr": "me",
+                "jp": "め",
+                "angles": [
+                    289.88,
+                    273.25
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_mo",
+        "lectures": [
+            {
+                "id": "kana_h_mo_1",
+                "fr": "mo",
+                "jp": "も",
+                "angles": [
+                    305.13,
+                    3.36,
+                    355.32
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ya",
+        "lectures": [
+            {
+                "id": "kana_h_ya_1",
+                "fr": "ya",
+                "jp": "や",
+                "angles": [
+                    347.01,
+                    313.01,
+                    287.77
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_yu",
+        "lectures": [
+            {
+                "id": "kana_h_yu_1",
+                "fr": "yu",
+                "jp": "ゆ",
+                "angles": [
+                    301.5,
+                    264.53
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_yo",
+        "lectures": [
+            {
+                "id": "kana_h_yo_1",
+                "fr": "yo",
+                "jp": "よ",
+                "angles": [
+                    11.98,
+                    287.07
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ra",
+        "lectures": [
+            {
+                "id": "kana_h_ra_1",
+                "fr": "ra",
+                "jp": "ら",
+                "angles": [
+                    333.06,
+                    283.76
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ri",
+        "lectures": [
+            {
+                "id": "kana_h_ri_1",
+                "fr": "ri",
+                "jp": "り",
+                "angles": [
+                    274.0,
+                    262.64
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ru",
+        "lectures": [
+            {
+                "id": "kana_h_ru_1",
+                "fr": "ru",
+                "jp": "る",
+                "angles": [
+                    293.63
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_re",
+        "lectures": [
+            {
+                "id": "kana_h_re_1",
+                "fr": "re",
+                "jp": "れ",
+                "angles": [
+                    269.91,
+                    334.71
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_ro",
+        "lectures": [
+            {
+                "id": "kana_h_ro_1",
+                "fr": "ro",
+                "jp": "ろ",
+                "angles": [
+                    282.25
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_wa",
+        "lectures": [
+            {
+                "id": "kana_h_wa_1",
+                "fr": "wa",
+                "jp": "わ",
+                "angles": [
+                    269.0,
+                    313.31
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_wo",
+        "lectures": [
+            {
+                "id": "kana_h_wo_1",
+                "fr": "wo",
+                "jp": "を",
+                "angles": [
+                    6.35,
+                    278.07,
+                    263.87
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_h_n",
+        "lectures": [
+            {
+                "id": "kana_h_n_1",
+                "fr": "n",
+                "jp": "ん",
+                "angles": [
+                    302.72
+                ]
+            }
+        ],
+        "categories": [
+            "hiragana"
+        ]
+    },
+    {
+        "main_id": "kana_k_a",
+        "lectures": [
+            {
+                "id": "kana_k_a_1",
+                "fr": "A",
+                "jp": "ア",
+                "angles": [
+                    336.12,
+                    249.14
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_i",
+        "lectures": [
+            {
+                "id": "kana_k_i_1",
+                "fr": "I",
+                "jp": "イ",
+                "angles": [
+                    225.67,
+                    271.26
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_u",
+        "lectures": [
+            {
+                "id": "kana_k_u_1",
+                "fr": "U",
+                "jp": "ウ",
+                "angles": [
+                    274.14,
+                    273.91,
+                    283.8
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_e",
+        "lectures": [
+            {
+                "id": "kana_k_e_1",
+                "fr": "E",
+                "jp": "エ",
+                "angles": [
+                    3.99,
+                    270.32,
+                    1.36
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_o",
+        "lectures": [
+            {
+                "id": "kana_k_o_1",
+                "fr": "O",
+                "jp": "オ",
+                "angles": [
+                    2.39,
+                    263.62,
+                    225.56
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ka",
+        "lectures": [
+            {
+                "id": "kana_k_ka_1",
+                "fr": "KA",
+                "jp": "カ",
+                "angles": [
+                    303.76,
+                    245.8
+                ]
+            },
+            {
+                "id": "kana_k_ka_2",
+                "fr": "GA",
+                "jp": "ガ",
+                "angles": [
+                    303.76,
+                    245.8,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ki",
+        "lectures": [
+            {
+                "id": "kana_k_ki_1",
+                "fr": "KI",
+                "jp": "キ",
+                "angles": [
+                    11.05,
+                    11.39,
+                    280.02
+                ]
+            },
+            {
+                "id": "kana_k_ki_2",
+                "fr": "GI",
+                "jp": "ギ",
+                "angles": [
+                    11.05,
+                    11.39,
+                    280.02,
+                    309.59,
+                    312.18
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ku",
+        "lectures": [
+            {
+                "id": "kana_k_ku_1",
+                "fr": "KU",
+                "jp": "ク",
+                "angles": [
+                    240.39,
+                    251.11
+                ]
+            },
+            {
+                "id": "kana_k_ku_2",
+                "fr": "GU",
+                "jp": "グ",
+                "angles": [
+                    240.39,
+                    251.11,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ke",
+        "lectures": [
+            {
+                "id": "kana_k_ke_1",
+                "fr": "KE",
+                "jp": "ケ",
+                "angles": [
+                    242.33,
+                    7.18,
+                    243.87
+                ]
+            },
+            {
+                "id": "kana_k_ke_2",
+                "fr": "GE",
+                "jp": "ゲ",
+                "angles": [
+                    242.33,
+                    7.18,
+                    243.87,
+                    313.29,
+                    317.1
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ko",
+        "lectures": [
+            {
+                "id": "kana_k_ko_1",
+                "fr": "KO",
+                "jp": "コ",
+                "angles": [
+                    319.38,
+                    2.09
+                ]
+            },
+            {
+                "id": "kana_k_ko_2",
+                "fr": "GO",
+                "jp": "ゴ",
+                "angles": [
+                    319.38,
+                    2.09,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_sa",
+        "lectures": [
+            {
+                "id": "kana_k_sa_1",
+                "fr": "SA",
+                "jp": "サ",
+                "angles": [
+                    2.49,
+                    273.18,
+                    253.85
+                ]
+            },
+            {
+                "id": "kana_k_sa_2",
+                "fr": "ZA",
+                "jp": "ザ",
+                "angles": [
+                    2.49,
+                    273.18,
+                    253.85,
+                    312.87,
+                    317.24
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_shi",
+        "lectures": [
+            {
+                "id": "kana_k_shi_1",
+                "fr": "SHI",
+                "jp": "シ",
+                "angles": [
+                    323.15,
+                    326.43,
+                    38.07
+                ]
+            },
+            {
+                "id": "kana_k_shi_2",
+                "fr": "JI",
+                "jp": "ジ",
+                "angles": [
+                    323.15,
+                    326.43,
+                    38.07,
+                    312.87,
+                    317.24
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_su",
+        "lectures": [
+            {
+                "id": "kana_k_su_1",
+                "fr": "SU",
+                "jp": "ス",
+                "angles": [
+                    260.9,
+                    314.37
+                ]
+            },
+            {
+                "id": "kana_k_su_2",
+                "fr": "ZU",
+                "jp": "ズ",
+                "angles": [
+                    260.9,
+                    314.37,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_se",
+        "lectures": [
+            {
+                "id": "kana_k_se_1",
+                "fr": "SE",
+                "jp": "セ",
+                "angles": [
+                    351.99,
+                    303.41
+                ]
+            },
+            {
+                "id": "kana_k_se_2",
+                "fr": "ZE",
+                "jp": "ゼ",
+                "angles": [
+                    351.99,
+                    303.41,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_so",
+        "lectures": [
+            {
+                "id": "kana_k_so_1",
+                "fr": "SO",
+                "jp": "ソ",
+                "angles": [
+                    301.02,
+                    236.88
+                ]
+            },
+            {
+                "id": "kana_k_so_2",
+                "fr": "ZO",
+                "jp": "ゾ",
+                "angles": [
+                    300.96,
+                    236.69,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ta",
+        "lectures": [
+            {
+                "id": "kana_k_ta_1",
+                "fr": "TA",
+                "jp": "タ",
+                "angles": [
+                    240.26,
+                    251.18,
+                    314.05
+                ]
+            },
+            {
+                "id": "kana_k_ta_2",
+                "fr": "DA",
+                "jp": "ダ",
+                "angles": [
+                    240.26,
+                    251.18,
+                    314.05,
+                    313.29,
+                    317.1
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_chi",
+        "lectures": [
+            {
+                "id": "kana_k_chi_1",
+                "fr": "CHI",
+                "jp": "チ",
+                "angles": [
+                    205.32,
+                    1.62,
+                    256.67
+                ]
+            },
+            {
+                "id": "kana_k_chi_2",
+                "fr": "JI",
+                "jp": "ヂ",
+                "angles": [
+                    205.18,
+                    1.62,
+                    256.67,
+                    312.87,
+                    317.24
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_tsu",
+        "lectures": [
+            {
+                "id": "kana_k_tsu_1",
+                "fr": "TSU",
+                "jp": "ツ",
+                "angles": [
+                    289.37,
+                    295.19,
+                    232.31
+                ]
+            },
+            {
+                "id": "kana_k_tsu_2",
+                "fr": "ZU",
+                "jp": "ヅ",
+                "angles": [
+                    291.19,
+                    295.19,
+                    232.42,
+                    308.36,
+                    311.31
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_te",
+        "lectures": [
+            {
+                "id": "kana_k_te_1",
+                "fr": "TE",
+                "jp": "テ",
+                "angles": [
+                    3.22,
+                    3.77,
+                    243.06
+                ]
+            },
+            {
+                "id": "kana_k_te_2",
+                "fr": "DE",
+                "jp": "デ",
+                "angles": [
+                    3.22,
+                    3.77,
+                    243.06,
+                    312.87,
+                    317.24
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_to",
+        "lectures": [
+            {
+                "id": "kana_k_to_1",
+                "fr": "TO",
+                "jp": "ト",
+                "angles": [
+                    271.59,
+                    322.57
+                ]
+            },
+            {
+                "id": "kana_k_to_2",
+                "fr": "DO",
+                "jp": "ド",
+                "angles": [
+                    271.59,
+                    322.57,
+                    312.36,
+                    318.52
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_na",
+        "lectures": [
+            {
+                "id": "kana_k_na_1",
+                "fr": "NA",
+                "jp": "ナ",
+                "angles": [
+                    3.9,
+                    258.94
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ni",
+        "lectures": [
+            {
+                "id": "kana_k_ni_1",
+                "fr": "NI",
+                "jp": "ニ",
+                "angles": [
+                    2.34,
+                    0.59
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_nu",
+        "lectures": [
+            {
+                "id": "kana_k_nu_1",
+                "fr": "NU",
+                "jp": "ヌ",
+                "angles": [
+                    263.84,
+                    317.44
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ne",
+        "lectures": [
+            {
+                "id": "kana_k_ne_1",
+                "fr": "NE",
+                "jp": "ネ",
+                "angles": [
+                    315.31,
+                    262.35,
+                    272.2,
+                    322.81
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_no",
+        "lectures": [
+            {
+                "id": "kana_k_no_1",
+                "fr": "NO",
+                "jp": "ノ",
+                "angles": [
+                    235.93
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ha",
+        "lectures": [
+            {
+                "id": "kana_k_ha_1",
+                "fr": "HA",
+                "jp": "ハ",
+                "angles": [
+                    238.45,
+                    309.99
+                ]
+            },
+            {
+                "id": "kana_k_ha_2",
+                "fr": "BA",
+                "jp": "バ",
+                "angles": [
+                    238.92,
+                    309.99,
+                    312.36,
+                    318.52
+                ]
+            },
+            {
+                "id": "kana_k_ha_3",
+                "fr": "PA",
+                "jp": "パ",
+                "angles": [
+                    238.92,
+                    309.99,
+                    360.0
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_hi",
+        "lectures": [
+            {
+                "id": "kana_k_hi_1",
+                "fr": "HI",
+                "jp": "ヒ",
+                "angles": [
+                    4.6,
+                    306.73
+                ]
+            },
+            {
+                "id": "kana_k_hi_2",
+                "fr": "BI",
+                "jp": "ビ",
+                "angles": [
+                    4.6,
+                    306.73,
+                    312.36,
+                    318.52
+                ]
+            },
+            {
+                "id": "kana_k_hi_3",
+                "fr": "PI",
+                "jp": "ピ",
+                "angles": [
+                    4.6,
+                    306.73,
+                    360.0
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_fu",
+        "lectures": [
+            {
+                "id": "kana_k_fu_1",
+                "fr": "FU",
+                "jp": "フ",
+                "angles": [
+                    277.06
+                ]
+            },
+            {
+                "id": "kana_k_fu_2",
+                "fr": "BU",
+                "jp": "ブ",
+                "angles": [
+                    277.06,
+                    308.15,
+                    312.52
+                ]
+            },
+            {
+                "id": "kana_k_fu_3",
+                "fr": "PU",
+                "jp": "プ",
+                "angles": [
+                    277.06,
+                    360.0
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_he",
+        "lectures": [
+            {
+                "id": "kana_k_he_1",
+                "fr": "HE",
+                "jp": "ヘ",
+                "angles": [
+                    340.92
+                ]
+            },
+            {
+                "id": "kana_k_he_2",
+                "fr": "BE",
+                "jp": "ベ",
+                "angles": [
+                    340.81,
+                    312.36,
+                    318.52
+                ]
+            },
+            {
+                "id": "kana_k_he_3",
+                "fr": "PE",
+                "jp": "ペ",
+                "angles": [
+                    341.24,
+                    360.0
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ho",
+        "lectures": [
+            {
+                "id": "kana_k_ho_1",
+                "fr": "HO",
+                "jp": "ホ",
+                "angles": [
+                    1.75,
+                    262.97,
+                    253.74,
+                    303.77
+                ]
+            },
+            {
+                "id": "kana_k_ho_2",
+                "fr": "BO",
+                "jp": "ボ",
+                "angles": [
+                    1.75,
+                    262.97,
+                    253.74,
+                    303.74,
+                    312.36,
+                    318.52
+                ]
+            },
+            {
+                "id": "kana_k_ho_3",
+                "fr": "PO",
+                "jp": "ポ",
+                "angles": [
+                    1.75,
+                    262.97,
+                    253.74,
+                    303.74,
+                    360.0
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ma",
+        "lectures": [
+            {
+                "id": "kana_k_ma_1",
+                "fr": "MA",
+                "jp": "マ",
+                "angles": [
+                    314.07,
+                    307.65
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_mi",
+        "lectures": [
+            {
+                "id": "kana_k_mi_1",
+                "fr": "MI",
+                "jp": "ミ",
+                "angles": [
+                    337.45,
+                    337.09,
+                    334.36
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_mu",
+        "lectures": [
+            {
+                "id": "kana_k_mu_1",
+                "fr": "MU",
+                "jp": "ム",
+                "angles": [
+                    299.15,
+                    302.23
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_me",
+        "lectures": [
+            {
+                "id": "kana_k_me_1",
+                "fr": "ME",
+                "jp": "メ",
+                "angles": [
+                    236.96,
+                    321.27
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_mo",
+        "lectures": [
+            {
+                "id": "kana_k_mo_1",
+                "fr": "MO",
+                "jp": "モ",
+                "angles": [
+                    3.24,
+                    3.58,
+                    305.45
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ya",
+        "lectures": [
+            {
+                "id": "kana_k_ya_1",
+                "fr": "YA",
+                "jp": "ヤ",
+                "angles": [
+                    350.41,
+                    284.41
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_yu",
+        "lectures": [
+            {
+                "id": "kana_k_yu_1",
+                "fr": "YU",
+                "jp": "ユ",
+                "angles": [
+                    313.85,
+                    0.97
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_yo",
+        "lectures": [
+            {
+                "id": "kana_k_yo_1",
+                "fr": "YO",
+                "jp": "ヨ",
+                "angles": [
+                    316.95,
+                    1.19,
+                    1.01
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ra",
+        "lectures": [
+            {
+                "id": "kana_k_ra_1",
+                "fr": "RA",
+                "jp": "ラ",
+                "angles": [
+                    1.57,
+                    282.62
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ri",
+        "lectures": [
+            {
+                "id": "kana_k_ri_1",
+                "fr": "RI",
+                "jp": "リ",
+                "angles": [
+                    272.34,
+                    256.08
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ru",
+        "lectures": [
+            {
+                "id": "kana_k_ru_1",
+                "fr": "RU",
+                "jp": "ル",
+                "angles": [
+                    253.72,
+                    318.09
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_re",
+        "lectures": [
+            {
+                "id": "kana_k_re_1",
+                "fr": "RE",
+                "jp": "レ",
+                "angles": [
+                    331.53
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_ro",
+        "lectures": [
+            {
+                "id": "kana_k_ro_1",
+                "fr": "RO",
+                "jp": "ロ",
+                "angles": [
+                    277.32,
+                    321.74,
+                    3.28
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_wa",
+        "lectures": [
+            {
+                "id": "kana_k_wa_1",
+                "fr": "WA",
+                "jp": "ワ",
+                "angles": [
+                    278.55,
+                    282.59
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_wo",
+        "lectures": [
+            {
+                "id": "kana_k_wo_1",
+                "fr": "WO",
+                "jp": "ヲ",
+                "angles": [
+                    3.43,
+                    4.37,
+                    236.99
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    },
+    {
+        "main_id": "kana_k_n",
+        "lectures": [
+            {
+                "id": "kana_k_n_1",
+                "fr": "N",
+                "jp": "ン",
+                "angles": [
+                    317.86,
+                    36.04
+                ]
+            }
+        ],
+        "categories": [
+            "katakana"
+        ]
+    }
+]
