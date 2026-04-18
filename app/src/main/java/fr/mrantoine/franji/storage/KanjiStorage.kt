@@ -68,6 +68,10 @@ data class KanjiCache(
 )
 
 object KanjiStorage {
+    private val kanji_data_file_path = "kanji.json"
+    private val kana_data_file_path = "kana.json"
+    private val lottie_data_file_path = "lottie.json"
+
 
 
     // ======================== KANJIS ============================
@@ -78,7 +82,7 @@ object KanjiStorage {
         kanjiId: String
     ): Kanji {
         kanjiByIdCache[kanjiId]?.let { return it }
-        val jsonString = context.assets.open("kanji.json")
+        val jsonString = context.assets.open(kanji_data_file_path)
             .bufferedReader()
             .use { it.readText() }
 
@@ -99,7 +103,7 @@ object KanjiStorage {
 
     fun loadAllKanji(context: Context) {
         if(kanjiByIdCache.isEmpty()) {
-            val jsonString = context.assets.open("kanji.json")
+            val jsonString = context.assets.open(kanji_data_file_path)
                 .bufferedReader()
                 .use { it.readText() }
 
@@ -125,7 +129,7 @@ object KanjiStorage {
     ): Kana {
         kanaByIdCache[kanaId]?.let { return it }
 
-        val jsonString = context.assets.open("kana.json")
+        val jsonString = context.assets.open(kana_data_file_path)
             .bufferedReader()
             .use { it.readText() }
 
@@ -149,7 +153,7 @@ object KanjiStorage {
     fun loadAllKana(context: Context) {
         if (kanaByIdCache.isEmpty()) {
 
-            val jsonString = context.assets.open("kana.json")
+            val jsonString = context.assets.open(kana_data_file_path)
                 .bufferedReader()
                 .use { it.readText() }
 
@@ -182,7 +186,7 @@ object KanjiStorage {
         kanjiId: String
     ): String {
         lottieByIdCache[kanjiId]?.let { return it }
-        val jsonString = context.assets.open("lottie.json")
+        val jsonString = context.assets.open(lottie_data_file_path)
             .bufferedReader()
             .use { it.readText() }
 
@@ -203,7 +207,7 @@ object KanjiStorage {
     fun loadAllLotties(context: Context) {
         if (lottieByIdCache.isEmpty()) {
 
-            val jsonString = context.assets.open("lottie.json")
+            val jsonString = context.assets.open(lottie_data_file_path)
                 .bufferedReader()
                 .use { it.readText() }
 

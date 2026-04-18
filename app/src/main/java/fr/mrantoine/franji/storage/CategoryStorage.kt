@@ -17,6 +17,7 @@ data class CategoryCache(
 
 )
 object CategoryStorage {
+    private val data_file_path = "categories.json"
     private val keysCache = mutableMapOf<String, Array<String>>()
     fun getKeys(
         context: Context,
@@ -24,7 +25,7 @@ object CategoryStorage {
     ): Array<String> {
         keysCache[prefix]?.let { return it }
         val jsonString = context.assets
-            .open("categories.json")
+            .open(data_file_path)
             .bufferedReader()
             .use { it.readText() }
 
@@ -50,7 +51,7 @@ object CategoryStorage {
         path: String
     ): Array<String> {
         categoryByPathCache[path]?.let { return it }
-        val jsonString = context.assets.open("categories.json")
+        val jsonString = context.assets.open(data_file_path)
             .bufferedReader()
             .use { it.readText() }
 
@@ -66,7 +67,7 @@ object CategoryStorage {
 
     fun loadAll(context: Context) {
         if(categoryByPathCache.isEmpty()) {
-            val jsonString = context.assets.open("categories.json")
+            val jsonString = context.assets.open(data_file_path)
                 .bufferedReader()
                 .use { it.readText() }
 

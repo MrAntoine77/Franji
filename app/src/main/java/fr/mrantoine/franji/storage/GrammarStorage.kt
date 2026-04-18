@@ -29,13 +29,15 @@ data class GrammarCache(
 )
 
 object GrammarStorage {
+    private val data_file_path = "grammar.json"
+
     private var getGrammarByIdCache = mutableMapOf<String, Grammar>()
     fun getGrammarById(
         context: Context,
         grammarId: String
     ): Grammar {
         getGrammarByIdCache[grammarId]?.let { return it }
-        val jsonString = context.assets.open("grammar.json")
+        val jsonString = context.assets.open(data_file_path)
             .bufferedReader()
             .use { it.readText() }
 
@@ -56,7 +58,7 @@ object GrammarStorage {
 
     fun loadAll(context: Context) {
         if(getGrammarByIdCache.isEmpty()) {
-            val jsonString = context.assets.open("grammar.json")
+            val jsonString = context.assets.open(data_file_path)
                 .bufferedReader()
                 .use { it.readText() }
 

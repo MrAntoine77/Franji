@@ -22,6 +22,8 @@ data class VocabCache(
 )
 
 object VocabStorage {
+    private val data_file_path = "vocab.json"
+
     private var vocabByIdCache = mutableMapOf<String, Vocab>()
 
     fun getVocabById(
@@ -29,7 +31,7 @@ object VocabStorage {
         vocabId: String
     ): Vocab {
         vocabByIdCache[vocabId]?.let { return it }
-        val jsonString = context.assets.open("vocab.json")
+        val jsonString = context.assets.open(data_file_path)
             .bufferedReader()
             .use { it.readText() }
 
@@ -50,7 +52,7 @@ object VocabStorage {
 
     fun loadAll(context: Context) {
         if(vocabByIdCache.isEmpty()) {
-            val jsonString = context.assets.open("vocab.json")
+            val jsonString = context.assets.open(data_file_path)
                 .bufferedReader()
                 .use { it.readText() }
 
