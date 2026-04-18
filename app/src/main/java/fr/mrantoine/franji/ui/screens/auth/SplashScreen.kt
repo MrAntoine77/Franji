@@ -49,7 +49,6 @@ fun SplashScreen(
 
             if (SettingsStorage.isRestCacheOnLaunch()) {
                 MainPageStorage.clearCache(context)
-                UserStorage.clearCache(context)
 
                 CategoryStorage.clearCache(context)
                 KanjiStorage.clearCache(context)
@@ -62,7 +61,6 @@ fun SplashScreen(
             KanjiStorage.loadCache(context)
             VocabStorage.loadCache(context)
             GrammarStorage.loadCache(context)
-            UserStorage.loadCache(context)
 
 
             CategoryStorage.getKeys("")
@@ -76,7 +74,6 @@ fun SplashScreen(
             KanjiStorage.loadAllKanji()
             KanjiStorage.loadAllKana()
             KanjiStorage.loadAllLotties()
-            UserStorage.loadUser()
 
             VocabStorage.loadAllVocab()
             GrammarStorage.loadAllGrammar()
@@ -87,7 +84,6 @@ fun SplashScreen(
 
             MainPageStorage.saveCache(context)
             SettingsStorage.saveCache(context)
-            UserStorage.saveCache(context)
 
             CategoryStorage.saveCache(context)
             KanjiStorage.saveCache(context)
@@ -107,13 +103,7 @@ fun SplashScreen(
         splashMinDelay.join()
         loadingJob.join()
 
-        val route =
-            if (UserStorage.getToken() != null)
-                Screen.HomeAll.route
-            else
-                Screen.Welcome.route
-
-        navController.navigate(route) {
+        navController.navigate(Screen.HomeAll.route) {
             popUpTo(Screen.Splash.route) { inclusive = true }
         }
     }

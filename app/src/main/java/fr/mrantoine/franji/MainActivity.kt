@@ -14,7 +14,6 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavType
 import fr.mrantoine.franji.ui.screens.auth.SplashScreen
-import fr.mrantoine.franji.ui.screens.auth.WelcomeScreen
 import fr.mrantoine.franji.ui.theme.FranjiTheme
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -48,9 +47,6 @@ import fr.mrantoine.franji.ui.screens.main.settings.SettingsScreen
 sealed class Screen(val route: String) {
 
     data object Splash : Screen("splash")
-    data object Welcome : Screen("welcome")
-    data object Register : Screen("register")
-    data object Login : Screen("login")
     data object HomeAll : Screen("home_all")
     data object Settings : Screen("settings")
 
@@ -161,15 +157,6 @@ class MainActivity : ComponentActivity() {
                 ) {
                     composable(Screen.Splash.route) {
                         SplashScreen(navController)
-                    }
-                    composable(Screen.Welcome.route) {
-                        WelcomeScreen(navController)
-                    }
-                    composable(Screen.Register.route) {
-                        RegisterScreen(navController)
-                    }
-                    composable(Screen.Login.route) {
-                        LoginScreen(navController)
                     }
                     composable(Screen.HomeAll.route) {
                         AllScreen(navController)

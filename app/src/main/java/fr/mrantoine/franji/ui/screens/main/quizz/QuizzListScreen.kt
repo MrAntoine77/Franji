@@ -21,8 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
-import fr.mrantoine.franji.storage.UserProgress
-import fr.mrantoine.franji.storage.UserStorage
 import fr.mrantoine.franji.ui.components.ComingSoonBox
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.TopBar
@@ -36,14 +34,12 @@ import java.time.format.DateTimeFormatter
 fun QuizzListScreen(
     navController: NavController
 ) {
-    var userData by remember { mutableStateOf<Map<String, UserProgress>>( emptyMap()) }
     var paths by remember { mutableStateOf<Array<String>>(emptyArray()) }
     var maps by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
 
     LaunchedEffect(Unit) {
         paths = CategoryStorage.getKeys()
         maps = buildMap(paths)
-        userData = UserStorage.getUserData()
     }
 
     val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
@@ -77,8 +73,7 @@ fun QuizzListScreen(
                 treeData = maps,
                 onClick = {arg ->
                     //navController.navigate(Screen.KanjiCategory.route(arg))
-                },
-                progressMap = userData
+                }
             )
         }
     }

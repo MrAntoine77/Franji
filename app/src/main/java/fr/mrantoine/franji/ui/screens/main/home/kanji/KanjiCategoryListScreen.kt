@@ -13,6 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
@@ -27,9 +28,10 @@ fun KanjiCategoryListScreen(
 ) {
     var paths by remember { mutableStateOf<Array<String>>(emptyArray()) }
     var maps by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
-    
+    val context = LocalContext.current
+
     LaunchedEffect(Unit) {
-        paths = CategoryStorage.getKeys("Kanji")
+        paths = CategoryStorage.getKeys(context,"Kanji")
         maps = buildMap(paths)
     }
 

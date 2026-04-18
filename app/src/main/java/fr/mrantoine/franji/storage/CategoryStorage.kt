@@ -11,7 +11,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.io.File
 import kotlin.collections.mutableMapOf
-
+import org.json.JSONObject
 
 @Serializable
 data class CategoryCache(
@@ -39,6 +39,31 @@ object CategoryStorage {
         return result
     }
 
+    fun getKeys(
+        context: Context,
+        prefix: String
+    ): Array<String> {
+
+        val jsonString = context.assets
+            .open("categories.json")
+            .bufferedReader()
+            .use { it.readText() }
+
+        val jsonObject = JSONObject(jsonString)
+
+        return jsonObject.keys()
+            .asSequence()
+            .toList()
+            .filter { it.startsWith(prefix) }
+            .toTypedArray()
+    }
+
+
+
+
+
+
+
     private val categoryByPathCache = mutableMapOf<String, Array<String>>()
     suspend fun getCategoryByPath(path: String): Array<String> {
         categoryByPathCache[path]?.let {
@@ -55,6 +80,10 @@ object CategoryStorage {
         categoryByPathCache[path] = result
         return result
     }
+
+
+
+
 
 
     suspend fun loadAll() {
