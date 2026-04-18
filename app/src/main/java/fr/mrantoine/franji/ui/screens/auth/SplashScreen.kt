@@ -36,7 +36,6 @@ fun SplashScreen(
 
     LaunchedEffect(Unit) {
 
-        // laisse 1-2 frames pour que le Lottie démarre proprement
         delay(100)
 
         val splashMinDelay = launch {
@@ -49,7 +48,6 @@ fun SplashScreen(
 
             if (SettingsStorage.isRestCacheOnLaunch()) {
                 MainPageStorage.clearCache(context)
-
                 CategoryStorage.clearCache(context)
                 KanjiStorage.clearCache(context)
                 VocabStorage.clearCache(context)
@@ -62,37 +60,21 @@ fun SplashScreen(
             VocabStorage.loadCache(context)
             GrammarStorage.loadCache(context)
 
-
-            CategoryStorage.getKeys("")
-            CategoryStorage.getKeys("Kanji")
-            CategoryStorage.getKeys("Vocab")
-            CategoryStorage.getKeys("Grammar")
-
-
-            CategoryStorage.loadAll()
-
-            KanjiStorage.loadAllKanji()
-            KanjiStorage.loadAllKana()
-            KanjiStorage.loadAllLotties()
-
-            VocabStorage.loadAllVocab()
-            GrammarStorage.loadAllGrammar()
-
-            MainPageStorage.getMainPage("Kanji")
-            MainPageStorage.getMainPage("Vocabulaire")
-            MainPageStorage.getMainPage("Grammaire")
+            CategoryStorage.loadAll(context)
+            KanjiStorage.loadAll(context)
+            VocabStorage.loadAll(context)
+            GrammarStorage.loadAll(context)
+            MainPageStorage.loadAll(context)
 
             MainPageStorage.saveCache(context)
             SettingsStorage.saveCache(context)
-
             CategoryStorage.saveCache(context)
             KanjiStorage.saveCache(context)
             VocabStorage.saveCache(context)
             GrammarStorage.saveCache(context)
 
+
             TtsStorage.init(context)
-
-
         }
 
         launch {

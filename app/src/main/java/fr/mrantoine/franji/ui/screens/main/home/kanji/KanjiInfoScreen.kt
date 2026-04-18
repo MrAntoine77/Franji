@@ -23,6 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -62,12 +63,13 @@ fun KanjiInfoScreen(
         val scrollState = rememberLazyListState()
         var kanji by remember { mutableStateOf(Kanji()) }
         var lottie by remember { mutableStateOf("{}") }
+        val context = LocalContext.current
 
 
         LaunchedEffect(Unit) {
-            kanji = KanjiStorage.getKanjiById(kanjiId)
+            kanji = KanjiStorage.getKanjiById(context, kanjiId)
             kanji.let {
-                lottie = KanjiStorage.getLottieById(it.id)
+                lottie = KanjiStorage.getLottieById(context,it.id)
             }
         }
         LazyColumn(
@@ -102,9 +104,9 @@ fun KanjiInfoScreen(
                 kanji.vocab.forEach { vocabId ->
                     item {
                         var vocab by remember { mutableStateOf(Vocab()) }
-
+                        val context = LocalContext.current
                         LaunchedEffect(Unit) {
-                            vocab = VocabStorage.getVocabById(vocabId)
+                            vocab = VocabStorage.getVocabById(context, vocabId)
                         }
 
                         Column(

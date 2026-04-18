@@ -25,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -63,9 +64,10 @@ fun GrammarInfoScreen(
     ) { innerPadding ->
         val scrollState = rememberLazyListState()
         var grammar by remember { mutableStateOf(Grammar()) }
+        val context = LocalContext.current
 
         LaunchedEffect(Unit) {
-            grammar = GrammarStorage.getGrammarById(grammarId)
+            grammar = GrammarStorage.getGrammarById(context, grammarId)
         }
 
         LazyColumn(

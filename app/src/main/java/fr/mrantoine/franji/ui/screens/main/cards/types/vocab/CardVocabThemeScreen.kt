@@ -46,9 +46,10 @@ fun CardVocabThemeScreen(
 
     var vocab by remember { mutableStateOf(Vocab()) }
     val scrollState = rememberLazyListState()
+    val context = LocalContext.current
 
     LaunchedEffect(cardId) {
-        vocab = VocabStorage.getVocabById(cardId)
+        vocab = VocabStorage.getVocabById(context,cardId)
         scrollState.scrollToItem(0)
     }
 

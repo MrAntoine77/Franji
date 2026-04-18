@@ -25,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -60,11 +61,12 @@ fun GrammarCategoryScreen(
 
         var grammar_list_id by remember { mutableStateOf(emptyArray<String>()) }
         val grammar_list = remember { mutableStateListOf<Grammar>() }
+        val context = LocalContext.current
 
         LaunchedEffect(Unit) {
-            grammar_list_id = CategoryStorage.getCategoryByPath(categoryPath)
+            grammar_list_id = CategoryStorage.getCategoryByPath(context, categoryPath)
             grammar_list_id.forEach { grammarId ->
-                grammar_list.add(GrammarStorage.getGrammarById(grammarId))
+                grammar_list.add(GrammarStorage.getGrammarById(context, grammarId))
             }
         }
 

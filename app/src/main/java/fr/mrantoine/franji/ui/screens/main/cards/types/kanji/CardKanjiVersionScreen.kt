@@ -23,6 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -45,14 +46,15 @@ fun CardKanjiVersionScreen(
     var lottie by remember { mutableStateOf<String>("{}") }
     var kanji by remember { mutableStateOf(Kanji()) }
     val scrollState = rememberLazyListState()
+    val context = LocalContext.current
 
     val hint = kanji.kanji
     val jp = if (SettingsStorage.isRomaji()) kanji.main_lecture.romaji else kanji.main_lecture.kana
     val fr: String =  kanji.main_lecture.fr
 
     LaunchedEffect(cardId) {
-        lottie = KanjiStorage.getLottieById(cardId)
-        kanji = KanjiStorage.getKanjiById(cardId)
+        lottie = KanjiStorage.getLottieById(context, cardId)
+        kanji = KanjiStorage.getKanjiById(context, cardId)
         scrollState.scrollToItem(0)
     }
 

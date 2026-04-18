@@ -24,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -64,9 +65,10 @@ fun VocabInfoScreen(
     ) { innerPadding ->
         val scrollState = rememberLazyListState()
         var vocab by remember { mutableStateOf(Vocab()) }
+        val context = LocalContext.current
 
         LaunchedEffect(Unit) {
-            vocab = VocabStorage.getVocabById(vocabId)
+            vocab = VocabStorage.getVocabById(context, vocabId)
         }
 
         LazyColumn(
@@ -122,7 +124,7 @@ fun VocabInfoScreen(
                             var kanji by remember { mutableStateOf(Kanji()) }
 
                             LaunchedEffect(Unit) {
-                                kanji = KanjiStorage.getKanjiById(kanjiId)
+                                kanji = KanjiStorage.getKanjiById(context, kanjiId)
                             }
 
                             Row(

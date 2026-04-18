@@ -48,13 +48,15 @@ fun CardKanjiThemeScreen(
     var lottie by remember { mutableStateOf("{}") }
     var kanji by remember { mutableStateOf(Kanji()) }
     val scrollState = rememberLazyListState()
+    val context = LocalContext.current
 
     val hint = kanji.main_lecture.fr
     val jp = if (SettingsStorage.isRomaji()) kanji.main_lecture.romaji else kanji.main_lecture.kana
 
+
     LaunchedEffect(cardId) {
-        lottie = KanjiStorage.getLottieById(cardId)
-        kanji = KanjiStorage.getKanjiById(cardId)
+        lottie = KanjiStorage.getLottieById(context, cardId)
+        kanji = KanjiStorage.getKanjiById(context, cardId)
         scrollState.scrollToItem(0)
     }
 

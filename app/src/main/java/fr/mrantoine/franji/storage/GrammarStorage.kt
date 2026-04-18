@@ -1,10 +1,6 @@
 package fr.mrantoine.franji.storage
 
-import ADDRESS
 import android.content.Context
-import client
-import io.ktor.client.call.body
-import io.ktor.client.request.get
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -34,29 +30,43 @@ data class GrammarCache(
 
 object GrammarStorage {
     private var getGrammarByIdCache = mutableMapOf<String, Grammar>()
-    suspend fun getGrammarById(grammarId: String): Grammar {
+    fun getGrammarById(
+        context: Context,
+        grammarId: String
+    ): Grammar {
         getGrammarByIdCache[grammarId]?.let { return it }
-        val result = try {
-            client.get("$ADDRESS/grammar/id") {
-                url { parameters.append("grammar_id", grammarId) }
-            }.body()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Grammar()
+        val jsonString = context.assets.open("grammar.json")
+            .bufferedReader()
+            .use { it.readText() }
+
+        val json = Json {
+            ignoreUnknownKeys = true
         }
-        getGrammarByIdCache[grammarId] = result
-        return result
+
+        val list: List<Grammar> =
+            json.decodeFromString(jsonString)
+
+        val grammar = list.firstOrNull { it.id == grammarId } ?: Grammar()
+        if(grammar != Grammar()) {
+            getGrammarByIdCache[grammarId] = grammar
+        }
+        return grammar
     }
 
-    suspend fun loadAllGrammar()  {
+
+    fun loadAll(context: Context) {
         if(getGrammarByIdCache.isEmpty()) {
-            val result = try {
-                client.get("$ADDRESS/grammar").body()
-            } catch (e: Exception) {
-                e.printStackTrace()
-                emptyList<Grammar>()
+            val jsonString = context.assets.open("grammar.json")
+                .bufferedReader()
+                .use { it.readText() }
+
+            val json = Json {
+                ignoreUnknownKeys = true
             }
-            result.forEach { grammar ->
+
+            val grammars: List<Grammar>  = json.decodeFromString(jsonString)
+
+            grammars.forEach { grammar ->
                 getGrammarByIdCache[grammar.id] = grammar
             }
         }

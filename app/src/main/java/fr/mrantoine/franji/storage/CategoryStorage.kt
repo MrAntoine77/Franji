@@ -1,11 +1,6 @@
 package fr.mrantoine.franji.storage
 
-import ADDRESS
 import android.content.Context
-import client
-
-import io.ktor.client.call.body
-import io.ktor.client.request.get
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -23,27 +18,11 @@ data class CategoryCache(
 )
 object CategoryStorage {
     private val keysCache = mutableMapOf<String, Array<String>>()
-    suspend fun getKeys(prefix: String = ""): Array<String> {
-        keysCache[prefix]?.let {
-            return it
-        }
-
-        val result = try {
-            client.get("$ADDRESS/categories/keys")
-            { url { parameters.append("prefix", prefix) } }.body<Array<String>>()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emptyArray()
-        }
-        keysCache[prefix] = result
-        return result
-    }
-
     fun getKeys(
         context: Context,
-        prefix: String
+        prefix: String = ""
     ): Array<String> {
-
+        keysCache[prefix]?.let { return it }
         val jsonString = context.assets
             .open("categories.json")
             .bufferedReader()
@@ -51,49 +30,57 @@ object CategoryStorage {
 
         val jsonObject = JSONObject(jsonString)
 
-        return jsonObject.keys()
+
+        val keys = jsonObject.keys()
             .asSequence()
-            .toList()
             .filter { it.startsWith(prefix) }
+            .toList()
             .toTypedArray()
+
+        if (keys.isNotEmpty()) {
+            keysCache[prefix] = keys
+            return keysCache[prefix]!!
+        }
+        return emptyArray()
     }
-
-
-
-
-
-
 
     private val categoryByPathCache = mutableMapOf<String, Array<String>>()
-    suspend fun getCategoryByPath(path: String): Array<String> {
-        categoryByPathCache[path]?.let {
-            return it
-        }
+    fun getCategoryByPath(
+        context: Context,
+        path: String
+    ): Array<String> {
+        categoryByPathCache[path]?.let { return it }
+        val jsonString = context.assets.open("categories.json")
+            .bufferedReader()
+            .use { it.readText() }
 
-        val result = try {
-            client.get("$ADDRESS/categories/path")
-            { url { parameters.append("path", path) } }.body<Array<String>>()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emptyArray()
+        val map: Map<String, List<String>> =
+            Json.decodeFromString(jsonString)
+
+        map[path]?.let {
+            categoryByPathCache[path] = it.toTypedArray()
+            return categoryByPathCache[path]!!
         }
-        categoryByPathCache[path] = result
-        return result
+        return emptyArray()
     }
 
-
-
-
-
-
-    suspend fun loadAll() {
+    fun loadAll(context: Context) {
         if(categoryByPathCache.isEmpty()) {
-            val result = try {
-                client.get("$ADDRESS/categories").body<Map<String, Array<String>>>()
-            } catch (e: Exception) {
-                e.printStackTrace()
-                emptyMap()
-            }
+            val jsonString = context.assets.open("categories.json")
+                .bufferedReader()
+                .use { it.readText() }
+
+            val map: Map<String, List<String>> =
+                Json.decodeFromString(jsonString)
+
+            val result: Map<String, Array<String>> =
+                map.mapValues { it.value.toTypedArray() }
+
+            getKeys(context)
+            getKeys(context, "Kanji")
+            getKeys(context, "Grammar")
+            getKeys(context, "Kana")
+            getKeys(context, "Vocab")
             result.forEach { (key, value) ->
                 categoryByPathCache[key] = value
             }

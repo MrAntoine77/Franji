@@ -50,9 +50,10 @@ fun CardGrammarThemeScreen(
     var grammar by remember { mutableStateOf(Grammar()) }
     var grammarExample by remember { mutableStateOf(GrammarItem()) }
     val scrollState = rememberLazyListState()
+    val context = LocalContext.current
 
     LaunchedEffect(cardId) {
-        grammar = GrammarStorage.getGrammarById(cardId)
+        grammar = GrammarStorage.getGrammarById(context, cardId)
         grammarExample = grammar.examples.random()
         scrollState.scrollToItem(0)
 

@@ -76,11 +76,12 @@ fun AllScreen(
         var kanjiPages by remember { mutableStateOf(MainPage()) }
         var vocabPages by remember { mutableStateOf(MainPage()) }
         var grammarPages by remember { mutableStateOf(MainPage()) }
+        val context = LocalContext.current
 
         LaunchedEffect(Unit) {
-            kanjiPages = MainPageStorage.getMainPage("Kanji")
-            vocabPages = MainPageStorage.getMainPage("Vocabulaire")
-            grammarPages = MainPageStorage.getMainPage("Grammaire")
+            kanjiPages = MainPageStorage.getMainPage(context, "Kanji")
+            vocabPages = MainPageStorage.getMainPage(context,"Vocabulaire")
+            grammarPages = MainPageStorage.getMainPage(context,"Grammaire")
         }
 
         LazyColumn(

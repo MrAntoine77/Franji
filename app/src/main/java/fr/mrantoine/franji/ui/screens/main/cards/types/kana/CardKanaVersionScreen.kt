@@ -23,6 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -52,11 +53,12 @@ fun CardKanaVersionScreen(
     val scrollState = rememberLazyListState()
 
     var kanaExample by remember { mutableStateOf(KanaElement()) }
+    val context = LocalContext.current
 
     LaunchedEffect(cardId) {
-        kana = KanjiStorage.getKanaById(cardId)
+        kana = KanjiStorage.getKanaById(context, cardId)
         kanaExample = kana.lectures[0]
-        lottie = KanjiStorage.getLottieById(kanaExample.id)
+        lottie = KanjiStorage.getLottieById(context, kanaExample.id)
         scrollState.scrollToItem(0)
     }
 

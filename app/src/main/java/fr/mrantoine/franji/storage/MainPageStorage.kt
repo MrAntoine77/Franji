@@ -1,10 +1,6 @@
 package fr.mrantoine.franji.storage
 
-import ADDRESS
 import android.content.Context
-import client
-import io.ktor.client.call.body
-import io.ktor.client.request.get
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -33,21 +29,53 @@ data class MainPageCache(
 object MainPageStorage {
     private var getMainPageCache = mutableMapOf<String, MainPage>()
 
-    suspend fun getMainPage(path: String): MainPage {
+
+    fun getMainPage(context: Context, path: String): MainPage {
         getMainPageCache[path]?.let { return it }
 
-        val result = try {
-            client.get("$ADDRESS/main_page/$path").body()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            MainPage()
+        val jsonString = context.assets.open("main_page.json")
+            .bufferedReader()
+            .use { it.readText() }
+
+        val json = Json {
+            ignoreUnknownKeys = true
         }
 
-        getMainPageCache[path] = result
-        return result
+        val map: Map<String, MainPage> =
+            json.decodeFromString(jsonString)
+
+        val page = map[path] ?: MainPage()
+
+        if (page != MainPage()) {
+            getMainPageCache[path] = page
+        }
+
+        return page
     }
 
-    private val cache_file_path = "main_page.json"
+
+    fun loadAll(context: Context) {
+        if (getMainPageCache.isEmpty()) {
+
+            val jsonString = context.assets.open("main_page.json")
+                .bufferedReader()
+                .use { it.readText() }
+
+            val json = Json {
+                ignoreUnknownKeys = true
+            }
+
+            val map: Map<String, MainPage> =
+                json.decodeFromString(jsonString)
+
+            map.forEach { (key, page) ->
+                getMainPageCache[key] = page
+            }
+        }
+    }
+
+
+    private val cache_file_path = "main_page_cache.json"
 
     fun clearCache(context: Context) {
         getMainPageCache.clear()

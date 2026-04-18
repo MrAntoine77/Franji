@@ -23,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
@@ -57,11 +58,12 @@ fun KanjiCategoryScreen(
 
         var kanji_list_id by remember { mutableStateOf(emptyArray<String>()) }
         val kanji_list = remember { mutableStateListOf<Kanji>() }
+        val context = LocalContext.current
 
         LaunchedEffect(Unit) {
-            kanji_list_id = CategoryStorage.getCategoryByPath(categoryPath)
+            kanji_list_id = CategoryStorage.getCategoryByPath(context, categoryPath)
             kanji_list_id.forEach { kanjiId ->
-                kanji_list.add(KanjiStorage.getKanjiById(kanjiId))
+                kanji_list.add(KanjiStorage.getKanjiById(context, kanjiId))
             }
         }
 

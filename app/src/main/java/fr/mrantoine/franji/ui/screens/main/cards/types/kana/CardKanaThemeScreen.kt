@@ -51,11 +51,12 @@ fun CardKanaThemeScreen(
     var kana by remember { mutableStateOf(Kana()) }
     val scrollState = rememberLazyListState()
     var kanaExample by remember { mutableStateOf(KanaElement()) }
+    val context = LocalContext.current
 
     LaunchedEffect(cardId) {
-        kana = KanjiStorage.getKanaById(cardId)
+        kana = KanjiStorage.getKanaById(context, cardId)
         kanaExample = kana.lectures[0]
-        lottie = KanjiStorage.getLottieById(kanaExample.id)
+        lottie = KanjiStorage.getLottieById(context, kanaExample.id)
         scrollState.scrollToItem(0)
     }
 

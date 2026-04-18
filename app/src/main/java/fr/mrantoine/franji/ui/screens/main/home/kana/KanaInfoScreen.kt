@@ -31,6 +31,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -117,8 +118,9 @@ fun KanaViewer(
                 Spacer(modifier = Modifier.width(48.dp))
             }
         }
+        val context = LocalContext.current
         LaunchedEffect(index) {
-            lottie = KanjiStorage.getLottieById("${kana.main_id}_${index + 1}")
+            lottie = KanjiStorage.getLottieById(context,"${kana.main_id}_${index + 1}")
         }
         key(lottie) {
             Lottie(
@@ -149,9 +151,10 @@ fun KanaInfoScreen(
         }
     ) { innerPadding ->
         var kana by remember { mutableStateOf(Kana()) }
+        val context = LocalContext.current
 
         LaunchedEffect(Unit) {
-            kana = KanjiStorage.getKanaById(kanaId)
+            kana = KanjiStorage.getKanaById(context, kanaId)
         }
 
         KanaViewer(

@@ -23,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
@@ -58,11 +59,12 @@ fun KanaCategoryScreen(
 
         var kana_list_id by remember { mutableStateOf(emptyArray<String>()) }
         val kana_list = remember { mutableStateListOf<Kana>() }
+        val context = LocalContext.current
 
         LaunchedEffect(Unit) {
-            kana_list_id = CategoryStorage.getCategoryByPath(categoryPath)
+            kana_list_id = CategoryStorage.getCategoryByPath(context, categoryPath)
             kana_list_id.forEach { kanaId ->
-                kana_list.add(KanjiStorage.getKanaById(kanaId))
+                kana_list.add(KanjiStorage.getKanaById(context, kanaId))
             }
             val emptySlots = setOf(36, 38, 46, 47, 48)
 

@@ -1,10 +1,6 @@
 package fr.mrantoine.franji.storage
 
-import ADDRESS
 import android.content.Context
-import client
-import io.ktor.client.call.body
-import io.ktor.client.request.get
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -72,35 +68,48 @@ data class KanjiCache(
 )
 
 object KanjiStorage {
-    private var kanjiByIdCache = mutableMapOf<String, Kanji>()
-    private var kanaByIdCache = mutableMapOf<String, Kana>()
 
-    private var lottieByIdCache = mutableMapOf<String, String>()
 
     // ======================== KANJIS ============================
-    suspend fun getKanjiById(kanjiId: String): Kanji {
+
+    private var kanjiByIdCache = mutableMapOf<String, Kanji>()
+    fun getKanjiById(
+        context: Context,
+        kanjiId: String
+    ): Kanji {
         kanjiByIdCache[kanjiId]?.let { return it }
-        val result = try {
-            client.get("$ADDRESS/kanji/id") {
-                url { parameters.append("kanji_id", kanjiId) }
-            }.body()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Kanji()
+        val jsonString = context.assets.open("kanji.json")
+            .bufferedReader()
+            .use { it.readText() }
+
+        val json = Json {
+            ignoreUnknownKeys = true
         }
-        kanjiByIdCache[kanjiId] = result
-        return result
+
+        val list: List<Kanji> =
+            json.decodeFromString(jsonString)
+
+        val kanji = list.firstOrNull { it.id == kanjiId } ?: Kanji()
+        if(kanji != Kanji()) {
+            kanjiByIdCache[kanjiId] = kanji
+        }
+        return kanji
     }
 
-    suspend fun loadAllKanji() {
+
+    fun loadAllKanji(context: Context) {
         if(kanjiByIdCache.isEmpty()) {
-            val result = try {
-                client.get("$ADDRESS/kanji").body()
-            } catch (e: Exception) {
-                e.printStackTrace()
-                emptyList<Kanji>()
+            val jsonString = context.assets.open("kanji.json")
+                .bufferedReader()
+                .use { it.readText() }
+
+            val json = Json {
+                ignoreUnknownKeys = true
             }
-            result.forEach { kanji ->
+
+            val kanjis: List<Kanji>  = json.decodeFromString(jsonString)
+
+            kanjis.forEach { kanji ->
                 kanjiByIdCache[kanji.id] = kanji
             }
         }
@@ -108,67 +117,108 @@ object KanjiStorage {
 
 
     // ======================== KANAS ============================
+    private var kanaByIdCache = mutableMapOf<String, Kana>()
 
-    suspend fun getKanaById(kanaId: String): Kana {
+    fun getKanaById(
+        context: Context,
+        kanaId: String
+    ): Kana {
         kanaByIdCache[kanaId]?.let { return it }
-        val result = try {
-            client.get("$ADDRESS/kana/id") {
-                url { parameters.append("kana_id", kanaId) }
-            }.body()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Kana()
+
+        val jsonString = context.assets.open("kana.json")
+            .bufferedReader()
+            .use { it.readText() }
+
+        val json = Json {
+            ignoreUnknownKeys = true
         }
-        kanaByIdCache[kanaId] = result
-        return result
+
+        val list: List<Kana> =
+            json.decodeFromString(jsonString)
+
+        val kana = list.firstOrNull { it.main_id == kanaId } ?: Kana()
+
+        if (kana != Kana()) {
+            kanaByIdCache[kanaId] = kana
+        }
+
+        return kana
     }
 
 
-    suspend fun loadAllKana() {
-        if(kanaByIdCache.isEmpty()) {
-            val result = try {
-                client.get("$ADDRESS/kana").body()
-            } catch (e: Exception) {
-                e.printStackTrace()
-                emptyList<Kana>()
+    fun loadAllKana(context: Context) {
+        if (kanaByIdCache.isEmpty()) {
+
+            val jsonString = context.assets.open("kana.json")
+                .bufferedReader()
+                .use { it.readText() }
+
+            val json = Json {
+                ignoreUnknownKeys = true
             }
-            result.forEach { kana ->
+
+            val kanaList: List<Kana> =
+                json.decodeFromString(jsonString)
+
+            kanaList.forEach { kana ->
                 kanaByIdCache[kana.main_id] = kana
             }
         }
     }
 
 
-    // ======================== LOTTIES ============================
-
-    suspend fun getLottieById(kanjiId: String): String {
-        lottieByIdCache[kanjiId]?.let { return it }
-
-        val result = try {
-            client.get("$ADDRESS/lottie/id")
-            { url { parameters.append("kanji_id", kanjiId) } }.body()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Lottie()
-        }
-        lottieByIdCache[kanjiId] = result.data
-        return result.data
+    fun loadAll(context: Context) {
+        loadAllKanji(context)
+        loadAllKana(context)
+        loadAllLotties(context)
     }
 
-    suspend fun loadAllLotties() {
-        if(lottieByIdCache.isEmpty()) {
-            val result = try {
-                client.get("$ADDRESS/lottie").body()
-            } catch (e: Exception) {
-                e.printStackTrace()
-                emptyList<Lottie>()
+
+    // ======================== LOTTIES ============================
+    private var lottieByIdCache = mutableMapOf<String, String>()
+
+    fun getLottieById(
+        context: Context,
+        kanjiId: String
+    ): String {
+        lottieByIdCache[kanjiId]?.let { return it }
+        val jsonString = context.assets.open("lottie.json")
+            .bufferedReader()
+            .use { it.readText() }
+
+        val json = Json {
+            ignoreUnknownKeys = true
+        }
+
+        val list: List<Lottie> =
+            json.decodeFromString(jsonString)
+
+        val lottie = list.firstOrNull { it.id == kanjiId }?.data ?: "{}"
+        if(lottie != "{}") {
+            lottieByIdCache[kanjiId] = lottie
+        }
+        return lottie
+    }
+
+    fun loadAllLotties(context: Context) {
+        if (lottieByIdCache.isEmpty()) {
+
+            val jsonString = context.assets.open("lottie.json")
+                .bufferedReader()
+                .use { it.readText() }
+
+            val json = Json {
+                ignoreUnknownKeys = true
             }
-            result.forEach { lottie ->
+
+            val lottieList: List<Lottie> =
+                json.decodeFromString(jsonString)
+
+            lottieList.forEach { lottie ->
                 lottieByIdCache[lottie.id] = lottie.data
             }
         }
     }
-
 
     private val cache_file_path = "kanji_cache.json"
     fun clearCache(context: Context) {

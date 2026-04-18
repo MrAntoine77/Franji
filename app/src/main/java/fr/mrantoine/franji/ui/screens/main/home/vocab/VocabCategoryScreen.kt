@@ -26,6 +26,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -62,11 +63,12 @@ fun VocabCategoryScreen(
 
         var vocab_list_id by remember { mutableStateOf(emptyArray<String>()) }
         val vocab_list = remember { mutableStateListOf<Vocab>() }
+        val context = LocalContext.current
 
         LaunchedEffect(Unit) {
-            vocab_list_id = CategoryStorage.getCategoryByPath(categoryPath)
+            vocab_list_id = CategoryStorage.getCategoryByPath(context, categoryPath)
             vocab_list_id.forEach { vocabId ->
-                vocab_list.add(VocabStorage.getVocabById(vocabId))
+                vocab_list.add(VocabStorage.getVocabById(context, vocabId))
             }
         }
 

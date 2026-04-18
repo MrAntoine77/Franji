@@ -1,10 +1,6 @@
 package fr.mrantoine.franji.storage
 
-import ADDRESS
 import android.content.Context
-import client
-import io.ktor.client.call.body
-import io.ktor.client.request.get
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -26,42 +22,53 @@ data class VocabCache(
 )
 
 object VocabStorage {
-    private var getVocabByIdCache = mutableMapOf<String, Vocab>()
+    private var vocabByIdCache = mutableMapOf<String, Vocab>()
 
+    fun getVocabById(
+        context: Context,
+        vocabId: String
+    ): Vocab {
+        vocabByIdCache[vocabId]?.let { return it }
+        val jsonString = context.assets.open("vocab.json")
+            .bufferedReader()
+            .use { it.readText() }
 
-    suspend fun getVocabById(vocabId: String): Vocab {
-        getVocabByIdCache[vocabId]?.let { return it }
-        val result = try {
-            client.get("$ADDRESS/vocab/id") {
-                url { parameters.append("vocab_id", vocabId) }
-            }.body()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Vocab()
+        val json = Json {
+            ignoreUnknownKeys = true
         }
-        getVocabByIdCache[vocabId] = result
-        return result
-    }
 
-    suspend fun loadAllVocab()  {
-        if(getVocabByIdCache.isEmpty()) {
-            val result = try {
-                client.get("$ADDRESS/vocab").body()
-            } catch (e: Exception) {
-                e.printStackTrace()
-                emptyList<Vocab>()
-            }
-            result.forEach { vocab ->
-                getVocabByIdCache[vocab.id] = vocab
-            }
+        val list: List<Vocab> =
+            json.decodeFromString(jsonString)
+
+        val vocab = list.firstOrNull { it.id == vocabId } ?: Vocab()
+        if(vocab != Vocab()) {
+            vocabByIdCache[vocabId] = vocab
         }
+        return vocab
     }
 
 
+    fun loadAll(context: Context) {
+        if(vocabByIdCache.isEmpty()) {
+            val jsonString = context.assets.open("vocab.json")
+                .bufferedReader()
+                .use { it.readText() }
+
+            val json = Json {
+                ignoreUnknownKeys = true
+            }
+
+            val vocabs: List<Vocab>  = json.decodeFromString(jsonString)
+
+            vocabs.forEach { vocab ->
+                vocabByIdCache[vocab.id] = vocab
+            }
+        }
+    }
 
     private val cache_file_path = "vocab_cache.json"
     fun clearCache(context: Context) {
-        getVocabByIdCache.clear()
+        vocabByIdCache.clear()
 
         val cacheFile = File(context.filesDir, cache_file_path)
         if (cacheFile.exists()) {
@@ -72,7 +79,7 @@ object VocabStorage {
         val cacheFile = File(context.filesDir, cache_file_path)
 
         val serializableCache = VocabCache(
-            vocabById = getVocabByIdCache.toMap()
+            vocabById = vocabByIdCache.toMap()
         )
 
         val jsonString = Json.encodeToString(serializableCache)
@@ -86,8 +93,8 @@ object VocabStorage {
             val jsonString = cacheFile.readText()
             val loadedCache = Json.decodeFromString<VocabCache>(jsonString)
 
-            getVocabByIdCache.clear()
-            getVocabByIdCache.putAll(loadedCache.vocabById)
+            vocabByIdCache.clear()
+            vocabByIdCache.putAll(loadedCache.vocabById)
         } catch (e: Exception) {
             e.printStackTrace()
         }
