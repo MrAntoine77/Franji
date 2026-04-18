@@ -81,7 +81,9 @@ fun LoginScreen(
                                 errorMessage = null
 
                                 if (response.access_token != null) {
-                                    UserStorage.saveToken(context, response.access_token)
+                                    UserStorage.setToken(response.access_token)
+                                    UserStorage.saveCache(context)
+                                    UserStorage.getUserData()
                                 }
 
                                 navController.navigate(Screen.HomeAll.route)

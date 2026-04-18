@@ -29,6 +29,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import fr.mrantoine.franji.storage.UserProgress
+import kotlin.String
+import kotlin.collections.Map
 
 @Composable
 fun TreeNode(
@@ -36,6 +39,7 @@ fun TreeNode(
     isNode: Boolean = true,
     isSelected: Boolean = false,
     level: Int = 0,
+    add: String = ""
 ) {
     val isExpanded = isNode and isSelected
     Row(
@@ -61,8 +65,9 @@ fun TreeNode(
                     Box(modifier = Modifier.size(Dimens.l))
                 }
             }
+            val text = if(isNode) text else "$text - $add%"
             Text(
-                text = text,
+                text = "$text",
                 color = if (isExpanded) MaterialTheme.colorScheme.onBackground else MaterialTheme.colorScheme.secondary,
                 fontWeight = if (isExpanded) FontWeight.SemiBold else FontWeight.Normal,
                 fontSize = 20.sp
@@ -107,8 +112,8 @@ fun Tree(
     level: Int = 0,
     onClick: (arg: String) -> Unit = {},
     onAdd: () -> Unit = {},
-    path: String = ""
-
+    path: String = "" ,
+    progressMap: Map<String, UserProgress> = emptyMap()
 ) {
     treeData.forEach { (key, value) ->
 
@@ -141,12 +146,13 @@ fun Tree(
                     modifier = Modifier
                         .padding(Dimens.s)
                 ) {
-
+                    val progress = if(progressMap.containsKey("$path/$key")) (progressMap["$path/$key"]!!.progress*100).toInt().toString() else ""
                     TreeNode(
                         text = key,
                         isNode = isNode,
                         isSelected = isSelected,
-                        level = level
+                        level = level,
+                        add = progress
                     )
 
                 }
@@ -168,7 +174,8 @@ fun Tree(
                 treeData = value as Map<String, Any>,
                 level = level + 1,
                 onClick = onClick,
-                path = if(level == 0) key else "$path/$key"
+                path = if(level == 0) key else "$path/$key",
+                progressMap = progressMap
             )
         }
     }

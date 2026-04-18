@@ -49,31 +49,34 @@ fun SplashScreen(
 
             if (SettingsStorage.isRestCacheOnLaunch()) {
                 MainPageStorage.clearCache(context)
+                UserStorage.clearCache(context)
+
                 CategoryStorage.clearCache(context)
                 KanjiStorage.clearCache(context)
                 VocabStorage.clearCache(context)
                 GrammarStorage.clearCache(context)
-                UserStorage.removeToken(context)
             }
-
-            TtsStorage.init(context)
 
             MainPageStorage.loadCache(context)
             CategoryStorage.loadCache(context)
             KanjiStorage.loadCache(context)
             VocabStorage.loadCache(context)
             GrammarStorage.loadCache(context)
+            UserStorage.loadCache(context)
+
 
             CategoryStorage.getKeys("")
             CategoryStorage.getKeys("Kanji")
             CategoryStorage.getKeys("Vocab")
             CategoryStorage.getKeys("Grammar")
 
+
             CategoryStorage.loadAll()
 
             KanjiStorage.loadAllKanji()
             KanjiStorage.loadAllKana()
             KanjiStorage.loadAllLotties()
+            UserStorage.loadUser()
 
             VocabStorage.loadAllVocab()
             GrammarStorage.loadAllGrammar()
@@ -84,14 +87,18 @@ fun SplashScreen(
 
             MainPageStorage.saveCache(context)
             SettingsStorage.saveCache(context)
+            UserStorage.saveCache(context)
 
             CategoryStorage.saveCache(context)
             KanjiStorage.saveCache(context)
             VocabStorage.saveCache(context)
             GrammarStorage.saveCache(context)
+
+            TtsStorage.init(context)
+
+
         }
 
-        // loader UI un peu plus tard
         launch {
             delay(2500)
             showLoader = true
@@ -101,10 +108,10 @@ fun SplashScreen(
         loadingJob.join()
 
         val route =
-            if (UserStorage.loadToken(context) != null)
+            if (UserStorage.getToken() != null)
                 Screen.HomeAll.route
             else
-                Screen.HomeAll.route
+                Screen.Welcome.route
 
         navController.navigate(route) {
             popUpTo(Screen.Splash.route) { inclusive = true }
