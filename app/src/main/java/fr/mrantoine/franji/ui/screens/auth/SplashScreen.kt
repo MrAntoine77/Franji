@@ -88,7 +88,7 @@ fun SplashScreen(
         }
 
         launch {
-            delay(2500)
+            delay(3000)
             showLoader = true
         }
 
