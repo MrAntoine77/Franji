@@ -35,6 +35,7 @@ import fr.mrantoine.franji.ui.screens.main.home.kanji.GrammarInfoScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiCategoryListScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiCategoryScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiInfoScreen
+import fr.mrantoine.franji.ui.screens.main.home.kanji.SearchGrammarScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.SearchKanjiScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.SearchVocabScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabCategoryListScreen
@@ -98,6 +99,8 @@ sealed class Screen(val route: String) {
         const val ARG = "grammarId"
         fun route(grammarId: String) = "grammar_info/${Uri.encode(grammarId)}"
     }
+    data object SearchGrammar : Screen("search_grammar")
+
 
     data object CardsList : Screen("cards_list")
     data object CardsRecap : Screen("cards_recap/{cardsPath}") {
@@ -294,6 +297,10 @@ class MainActivity : ComponentActivity() {
 
                         GrammarInfoScreen(navController, grammarId)
                     }
+                    composable(Screen.SearchGrammar.route) {
+                        SearchGrammarScreen(navController)
+                    }
+
 
                     composable(Screen.CardsList.route) {
                         CardsListScreen(navController)

@@ -54,7 +54,7 @@ fun GrammarInfoScreen(
             HomeTopBar(
                 navController = navController,
                 selectedCategoryIndex = 4,
-                redirectRoute = Screen.SearchKanji.route
+                redirectRoute = Screen.SearchGrammar.route
             )
         },
         bottomBar = {

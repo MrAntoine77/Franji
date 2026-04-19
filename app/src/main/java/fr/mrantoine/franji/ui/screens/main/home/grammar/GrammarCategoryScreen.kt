@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
@@ -48,7 +49,7 @@ fun GrammarCategoryScreen(
             HomeTopBar(
                 navController = navController,
                 selectedCategoryIndex = 4,
-                redirectRoute = Screen.SearchKanji.route
+                redirectRoute = Screen.SearchGrammar.route
             )
         },
         bottomBar = {
@@ -75,23 +76,24 @@ fun GrammarCategoryScreen(
             modifier = Modifier
                 .padding(innerPadding)
         ) {
-            var title = categoryPath.uppercase().replace("/", " ")
-            Column(
+            val title = categoryPath.uppercase().replace("/", " ")
+            LazyColumn(
                 modifier = Modifier
-                    .verticalScroll(rememberScrollState())
                     .padding(Dimens.m)
             ) {
-                Text(
-                    text = "- $title -",
-                    fontSize = 20.sp,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = Dimens.m),
-                    textAlign = TextAlign.Center
-                )
+                item {
+                    Text(
+                        text = "- $title -",
+                        fontSize = 20.sp,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = Dimens.m),
+                        textAlign = TextAlign.Center
+                    )
+                }
 
-                Column {
-                    grammar_list.forEach { grammar ->
+                grammar_list.forEach { grammar ->
+                    item {
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -99,8 +101,8 @@ fun GrammarCategoryScreen(
                                     navController.navigate(Screen.GrammarInfo.route(grammar.id))
                                 }
                                 .padding(
-                                    top=Dimens.s,
-                                    bottom=Dimens.s
+                                    top = Dimens.s,
+                                    bottom = Dimens.s
                                 ),
                         ) {
                             Text(

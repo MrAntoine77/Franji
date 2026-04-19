@@ -31,12 +31,12 @@ data class GrammarCache(
 object GrammarStorage {
     private val data_file_path = "grammar.json"
 
-    private var getGrammarByIdCache = mutableMapOf<String, Grammar>()
+    private var grammarByIdCache = mutableMapOf<String, Grammar>()
     fun getGrammarById(
         context: Context,
         grammarId: String
     ): Grammar {
-        getGrammarByIdCache[grammarId]?.let { return it }
+        grammarByIdCache[grammarId]?.let { return it }
         val jsonString = context.assets.open(data_file_path)
             .bufferedReader()
             .use { it.readText() }
@@ -50,14 +50,14 @@ object GrammarStorage {
 
         val grammar = list.firstOrNull { it.id == grammarId } ?: Grammar()
         if(grammar != Grammar()) {
-            getGrammarByIdCache[grammarId] = grammar
+            grammarByIdCache[grammarId] = grammar
         }
         return grammar
     }
 
 
     fun loadAll(context: Context) {
-        if(getGrammarByIdCache.isEmpty()) {
+        if(grammarByIdCache.isEmpty()) {
             val jsonString = context.assets.open(data_file_path)
                 .bufferedReader()
                 .use { it.readText() }
@@ -69,15 +69,59 @@ object GrammarStorage {
             val grammars: List<Grammar>  = json.decodeFromString(jsonString)
 
             grammars.forEach { grammar ->
-                getGrammarByIdCache[grammar.id] = grammar
+                grammarByIdCache[grammar.id] = grammar
             }
         }
+    }
+
+    fun search(text: String): List<Grammar> {
+        if (text.isBlank()) return emptyList()
+
+        val query = text.lowercase()
+
+        fun filterSpecial(text: String): String {
+            return text.filterNot { it in setOf('(', ')', '.', '-', '~', '～') }
+        }
+
+
+        fun startsWithMatch(grammar: Grammar): Boolean {
+            return grammar.title.lowercase().startsWith(query) ||
+                    grammar.subtitle.lowercase().startsWith(query) ||
+                    grammar.desc.lowercase().startsWith(query)
+        }
+
+        fun containsMatch(grammar: Grammar): Boolean {
+            return grammar.title.lowercase().contains(query) ||
+                    grammar.subtitle.lowercase().contains(query) ||
+                    grammar.desc.lowercase().contains(query)
+        }
+
+
+        fun exactMatch(grammar: Grammar, query: String): Boolean {
+            val cleanQuery = filterSpecial(query).lowercase()
+
+            fun words(text: String) =
+                filterSpecial(text)
+                    .split(" ")
+                    .filter { it.isNotBlank() }
+                    .map { it.lowercase() }
+
+            return words(grammar.title).any { it == cleanQuery } ||
+                    words(grammar.subtitle).any { it == cleanQuery }
+        }
+
+        return grammarByIdCache.values
+            .filter { containsMatch(it) }
+            .sortedWith(
+                compareBy<Grammar> { !exactMatch(it, query) }
+                    .thenBy { !startsWithMatch(it) }
+            )
     }
 
 
     private val cache_file_path = "grammar_cache.json"
     fun clearCache(context: Context) {
-        getGrammarByIdCache.clear()
+        grammarByIdCache.clear()
 
         val cacheFile = File(context.filesDir, cache_file_path)
         if (cacheFile.exists()) {
@@ -88,7 +132,7 @@ object GrammarStorage {
         val cacheFile = File(context.filesDir, cache_file_path)
 
         val serializableCache = GrammarCache(
-            grammarById = getGrammarByIdCache.toMap()
+            grammarById = grammarByIdCache.toMap()
         )
 
         val jsonString = Json.encodeToString(serializableCache)
@@ -102,8 +146,8 @@ object GrammarStorage {
             val jsonString = cacheFile.readText()
             val loadedCache = Json.decodeFromString<GrammarCache>(jsonString)
 
-            getGrammarByIdCache.clear()
-            getGrammarByIdCache.putAll(loadedCache.grammarById)
+            grammarByIdCache.clear()
+            grammarByIdCache.putAll(loadedCache.grammarById)
         } catch (e: Exception) {
             e.printStackTrace()
         }
