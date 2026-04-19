@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
+import fr.mrantoine.franji.storage.LottieStorage
 import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
@@ -55,7 +56,7 @@ fun CardKanjiThemeScreen(
 
 
     LaunchedEffect(cardId) {
-        lottie = KanjiStorage.getLottieById(context, cardId)
+        lottie = LottieStorage.getLottieById(context, cardId)
         kanji = KanjiStorage.getKanjiById(context, cardId)
         scrollState.scrollToItem(0)
     }

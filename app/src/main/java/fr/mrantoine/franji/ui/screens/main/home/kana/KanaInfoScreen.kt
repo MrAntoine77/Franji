@@ -38,8 +38,10 @@ import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.storage.Kana
+import fr.mrantoine.franji.storage.KanaStorage
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
+import fr.mrantoine.franji.storage.LottieStorage
 import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.ClickableAnimatedText
 import fr.mrantoine.franji.ui.components.Lottie
@@ -120,7 +122,7 @@ fun KanaViewer(
         }
         val context = LocalContext.current
         LaunchedEffect(index) {
-            lottie = KanjiStorage.getLottieById(context,"${kana.main_id}_${index + 1}")
+            lottie = LottieStorage.getLottieById(context,"${kana.main_id}_${index + 1}")
         }
         key(lottie) {
             Lottie(
@@ -154,7 +156,7 @@ fun KanaInfoScreen(
         val context = LocalContext.current
 
         LaunchedEffect(Unit) {
-            kana = KanjiStorage.getKanaById(context, kanaId)
+            kana = KanaStorage.getKanaById(context, kanaId)
         }
 
         KanaViewer(

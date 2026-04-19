@@ -8,32 +8,26 @@ import java.io.File
 
 
 @Serializable
-data class MainPage(
-    val height: Int = 0,
-    val width: Int = 0,
-    val items: List<MainPageItem> = emptyList()
+data class Lottie(
+    val id: String = "",
+    val data: String = "{}"
 )
 
 @Serializable
-data class MainPageItem(
-    val path: String = "",
-    val img: String = "",
-    val color: String = ""
+data class LottieCache(
+    val lottieById: Map<String, String>
 )
 
-@Serializable
-data class MainPageCache(
-    val mainPage: Map<String, MainPage>,
-)
+object LottieStorage {
+    private val data_file_path = "lottie.json"
 
-object MainPageStorage {
-    private val data_file_path = "main_page.json"
-    private var mainPageCache = mutableMapOf<String, MainPage>()
+    private var lottieByIdCache = mutableMapOf<String, String>()
 
-
-    fun getMainPage(context: Context, path: String): MainPage {
-        mainPageCache[path]?.let { return it }
-
+    fun getLottieById(
+        context: Context,
+        kanjiId: String
+    ): String {
+        lottieByIdCache[kanjiId]?.let { return it }
         val jsonString = context.assets.open(data_file_path)
             .bufferedReader()
             .use { it.readText() }
@@ -42,21 +36,18 @@ object MainPageStorage {
             ignoreUnknownKeys = true
         }
 
-        val map: Map<String, MainPage> =
+        val list: List<Lottie> =
             json.decodeFromString(jsonString)
 
-        val page = map[path] ?: MainPage()
-
-        if (page != MainPage()) {
-            mainPageCache[path] = page
+        val lottie = list.firstOrNull { it.id == kanjiId }?.data ?: "{}"
+        if(lottie != "{}") {
+            lottieByIdCache[kanjiId] = lottie
         }
-
-        return page
+        return lottie
     }
 
-
-    fun loadAll(context: Context) {
-        if (mainPageCache.isEmpty()) {
+    fun loadAllLotties(context: Context) {
+        if (lottieByIdCache.isEmpty()) {
 
             val jsonString = context.assets.open(data_file_path)
                 .bufferedReader()
@@ -66,54 +57,51 @@ object MainPageStorage {
                 ignoreUnknownKeys = true
             }
 
-            val map: Map<String, MainPage> =
+            val lottieList: List<Lottie> =
                 json.decodeFromString(jsonString)
 
-            map.forEach { (key, page) ->
-                mainPageCache[key] = page
+            lottieList.forEach { lottie ->
+                lottieByIdCache[lottie.id] = lottie.data
             }
         }
     }
 
+    fun loadAll(context: Context) {
+        loadAllLotties(context)
+    }
 
-    private val cache_file_path = "main_page_cache.json"
 
+    private val cache_file_path = "lottie_cache.json"
     fun clearCache(context: Context) {
-        mainPageCache.clear()
+        lottieByIdCache.clear()
 
         val cacheFile = File(context.filesDir, cache_file_path)
         if (cacheFile.exists()) {
             cacheFile.delete()
         }
     }
-
-
     fun saveCache(context: Context) {
         val cacheFile = File(context.filesDir, cache_file_path)
 
-        val serializableCache = MainPageCache(
-            mainPage = mainPageCache.toMap()
+        val serializableCache = LottieCache(
+            lottieById = lottieByIdCache.toMap()
         )
 
         val jsonString = Json.encodeToString(serializableCache)
         cacheFile.writeText(jsonString)
     }
-
     fun loadCache(context: Context) {
         val cacheFile = File(context.filesDir, cache_file_path)
         if (!cacheFile.exists()) return
 
         try {
             val jsonString = cacheFile.readText()
-            val loadedCache = Json.decodeFromString<MainPageCache>(jsonString)
+            val loadedCache = Json.decodeFromString<LottieCache>(jsonString)
 
-            mainPageCache.clear()
-            mainPageCache.putAll(loadedCache.mainPage)
+            lottieByIdCache.clear()
+            lottieByIdCache.putAll(loadedCache.lottieById)
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
-
-
 }
-

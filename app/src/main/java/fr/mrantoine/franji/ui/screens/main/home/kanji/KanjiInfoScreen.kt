@@ -32,6 +32,7 @@ import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
+import fr.mrantoine.franji.storage.LottieStorage
 import fr.mrantoine.franji.storage.Vocab
 import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.HighlightedText
@@ -69,7 +70,7 @@ fun KanjiInfoScreen(
         LaunchedEffect(Unit) {
             kanji = KanjiStorage.getKanjiById(context, kanjiId)
             kanji.let {
-                lottie = KanjiStorage.getLottieById(context,it.id)
+                lottie = LottieStorage.getLottieById(context,it.id)
             }
         }
         LazyColumn(

@@ -22,6 +22,7 @@ import fr.mrantoine.franji.ui.theme.Dimens
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.system.measureTimeMillis
 
 @Composable
 fun SplashScreen(
@@ -47,32 +48,41 @@ fun SplashScreen(
             SettingsStorage.loadCache(context)
 
             if (SettingsStorage.isRestCacheOnLaunch()) {
-                MainPageStorage.clearCache(context)
                 CategoryStorage.clearCache(context)
                 KanjiStorage.clearCache(context)
+                KanaStorage.clearCache(context)
+                LottieStorage.clearCache(context)
                 VocabStorage.clearCache(context)
                 GrammarStorage.clearCache(context)
+                MainPageStorage.clearCache(context)
+
+                CategoryStorage.loadAll(context)
+                KanjiStorage.loadAll(context)
+                KanaStorage.loadAll(context)
+                LottieStorage.loadAll(context)
+                VocabStorage.loadAll(context)
+                GrammarStorage.loadAll(context)
+                MainPageStorage.loadAll(context)
+
+                CategoryStorage.saveCache(context)
+                KanjiStorage.saveCache(context)
+                KanaStorage.saveCache(context)
+                LottieStorage.saveCache(context)
+                VocabStorage.saveCache(context)
+                GrammarStorage.saveCache(context)
+                MainPageStorage.saveCache(context)
+
             }
+            else {
+                CategoryStorage.loadCache(context)
+                KanjiStorage.loadCache(context)
+                KanaStorage.loadCache(context)
+                LottieStorage.loadCache(context)
+                VocabStorage.loadCache(context)
+                GrammarStorage.loadCache(context)
+                MainPageStorage.loadCache(context)
 
-            MainPageStorage.loadCache(context)
-            CategoryStorage.loadCache(context)
-            KanjiStorage.loadCache(context)
-            VocabStorage.loadCache(context)
-            GrammarStorage.loadCache(context)
-
-            CategoryStorage.loadAll(context)
-            KanjiStorage.loadAll(context)
-            VocabStorage.loadAll(context)
-            GrammarStorage.loadAll(context)
-            MainPageStorage.loadAll(context)
-
-            MainPageStorage.saveCache(context)
-            SettingsStorage.saveCache(context)
-            CategoryStorage.saveCache(context)
-            KanjiStorage.saveCache(context)
-            VocabStorage.saveCache(context)
-            GrammarStorage.saveCache(context)
-
+            }
 
             TtsStorage.init(context)
         }

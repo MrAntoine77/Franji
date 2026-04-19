@@ -31,6 +31,7 @@ import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.storage.Kana
+import fr.mrantoine.franji.storage.KanaStorage
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
@@ -64,7 +65,7 @@ fun KanaCategoryScreen(
         LaunchedEffect(Unit) {
             kana_list_id = CategoryStorage.getCategoryByPath(context, categoryPath)
             kana_list_id.forEach { kanaId ->
-                kana_list.add(KanjiStorage.getKanaById(context, kanaId))
+                kana_list.add(KanaStorage.getKanaById(context, kanaId))
             }
             val emptySlots = setOf(36, 38, 46, 47, 48)
 

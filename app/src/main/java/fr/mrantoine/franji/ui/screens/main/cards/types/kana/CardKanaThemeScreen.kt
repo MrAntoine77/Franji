@@ -29,8 +29,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.storage.Kana
 import fr.mrantoine.franji.storage.KanaElement
+import fr.mrantoine.franji.storage.KanaStorage
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
+import fr.mrantoine.franji.storage.LottieStorage
 import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
@@ -54,9 +56,9 @@ fun CardKanaThemeScreen(
     val context = LocalContext.current
 
     LaunchedEffect(cardId) {
-        kana = KanjiStorage.getKanaById(context, cardId)
+        kana = KanaStorage.getKanaById(context, cardId)
         kanaExample = kana.lectures[0]
-        lottie = KanjiStorage.getLottieById(context, kanaExample.id)
+        lottie = LottieStorage.getLottieById(context, kanaExample.id)
         scrollState.scrollToItem(0)
     }
 
