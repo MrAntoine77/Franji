@@ -135,34 +135,18 @@ fun KanaViewer(
 
 @Composable
 fun KanaInfoScreen(
-    navController: NavController,
+    modifier: Modifier,
     kanaId: String
 ) {
-    Scaffold(
-        topBar = {
-            HomeTopBar(
-                navController = navController,
-                selectedCategoryIndex = 1,
-                redirectRoute = Screen.SearchKana.route
-            )
-        },
-        bottomBar = {
-            BottomBar(
-                selectedIndex = 0,
-                navController = navController
-            )
-        }
-    ) { innerPadding ->
-        var kana by remember { mutableStateOf(Kana()) }
-        val context = LocalContext.current
+    var kana by remember { mutableStateOf(Kana()) }
+    val context = LocalContext.current
 
-        LaunchedEffect(Unit) {
-            kana = KanaStorage.getKanaById(context, kanaId)
-        }
-
-        KanaViewer(
-            kana = kana,
-            modifier = Modifier.padding(innerPadding)
-        )
+    LaunchedEffect(Unit) {
+        kana = KanaStorage.getKanaById(context, kanaId)
     }
+
+    KanaViewer(
+        kana = kana,
+        modifier = modifier
+    )
 }

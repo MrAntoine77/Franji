@@ -41,111 +41,91 @@ import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
 fun KanaCategoryScreen(
-    navController: NavController,
-    categoryPath: String
+    modifier: Modifier,
+    categoryPath: String,
+    onClick: (String) -> Unit,
 ) {
-    Scaffold(
-        topBar = {
-            HomeTopBar(
-                navController = navController,
-                selectedCategoryIndex = 1,
-                redirectRoute = Screen.SearchKana.route
-            )
-        },
-        bottomBar = {
-            BottomBar(
-                selectedIndex = 0,
-                navController = navController
-            )
+
+    var kana_list_id by remember { mutableStateOf(emptyArray<String>()) }
+    val kana_list = remember { mutableStateListOf<Kana>() }
+    val context = LocalContext.current
+
+    LaunchedEffect(Unit) {
+        kana_list_id = CategoryStorage.getCategoryByPath(context, categoryPath)
+        kana_list_id.forEach { kanaId ->
+            kana_list.add(KanaStorage.getKanaById(context, kanaId))
         }
-    ) { innerPadding ->
+        val emptySlots = setOf(36, 38, 46, 47, 48)
 
-        var kana_list_id by remember { mutableStateOf(emptyArray<String>()) }
-        val kana_list = remember { mutableStateListOf<Kana>() }
-        val context = LocalContext.current
-
-        LaunchedEffect(Unit) {
-            kana_list_id = CategoryStorage.getCategoryByPath(context, categoryPath)
-            kana_list_id.forEach { kanaId ->
-                kana_list.add(KanaStorage.getKanaById(context, kanaId))
+        emptySlots
+            .forEach { slot ->
+                if(kana_list.size > slot) {
+                    kana_list.add(slot, Kana())
+                }
             }
-            val emptySlots = setOf(36, 38, 46, 47, 48)
+    }
 
-            emptySlots
-                .forEach { slot ->
-                    if(kana_list.size > slot) {
-                        kana_list.add(slot, Kana())
-                    }
-                }
-        }
+    Box(
+        modifier = modifier
+            .padding(Dimens.m)
+    ) {
+        val title = categoryPath.uppercase().replace("/", " ")
+        LazyColumn{
+            item {
+                Text(
+                    text = "- $title -",
+                    fontSize = 20.sp,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = Dimens.m),
+                    textAlign = TextAlign.Center
+                )
 
-        Box(
-            modifier = Modifier
-                .padding(innerPadding)
-                .padding(Dimens.m)
-        ) {
-            val title = categoryPath.uppercase().replace("/", " ")
-            LazyColumn{
+            }
+
+            val columns = 5
+            val rows = (kana_list.size + columns - 1) / columns
+            for (rowIndex in 0 until rows) {
                 item {
-                    Text(
-                        text = "- $title -",
-                        fontSize = 20.sp,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = Dimens.m),
-                        textAlign = TextAlign.Center
-                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        for (colIndex in 0 until columns) {
+                            val index = rowIndex * columns + colIndex
+                            if (index < kana_list.size) {
+                                if (kana_list[index].lectures.isNotEmpty()) {
+                                    val kanaId = kana_list[index].main_id
+                                    val kanaChar = kana_list[index].lectures[0].jp
 
-                }
-
-                val columns = 5
-                val rows = (kana_list.size + columns - 1) / columns
-                for (rowIndex in 0 until rows) {
-                    item {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceEvenly
-                        ) {
-                            for (colIndex in 0 until columns) {
-                                val index = rowIndex * columns + colIndex
-                                if (index < kana_list.size) {
-                                    if (kana_list[index].lectures.isNotEmpty()) {
-                                        val kanaId = kana_list[index].main_id
-                                        val kanaChar = kana_list[index].lectures[0].jp
-
-                                        Box(
-                                            modifier = Modifier
-                                                .aspectRatio(1f)
-                                                .weight(1f)
-                                                .padding(Dimens.s)
-                                                .clickable {
-                                                    navController.navigate(
-                                                        Screen.KanaInfo.route(
-                                                            kanaId
-                                                        )
-                                                    )
-                                                },
-                                            contentAlignment = Alignment.Center
-                                        ) {
-                                            Text(
-                                                text = kanaChar,
-                                                fontSize = 32.sp,
-                                                fontWeight = FontWeight.SemiBold
-                                            )
-                                        }
-                                    } else {
-                                        Box(
-                                            modifier = Modifier
-                                                .aspectRatio(1f)
-                                                .weight(1f)
-                                                .padding(Dimens.s),
-                                            contentAlignment = Alignment.Center
-                                        ) {}
+                                    Box(
+                                        modifier = Modifier
+                                            .aspectRatio(1f)
+                                            .weight(1f)
+                                            .padding(Dimens.s)
+                                            .clickable {
+                                                onClick(kanaId)
+                                            },
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Text(
+                                            text = kanaChar,
+                                            fontSize = 32.sp,
+                                            fontWeight = FontWeight.SemiBold
+                                        )
                                     }
-
                                 } else {
-                                    Spacer(modifier = Modifier.weight(1f))
+                                    Box(
+                                        modifier = Modifier
+                                            .aspectRatio(1f)
+                                            .weight(1f)
+                                            .padding(Dimens.s),
+                                        contentAlignment = Alignment.Center
+                                    ) {}
                                 }
+
+                            } else {
+                                Spacer(modifier = Modifier.weight(1f))
                             }
                         }
                     }

@@ -44,98 +44,81 @@ import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
 fun KanjiInfoScreen(
-    navController: NavController,
+    modifier: Modifier,
     kanjiId: String
 ) {
-    Scaffold(
-        topBar = {
-            HomeTopBar(
-                navController = navController,
-                selectedCategoryIndex = 0,
-                redirectRoute = Screen.SearchKanji.route
-            )
-        },
-        bottomBar = {
-            BottomBar(
-                selectedIndex = 0,
-                navController = navController
+    val scrollState = rememberLazyListState()
+    var kanji by remember { mutableStateOf(Kanji()) }
+    var lottie by remember { mutableStateOf("{}") }
+    val context = LocalContext.current
+
+
+    LaunchedEffect(Unit) {
+        kanji = KanjiStorage.getKanjiById(context, kanjiId)
+        kanji.let {
+            lottie = LottieStorage.getLottieById(context,it.id)
+        }
+    }
+    LazyColumn(
+        modifier = modifier
+            .fillMaxSize(),
+        state = scrollState,
+        verticalArrangement = Arrangement.spacedBy(Dimens.m)
+    ) {
+
+        item {
+            Lottie(
+                data = lottie,
+                speed = 2f
             )
         }
-    ) { innerPadding ->
-        val scrollState = rememberLazyListState()
-        var kanji by remember { mutableStateOf(Kanji()) }
-        var lottie by remember { mutableStateOf("{}") }
-        val context = LocalContext.current
-
-
-        LaunchedEffect(Unit) {
-            kanji = KanjiStorage.getKanjiById(context, kanjiId)
-            kanji.let {
-                lottie = LottieStorage.getLottieById(context,it.id)
-            }
+        item {
+            Lecture(kanji.lectures)
         }
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding),
-            state = scrollState,
-            verticalArrangement = Arrangement.spacedBy(Dimens.m)
-        ) {
 
+        if(kanji.vocab.size > 0)
+        {
             item {
-                Lottie(
-                    data = lottie,
-                    speed = 2f
+                Text(
+                    text = "Utilisations :",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = Dimens.m),
+                    textAlign = TextAlign.Start
                 )
             }
-            item {
-                Lecture(kanji.lectures)
-            }
-
-            if(kanji.vocab.size > 0)
-            {
+            kanji.vocab.forEach { vocabId ->
                 item {
-                    Text(
-                        text = "Utilisations :",
+                    var vocab by remember { mutableStateOf(Vocab()) }
+                    val context = LocalContext.current
+                    LaunchedEffect(Unit) {
+                        vocab = VocabStorage.getVocabById(context, vocabId)
+                    }
+
+                    Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = Dimens.m),
-                        textAlign = TextAlign.Start
-                    )
-                }
-                kanji.vocab.forEach { vocabId ->
-                    item {
-                        var vocab by remember { mutableStateOf(Vocab()) }
-                        val context = LocalContext.current
-                        LaunchedEffect(Unit) {
-                            vocab = VocabStorage.getVocabById(context, vocabId)
-                        }
+                            //.clickable { navController.navigate(Screen.VocabInfo.route(vocabId)) } TODO
+                            .padding(vertical = Dimens.s, horizontal = Dimens.m),
+                        verticalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        HighlightedText(
+                            text = vocab.jp.replace(kanji.kanji, "{${kanji.kanji}}"),
+                            fontSize = 36.sp,
+                            fontWeight = FontWeight.Bold
+                        )
 
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable { navController.navigate(Screen.VocabInfo.route(vocabId)) }
-                                .padding(vertical = Dimens.s, horizontal = Dimens.m),
-                            verticalArrangement = Arrangement.spacedBy(4.dp)
-                        ) {
-                            HighlightedText(
-                                text = vocab.jp.replace(kanji.kanji, "{${kanji.kanji}}"),
-                                fontSize = 36.sp,
-                                fontWeight = FontWeight.Bold
-                            )
-
-                            Text(
-                                text = vocab.fr,
-                                fontSize = 20.sp,
-                                color = MaterialTheme.colorScheme.secondary,
-                            )
-                        }
-
-                        HorizontalDivider(
-                            color = MaterialTheme.colorScheme.tertiary,
-                            thickness = 1.dp
+                        Text(
+                            text = vocab.fr,
+                            fontSize = 20.sp,
+                            color = MaterialTheme.colorScheme.secondary,
                         )
                     }
+
+                    HorizontalDivider(
+                        color = MaterialTheme.colorScheme.tertiary,
+                        thickness = 1.dp
+                    )
                 }
             }
         }

@@ -98,10 +98,10 @@ fun BottomBar(
                     isSelected = index == selectedIndex,
                     onClick = {
                         when(index) {
-                            0 -> navController.navigate(Screen.KanjiCategoryList.route)
+                            0 -> navController.navigate(Screen.KanjiList.route)
                             1 -> navController.navigate(Screen.QuizzList.route)
                             2 -> navController.navigate(Screen.CardsList.route)
-                            else -> navController.navigate(Screen.KanjiCategoryList.route)
+                            else -> navController.navigate(Screen.KanjiList.route)
                         }
                     },
                     modifier = Modifier.weight(1f)

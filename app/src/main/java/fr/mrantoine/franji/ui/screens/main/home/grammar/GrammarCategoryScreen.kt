@@ -1,4 +1,4 @@
-package fr.mrantoine.franji.ui.screens.main.home.kanji
+package fr.mrantoine.franji.ui.screens.main.home.grammar
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -41,83 +41,66 @@ import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
 fun GrammarCategoryScreen(
-    navController: NavController,
-    categoryPath: String
+    modifier: Modifier,
+    categoryPath: String,
+    onClick: (String) -> Unit,
 ) {
-    Scaffold(
-        topBar = {
-            HomeTopBar(
-                navController = navController,
-                selectedCategoryIndex = 3,
-                redirectRoute = Screen.SearchGrammar.route
-            )
-        },
-        bottomBar = {
-            BottomBar(
-                modifier = Modifier.navigationBarsPadding(),
-                selectedIndex = 0,
-                navController = navController
-            )
+    var grammar_list_id by remember { mutableStateOf(emptyArray<String>()) }
+    val grammar_list = remember { mutableStateListOf<Grammar>() }
+    val context = LocalContext.current
+
+    LaunchedEffect(Unit) {
+        grammar_list_id = CategoryStorage.getCategoryByPath(context, categoryPath)
+        grammar_list_id.forEach { grammarId ->
+            grammar_list.add(GrammarStorage.getGrammarById(context, grammarId))
         }
-    ) { innerPadding ->
+    }
 
-        var grammar_list_id by remember { mutableStateOf(emptyArray<String>()) }
-        val grammar_list = remember { mutableStateListOf<Grammar>() }
-        val context = LocalContext.current
-
-        LaunchedEffect(Unit) {
-            grammar_list_id = CategoryStorage.getCategoryByPath(context, categoryPath)
-            grammar_list_id.forEach { grammarId ->
-                grammar_list.add(GrammarStorage.getGrammarById(context, grammarId))
-            }
-        }
-
-        Box(
+    Box(
+        modifier = modifier
+    ) {
+        val title = categoryPath.uppercase().replace("/", " ")
+        LazyColumn(
             modifier = Modifier
-                .padding(innerPadding)
+                .padding(Dimens.m)
         ) {
-            val title = categoryPath.uppercase().replace("/", " ")
-            LazyColumn(
-                modifier = Modifier
-                    .padding(Dimens.m)
-            ) {
+            item {
+                Text(
+                    text = "- $title -",
+                    fontSize = 20.sp,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = Dimens.m),
+                    textAlign = TextAlign.Center
+                )
+            }
+
+            grammar_list.forEach { grammar ->
                 item {
-                    Text(
-                        text = "- $title -",
-                        fontSize = 20.sp,
+                    Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(vertical = Dimens.m),
-                        textAlign = TextAlign.Center
-                    )
-                }
-
-                grammar_list.forEach { grammar ->
-                    item {
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable {
-                                    navController.navigate(Screen.GrammarInfo.route(grammar.id))
-                                }
-                                .padding(
-                                    top = Dimens.s,
-                                    bottom = Dimens.s
-                                ),
-                        ) {
-                            Text(
-                                text = "${grammar.title} - ${grammar.subtitle}",
-                                fontSize = 16.sp,
-                                modifier = Modifier.weight(1f)
-                            )
-                        }
-                        HorizontalDivider(
-                            color = MaterialTheme.colorScheme.tertiary,
-                            thickness = 1.dp
+                            .clickable {
+                                onClick(grammar.id)
+                            }
+                            .padding(
+                                top = Dimens.s,
+                                bottom = Dimens.s
+                            ),
+                    ) {
+                        Text(
+                            text = "${grammar.title} - ${grammar.subtitle}",
+                            fontSize = 16.sp,
+                            modifier = Modifier.weight(1f)
                         )
                     }
+                    HorizontalDivider(
+                        color = MaterialTheme.colorScheme.tertiary,
+                        thickness = 1.dp
+                    )
                 }
             }
+
         }
     }
 }

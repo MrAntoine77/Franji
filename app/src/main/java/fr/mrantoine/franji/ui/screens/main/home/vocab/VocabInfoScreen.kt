@@ -1,4 +1,4 @@
-package fr.mrantoine.franji.ui.screens.main.home.kanji
+package fr.mrantoine.franji.ui.screens.main.home.vocab
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -46,116 +46,104 @@ import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
 fun VocabInfoScreen(
-    navController: NavController,
+    modifier: Modifier,
     vocabId: String
 ) {
-    Scaffold(
-        topBar = {
-            HomeTopBar(
-                navController = navController,
-                selectedCategoryIndex = 2,
-                redirectRoute = Screen.SearchVocab.route
-            )
-        },
-        bottomBar = {
-            BottomBar(
-                selectedIndex = 0,
-                navController = navController
+
+    val scrollState = rememberLazyListState()
+    var vocab by remember { mutableStateOf(Vocab()) }
+    val context = LocalContext.current
+
+    LaunchedEffect(Unit) {
+        vocab = VocabStorage.getVocabById(context, vocabId)
+    }
+
+    LazyColumn(
+        modifier = modifier
+            .fillMaxSize(),
+        state = scrollState,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        item {
+            ClickableAnimatedText(
+                text = vocab.jp,
+                fontSize = 48.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                onClick = { TtsStorage.speak(vocab.lecture.kana) }
+
             )
         }
-    ) { innerPadding ->
-        val scrollState = rememberLazyListState()
-        var vocab by remember { mutableStateOf(Vocab()) }
-        val context = LocalContext.current
-
-        LaunchedEffect(Unit) {
-            vocab = VocabStorage.getVocabById(context, vocabId)
+        item {Spacer(modifier = Modifier.height(Dimens.m))}
+        item {
+            ClickableAnimatedText(
+                text = if(SettingsStorage.isRomaji()) vocab.lecture.romaji else vocab.lecture.kana,
+                fontSize = 16.sp,
+                color = MaterialTheme.colorScheme.secondary,
+                textAlign = TextAlign.Center,
+                onClick = { TtsStorage.speak(vocab.lecture.kana) }
+            )
         }
-
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding),
-            state = scrollState,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            item {
-                ClickableAnimatedText(
-                    text = vocab.jp,
-                    fontSize = 48.sp,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center,
-                    onClick = { TtsStorage.speak(vocab.lecture.kana) }
-
-                )
-            }
-            item {Spacer(modifier = Modifier.height(Dimens.m))}
-            item {
-                ClickableAnimatedText(
-                    text = if(SettingsStorage.isRomaji()) vocab.lecture.romaji else vocab.lecture.kana,
-                    fontSize = 16.sp,
-                    color = MaterialTheme.colorScheme.secondary,
-                    textAlign = TextAlign.Center,
-                    onClick = { TtsStorage.speak(vocab.lecture.kana) }
-                )
-            }
-            item {Spacer(modifier = Modifier.height(Dimens.m))}
+        item {Spacer(modifier = Modifier.height(Dimens.m))}
+        item {
+            Text(
+                text = vocab.fr,
+                fontSize = 20.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(horizontal = Dimens.m)
+            )
+        }
+        item {Spacer(modifier = Modifier.height(Dimens.m))}
+        if(vocab.kanji.isNotEmpty()) {
             item {
                 Text(
-                    text = vocab.fr,
-                    fontSize = 20.sp,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(horizontal = Dimens.m)
+                    text = "Kanjis :",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = Dimens.m),
+                    textAlign = TextAlign.Start
                 )
             }
-            item {Spacer(modifier = Modifier.height(Dimens.m))}
-            if(vocab.kanji.isNotEmpty()) {
+            vocab.kanji.forEach { kanjiId ->
                 item {
-                    Text(
-                        text = "Kanjis :",
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = Dimens.m),
-                        textAlign = TextAlign.Start
-                    )
-                }
-                vocab.kanji.forEach { kanjiId ->
-                    item {
-                        Column {
-                            var kanji by remember { mutableStateOf(Kanji()) }
+                    Column {
+                        var kanji by remember { mutableStateOf(Kanji()) }
 
-                            LaunchedEffect(Unit) {
-                                kanji = KanjiStorage.getKanjiById(context, kanjiId)
-                            }
+                        LaunchedEffect(Unit) {
+                            kanji = KanjiStorage.getKanjiById(context, kanjiId)
+                        }
 
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable { navController.navigate(Screen.KanjiInfo.route(kanjiId)) }
-                                    .padding(vertical = Dimens.s, horizontal = Dimens.m),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.SpaceBetween
-                            ) {
-                                Text(
-                                    text = kanji.kanji,
-                                    fontSize = 36.sp,
-                                    fontWeight = FontWeight.Bold
-                                )
-                                Text(
-                                    text = kanji.lectures.fr.firstOrNull() ?: "",
-                                    fontSize = 20.sp,
-                                    color = MaterialTheme.colorScheme.secondary,
-                                    fontStyle = FontStyle.Italic
-                                )
-                            }
-                            HorizontalDivider(
-                                color = MaterialTheme.colorScheme.tertiary,
-                                thickness = 1.dp
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                //.clickable {
+                                    //navController.navigate(Screen.KanjiInfo.route(kanjiId))
+                                    //TODO
+                                //}
+                                .padding(vertical = Dimens.s, horizontal = Dimens.m),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Text(
+                                text = kanji.kanji,
+                                fontSize = 36.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                text = kanji.lectures.fr.firstOrNull() ?: "",
+                                fontSize = 20.sp,
+                                color = MaterialTheme.colorScheme.secondary,
+                                fontStyle = FontStyle.Italic
                             )
                         }
+                        HorizontalDivider(
+                            color = MaterialTheme.colorScheme.tertiary,
+                            thickness = 1.dp
+                        )
                     }
                 }
             }
         }
+
     }
 }

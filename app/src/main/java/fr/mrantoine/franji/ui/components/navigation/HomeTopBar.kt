@@ -2,6 +2,8 @@ package fr.mrantoine.franji.ui.components.navigation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -14,6 +16,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.input.ImeAction
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 
@@ -21,14 +24,10 @@ import fr.mrantoine.franji.Screen
 fun HomeTopBar(
     navController: NavController,
     selectedCategoryIndex: Int = 0,
-    autoFocusSearch: Boolean = false,
     onSearchChanged: (String) -> Unit = {},
-    redirectRoute: String,
     text: String = ""
 ) {
     var searchText by remember { mutableStateOf(text) }
-    var isFirstFocus by remember { mutableStateOf(true) }
-
     val focusRequester = remember { FocusRequester() }
     val keyboardController = LocalSoftwareKeyboardController.current
 
@@ -41,22 +40,22 @@ fun HomeTopBar(
             value = searchText,
             onValueChange = {
                 searchText = it
-                onSearchChanged(it)
+
             },
+
             modifier = Modifier
-                .focusRequester(focusRequester)
-                .onFocusChanged { focusState ->
-                    if (focusState.isFocused && isFirstFocus) {
-                        val currentRoute = navController.currentBackStackEntry?.destination?.route
-                        if (currentRoute != redirectRoute) {
-                            navController.navigate(redirectRoute)
-                        }
-                        isFirstFocus = false
-                    }
-                },
+                .focusRequester(focusRequester),
             onSettingsClick = {
                 navController.navigate(Screen.Settings.route)
-            }
+            },
+
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+            keyboardActions = KeyboardActions(
+                onSearch = {
+                    onSearchChanged(searchText)
+                    keyboardController?.hide()
+                }
+            )
         )
 
         CategoryBar(
@@ -65,10 +64,4 @@ fun HomeTopBar(
         )
     }
 
-    LaunchedEffect(autoFocusSearch) {
-        if (autoFocusSearch) {
-            focusRequester.requestFocus()
-            keyboardController?.show()
-        }
-    }
 }

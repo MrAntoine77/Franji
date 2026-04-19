@@ -24,7 +24,8 @@ import fr.mrantoine.franji.ui.screens.main.cards.buildMap
 
 @Composable
 fun KanaCategoryListScreen(
-    navController: NavController
+    modifier: Modifier,
+    onClick: (String) -> Unit,
 ) {
     var paths by remember { mutableStateOf<Array<String>>(emptyArray()) }
     var maps by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
@@ -35,32 +36,15 @@ fun KanaCategoryListScreen(
         maps = buildMap(paths)
     }
 
-    Scaffold(
-        topBar = {
-            HomeTopBar(
-                navController = navController,
-                selectedCategoryIndex = 1,
-                redirectRoute = Screen.SearchKana.route
-            )
-        },
-        bottomBar = {
-            BottomBar(
-                selectedIndex = 0,
-                navController = navController
-            )
-        }
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .verticalScroll(rememberScrollState())
-                .padding(innerPadding)
-        ) {
-            Tree(
-                treeData = maps,
-                onClick = {arg ->
-                    navController.navigate(Screen.KanaCategory.route(arg))
-                }
-            )
-        }
+    Column(
+        modifier = modifier
+            .verticalScroll(rememberScrollState())
+    ) {
+        Tree(
+            treeData = maps,
+            onClick = {arg ->
+                onClick(arg)
+            }
+        )
     }
 }

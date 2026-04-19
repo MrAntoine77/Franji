@@ -71,11 +71,11 @@ fun CategoryBar(
                     isSelected = index == selectedCategoryIndex,
                     onClick = {
                         when(index) {
-                            0 -> navController.navigate(Screen.KanjiCategoryList.route)
-                            1 -> navController.navigate(Screen.KanaCategoryList.route)
-                            2 -> navController.navigate(Screen.VocabCategoryList.route)
-                            3 -> navController.navigate(Screen.GrammarCategoryList.route)
-                            else -> navController.navigate(Screen.KanjiCategoryList.route)
+                            0 -> navController.navigate(Screen.KanjiList.route)
+                            1 -> navController.navigate(Screen.KanaList.route)
+                            2 -> navController.navigate(Screen.VocabList.route)
+                            3 -> navController.navigate(Screen.GrammarList.route)
+                            else -> navController.navigate(Screen.KanjiList.route)
                         }
                     },
                     modifier = Modifier.weight(1f),

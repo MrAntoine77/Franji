@@ -90,7 +90,7 @@ fun QuizzListScreen(
             item {
                 HeaderRow(
                     text = "Kanji",
-                    onClick = { navController.navigate(Screen.KanjiCategoryList.route) }
+                    onClick = { navController.navigate(Screen.KanjiList.route) }
                 )
             }
             item {
@@ -102,7 +102,7 @@ fun QuizzListScreen(
             item {
                 HeaderRow(
                     text = "Vocabulaire",
-                    onClick = { navController.navigate(Screen.VocabCategoryList.route) }
+                    onClick = { navController.navigate(Screen.VocabList.route) }
                 )
             }
             item {
@@ -114,7 +114,7 @@ fun QuizzListScreen(
             item {
                 HeaderRow(
                     text = "Grammaire",
-                    onClick = { navController.navigate(Screen.GrammarCategoryList.route) }
+                    onClick = { navController.navigate(Screen.GrammarList.route) }
                 )
             }
             item {

@@ -24,43 +24,28 @@ import fr.mrantoine.franji.ui.screens.main.cards.buildMap
 
 @Composable
 fun KanjiCategoryListScreen(
-    navController: NavController
+    modifier: Modifier,
+    onClick: (String) -> Unit,
 ) {
     var paths by remember { mutableStateOf<Array<String>>(emptyArray()) }
     var maps by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
     val context = LocalContext.current
 
     LaunchedEffect(Unit) {
-        paths = CategoryStorage.getKeys(context,"Kanji")
+        paths = CategoryStorage.getKeys(context, "Kanji")
         maps = buildMap(paths)
     }
 
-    Scaffold(
-        topBar = {
-            HomeTopBar(
-                navController = navController,
-                selectedCategoryIndex = 0,
-                redirectRoute = Screen.SearchKanji.route
-            )
-        },
-        bottomBar = {
-            BottomBar(
-                selectedIndex = 0,
-                navController = navController
-            )
-        }
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .verticalScroll(rememberScrollState())
-                .padding(innerPadding)
-        ) {
-            Tree(
-                treeData = maps,
-                onClick = {arg ->
-                    navController.navigate(Screen.KanjiCategory.route(arg))
-                }
-            )
-        }
+    Column(
+        modifier = modifier
+            .verticalScroll(rememberScrollState())
+    ) {
+        Tree(
+            treeData = maps,
+            onClick = {arg ->
+               onClick(arg)
+            }
+        )
     }
+
 }

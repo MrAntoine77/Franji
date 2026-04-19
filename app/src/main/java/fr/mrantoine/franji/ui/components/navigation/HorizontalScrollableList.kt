@@ -55,13 +55,13 @@ fun HorizontalScrollableList(
                     .clickable {
                         val path = page.items[index].path
                         if(path.startsWith("Kanji")) {
-                            navController.navigate(Screen.KanjiCategory.route(path))
+                            navController.navigate(Screen.KanjiList.route) //TODO route vers le bon vocab
                         }
                         else if(path.startsWith("Vocab")) {
-                            navController.navigate(Screen.VocabCategory.route(path))
+                            navController.navigate(Screen.VocabList.route) //TODO route vers le bon vocab
                         }
                         else if(path.startsWith("Grammar")) {
-                            navController.navigate(Screen.GrammarCategory.route(path))
+                            navController.navigate(Screen.GrammarList.route) //TODO route vers le bon vocab
                         }
                     },
                 contentAlignment = Alignment.Center
@@ -88,7 +88,6 @@ fun HorizontalScrollableList(
                         )
                 )
 
-                // Texte
                 Text(
                     text = page.items[index].path.replace("/", " "),
                     color = Color.White,

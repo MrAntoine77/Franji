@@ -1,20 +1,14 @@
-package fr.mrantoine.franji.ui.screens.main.home.kanji
+package fr.mrantoine.franji.ui.screens.main.home.grammar
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -24,142 +18,116 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.Grammar
 import fr.mrantoine.franji.storage.GrammarStorage
 import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.ClickableAnimatedText
-import fr.mrantoine.franji.ui.components.HighlightedText
-import fr.mrantoine.franji.ui.components.navigation.BottomBar
-import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.theme.Dimens
-
 
 @Composable
 fun GrammarInfoScreen(
-    navController: NavController,
+    modifier: Modifier,
     grammarId: String
 ) {
-    Scaffold(
-        topBar = {
-            HomeTopBar(
-                navController = navController,
-                selectedCategoryIndex = 3,
-                redirectRoute = Screen.SearchGrammar.route
-            )
-        },
-        bottomBar = {
-            BottomBar(
-                selectedIndex = 0,
-                navController = navController
-            )
-        }
-    ) { innerPadding ->
-        val scrollState = rememberLazyListState()
-        var grammar by remember { mutableStateOf(Grammar()) }
-        val context = LocalContext.current
 
-        LaunchedEffect(Unit) {
-            grammar = GrammarStorage.getGrammarById(context, grammarId)
-        }
+    val scrollState = rememberLazyListState()
+    var grammar by remember { mutableStateOf(Grammar()) }
+    val context = LocalContext.current
 
-        LazyColumn(
-        modifier = Modifier
+    LaunchedEffect(Unit) {
+        grammar = GrammarStorage.getGrammarById(context, grammarId)
+    }
+
+    LazyColumn(
+        modifier = modifier
             .fillMaxSize()
-            .padding(innerPadding)      // padding fourni par le Scaffold
-                .padding(Dimens.s),
-            state = scrollState,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            item {
-                Text(
-                    text = grammar.title,
-                    fontSize = 30.sp,
-                    fontWeight = FontWeight.Bold,
-                    lineHeight = 38.sp,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth()
-                )
-            }
-            item {
-                Text(
-                    text = grammar.subtitle,
-                    fontSize = 26.sp,
-                    lineHeight = 34.sp,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth()
-                )
-            }
-            item( ) {Spacer(modifier = Modifier.height(Dimens.m))}
+            .padding(Dimens.s),
+        state = scrollState,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        item {
+            Text(
+                text = grammar.title,
+                fontSize = 30.sp,
+                fontWeight = FontWeight.Bold,
+                lineHeight = 38.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+        item {
+            Text(
+                text = grammar.subtitle,
+                fontSize = 26.sp,
+                lineHeight = 34.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+        item( ) {Spacer(modifier = Modifier.height(Dimens.m))}
+        item {
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = grammar.desc,
+                fontSize = 20.sp,
+                textAlign = TextAlign.Start
+            )
+
+
+        }
+        item( ) {Spacer(modifier = Modifier.height(Dimens.m))}
+
+        if(grammar.examples.isNotEmpty()) {
             item {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
-                    text = grammar.desc,
+                    text = "Exemples :",
                     fontSize = 20.sp,
                     textAlign = TextAlign.Start
                 )
-
-
             }
-            item( ) {Spacer(modifier = Modifier.height(Dimens.m))}
-
-            if(grammar.examples.isNotEmpty()) {
+            grammar.examples.forEach { example ->
+                item( ) {Spacer(modifier = Modifier.height(Dimens.s))}
+                item {
+                    ClickableAnimatedText(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = example.jp,
+                        fontSize = 20.sp,
+                        onClick = { TtsStorage.speak(example.lecture.kana) }
+                    )
+                }
+                item {
+                    ClickableAnimatedText(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = if(SettingsStorage.isRomaji()) example.lecture.romaji else example.lecture.kana,
+                        fontSize = 20.sp,
+                        fontStyle = FontStyle.Italic,
+                        color = MaterialTheme.colorScheme.secondary,
+                        onClick = { TtsStorage.speak(example.lecture.kana) }
+                    )
+                }
                 item {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
-                        text = "Exemples :",
+                        text = example.fr,
                         fontSize = 20.sp,
                         textAlign = TextAlign.Start
                     )
                 }
-                grammar.examples.forEach { example ->
-                    item( ) {Spacer(modifier = Modifier.height(Dimens.s))}
-                    item {
-                        ClickableAnimatedText(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = example.jp,
-                            fontSize = 20.sp,
-                            onClick = { TtsStorage.speak(example.lecture.kana) }
-                        )
-                    }
-                    item {
-                        ClickableAnimatedText(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = if(SettingsStorage.isRomaji()) example.lecture.romaji else example.lecture.kana,
-                            fontSize = 20.sp,
-                            fontStyle = FontStyle.Italic,
-                            color = MaterialTheme.colorScheme.secondary,
-                            onClick = { TtsStorage.speak(example.lecture.kana) }
-                        )
-                    }
-                    item {
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = example.fr,
-                            fontSize = 20.sp,
-                            textAlign = TextAlign.Start
-                        )
-                    }
-                    item {
-                        HorizontalDivider(
-                            color = MaterialTheme.colorScheme.tertiary,
-                            thickness = 1.dp
-                        )
-                    }
+                item {
+                    HorizontalDivider(
+                        color = MaterialTheme.colorScheme.tertiary,
+                        thickness = 1.dp
+                    )
                 }
-
             }
-
-
         }
     }
 }

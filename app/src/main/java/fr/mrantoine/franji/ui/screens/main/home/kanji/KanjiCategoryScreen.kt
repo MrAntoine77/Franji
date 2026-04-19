@@ -34,8 +34,9 @@ import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
 fun KanjiCategoryScreen(
-    navController: NavController,
-    categoryPath: String
+    modifier: Modifier,
+    categoryPath: String,
+    onClick: (String) -> Unit,
 ) {
     val context = LocalContext.current
 
@@ -49,67 +50,48 @@ fun KanjiCategoryScreen(
         }
     }
 
-    Scaffold(
-        topBar = {
-            HomeTopBar(
-                navController = navController,
-                selectedCategoryIndex = 0,
-                redirectRoute = Screen.SearchKanji.route
-            )
-        },
-        bottomBar = {
-            BottomBar(
-                selectedIndex = 0,
-                navController = navController
-            )
-        }
-    ) { innerPadding ->
+    val title = categoryPath.uppercase().replace("/", " ")
 
-        val title = categoryPath.uppercase().replace("/", " ")
+    Box(
+        modifier = modifier
+            .padding(Dimens.m)
+    ) {
 
-        Box(
-            modifier = Modifier
-                .padding(innerPadding)
-                .padding(Dimens.m)
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(5),
+            modifier = Modifier.fillMaxWidth()
         ) {
 
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(5),
-                modifier = Modifier.fillMaxWidth()
-            ) {
+            item(span = { GridItemSpan(5) }) {
+                Text(
+                    text = "- $title -",
+                    fontSize = 20.sp,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = Dimens.m),
+                    textAlign = TextAlign.Center
+                )
+            }
 
-                item(span = { GridItemSpan(5) }) {
+            items(kanjiList, key = { it.id }) { kanji ->
+
+                Box(
+                    modifier = Modifier
+                        .aspectRatio(1f)
+                        .padding(Dimens.s)
+                        .clickable {
+                            onClick(kanji.id)
+                        },
+                    contentAlignment = Alignment.Center
+                ) {
                     Text(
-                        text = "- $title -",
-                        fontSize = 20.sp,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = Dimens.m),
-                        textAlign = TextAlign.Center
+                        text = kanji.kanji,
+                        fontSize = 32.sp,
+                        fontWeight = FontWeight.SemiBold
                     )
                 }
-
-                items(kanjiList, key = { it.id }) { kanji ->
-
-                    Box(
-                        modifier = Modifier
-                            .aspectRatio(1f)
-                            .padding(Dimens.s)
-                            .clickable {
-                                navController.navigate(
-                                    Screen.KanjiInfo.route(kanji.id)
-                                )
-                            },
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = kanji.kanji,
-                            fontSize = 32.sp,
-                            fontWeight = FontWeight.SemiBold
-                        )
-                    }
-                }
             }
+
         }
     }
 }
