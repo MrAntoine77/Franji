@@ -29,6 +29,7 @@ import fr.mrantoine.franji.ui.screens.main.home.AllScreen
 import fr.mrantoine.franji.ui.screens.main.home.kana.KanaCategoryListScreen
 import fr.mrantoine.franji.ui.screens.main.home.kana.KanaCategoryScreen
 import fr.mrantoine.franji.ui.screens.main.home.kana.KanaInfoScreen
+import fr.mrantoine.franji.ui.screens.main.home.kana.SearchKanaScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.GrammarCategoryListScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.GrammarCategoryScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.GrammarInfoScreen
@@ -75,6 +76,7 @@ sealed class Screen(val route: String) {
         const val ARG = "kanaId"
         fun route(kanaId: String) = "kana_info/${Uri.encode(kanaId)}"
     }
+    data object SearchKana : Screen("search_kana")
 
 
 
@@ -231,6 +233,9 @@ class MainActivity : ComponentActivity() {
                             ?.let { Uri.decode(it) } ?: ""
 
                         KanaInfoScreen(navController, kanaId)
+                    }
+                    composable(Screen.SearchKana.route) {
+                        SearchKanaScreen(navController)
                     }
 
                     composable(Screen.VocabCategoryList.route) {

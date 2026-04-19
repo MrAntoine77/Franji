@@ -84,6 +84,36 @@ object KanaStorage {
         loadAllKana(context)
     }
 
+    fun search(text: String): List<Kana> {
+        if (text.isBlank()) return emptyList()
+
+        val query = text.lowercase()
+
+        fun startsWithMatch(kana: Kana): Boolean {
+            return kana.lectures.any { it.fr.lowercase().startsWith(query) } ||
+                    kana.lectures.any { it.jp.lowercase().startsWith(query) }
+        }
+
+        fun containsMatch(kana: Kana): Boolean {
+            return kana.lectures.any { it.fr.lowercase().contains(query) } ||
+                    kana.lectures.any { it.jp.lowercase().contains(query) }
+        }
+
+
+        fun exactMatch(kana: Kana, query: String): Boolean {
+            return kana.lectures.any { it.fr.lowercase() == query } ||
+                    kana.lectures.any { it.jp.lowercase() == query }
+        }
+
+
+        return kanaByIdCache.values
+            .filter { containsMatch(it) }
+            .sortedWith(
+                compareBy<Kana> { !exactMatch(it, query) }
+                    .thenBy { !startsWithMatch(it) }
+            )
+    }
+
     private val cache_file_path = "kana_cache.json"
     fun clearCache(context: Context) {
         kanaByIdCache.clear()

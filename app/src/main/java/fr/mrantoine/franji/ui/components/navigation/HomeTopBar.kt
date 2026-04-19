@@ -23,7 +23,7 @@ fun HomeTopBar(
     selectedCategoryIndex: Int = 0,
     autoFocusSearch: Boolean = false,
     onSearchChanged: (String) -> Unit = {},
-    redirectRoute: String
+    redirectRoute: String,
 ) {
     var searchText by remember { mutableStateOf("") }
     var isFirstFocus by remember { mutableStateOf(true) }

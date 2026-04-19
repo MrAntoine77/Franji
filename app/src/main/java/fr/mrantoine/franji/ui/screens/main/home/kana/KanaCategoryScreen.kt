@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
@@ -48,7 +49,7 @@ fun KanaCategoryScreen(
             HomeTopBar(
                 navController = navController,
                 selectedCategoryIndex = 2,
-                redirectRoute = Screen.SearchKanji.route
+                redirectRoute = Screen.SearchKana.route
             )
         },
         bottomBar = {
@@ -81,31 +82,26 @@ fun KanaCategoryScreen(
         Box(
             modifier = Modifier
                 .padding(innerPadding)
+                .padding(Dimens.m)
         ) {
-            var title = categoryPath.uppercase().replace("/", " ")
-            Column(
-                modifier = Modifier
-                    .verticalScroll(rememberScrollState())
-                    .padding(Dimens.m)
-            ) {
-                Text(
-                    text = "- $title -",
-                    fontSize = 20.sp,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = Dimens.m),
-                    textAlign = TextAlign.Center
-                )
+            val title = categoryPath.uppercase().replace("/", " ")
+            LazyColumn{
+                item {
+                    Text(
+                        text = "- $title -",
+                        fontSize = 20.sp,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = Dimens.m),
+                        textAlign = TextAlign.Center
+                    )
 
-
-
-
+                }
 
                 val columns = 5
                 val rows = (kana_list.size + columns - 1) / columns
-
-                Column {
-                    for (rowIndex in 0 until rows) {
+                for (rowIndex in 0 until rows) {
+                    item {
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceEvenly
@@ -113,9 +109,9 @@ fun KanaCategoryScreen(
                             for (colIndex in 0 until columns) {
                                 val index = rowIndex * columns + colIndex
                                 if (index < kana_list.size) {
-                                    if(kana_list[index].lectures.isNotEmpty()) {
-                                        var kanaId = kana_list[index].main_id
-                                        var kanaChar = kana_list[index].lectures[0].jp
+                                    if (kana_list[index].lectures.isNotEmpty()) {
+                                        val kanaId = kana_list[index].main_id
+                                        val kanaChar = kana_list[index].lectures[0].jp
 
                                         Box(
                                             modifier = Modifier
@@ -123,7 +119,11 @@ fun KanaCategoryScreen(
                                                 .weight(1f)
                                                 .padding(Dimens.s)
                                                 .clickable {
-                                                    navController.navigate(Screen.KanaInfo.route(kanaId))
+                                                    navController.navigate(
+                                                        Screen.KanaInfo.route(
+                                                            kanaId
+                                                        )
+                                                    )
                                                 },
                                             contentAlignment = Alignment.Center
                                         ) {
@@ -133,8 +133,7 @@ fun KanaCategoryScreen(
                                                 fontWeight = FontWeight.SemiBold
                                             )
                                         }
-                                    }
-                                    else {
+                                    } else {
                                         Box(
                                             modifier = Modifier
                                                 .aspectRatio(1f)
