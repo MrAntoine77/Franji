@@ -44,7 +44,7 @@ fun KanjiCategoryScreen(
     LaunchedEffect(categoryPath) {
         val ids = CategoryStorage.getCategoryByPath(context, categoryPath)
 
-        kanjiList = ids.mapNotNull { id ->
+        kanjiList = ids.map { id ->
             KanjiStorage.getKanjiById(context, id)
         }
     }
@@ -53,7 +53,7 @@ fun KanjiCategoryScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 1,
+                selectedCategoryIndex = 0,
                 redirectRoute = Screen.SearchKanji.route
             )
         },

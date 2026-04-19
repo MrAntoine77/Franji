@@ -50,7 +50,7 @@ fun SearchVocabScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 3,
+                selectedCategoryIndex = 2,
                 onSearchChanged = { text ->
                     search_text = text
                 },

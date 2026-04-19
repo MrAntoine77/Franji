@@ -53,7 +53,7 @@ fun GrammarInfoScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 4,
+                selectedCategoryIndex = 3,
                 redirectRoute = Screen.SearchGrammar.route
             )
         },

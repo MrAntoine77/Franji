@@ -39,7 +39,7 @@ fun KanaCategoryListScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 2,
+                selectedCategoryIndex = 1,
                 redirectRoute = Screen.SearchKana.route
             )
         },

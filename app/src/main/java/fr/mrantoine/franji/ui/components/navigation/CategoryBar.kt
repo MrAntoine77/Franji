@@ -55,7 +55,6 @@ fun CategoryBar(
     selectedCategoryIndex: Int = 0,
 ) {
     val items = listOf(
-        "Tout",
         "Kanji",
         "Kana",
         "Vocabulaire",
@@ -72,12 +71,11 @@ fun CategoryBar(
                     isSelected = index == selectedCategoryIndex,
                     onClick = {
                         when(index) {
-                            0 -> navController.navigate(Screen.HomeAll.route)
-                            1 -> navController.navigate(Screen.KanjiCategoryList.route)
-                            2 -> navController.navigate(Screen.KanaCategoryList.route)
-                            3 -> navController.navigate(Screen.VocabCategoryList.route)
-                            4 -> navController.navigate(Screen.GrammarCategoryList.route)
-                            else -> navController.navigate(Screen.HomeAll.route)
+                            0 -> navController.navigate(Screen.KanjiCategoryList.route)
+                            1 -> navController.navigate(Screen.KanaCategoryList.route)
+                            2 -> navController.navigate(Screen.VocabCategoryList.route)
+                            3 -> navController.navigate(Screen.GrammarCategoryList.route)
+                            else -> navController.navigate(Screen.KanjiCategoryList.route)
                         }
                     },
                     modifier = Modifier.weight(1f),

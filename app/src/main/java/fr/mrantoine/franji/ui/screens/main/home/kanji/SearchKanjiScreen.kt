@@ -43,7 +43,7 @@ fun SearchKanjiScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 1,
+                selectedCategoryIndex = 0,
                 onSearchChanged = { text ->
                     search_text = text
                 },

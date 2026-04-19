@@ -10,8 +10,6 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavType
 import fr.mrantoine.franji.ui.screens.auth.SplashScreen
 import fr.mrantoine.franji.ui.theme.FranjiTheme
@@ -20,12 +18,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import fr.mrantoine.franji.ui.screens.auth.*
 import fr.mrantoine.franji.ui.screens.main.cards.CardsListScreen
 import fr.mrantoine.franji.ui.screens.main.cards.CardsPlayingScreen
 import fr.mrantoine.franji.ui.screens.main.cards.CardsRecapScreen
 import fr.mrantoine.franji.ui.screens.main.cards.Mode
-import fr.mrantoine.franji.ui.screens.main.home.AllScreen
 import fr.mrantoine.franji.ui.screens.main.home.kana.KanaCategoryListScreen
 import fr.mrantoine.franji.ui.screens.main.home.kana.KanaCategoryScreen
 import fr.mrantoine.franji.ui.screens.main.home.kana.KanaInfoScreen
@@ -42,7 +38,6 @@ import fr.mrantoine.franji.ui.screens.main.home.kanji.SearchVocabScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabCategoryListScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabCategoryScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabInfoScreen
-import fr.mrantoine.franji.ui.screens.main.profile.ProfileScreen
 import fr.mrantoine.franji.ui.screens.main.quizz.QuizzListScreen
 import fr.mrantoine.franji.ui.screens.main.settings.SettingsScreen
 
@@ -50,7 +45,6 @@ import fr.mrantoine.franji.ui.screens.main.settings.SettingsScreen
 sealed class Screen(val route: String) {
 
     data object Splash : Screen("splash")
-    data object HomeAll : Screen("home_all")
     data object Settings : Screen("settings")
 
     data object KanjiCategoryList : Screen("kanji_category_list")
@@ -124,7 +118,6 @@ sealed class Screen(val route: String) {
 
 
     data object QuizzList : Screen("quizz_list")
-    data object Profile : Screen("profile")
 
 }
 
@@ -165,9 +158,6 @@ class MainActivity : ComponentActivity() {
                 ) {
                     composable(Screen.Splash.route) {
                         SplashScreen(navController)
-                    }
-                    composable(Screen.HomeAll.route) {
-                        AllScreen(navController)
                     }
                     composable(Screen.Settings.route) {
                         SettingsScreen(navController)
@@ -363,9 +353,6 @@ class MainActivity : ComponentActivity() {
                     }
                     composable(Screen.QuizzList.route) {
                         QuizzListScreen(navController)
-                    }
-                    composable(Screen.Profile.route) {
-                        ProfileScreen(navController)
                     }
                 }
             }

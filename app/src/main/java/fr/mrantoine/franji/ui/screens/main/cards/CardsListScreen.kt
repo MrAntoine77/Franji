@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.screens.main.cards
 
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -25,6 +26,7 @@ import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.SearchBar
+import fr.mrantoine.franji.ui.components.navigation.TopBar
 import fr.mrantoine.franji.ui.components.navigation.Tree
 
 
@@ -55,8 +57,6 @@ fun buildMap(paths: Array<String>): Map<String, Any> {
 fun CardsListScreen(
     navController: NavController
 ) {
-    var searchText by remember { mutableStateOf("") }
-
     var paths by remember { mutableStateOf<Array<String>>(emptyArray()) }
     var maps by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
     val context = LocalContext.current
@@ -65,30 +65,25 @@ fun CardsListScreen(
         paths = CategoryStorage.getKeys(context)
         maps = buildMap(paths)
     }
-
+    val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
 
     Scaffold(
         topBar = {
             Column(
                 modifier = Modifier
                     .background(MaterialTheme.colorScheme.background)
-                    .statusBarsPadding()
-            )
+                    .statusBarsPadding())
             {
-                SearchBar(
-                    value = searchText,
-                    onValueChange = { searchText = it },
-                    onSettingsClick = { navController.navigate(Screen.Settings.route) }
-                )
-                HorizontalDivider(
-                    color = MaterialTheme.colorScheme.secondary,
-                    thickness = 2.dp
+                TopBar(
+                    title = "Révision",
+                    showBack = true,
+                    onBackClick =  { backDispatcher?.onBackPressed() }
                 )
             }
         },
         bottomBar = {
             BottomBar(
-                selectedIndex = 1,
+                selectedIndex = 2,
                 navController = navController
             )
         }

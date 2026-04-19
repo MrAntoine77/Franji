@@ -62,7 +62,7 @@ fun SettingsScreen(
     val settings = remember(isRomajiEnabled, isRestCacheOnLaunch) {
         listOf(
             SettingItem(
-                title = "Caractères Romaji",
+                title = "Caractères romaji",
                 checked = isRomajiEnabled,
                 onToggle = { value ->
                     SettingsStorage.setRomaji(value)
@@ -71,7 +71,7 @@ fun SettingsScreen(
                 }
             ),
             SettingItem(
-                title = "Rest cache au lancement",
+                title = "Reset du cache au lancement",
                 checked = isRestCacheOnLaunch,
                 onToggle = { value ->
                     SettingsStorage.setRestCacheOnLaunch(value)
@@ -134,8 +134,7 @@ fun SettingsScreen(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding),
-            verticalArrangement = Arrangement.spacedBy(Dimens.m)
+                .padding(innerPadding)
         ) {
             items(settings.size) { index ->
                 val item = settings[index]

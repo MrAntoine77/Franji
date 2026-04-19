@@ -40,7 +40,7 @@ fun VocabCategoryScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 3,
+                selectedCategoryIndex = 2,
                 redirectRoute = Screen.SearchVocab.route
             )
         },

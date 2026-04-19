@@ -55,34 +55,30 @@ fun SplashScreen(
                 VocabStorage.clearCache(context)
                 GrammarStorage.clearCache(context)
                 MainPageStorage.clearCache(context)
-
-                CategoryStorage.loadAll(context)
-                KanjiStorage.loadAll(context)
-                KanaStorage.loadAll(context)
-                LottieStorage.loadAll(context)
-                VocabStorage.loadAll(context)
-                GrammarStorage.loadAll(context)
-                MainPageStorage.loadAll(context)
-
-                CategoryStorage.saveCache(context)
-                KanjiStorage.saveCache(context)
-                KanaStorage.saveCache(context)
-                LottieStorage.saveCache(context)
-                VocabStorage.saveCache(context)
-                GrammarStorage.saveCache(context)
-                MainPageStorage.saveCache(context)
-
             }
-            else {
-                CategoryStorage.loadCache(context)
-                KanjiStorage.loadCache(context)
-                KanaStorage.loadCache(context)
-                LottieStorage.loadCache(context)
-                VocabStorage.loadCache(context)
-                GrammarStorage.loadCache(context)
-                MainPageStorage.loadCache(context)
+            CategoryStorage.loadCache(context)
+            KanjiStorage.loadCache(context)
+            KanaStorage.loadCache(context)
+            LottieStorage.loadCache(context)
+            VocabStorage.loadCache(context)
+            GrammarStorage.loadCache(context)
+            MainPageStorage.loadCache(context)
 
-            }
+            CategoryStorage.loadAll(context)
+            KanjiStorage.loadAll(context)
+            KanaStorage.loadAll(context)
+            LottieStorage.loadAll(context)
+            VocabStorage.loadAll(context)
+            GrammarStorage.loadAll(context)
+            MainPageStorage.loadAll(context)
+
+            CategoryStorage.saveCache(context)
+            KanjiStorage.saveCache(context)
+            KanaStorage.saveCache(context)
+            LottieStorage.saveCache(context)
+            VocabStorage.saveCache(context)
+            GrammarStorage.saveCache(context)
+            MainPageStorage.saveCache(context)
 
             TtsStorage.init(context)
         }
@@ -95,7 +91,7 @@ fun SplashScreen(
         splashMinDelay.join()
         loadingJob.join()
 
-        navController.navigate(Screen.HomeAll.route) {
+        navController.navigate(Screen.QuizzList.route) {
             popUpTo(Screen.Splash.route) { inclusive = true }
         }
     }

@@ -11,6 +11,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.outlined.Create
 import androidx.compose.material.icons.outlined.Face
 import androidx.compose.material.icons.outlined.Home
@@ -83,9 +86,9 @@ fun BottomBar(
         ) {
             val items = listOf(
                 "Accueil" to Icons.Outlined.Home,
-                "Révision" to Icons.Outlined.Menu,
-                "Quizz" to Icons.Outlined.Info,
-                "Profile" to Icons.Outlined.Face
+                "Quizz" to Icons.Default.PlayArrow,
+                "Révision" to Icons.Default.Menu,
+
             )
 
             items.forEachIndexed { index, (label, icon) ->
@@ -95,11 +98,10 @@ fun BottomBar(
                     isSelected = index == selectedIndex,
                     onClick = {
                         when(index) {
-                            0 -> navController.navigate(Screen.HomeAll.route)
-                            1 -> navController.navigate(Screen.CardsList.route)
-                            2 -> navController.navigate(Screen.QuizzList.route)
-                            3 -> navController.navigate(Screen.Profile.route)
-                            else -> navController.navigate(Screen.HomeAll.route)
+                            0 -> navController.navigate(Screen.KanjiCategoryList.route)
+                            1 -> navController.navigate(Screen.QuizzList.route)
+                            2 -> navController.navigate(Screen.CardsList.route)
+                            else -> navController.navigate(Screen.KanjiCategoryList.route)
                         }
                     },
                     modifier = Modifier.weight(1f)
