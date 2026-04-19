@@ -49,8 +49,8 @@ fun QuizzListScreen(
         topBar = {
             Column(
                 modifier = Modifier
-                    .statusBarsPadding()
-                    .background(MaterialTheme.colorScheme.background))
+                    .background(MaterialTheme.colorScheme.background)
+                    .statusBarsPadding())
             {
                 TopBar(
                     title = "Quizz",

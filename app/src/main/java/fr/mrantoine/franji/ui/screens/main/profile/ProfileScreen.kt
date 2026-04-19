@@ -25,8 +25,8 @@ fun ProfileScreen(
         topBar = {
             Column(
                 modifier = Modifier
-                    .statusBarsPadding()
-                    .background(MaterialTheme.colorScheme.background))
+                    .background(MaterialTheme.colorScheme.background)
+                    .statusBarsPadding())
             {
                 TopBar(
                     title = "Profile",
