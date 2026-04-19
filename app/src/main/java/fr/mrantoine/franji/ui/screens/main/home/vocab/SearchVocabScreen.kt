@@ -2,29 +2,36 @@ package fr.mrantoine.franji.ui.screens.main.home.kanji
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
+import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
+import fr.mrantoine.franji.storage.Vocab
+import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.theme.Dimens
@@ -32,23 +39,23 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
 @Composable
-fun SearchKanjiScreen(
+fun SearchVocabScreen(
     navController: NavController
 ) {
     var search_text by remember { mutableStateOf("") }
-    var kanjiList by remember { mutableStateOf<List<Kanji>>(emptyList()) }
+    var vocabList by remember { mutableStateOf<List<Vocab>>(emptyList()) }
     var loading by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 1,
+                selectedCategoryIndex = 3,
                 onSearchChanged = { text ->
                     search_text = text
                 },
                 autoFocusSearch = true,
-                redirectRoute = Screen.SearchKanji.route
+                redirectRoute = Screen.SearchVocab.route
             )
         },
         bottomBar = {
@@ -63,9 +70,10 @@ fun SearchKanjiScreen(
             loading = true
             delay(500)
 
-            kanjiList = if (search_text.isNotEmpty()) {
+            vocabList = if (search_text.isNotEmpty()) {
                 withContext(kotlinx.coroutines.Dispatchers.IO) {
-                    KanjiStorage.search(search_text)
+                    VocabStorage.search(search_text)
+
                 }
             } else {
                 emptyList()
@@ -73,7 +81,6 @@ fun SearchKanjiScreen(
 
             loading = false
         }
-
         Box(
             modifier = Modifier
                 .padding(innerPadding)
@@ -90,48 +97,57 @@ fun SearchKanjiScreen(
                     }
                 }
 
-                kanjiList.isEmpty() && search_text.isNotEmpty() -> {
+                vocabList.isEmpty() && search_text.isNotEmpty() -> {
                     Box(
                         modifier = Modifier.fillMaxWidth(),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(text = "Aucun kanji trouvé")
+                        Text(text = "Aucun mot trouvé")
                     }
                 }
 
                 search_text.isNotEmpty() -> {
-                    LazyVerticalGrid(
-                        columns = GridCells.Fixed(5),
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        items(kanjiList, key = { it.id }) { kanji ->
-
-                            Box(
-                                modifier = Modifier
-                                    .aspectRatio(1f)
-                                    .padding(Dimens.s)
-                                    .clickable {
-                                        navController.navigate(
-                                            Screen.KanjiInfo.route(kanji.id)
+                    LazyColumn {
+                        vocabList.forEach { vocab ->
+                            item {
+                                Column {
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .clickable {
+                                                navController.navigate(Screen.VocabInfo.route(vocab.id))
+                                            }
+                                            .padding(vertical = Dimens.s)
+                                    ) {
+                                        Text(
+                                            text = vocab.jp,
+                                            fontSize = 20.sp,
+                                            modifier = Modifier.weight(1f)
                                         )
-                                    },
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(
-                                    text = kanji.kanji,
-                                    fontSize = 32.sp,
-                                    fontWeight = FontWeight.SemiBold
-                                )
+                                        Text(
+                                            text = vocab.fr,
+                                            fontSize = 20.sp,
+                                            modifier = Modifier.weight(1f),
+                                            textAlign = TextAlign.End
+                                        )
+                                    }
+
+                                    HorizontalDivider(
+                                        color = MaterialTheme.colorScheme.tertiary,
+                                        thickness = 1.dp
+                                    )
+                                }
                             }
                         }
                     }
                 }
+
                 else -> {
                     Box(
                         modifier = Modifier.fillMaxWidth(),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(text = "Rechercher un Kanji")
+                        Text(text = "Rechercher un mot")
                     }
                 }
             }

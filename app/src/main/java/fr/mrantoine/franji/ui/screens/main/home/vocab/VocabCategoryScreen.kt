@@ -1,17 +1,11 @@
 package fr.mrantoine.franji.ui.screens.main.home.kanji
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -23,18 +17,14 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
-import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.storage.Vocab
 import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
@@ -51,7 +41,7 @@ fun VocabCategoryScreen(
             HomeTopBar(
                 navController = navController,
                 selectedCategoryIndex = 3,
-                redirectRoute = Screen.SearchKanji.route
+                redirectRoute = Screen.SearchVocab.route
             )
         },
         bottomBar = {
@@ -62,27 +52,27 @@ fun VocabCategoryScreen(
         }
     ) { innerPadding ->
 
-        var vocab_list_id by remember { mutableStateOf(emptyArray<String>()) }
-        val vocab_list = remember { mutableStateListOf<Vocab>() }
+        var vocabListId by remember { mutableStateOf(emptyArray<String>()) }
+        val vocabList = remember { mutableStateListOf<Vocab>() }
         val context = LocalContext.current
 
-        LaunchedEffect(Unit) {
-            vocab_list_id = CategoryStorage.getCategoryByPath(context, categoryPath)
-            vocab_list_id.forEach { vocabId ->
-                vocab_list.add(VocabStorage.getVocabById(context, vocabId))
+        LaunchedEffect(categoryPath) {
+            vocabListId = CategoryStorage.getCategoryByPath(context, categoryPath)
+            vocabList.clear()
+            vocabListId.forEach { vocabId ->
+                vocabList.add(VocabStorage.getVocabById(context, vocabId))
             }
         }
 
-        Box(
+        val title = categoryPath.uppercase().replace("/", " ")
+
+        LazyColumn(
             modifier = Modifier
                 .padding(innerPadding)
+                .padding(Dimens.m)
         ) {
-            var title = categoryPath.uppercase().replace("/", " ")
-            Column(
-                modifier = Modifier
-                    .verticalScroll(rememberScrollState())
-                    .padding(Dimens.m)
-            ) {
+
+            item {
                 Text(
                     text = "- $title -",
                     fontSize = 20.sp,
@@ -91,19 +81,18 @@ fun VocabCategoryScreen(
                         .padding(vertical = Dimens.m),
                     textAlign = TextAlign.Center
                 )
+            }
 
-                Column {
-                    vocab_list.forEach { vocab ->
+            vocabList.forEach { vocab ->
+                item {
+                    Column {
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clickable {
                                     navController.navigate(Screen.VocabInfo.route(vocab.id))
                                 }
-                                .padding(
-                                    top=Dimens.s,
-                                    bottom=Dimens.s
-                                ),
+                                .padding(vertical = Dimens.s)
                         ) {
                             Text(
                                 text = vocab.jp,
@@ -117,6 +106,7 @@ fun VocabCategoryScreen(
                                 textAlign = TextAlign.End
                             )
                         }
+
                         HorizontalDivider(
                             color = MaterialTheme.colorScheme.tertiary,
                             thickness = 1.dp

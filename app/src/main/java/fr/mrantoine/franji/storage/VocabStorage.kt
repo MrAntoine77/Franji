@@ -68,6 +68,43 @@ object VocabStorage {
         }
     }
 
+
+    fun search(text: String): List<Vocab> {
+        if (text.isBlank()) return emptyList()
+
+        val query = text.lowercase()
+
+        fun startsWithMatch(vocab: Vocab): Boolean {
+            return vocab.fr.lowercase().startsWith(query) ||
+                    vocab.jp.lowercase().startsWith(query) ||
+                    vocab.lecture.kana.startsWith(query)
+        }
+
+        fun containsMatch(vocab: Vocab): Boolean {
+            return vocab.fr.lowercase().contains(query) ||
+                    vocab.jp.lowercase().contains(query) ||
+                    vocab.lecture.romaji.lowercase().contains(query) ||
+                    vocab.lecture.kana.contains(query)
+        }
+
+
+        fun exactMatch(vocab: Vocab, query: String): Boolean {
+            return vocab.fr.equals(query, ignoreCase = true) ||
+                    vocab.jp.equals(query, ignoreCase = true) ||
+                    vocab.lecture.romaji.equals(query, ignoreCase = true) ||
+                    vocab.lecture.kana.equals(query, ignoreCase = true)
+        }
+
+
+        return vocabByIdCache.values
+            .filter { containsMatch(it) }
+            .sortedWith(
+                compareBy<Vocab> { !exactMatch(it, query) }
+                    .thenBy { !startsWithMatch(it) }
+            )
+    }
+
+
     private val cache_file_path = "vocab_cache.json"
     fun clearCache(context: Context) {
         vocabByIdCache.clear()

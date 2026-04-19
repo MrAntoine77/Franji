@@ -54,7 +54,7 @@ fun VocabInfoScreen(
             HomeTopBar(
                 navController = navController,
                 selectedCategoryIndex = 3,
-                redirectRoute = Screen.SearchKanji.route
+                redirectRoute = Screen.SearchVocab.route
             )
         },
         bottomBar = {
