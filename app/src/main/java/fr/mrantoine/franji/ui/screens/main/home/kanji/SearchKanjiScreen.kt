@@ -16,6 +16,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,7 +36,7 @@ import kotlinx.coroutines.withContext
 fun SearchKanjiScreen(
     navController: NavController
 ) {
-    var search_text by remember { mutableStateOf("") }
+    var search_text by rememberSaveable  { mutableStateOf("") }
     var kanjiList by remember { mutableStateOf<List<Kanji>>(emptyList()) }
     var loading by remember { mutableStateOf(false) }
 
@@ -47,7 +48,7 @@ fun SearchKanjiScreen(
                 onSearchChanged = { text ->
                     search_text = text
                 },
-                autoFocusSearch = true,
+                autoFocusSearch = if(search_text == "") true else false,
                 redirectRoute = Screen.SearchKanji.route
             )
         },

@@ -18,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,19 +43,20 @@ import kotlinx.coroutines.withContext
 fun SearchVocabScreen(
     navController: NavController
 ) {
-    var search_text by remember { mutableStateOf("") }
+    var search_text by rememberSaveable { mutableStateOf("") }
     var vocabList by remember { mutableStateOf<List<Vocab>>(emptyList()) }
     var loading by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
             HomeTopBar(
+                text = search_text,
                 navController = navController,
                 selectedCategoryIndex = 2,
                 onSearchChanged = { text ->
                     search_text = text
                 },
-                autoFocusSearch = true,
+                autoFocusSearch = if(search_text == "") true else false,
                 redirectRoute = Screen.SearchVocab.route
             )
         },

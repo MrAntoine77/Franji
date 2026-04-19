@@ -24,8 +24,9 @@ fun HomeTopBar(
     autoFocusSearch: Boolean = false,
     onSearchChanged: (String) -> Unit = {},
     redirectRoute: String,
+    text: String = ""
 ) {
-    var searchText by remember { mutableStateOf("") }
+    var searchText by remember { mutableStateOf(text) }
     var isFirstFocus by remember { mutableStateOf(true) }
 
     val focusRequester = remember { FocusRequester() }
