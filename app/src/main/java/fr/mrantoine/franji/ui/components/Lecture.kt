@@ -103,7 +103,7 @@ fun Lecture(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "Kun:",
+                            text = "kun:",
                             fontWeight = FontWeight.Bold,
                             fontSize = 14.sp
                         )
