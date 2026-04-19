@@ -101,6 +101,74 @@ object KanjiStorage {
     }
 
 
+    fun search(text: String): List<Kanji> {
+        if (text.isBlank()) return emptyList()
+
+        val query = text.lowercase()
+
+        fun startsWithMatch(kanji: Kanji): Boolean {
+            return kanji.kanji.startsWith(query) ||
+                    kanji.main_lecture.fr.lowercase().startsWith(query) ||
+                    kanji.main_lecture.romaji.lowercase().startsWith(query) ||
+                    kanji.main_lecture.kana.startsWith(query) ||
+
+                    kanji.lectures.fr.any { it.lowercase().startsWith(query) } ||
+                    kanji.lectures.ON.any {
+                        it.romaji.lowercase().startsWith(query) ||
+                                it.kana.startsWith(query)
+                    } ||
+                    kanji.lectures.kun.any {
+                        it.romaji.lowercase().startsWith(query) ||
+                                it.kana.startsWith(query)
+                    } ||
+                    kanji.vocab.any { it.lowercase().startsWith(query) }
+        }
+
+        fun containsMatch(kanji: Kanji): Boolean {
+            return kanji.kanji.contains(query) ||
+                    kanji.main_lecture.fr.lowercase().contains(query) ||
+                    kanji.main_lecture.romaji.lowercase().contains(query) ||
+                    kanji.main_lecture.kana.contains(query) ||
+
+                    kanji.lectures.fr.any { it.lowercase().contains(query) } ||
+                    kanji.lectures.ON.any {
+                        it.romaji.lowercase().contains(query) ||
+                                it.kana.contains(query)
+                    } ||
+                    kanji.lectures.kun.any {
+                        it.romaji.lowercase().contains(query) ||
+                                it.kana.contains(query)
+                    } ||
+                    kanji.vocab.any { it.lowercase().contains(query) }
+        }
+
+        fun exactMatch(kanji: Kanji, query: String): Boolean {
+            return kanji.kanji == query ||
+                    kanji.main_lecture.fr.equals(query, ignoreCase = true) ||
+                    kanji.main_lecture.romaji.equals(query, ignoreCase = true) ||
+                    kanji.main_lecture.kana == query ||
+
+                    kanji.lectures.fr.any { it.equals(query, ignoreCase = true) } ||
+                    kanji.lectures.ON.any {
+                        it.romaji.equals(query, ignoreCase = true) ||
+                                it.kana == query
+                    } ||
+                    kanji.lectures.kun.any {
+                        it.romaji.equals(query, ignoreCase = true) ||
+                                it.kana == query
+                    } ||
+                    kanji.vocab.any { it.equals(query, ignoreCase = true) }
+        }
+
+        return kanjiByIdCache.values
+            .filter { containsMatch(it) }
+            .sortedWith(
+                compareBy<Kanji> { !exactMatch(it, query) }
+                    .thenBy { !startsWithMatch(it) }
+            )
+    }
+
+
     private val cache_file_path = "kanji_cache.json"
     fun clearCache(context: Context) {
         kanjiByIdCache.clear()

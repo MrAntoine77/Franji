@@ -62,7 +62,8 @@ fun AllScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 0
+                selectedCategoryIndex = 0,
+                redirectRoute = Screen.SearchKanji.route
             )
         },
         bottomBar = {

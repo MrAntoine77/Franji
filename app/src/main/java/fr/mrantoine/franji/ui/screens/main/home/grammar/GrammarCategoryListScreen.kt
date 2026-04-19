@@ -39,7 +39,8 @@ fun GrammarCategoryListScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 4
+                selectedCategoryIndex = 4,
+                redirectRoute = Screen.SearchKanji.route
             )
         },
         bottomBar = {

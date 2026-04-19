@@ -32,6 +32,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.Grammar
 import fr.mrantoine.franji.storage.GrammarStorage
 import fr.mrantoine.franji.storage.SettingsStorage
@@ -52,7 +53,8 @@ fun GrammarInfoScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 4
+                selectedCategoryIndex = 4,
+                redirectRoute = Screen.SearchKanji.route
             )
         },
         bottomBar = {

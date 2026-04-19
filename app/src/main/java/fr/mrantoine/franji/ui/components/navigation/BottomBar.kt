@@ -85,8 +85,7 @@ fun BottomBar(
                 "Accueil" to Icons.Outlined.Home,
                 "Révision" to Icons.Outlined.Menu,
                 "Quizz" to Icons.Outlined.Info,
-                "Profile" to Icons.Outlined.Face,
-                "Recherche" to Icons.Outlined.Search
+                "Profile" to Icons.Outlined.Face
             )
 
             items.forEachIndexed { index, (label, icon) ->
@@ -100,7 +99,6 @@ fun BottomBar(
                             1 -> navController.navigate(Screen.CardsList.route)
                             2 -> navController.navigate(Screen.QuizzList.route)
                             3 -> navController.navigate(Screen.Profile.route)
-                            4 -> navController.navigate(Screen.Search.route)
                             else -> navController.navigate(Screen.HomeAll.route)
                         }
                     },

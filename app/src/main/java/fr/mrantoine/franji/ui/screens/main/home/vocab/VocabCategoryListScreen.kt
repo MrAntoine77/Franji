@@ -39,7 +39,8 @@ fun VocabCategoryListScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 3
+                selectedCategoryIndex = 3,
+                redirectRoute = Screen.SearchKanji.route
             )
         },
         bottomBar = {

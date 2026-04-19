@@ -35,12 +35,12 @@ import fr.mrantoine.franji.ui.screens.main.home.kanji.GrammarInfoScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiCategoryListScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiCategoryScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiInfoScreen
+import fr.mrantoine.franji.ui.screens.main.home.kanji.SearchKanjiScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabCategoryListScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabCategoryScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.VocabInfoScreen
 import fr.mrantoine.franji.ui.screens.main.profile.ProfileScreen
 import fr.mrantoine.franji.ui.screens.main.quizz.QuizzListScreen
-import fr.mrantoine.franji.ui.screens.main.search.SearchScreen
 import fr.mrantoine.franji.ui.screens.main.settings.SettingsScreen
 
 
@@ -59,7 +59,7 @@ sealed class Screen(val route: String) {
         const val ARG = "kanjiChar"
         fun route(kanjiChar: String) = "kanji_info/${Uri.encode(kanjiChar)}"
     }
-
+    data object SearchKanji : Screen("search_kanji")
 
 
 
@@ -117,7 +117,7 @@ sealed class Screen(val route: String) {
 
     data object QuizzList : Screen("quizz_list")
     data object Profile : Screen("profile")
-    data object Search : Screen("search")
+
 }
 
 
@@ -192,6 +192,9 @@ class MainActivity : ComponentActivity() {
                             ?.let { Uri.decode(it) } ?: ""
 
                         KanjiInfoScreen(navController, kanjiChar)
+                    }
+                    composable(Screen.SearchKanji.route) {
+                        SearchKanjiScreen(navController)
                     }
 
                     composable(Screen.KanaCategoryList.route) {
@@ -345,9 +348,6 @@ class MainActivity : ComponentActivity() {
                     }
                     composable(Screen.Profile.route) {
                         ProfileScreen(navController)
-                    }
-                    composable(Screen.Search.route) {
-                        SearchScreen(navController)
                     }
                 }
             }

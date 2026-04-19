@@ -51,7 +51,8 @@ fun KanjiInfoScreen(
         topBar = {
             HomeTopBar(
                 navController = navController,
-                selectedCategoryIndex = 1
+                selectedCategoryIndex = 1,
+                redirectRoute = Screen.SearchKanji.route
             )
         },
         bottomBar = {

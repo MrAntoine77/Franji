@@ -113,7 +113,5 @@ object MainPageStorage {
             e.printStackTrace()
         }
     }
-
-
 }
 

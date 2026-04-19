@@ -31,10 +31,12 @@ import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
 fun SearchBar(
+    modifier: Modifier = Modifier,
     value: String,
     onValueChange: (String) -> Unit,
     placeholder: String = "Rechercher...",
-    onSettingsClick: () -> Unit = {}
+    onSettingsClick: () -> Unit = {},
+
 ) {
     Row(
         modifier = Modifier
@@ -53,7 +55,7 @@ fun SearchBar(
                 )
             },
             singleLine = true,
-            modifier = Modifier
+            modifier = modifier
                 .weight(1f),
             shape = RoundedCornerShape(10.dp),
             colors = TextFieldDefaults.colors(
