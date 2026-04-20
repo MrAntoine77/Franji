@@ -37,6 +37,7 @@ import fr.mrantoine.franji.ui.components.navigation.HorizontalScrollableList
 import fr.mrantoine.franji.ui.components.navigation.TopBar
 import fr.mrantoine.franji.ui.components.navigation.Tree
 import fr.mrantoine.franji.ui.screens.main.cards.buildMap
+import fr.mrantoine.franji.ui.screens.main.home.grammar.GrammarState
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiState
 import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabState
 import fr.mrantoine.franji.ui.theme.Dimens
@@ -124,7 +125,11 @@ fun QuizzListScreen(
             item {
                 HeaderRow(
                     text = "Grammaire",
-                    onClick = { navController.navigate(Screen.GrammarList.route) }
+                    onClick = { navController.navigate(Screen.GrammarList.route(
+                        state = GrammarState.CategoryLsit,
+                        categoryPath = "",
+                        grammarId = ""
+                    )) }
                 )
             }
             item {

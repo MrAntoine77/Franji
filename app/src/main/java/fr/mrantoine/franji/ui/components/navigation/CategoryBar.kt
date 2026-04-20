@@ -17,6 +17,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
+import fr.mrantoine.franji.ui.screens.main.home.grammar.GrammarState
+import fr.mrantoine.franji.ui.screens.main.home.kana.KanaState
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiState
 import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabState
 
@@ -74,9 +76,9 @@ fun CategoryBar(
                     onClick = {
                         when(index) {
                             0 -> navController.navigate(Screen.KanjiList.route(KanjiState.CategoryLsit, "", ""))
-                            1 -> navController.navigate(Screen.KanaList.route)
+                            1 -> navController.navigate(Screen.KanaList.route(KanaState.CategoryLsit, "", ""))
                             2 -> navController.navigate(Screen.VocabList.route(VocabState.CategoryLsit, "", ""))
-                            3 -> navController.navigate(Screen.GrammarList.route)
+                            3 -> navController.navigate(Screen.GrammarList.route(GrammarState.CategoryLsit, "", ""))
                             else -> navController.navigate(Screen.KanjiList.route(KanjiState.CategoryLsit, "", ""))
                         }
                     },

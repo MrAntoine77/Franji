@@ -29,6 +29,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import fr.mrantoine.franji.R
+import fr.mrantoine.franji.ui.screens.main.home.grammar.GrammarState
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiState
 import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabState
 
@@ -71,7 +72,11 @@ fun HorizontalScrollableList(
                             ))
                         }
                         else if(path.startsWith("Grammar")) {
-                            navController.navigate(Screen.GrammarList.route) //TODO route vers le bon vocab
+                            navController.navigate(Screen.GrammarList.route(
+                                state = GrammarState.Category,
+                                categoryPath = path,
+                                grammarId = ""
+                            ))
                         }
                     },
                 contentAlignment = Alignment.Center
