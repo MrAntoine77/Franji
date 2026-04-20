@@ -30,7 +30,7 @@ enum class GrammarState {
 fun GrammarScreen(
     navController: NavController,
 ) {
-    var state by remember { mutableStateOf(GrammarState.CategoryLsit) }
+    var state by rememberSaveable { mutableStateOf(GrammarState.CategoryLsit) }
     var search_text by rememberSaveable { mutableStateOf("") }
     val keyboardController = LocalSoftwareKeyboardController.current
 
@@ -53,8 +53,8 @@ fun GrammarScreen(
             )
         }
     ) { innerPadding ->
-        var categoryPath by remember { mutableStateOf("") }
-        var grammarId by remember { mutableStateOf("") }
+        var categoryPath by rememberSaveable { mutableStateOf("") }
+        var grammarId by rememberSaveable { mutableStateOf("") }
 
 
         when(state) {

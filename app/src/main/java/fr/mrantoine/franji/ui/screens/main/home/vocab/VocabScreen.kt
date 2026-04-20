@@ -31,7 +31,7 @@ enum class VocabState {
 fun VocabScreen(
     navController: NavController,
 ) {
-    var state by remember { mutableStateOf(VocabState.CategoryLsit) }
+    var state by rememberSaveable { mutableStateOf(VocabState.CategoryLsit) }
     var search_text by rememberSaveable { mutableStateOf("") }
     val keyboardController = LocalSoftwareKeyboardController.current
 
@@ -54,9 +54,8 @@ fun VocabScreen(
             )
         }
     ) { innerPadding ->
-        var categoryPath by remember { mutableStateOf("") }
-        var vocabId by remember { mutableStateOf("") }
-
+        var categoryPath by rememberSaveable { mutableStateOf("") }
+        var vocabId by rememberSaveable { mutableStateOf("") }
 
         when(state) {
             VocabState.CategoryLsit -> {
@@ -83,6 +82,7 @@ fun VocabScreen(
             VocabState.Info -> {
                 keyboardController?.hide()
                 VocabInfoScreen(
+                    navController = navController,
                     modifier = Modifier.padding(innerPadding),
                     vocabId = vocabId
                 )

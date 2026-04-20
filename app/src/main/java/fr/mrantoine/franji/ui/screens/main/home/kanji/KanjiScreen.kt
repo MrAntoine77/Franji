@@ -25,8 +25,11 @@ enum class KanjiState {
 @Composable
 fun KanjiScreen(
     navController: NavController,
+    state: KanjiState,
+    categoryPath: String,
+    kanjiId: String
 ) {
-    var state by remember { mutableStateOf(KanjiState.CategoryLsit) }
+    var state by rememberSaveable { mutableStateOf(state) }
     var search_text by rememberSaveable { mutableStateOf("") }
     val keyboardController = LocalSoftwareKeyboardController.current
 
@@ -49,8 +52,8 @@ fun KanjiScreen(
             )
         }
     ) { innerPadding ->
-        var categoryPath by remember { mutableStateOf("") }
-        var kanjiId by remember { mutableStateOf("") }
+        var categoryPath by rememberSaveable { mutableStateOf(categoryPath) }
+        var kanjiId by rememberSaveable { mutableStateOf(kanjiId) }
 
 
         when(state) {

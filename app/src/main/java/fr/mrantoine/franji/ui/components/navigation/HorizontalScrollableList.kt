@@ -29,6 +29,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import fr.mrantoine.franji.R
+import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiState
 
 @Composable
 fun HorizontalScrollableList(
@@ -55,7 +56,11 @@ fun HorizontalScrollableList(
                     .clickable {
                         val path = page.items[index].path
                         if(path.startsWith("Kanji")) {
-                            navController.navigate(Screen.KanjiList.route) //TODO route vers le bon vocab
+                            navController.navigate(Screen.KanjiList.route(
+                                state = KanjiState.Category,
+                                categoryPath = path,
+                                kanjiId = ""
+                            ))
                         }
                         else if(path.startsWith("Vocab")) {
                             navController.navigate(Screen.VocabList.route) //TODO route vers le bon vocab

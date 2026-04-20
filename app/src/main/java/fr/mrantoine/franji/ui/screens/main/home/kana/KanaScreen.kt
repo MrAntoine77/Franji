@@ -26,7 +26,7 @@ enum class KanaState {
 fun KanaScreen(
     navController: NavController,
 ) {
-    var state by remember { mutableStateOf(KanaState.CategoryLsit) }
+    var state by rememberSaveable { mutableStateOf(KanaState.CategoryLsit) }
     var search_text by rememberSaveable { mutableStateOf("") }
     val keyboardController = LocalSoftwareKeyboardController.current
 
@@ -49,8 +49,8 @@ fun KanaScreen(
             )
         }
     ) { innerPadding ->
-        var categoryPath by remember { mutableStateOf("") }
-        var kanaId by remember { mutableStateOf("") }
+        var categoryPath by rememberSaveable { mutableStateOf("") }
+        var kanaId by rememberSaveable { mutableStateOf("") }
 
 
         when(state) {

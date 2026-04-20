@@ -25,6 +25,7 @@ import fr.mrantoine.franji.ui.screens.main.cards.Mode
 import fr.mrantoine.franji.ui.screens.main.home.grammar.GrammarScreen
 import fr.mrantoine.franji.ui.screens.main.home.kana.KanaScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiScreen
+import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiState
 import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabScreen
 import fr.mrantoine.franji.ui.screens.main.quizz.QuizzListScreen
 import fr.mrantoine.franji.ui.screens.main.settings.SettingsScreen
@@ -35,7 +36,24 @@ sealed class Screen(val route: String) {
     data object Splash : Screen("splash")
     data object Settings : Screen("settings")
 
-    data object KanjiList : Screen("kanji_list")
+
+
+    data object KanjiList : Screen("kanji_list/{state}/{categoryPath}/{kanjiId}") {
+        const val ARG_STATE = "state"
+        const val ARG_CATEGORY_PATH = "categoryPath"
+        const val ARG_KANJI_ID = "kanjiId"
+
+        fun route(state: KanjiState, categoryPath: String, kanjiId: String): String {
+            val encodedState = Uri.encode(state.toString())
+            val encodedCategoryPath = Uri.encode(categoryPath)
+            val encodedKanjiId = Uri.encode(kanjiId)
+            return "kanji_list/$encodedState/$encodedCategoryPath/$encodedKanjiId"
+        }
+    }
+
+
+
+
     data object KanaList : Screen("kana_list")
     data object VocabList : Screen("vocab_list")
     data object GrammarList : Screen("grammar_list")
@@ -107,9 +125,45 @@ class MainActivity : ComponentActivity() {
                         SettingsScreen(navController)
                     }
 
-                    composable(Screen.KanjiList.route) {
-                        KanjiScreen(navController)
+                    composable(
+                        route = Screen.KanjiList.route,
+                        arguments = listOf(
+                            navArgument(Screen.KanjiList.ARG_CATEGORY_PATH) { type = NavType.StringType },
+                            navArgument(Screen.KanjiList.ARG_KANJI_ID) { type = NavType.StringType },
+                            navArgument(Screen.KanjiList.ARG_STATE) { type = NavType.StringType }
+                        )
+                    ) { backStackEntry ->
+
+                        val categoryPath = backStackEntry.arguments
+                            ?.getString(Screen.KanjiList.ARG_CATEGORY_PATH)
+                            ?.let { Uri.decode(it) }
+                            ?: ""
+
+                        val kanjiId = backStackEntry.arguments
+                            ?.getString(Screen.KanjiList.ARG_KANJI_ID)
+                            ?.let { Uri.decode(it) }
+                            ?: ""
+
+                        val state: KanjiState = backStackEntry.arguments
+                            ?.getString(Screen.KanjiList.ARG_STATE)
+                            ?.let { Uri.decode(it) }
+                            ?.let { KanjiState.valueOf(it) }
+                            ?: KanjiState.CategoryLsit
+
+
+                        KanjiScreen(
+                            navController = navController,
+                            categoryPath = categoryPath,
+                            state = state,
+                            kanjiId = kanjiId
+                        )
                     }
+
+
+
+
+
+
 
                     composable(Screen.KanaList.route) {
                         KanaScreen(navController)

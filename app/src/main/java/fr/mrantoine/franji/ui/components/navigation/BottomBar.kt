@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
+import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiState
 
 @Composable
 fun BottomBarItem(
@@ -98,10 +99,10 @@ fun BottomBar(
                     isSelected = index == selectedIndex,
                     onClick = {
                         when(index) {
-                            0 -> navController.navigate(Screen.KanjiList.route)
+                            0 -> navController.navigate(Screen.KanjiList.route(KanjiState.CategoryLsit, "", ""))
                             1 -> navController.navigate(Screen.QuizzList.route)
                             2 -> navController.navigate(Screen.CardsList.route)
-                            else -> navController.navigate(Screen.KanjiList.route)
+                            else -> navController.navigate(Screen.KanjiList.route(KanjiState.CategoryLsit, "", ""))
                         }
                     },
                     modifier = Modifier.weight(1f)
