@@ -61,6 +61,8 @@ fun GrammarScreen(
 
         when(state) {
             GrammarState.CategoryLsit -> {
+                categoryPath = ""
+                grammarId = ""
                 keyboardController?.hide()
                 GrammarCategoryListScreen(
                     modifier = Modifier.padding(innerPadding),
@@ -71,6 +73,7 @@ fun GrammarScreen(
                 )
             }
             GrammarState.Category -> {
+                grammarId = ""
                 keyboardController?.hide()
                 BackHandler {
                     state = GrammarState.CategoryLsit

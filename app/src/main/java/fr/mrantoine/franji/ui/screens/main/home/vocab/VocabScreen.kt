@@ -6,7 +6,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -14,12 +13,6 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.navigation.NavController
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
-import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiState
-import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabCategoryListScreen
-import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabCategoryScreen
-import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabInfoScreen
-import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabSearchScreen
-
 
 enum class VocabState {
     CategoryLsit,
@@ -27,7 +20,6 @@ enum class VocabState {
     Info,
     Search
 }
-
 
 @Composable
 fun VocabScreen(
@@ -64,6 +56,8 @@ fun VocabScreen(
 
         when(state) {
             VocabState.CategoryLsit -> {
+                vocabId = ""
+                categoryPath = ""
                 keyboardController?.hide()
                 VocabCategoryListScreen(
                     modifier = Modifier.padding(innerPadding),
@@ -74,6 +68,7 @@ fun VocabScreen(
                 )
             }
             VocabState.Category -> {
+                vocabId = ""
                 keyboardController?.hide()
                 BackHandler {
                     state = VocabState.CategoryLsit

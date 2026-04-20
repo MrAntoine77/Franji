@@ -57,6 +57,8 @@ fun KanaScreen(
 
         when(state) {
             KanaState.CategoryLsit -> {
+                categoryPath = ""
+                kanaId = ""
                 keyboardController?.hide()
                 KanaCategoryListScreen(
                     modifier = Modifier.padding(innerPadding),
@@ -67,6 +69,7 @@ fun KanaScreen(
                 )
             }
             KanaState.Category -> {
+                kanaId = ""
                 keyboardController?.hide()
                 BackHandler {
                     state = KanaState.CategoryLsit

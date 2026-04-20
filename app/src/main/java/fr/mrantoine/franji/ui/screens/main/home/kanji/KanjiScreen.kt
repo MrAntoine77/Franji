@@ -59,6 +59,8 @@ fun KanjiScreen(
 
         when(state) {
             KanjiState.CategoryLsit -> {
+                categoryPath = ""
+                kanjiId = ""
                 keyboardController?.hide()
                 KanjiCategoryListScreen(
                     modifier = Modifier.padding(innerPadding),
@@ -69,6 +71,7 @@ fun KanjiScreen(
                 )
             }
             KanjiState.Category -> {
+                kanjiId = ""
                 keyboardController?.hide()
                 BackHandler {
                     state = KanjiState.CategoryLsit
