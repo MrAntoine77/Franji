@@ -40,10 +40,12 @@ import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.components.Lecture
 import fr.mrantoine.franji.ui.components.Lottie
+import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabState
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
 fun KanjiInfoScreen(
+    navController: NavController,
     modifier: Modifier,
     kanjiId: String
 ) {
@@ -98,7 +100,13 @@ fun KanjiInfoScreen(
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            //.clickable { navController.navigate(Screen.VocabInfo.route(vocabId)) } TODO
+                            .clickable {
+                                navController.navigate(Screen.VocabList.route(
+                                    state = VocabState.Info,
+                                    categoryPath = "",
+                                    vocabId = vocabId
+                                ))
+                            }
                             .padding(vertical = Dimens.s, horizontal = Dimens.m),
                         verticalArrangement = Arrangement.spacedBy(4.dp)
                     ) {

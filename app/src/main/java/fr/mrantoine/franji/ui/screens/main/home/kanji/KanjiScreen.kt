@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.screens.main.home.kanji
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -69,6 +70,9 @@ fun KanjiScreen(
             }
             KanjiState.Category -> {
                 keyboardController?.hide()
+                BackHandler {
+                    state = KanjiState.CategoryLsit
+                }
                 KanjiCategoryScreen(
                     modifier = Modifier.padding(innerPadding),
                     categoryPath = categoryPath,
@@ -80,12 +84,29 @@ fun KanjiScreen(
             }
             KanjiState.Info -> {
                 keyboardController?.hide()
+                BackHandler {
+                    if (categoryPath != "") {
+                        state = KanjiState.Category
+                    } else {
+                        state = KanjiState.CategoryLsit
+                    }
+                }
                 KanjiInfoScreen(
+                    navController = navController,
                     modifier = Modifier.padding(innerPadding),
                     kanjiId = kanjiId
                 )
             }
             KanjiState.Search -> {
+                BackHandler {
+                    if(kanjiId != "") {
+                        state = KanjiState.Info
+                    }else if (categoryPath != "") {
+                        state = KanjiState.Category
+                    } else {
+                        state = KanjiState.CategoryLsit
+                    }
+                }
                 KanjiSearchScreen(
                     modifier = Modifier.padding(innerPadding),
                     search_text = search_text,

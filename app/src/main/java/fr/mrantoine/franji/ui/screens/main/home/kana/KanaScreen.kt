@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.screens.main.home.kana
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -13,6 +14,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.navigation.NavController
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
+import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabState
 
 enum class KanaState {
     CategoryLsit,
@@ -66,6 +68,9 @@ fun KanaScreen(
             }
             KanaState.Category -> {
                 keyboardController?.hide()
+                BackHandler {
+                    state = KanaState.CategoryLsit
+                }
                 KanaCategoryScreen(
                     modifier = Modifier.padding(innerPadding),
                     categoryPath = categoryPath,
@@ -77,12 +82,28 @@ fun KanaScreen(
             }
             KanaState.Info -> {
                 keyboardController?.hide()
+                BackHandler {
+                    if (categoryPath != "") {
+                        state = KanaState.Category
+                    } else {
+                        state = KanaState.CategoryLsit
+                    }
+                }
                 KanaInfoScreen(
                     modifier = Modifier.padding(innerPadding),
                     kanaId = kanaId
                 )
             }
             KanaState.Search -> {
+                BackHandler {
+                    if(kanaId != "") {
+                        state = KanaState.Info
+                    }else if (categoryPath != "") {
+                        state = KanaState.Category
+                    } else {
+                        state = KanaState.CategoryLsit
+                    }
+                }
                 KanaSearchScreen(
                     modifier = Modifier.padding(innerPadding),
                     search_text = search_text,

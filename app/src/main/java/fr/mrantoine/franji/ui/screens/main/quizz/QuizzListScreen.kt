@@ -38,6 +38,7 @@ import fr.mrantoine.franji.ui.components.navigation.TopBar
 import fr.mrantoine.franji.ui.components.navigation.Tree
 import fr.mrantoine.franji.ui.screens.main.cards.buildMap
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiState
+import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabState
 import fr.mrantoine.franji.ui.theme.Dimens
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -92,7 +93,7 @@ fun QuizzListScreen(
                 HeaderRow(
                     text = "Kanji",
                     onClick = { navController.navigate(Screen.KanjiList.route(
-                        state = KanjiState.Category,
+                        state = KanjiState.CategoryLsit,
                         categoryPath = "",
                         kanjiId = ""
                     )) }
@@ -107,7 +108,11 @@ fun QuizzListScreen(
             item {
                 HeaderRow(
                     text = "Vocabulaire",
-                    onClick = { navController.navigate(Screen.VocabList.route) }
+                    onClick = { navController.navigate(Screen.VocabList.route(
+                        state = VocabState.CategoryLsit,
+                        categoryPath = "",
+                        vocabId = ""
+                    )) }
                 )
             }
             item {

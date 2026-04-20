@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.screens.main.home.grammar
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -17,6 +18,7 @@ import fr.mrantoine.franji.ui.screens.main.home.grammar.GrammarCategoryListScree
 import fr.mrantoine.franji.ui.screens.main.home.grammar.GrammarCategoryScreen
 import fr.mrantoine.franji.ui.screens.main.home.grammar.GrammarInfoScreen
 import fr.mrantoine.franji.ui.screens.main.home.grammar.GrammarSearchScreen
+import fr.mrantoine.franji.ui.screens.main.home.kana.KanaState
 
 enum class GrammarState {
     CategoryLsit,
@@ -70,6 +72,9 @@ fun GrammarScreen(
             }
             GrammarState.Category -> {
                 keyboardController?.hide()
+                BackHandler {
+                    state = GrammarState.CategoryLsit
+                }
                 GrammarCategoryScreen(
                     modifier = Modifier.padding(innerPadding),
                     categoryPath = categoryPath,
@@ -81,12 +86,28 @@ fun GrammarScreen(
             }
             GrammarState.Info -> {
                 keyboardController?.hide()
+                BackHandler {
+                    if (categoryPath != "") {
+                        state = GrammarState.Category
+                    } else {
+                        state = GrammarState.CategoryLsit
+                    }
+                }
                 GrammarInfoScreen(
                     modifier = Modifier.padding(innerPadding),
                     grammarId = grammarId
                 )
             }
             GrammarState.Search -> {
+                BackHandler {
+                    if(grammarId != "") {
+                        state = GrammarState.Info
+                    }else if (categoryPath != "") {
+                        state = GrammarState.Category
+                    } else {
+                        state = GrammarState.CategoryLsit
+                    }
+                }
                 GrammarSearchScreen(
                     modifier = Modifier.padding(innerPadding),
                     search_text = search_text,

@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.screens.main.home.vocab
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -13,6 +14,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.navigation.NavController
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
+import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiState
 import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabCategoryListScreen
 import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabCategoryScreen
 import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabInfoScreen
@@ -30,8 +32,11 @@ enum class VocabState {
 @Composable
 fun VocabScreen(
     navController: NavController,
+    state: VocabState,
+    categoryPath: String,
+    vocabId: String
 ) {
-    var state by rememberSaveable { mutableStateOf(VocabState.CategoryLsit) }
+    var state by rememberSaveable { mutableStateOf(state) }
     var search_text by rememberSaveable { mutableStateOf("") }
     val keyboardController = LocalSoftwareKeyboardController.current
 
@@ -54,8 +59,8 @@ fun VocabScreen(
             )
         }
     ) { innerPadding ->
-        var categoryPath by rememberSaveable { mutableStateOf("") }
-        var vocabId by rememberSaveable { mutableStateOf("") }
+        var categoryPath by rememberSaveable { mutableStateOf(categoryPath) }
+        var vocabId by rememberSaveable { mutableStateOf(vocabId) }
 
         when(state) {
             VocabState.CategoryLsit -> {
@@ -70,6 +75,9 @@ fun VocabScreen(
             }
             VocabState.Category -> {
                 keyboardController?.hide()
+                BackHandler {
+                    state = VocabState.CategoryLsit
+                }
                 VocabCategoryScreen(
                     modifier = Modifier.padding(innerPadding),
                     categoryPath = categoryPath,
@@ -81,6 +89,13 @@ fun VocabScreen(
             }
             VocabState.Info -> {
                 keyboardController?.hide()
+                BackHandler {
+                    if (categoryPath != "") {
+                        state = VocabState.Category
+                    } else {
+                        state = VocabState.CategoryLsit
+                    }
+                }
                 VocabInfoScreen(
                     navController = navController,
                     modifier = Modifier.padding(innerPadding),
@@ -88,6 +103,15 @@ fun VocabScreen(
                 )
             }
             VocabState.Search -> {
+                BackHandler {
+                    if(vocabId != "") {
+                        state = VocabState.Info
+                    }else if (categoryPath != "") {
+                        state = VocabState.Category
+                    } else {
+                        state = VocabState.CategoryLsit
+                    }
+                }
                 VocabSearchScreen(
                     modifier = Modifier.padding(innerPadding),
                     search_text = search_text,

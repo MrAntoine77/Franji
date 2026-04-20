@@ -27,6 +27,7 @@ import fr.mrantoine.franji.ui.screens.main.home.kana.KanaScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiState
 import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabScreen
+import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabState
 import fr.mrantoine.franji.ui.screens.main.quizz.QuizzListScreen
 import fr.mrantoine.franji.ui.screens.main.settings.SettingsScreen
 
@@ -55,7 +56,18 @@ sealed class Screen(val route: String) {
 
 
     data object KanaList : Screen("kana_list")
-    data object VocabList : Screen("vocab_list")
+    data object VocabList : Screen("vocab_list/{state}/{categoryPath}/{vocabId}") {
+        const val ARG_STATE = "state"
+        const val ARG_CATEGORY_PATH = "categoryPath"
+        const val ARG_VOCAB_ID = "vocabId"
+
+        fun route(state: VocabState, categoryPath: String, vocabId: String): String {
+            val encodedState = Uri.encode(state.toString())
+            val encodedCategoryPath = Uri.encode(categoryPath)
+            val encodedVocabId = Uri.encode(vocabId)
+            return "vocab_list/$encodedState/$encodedCategoryPath/$encodedVocabId"
+        }
+    }
     data object GrammarList : Screen("grammar_list")
 
 
@@ -150,7 +162,6 @@ class MainActivity : ComponentActivity() {
                             ?.let { KanjiState.valueOf(it) }
                             ?: KanjiState.CategoryLsit
 
-
                         KanjiScreen(
                             navController = navController,
                             categoryPath = categoryPath,
@@ -159,17 +170,40 @@ class MainActivity : ComponentActivity() {
                         )
                     }
 
-
-
-
-
-
-
                     composable(Screen.KanaList.route) {
                         KanaScreen(navController)
                     }
-                    composable(Screen.VocabList.route) {
-                        VocabScreen(navController)
+                    composable(
+                        route = Screen.VocabList.route,
+                        arguments = listOf(
+                            navArgument(Screen.VocabList.ARG_CATEGORY_PATH) { type = NavType.StringType },
+                            navArgument(Screen.VocabList.ARG_VOCAB_ID) { type = NavType.StringType },
+                            navArgument(Screen.VocabList.ARG_STATE) { type = NavType.StringType }
+                        )
+                    ) { backStackEntry ->
+
+                        val categoryPath = backStackEntry.arguments
+                            ?.getString(Screen.VocabList.ARG_CATEGORY_PATH)
+                            ?.let { Uri.decode(it) }
+                            ?: ""
+
+                        val vocabId = backStackEntry.arguments
+                            ?.getString(Screen.VocabList.ARG_VOCAB_ID)
+                            ?.let { Uri.decode(it) }
+                            ?: ""
+
+                        val state: VocabState = backStackEntry.arguments
+                            ?.getString(Screen.VocabList.ARG_STATE)
+                            ?.let { Uri.decode(it) }
+                            ?.let { VocabState.valueOf(it) }
+                            ?: VocabState.CategoryLsit
+
+                        VocabScreen(
+                            navController = navController,
+                            categoryPath = categoryPath,
+                            state = state,
+                            vocabId = vocabId
+                        )
                     }
                     composable(Screen.GrammarList.route) {
                         GrammarScreen(navController)

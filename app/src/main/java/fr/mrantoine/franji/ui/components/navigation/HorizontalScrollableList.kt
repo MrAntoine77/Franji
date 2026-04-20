@@ -30,6 +30,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import fr.mrantoine.franji.R
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiState
+import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabState
 
 @Composable
 fun HorizontalScrollableList(
@@ -63,7 +64,11 @@ fun HorizontalScrollableList(
                             ))
                         }
                         else if(path.startsWith("Vocab")) {
-                            navController.navigate(Screen.VocabList.route) //TODO route vers le bon vocab
+                            navController.navigate(Screen.VocabList.route(
+                                state = VocabState.Category,
+                                categoryPath = path,
+                                vocabId = ""
+                            ))
                         }
                         else if(path.startsWith("Grammar")) {
                             navController.navigate(Screen.GrammarList.route) //TODO route vers le bon vocab
