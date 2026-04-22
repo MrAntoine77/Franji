@@ -58,11 +58,6 @@ fun QuizzListScreen(
     LaunchedEffect(Unit) {
         paths = CategoryStorage.getKeys(context, "Quizz")
         maps = buildMap(paths)
-
-
-        val kanjiList = KanjiStorage.getLinkedKanji(context, "kanji113", "Kanji/Monde1/Niveau1")
-        print(kanjiList)
-
     }
     val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
 
@@ -94,8 +89,8 @@ fun QuizzListScreen(
         ) {
             Tree(
                 treeData = maps,
-                onClick = {arg ->
-                    navController.navigate(Screen.QuizzPlaying.route)
+                onClick = { path ->
+                    navController.navigate(Screen.QuizzPlaying.route(path))
                 }
             )
         }

@@ -110,10 +110,13 @@ sealed class Screen(val route: String) {
             return "cards_playing/$encodedCards/$encodedTitle/$encodedMode"
         }
     }
-    data object QuizzPlaying : Screen("quizz_playing")
-
+    data object QuizzPlaying : Screen("quizz_playing/{categoryPath}") {
+        const val ARG = "categoryPath"
+        fun route(categoryPath: String) = "quizz_playing/${Uri.encode(categoryPath)}"
+    }
 
     data object QuizzList : Screen("quizz_list")
+
 
 }
 
@@ -345,9 +348,21 @@ class MainActivity : ComponentActivity() {
                     composable(Screen.QuizzList.route) {
                         QuizzListScreen(navController)
                     }
-                    composable(Screen.QuizzPlaying.route) {
-                        QuizzPlayingScreen(navController)
+
+                    composable(
+                        route = Screen.QuizzPlaying.route,
+                        arguments = listOf(navArgument(Screen.QuizzPlaying.ARG) {
+                            type = NavType.StringType
+                        })
+                    ) { backStackEntry ->
+
+                        val categoryPath = backStackEntry.arguments
+                            ?.getString(Screen.QuizzPlaying.ARG)
+                            ?.let { Uri.decode(it) } ?: ""
+
+                        QuizzPlayingScreen(navController, categoryPath)
                     }
+
                 }
             }
         }

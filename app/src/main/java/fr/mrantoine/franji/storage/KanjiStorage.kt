@@ -164,8 +164,8 @@ object KanjiStorage {
     }
 
 
-    fun getLinkedKanji(context: Context, kanjiId: String, categoryPath: String): List<Kanji> {
-        val categoryIds = CategoryStorage.getCategoryByPath(context, categoryPath).toMutableList()
+    fun get9LinkedKanji(context: Context, kanjiId: String, categoryPath: String): List<Kanji> {
+        val categoryIds = CategoryStorage.getCategoryByPath(context, categoryPath).toMutableList().filter { it.startsWith("kanji") }
         val resultIds = mutableListOf<String>()
 
         fun addBlock(id: String) {
@@ -182,6 +182,33 @@ object KanjiStorage {
             ?.let { addBlock(it.id) }
 
         repeat(9 - resultIds.size) {
+            categoryIds
+                .filter { it !in resultIds }
+                .randomOrNull()
+                ?.let { resultIds.add(it) }
+        }
+
+        return resultIds.mapNotNull { kanjiByIdCache[it] }.shuffled()
+    }
+
+    fun get4LinkedKanji(context: Context, kanjiId: String, categoryPath: String): List<Kanji> {
+        val categoryIds = CategoryStorage.getCategoryByPath(context, categoryPath).toMutableList().filter { it.startsWith("kanji") }
+        val resultIds = mutableListOf<String>()
+
+        fun addBlock(id: String) {
+            val base = kanjiByIdCache[id] ?: return
+            resultIds += id
+            resultIds += base.similarity.shuffled().take(1).filter { it !in resultIds }
+        }
+
+        addBlock(kanjiId)
+
+        kanjiByIdCache.values
+            .filter { it.id !in resultIds }
+            .randomOrNull()
+            ?.let { addBlock(it.id) }
+
+        repeat(4 - resultIds.size) {
             categoryIds
                 .filter { it !in resultIds }
                 .randomOrNull()
