@@ -24,7 +24,7 @@ import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.SettingsStorage
 
 @Composable
-fun KanjiGrid3x3(
+fun KanjiGrid9Jp(
     items: List<Kanji>,
     onClick: (Kanji) -> Unit = {},
     selectedIds: List<String> = emptyList(),
@@ -71,7 +71,7 @@ fun KanjiGrid3x3(
 }
 
 @Composable
-fun KanjiGrid4x1(
+fun KanjiGrid4Kana(
     items: List<Kanji>,
     onClick: (Kanji) -> Unit = {},
     selectedIds: List<String> = emptyList(),
@@ -107,12 +107,63 @@ fun KanjiGrid4x1(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(60.dp)
+                        .height(40.dp)
                         .background(boxColor)
                 ) {
                     Text(
                         text = text,
-                        fontSize = 24.sp,
+                        fontSize = 20.sp,
+                        color = textColor
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun KanjiGrid4Fr(
+    items: List<Kanji>,
+    onClick: (Kanji) -> Unit = {},
+    selectedIds: List<String> = emptyList(),
+    kanjiId: String
+) {
+    val safeItems = items.take(4)
+    val canSelect = !selectedIds.contains(kanjiId)
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        safeItems.forEach { kanji ->
+
+            val isSelected = selectedIds.contains(kanji.id)
+
+            val boxColor =
+                if (isSelected) MaterialTheme.colorScheme.tertiary else Color.Transparent
+
+            val textColor =
+                if (isSelected) MaterialTheme.colorScheme.secondary else Color.Unspecified
+
+            val text = kanji.main_lecture.fr
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(6.dp)
+                    .clickable(enabled = canSelect && !isSelected) {
+                        onClick(kanji)
+                    },
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            ) {
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(40.dp)
+                        .background(boxColor)
+                ) {
+                    Text(
+                        text = text,
+                        fontSize = 20.sp,
                         color = textColor
                     )
                 }

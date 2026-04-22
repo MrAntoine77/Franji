@@ -21,12 +21,16 @@ import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.ui.components.navigation.TopBar
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzKanjiFr4Kana
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzKanjiFr9Jp
+import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzKanjiJp4Fr
+import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzKanjiJp4Kana
 import fr.mrantoine.franji.ui.theme.Dimens
 
 
 enum class QuizzMode {
     KANJI_Fr9Jp,
     KANJI_Fr4Kana,
+    KANJI_Jp4Fr,
+    KANJI_Jp4Kana,
 }
 
 data class QuizzElement(
@@ -42,6 +46,8 @@ fun buildQuizz(listId: List<String>): List<QuizzElement> {
         if (id.startsWith("kanji")) {
             result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Fr9Jp))
             result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Fr4Kana))
+            result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Jp4Fr))
+            result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Jp4Kana))
         }
     }
     return result.shuffled()
@@ -125,8 +131,23 @@ fun QuizzPlayingScreen(
                                 passed = passed
                             )
                         }
+                        QuizzMode.KANJI_Jp4Fr -> {
+                            QuizzKanjiJp4Fr(
+                                kanjiId = itemId,
+                                categoryPath = categoryPath,
+                                onNext = { onNext() },
+                                passed = passed
+                            )
+                        }
+                        QuizzMode.KANJI_Jp4Kana -> {
+                            QuizzKanjiJp4Kana(
+                                kanjiId = itemId,
+                                categoryPath = categoryPath,
+                                onNext = { onNext() },
+                                passed = passed
+                            )
+                        }
                     }
-
                 }
             }
         }

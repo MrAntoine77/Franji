@@ -23,17 +23,18 @@ import fr.mrantoine.franji.storage.LottieStorage
 import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.ClickableAnimatedText
-import fr.mrantoine.franji.ui.components.KanjiGrid4Kana
+import fr.mrantoine.franji.ui.components.KanjiGrid4Fr
 import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.components.navigation.ThemedButton
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
-fun QuizzKanjiFr4Kana(
+fun QuizzKanjiJp4Fr(
     kanjiId: String,
     categoryPath: String,
     onNext: () -> Unit = {},
     passed: MutableState<Boolean>
+
 ) {
     var lottie by remember { mutableStateOf("{}") }
     var guess_list by remember { mutableStateOf<List<Kanji>>(emptyList()) }
@@ -57,18 +58,14 @@ fun QuizzKanjiFr4Kana(
     ) {
         Spacer(modifier = Modifier.height(Dimens.xxxl))
 
-        Text(
-            text = kanji.main_lecture.fr.replaceFirstChar { it.uppercase() },
-            fontSize = 32.sp
+        Lottie(
+            data = lottie,
+            speed = 2f
         )
-
         Spacer(modifier = Modifier.weight(1f))
         if(isRevealed) {
             val reveal_kana = if(SettingsStorage.isRomaji()) kanji.main_lecture.kana.replaceFirstChar { it.uppercase() } else kanji.main_lecture.kana.replaceFirstChar { it.uppercase() }
-            Lottie(
-                data = lottie,
-                speed = 2f
-            )
+
             ClickableAnimatedText(
                 text = reveal_kana,
                 fontSize = 28.sp,
@@ -85,7 +82,7 @@ fun QuizzKanjiFr4Kana(
             Spacer(modifier = Modifier.weight(1f))
         }
         else {
-            KanjiGrid4Kana(
+            KanjiGrid4Fr(
                 items = guess_list,
                 selectedIds = selectedIds,
                 kanjiId = kanjiId,

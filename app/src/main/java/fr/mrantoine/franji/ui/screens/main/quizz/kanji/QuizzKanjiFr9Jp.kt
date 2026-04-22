@@ -23,7 +23,7 @@ import fr.mrantoine.franji.storage.LottieStorage
 import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.ClickableAnimatedText
-import fr.mrantoine.franji.ui.components.KanjiGrid3x3
+import fr.mrantoine.franji.ui.components.KanjiGrid9Jp
 import fr.mrantoine.franji.ui.components.Lottie
 import fr.mrantoine.franji.ui.components.navigation.ThemedButton
 import fr.mrantoine.franji.ui.theme.Dimens
@@ -87,7 +87,7 @@ fun QuizzKanjiFr9Jp(
             Spacer(modifier = Modifier.weight(1f))
         }
         else {
-            KanjiGrid3x3(
+            KanjiGrid9Jp(
                 items = guess_list,
                 selectedIds = selectedIds,
                 kanjiId = kanjiId,
