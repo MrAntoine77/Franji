@@ -20,7 +20,8 @@ data class Grammar(
 data class GrammarItem(
     val jp: String = "",
     val fr: String = "",
-    val lecture: Pronunciation = Pronunciation()
+    val lecture: Pronunciation = Pronunciation(),
+    val elements: List<String> = emptyList()
 )
 
 @Serializable

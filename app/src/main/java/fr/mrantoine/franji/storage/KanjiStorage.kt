@@ -27,7 +27,6 @@ data class MainLecture(
 )
 
 
-
 @Serializable
 data class Kanji(
     val kanji: String = "",
@@ -35,9 +34,9 @@ data class Kanji(
     val lectures: Lecture = Lecture(),
     val id: String = "",
     val angles: List<Float> = emptyList(),
-    val vocab: List<String> = emptyList()
+    val vocab: List<String> = emptyList(),
+    val similarity: List<String> = emptyList()
 )
-
 
 
 @Serializable
@@ -47,9 +46,6 @@ data class KanjiCache(
 
 object KanjiStorage {
     private val data_file_path = "kanji.json"
-
-
-
 
     private var kanjiByIdCache = mutableMapOf<String, Kanji>()
     fun getKanjiById(
@@ -69,7 +65,7 @@ object KanjiStorage {
             json.decodeFromString(jsonString)
 
         val kanji = list.firstOrNull { it.id == kanjiId } ?: Kanji()
-        if(kanji != Kanji()) {
+        if (kanji != Kanji()) {
             kanjiByIdCache[kanjiId] = kanji
         }
         return kanji
@@ -77,7 +73,7 @@ object KanjiStorage {
 
 
     fun loadAllKanji(context: Context) {
-        if(kanjiByIdCache.isEmpty()) {
+        if (kanjiByIdCache.isEmpty()) {
             val jsonString = context.assets.open(data_file_path)
                 .bufferedReader()
                 .use { it.readText() }
@@ -86,14 +82,13 @@ object KanjiStorage {
                 ignoreUnknownKeys = true
             }
 
-            val kanjis: List<Kanji>  = json.decodeFromString(jsonString)
+            val kanjis: List<Kanji> = json.decodeFromString(jsonString)
 
             kanjis.forEach { kanji ->
                 kanjiByIdCache[kanji.id] = kanji
             }
         }
     }
-
 
 
     fun loadAll(context: Context) {
@@ -169,6 +164,34 @@ object KanjiStorage {
     }
 
 
+    fun getLinkedKanji(context: Context, kanjiId: String, categoryPath: String): List<Kanji> {
+        val categoryIds = CategoryStorage.getCategoryByPath(context, categoryPath).toMutableList()
+        val resultIds = mutableListOf<String>()
+
+        fun addBlock(id: String) {
+            val base = kanjiByIdCache[id] ?: return
+            resultIds += id
+            resultIds += base.similarity.shuffled().take(2).filter { it !in resultIds }
+        }
+
+        addBlock(kanjiId)
+
+        kanjiByIdCache.values
+            .filter { it.id !in resultIds }
+            .randomOrNull()
+            ?.let { addBlock(it.id) }
+
+        repeat(9 - resultIds.size) {
+            categoryIds
+                .filter { it !in resultIds }
+                .randomOrNull()
+                ?.let { resultIds.add(it) }
+        }
+
+        return resultIds.mapNotNull { kanjiByIdCache[it] }.shuffled()
+    }
+
+
     private val cache_file_path = "kanji_cache.json"
     fun clearCache(context: Context) {
         kanjiByIdCache.clear()
@@ -178,6 +201,7 @@ object KanjiStorage {
             cacheFile.delete()
         }
     }
+
     fun saveCache(context: Context) {
         val cacheFile = File(context.filesDir, cache_file_path)
 
@@ -188,6 +212,7 @@ object KanjiStorage {
         val jsonString = Json.encodeToString(serializableCache)
         cacheFile.writeText(jsonString)
     }
+
     fun loadCache(context: Context) {
         val cacheFile = File(context.filesDir, cache_file_path)
         if (!cacheFile.exists()) return

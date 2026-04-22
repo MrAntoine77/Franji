@@ -31,6 +31,8 @@ import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiState
 import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabScreen
 import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabState
 import fr.mrantoine.franji.ui.screens.main.quizz.QuizzListScreen
+import fr.mrantoine.franji.ui.screens.main.quizz.QuizzMainScreen
+import fr.mrantoine.franji.ui.screens.main.quizz.QuizzPlayingScreen
 import fr.mrantoine.franji.ui.screens.main.settings.SettingsScreen
 
 
@@ -108,6 +110,7 @@ sealed class Screen(val route: String) {
             return "cards_playing/$encodedCards/$encodedTitle/$encodedMode"
         }
     }
+    data object QuizzPlaying : Screen("quizz_playing")
 
 
     data object QuizzList : Screen("quizz_list")
@@ -341,6 +344,9 @@ class MainActivity : ComponentActivity() {
                     }
                     composable(Screen.QuizzList.route) {
                         QuizzListScreen(navController)
+                    }
+                    composable(Screen.QuizzPlaying.route) {
+                        QuizzPlayingScreen(navController)
                     }
                 }
             }

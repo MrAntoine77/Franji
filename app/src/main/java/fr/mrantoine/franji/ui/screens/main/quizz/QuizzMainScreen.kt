@@ -3,50 +3,38 @@ package fr.mrantoine.franji.ui.screens.main.quizz
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
-import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.storage.MainPage
 import fr.mrantoine.franji.storage.MainPageStorage
-import fr.mrantoine.franji.ui.components.ComingSoonBox
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HeaderRow
 import fr.mrantoine.franji.ui.components.navigation.HorizontalScrollableList
 import fr.mrantoine.franji.ui.components.navigation.TopBar
-import fr.mrantoine.franji.ui.components.navigation.Tree
-import fr.mrantoine.franji.ui.screens.main.cards.buildMap
 import fr.mrantoine.franji.ui.screens.main.home.grammar.GrammarState
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiState
 import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabState
 import fr.mrantoine.franji.ui.theme.Dimens
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 
 @Composable
-fun QuizzListScreen(
+fun QuizzMainScreen(
     navController: NavController
 ) {
     val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
