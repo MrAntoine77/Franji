@@ -127,16 +127,26 @@ object GrammarStorage {
             )
     }
 
-
-
     fun get3RandomGrammarElement(grammarId: String): List<Grammar> {
-
         return grammarByIdCache.values
             .filter { it.id != grammarId }
             .shuffled()
             .take(3)
+    }
 
+    fun get4RandomGrammarElement(grammarId: String): List<Grammar> {
+        val selectedGrammar = grammarByIdCache[grammarId]
 
+        val randomGrammars = grammarByIdCache.values
+            .filter { it.id != grammarId }
+            .shuffled()
+            .take(3)
+
+        return if (selectedGrammar != null) {
+            randomGrammars + selectedGrammar
+        } else {
+            randomGrammars
+        }
     }
 
     private val cache_file_path = "grammar_cache.json"

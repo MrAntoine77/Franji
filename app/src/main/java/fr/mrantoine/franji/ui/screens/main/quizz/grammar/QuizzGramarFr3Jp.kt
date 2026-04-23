@@ -23,19 +23,15 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.storage.Grammar
 import fr.mrantoine.franji.storage.GrammarItem
 import fr.mrantoine.franji.storage.GrammarStorage
-import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.ClickableAnimatedText
 import fr.mrantoine.franji.ui.components.HighlightedText
@@ -224,20 +220,20 @@ fun QuizzGrammarFr3Jp(
     key(grammarItem) {
         if (grammarItem != GrammarItem()) {
             Column() {
+                Text(
+                    text = grammarItem.fr,
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Center,
+                    fontSize = 28.sp
+                )
+                Spacer(modifier = Modifier.width(Dimens.s))
                 if(!isRevealed) {
-                    Text(
-                        text = grammarItem.fr,
-                        modifier = Modifier.fillMaxWidth(),
-                        textAlign = TextAlign.Center,
-                        fontSize = 28.sp
-                    )
-                    Spacer(modifier = Modifier.width(Dimens.s))
                     HighlightedText(
                         text = splitAndMask(grammarItem.jp).joinToString(" "),
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = TextAlign.Center,
                         fontSize = 32.sp,
-                        lineHeight = 38.sp
+                        lineHeight = 36.sp
                         )
                     Spacer(modifier = Modifier.width(Dimens.s))
                     selectableCardFlow(
@@ -251,19 +247,12 @@ fun QuizzGrammarFr3Jp(
                     }
                 }
                 else {
-                    Text(
-                        text = grammarItem.fr,
-                        modifier = Modifier.fillMaxWidth(),
-                        textAlign = TextAlign.Center,
-                        fontSize = 28.sp
-                    )
-                    Spacer(modifier = Modifier.height(Dimens.xl))
                     ClickableAnimatedText(
                         text = grammarItem.jp,
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = TextAlign.Center,
-                        fontSize = 28.sp,
-                        lineHeight = 32.sp,
+                        fontSize = 32.sp,
+                        lineHeight = 36.sp,
                         onClick = { TtsStorage.speak(grammarItem.lecture.kana) }
                     )
                     ClickableAnimatedText(

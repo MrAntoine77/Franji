@@ -22,6 +22,7 @@ import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.navigation.TopBar
 import fr.mrantoine.franji.ui.screens.main.quizz.grammar.QuizzGrammarFr3Jp
+import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzGrammarJp4Fr
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzKanjiFr4Kana
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzKanjiFr9Jp
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzKanjiJp4Fr
@@ -42,7 +43,8 @@ enum class QuizzMode {
     VOCAB_Fr4Kana,
     VOCAB_Jp4Fr,
     VOCAB_Jp4Kana,
-    GRAMMAR_Fr3Jp
+    GRAMMAR_Fr3Jp,
+    GRAMMAR_Jp4Fr
 }
 
 data class QuizzElement(
@@ -76,6 +78,7 @@ fun buildQuizz(
         }
         if (id.startsWith("grammar")) {
             result.add(QuizzElement(id = id, mode = QuizzMode.GRAMMAR_Fr3Jp))
+            result.add(QuizzElement(id = id, mode = QuizzMode.GRAMMAR_Jp4Fr))
         }
     }
     return result.shuffled()
@@ -218,6 +221,13 @@ fun QuizzPlayingScreen(
                         }
                         QuizzMode.GRAMMAR_Fr3Jp -> {
                             QuizzGrammarFr3Jp(
+                                grammarId = itemId,
+                                onNext = { onNext() },
+                                passed = passed
+                            )
+                        }
+                        QuizzMode.GRAMMAR_Jp4Fr -> {
+                            QuizzGrammarJp4Fr(
                                 grammarId = itemId,
                                 onNext = { onNext() },
                                 passed = passed

@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import fr.mrantoine.franji.storage.Grammar
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.Vocab
@@ -370,5 +371,62 @@ fun VocabGrid4Kana(
     }
 }
 
+
+@Composable
+fun GrammarGrid4Fr(
+    items: List<Grammar>,
+    onClick: (Grammar) -> Unit = {},
+    selectedIds: List<String> = emptyList(),
+    grammarId: String
+) {
+    val safeItems = items.take(4)
+    val canSelect = !selectedIds.contains(grammarId)
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        safeItems.forEach { grammar ->
+
+            val isSelected = selectedIds.contains(grammar.id)
+
+            val boxColor =
+                if (isSelected) MaterialTheme.colorScheme.tertiary else Color.Transparent
+
+            val textColor =
+                if (isSelected) MaterialTheme.colorScheme.secondary else Color.Unspecified
+
+            val text = grammar.subtitle.replaceFirstChar { it.uppercase() }
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(6.dp)
+                    .clickable(enabled = canSelect && !isSelected) {
+                        onClick(grammar)
+                    },
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            ) {
+                Box (
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(boxColor)
+                ){
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = Dimens.s),
+                    ) {
+                        Text(
+                            text = text,
+                            fontSize = 20.sp,
+                            color = textColor,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
 
 
