@@ -1,5 +1,7 @@
 package fr.mrantoine.franji.ui.screens.main.quizz
 
+import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -54,6 +56,11 @@ fun QuizzListScreen(
     var paths by remember { mutableStateOf<Array<String>>(emptyArray()) }
     var maps by remember { mutableStateOf<Map<String, Any>>(emptyMap()) }
     val context = LocalContext.current
+
+
+    BackHandler {
+        // TODO
+    }
 
     LaunchedEffect(Unit) {
         paths = CategoryStorage.getKeys(context, "Quizz")

@@ -1,6 +1,8 @@
 package fr.mrantoine.franji.ui.screens.main.quizz
 
 import android.content.Context
+import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -32,6 +34,7 @@ import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzVocabFr4Kana
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzVocabJp4Fr
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzVocabJp4Kana
 import fr.mrantoine.franji.ui.theme.Dimens
+import kotlinx.coroutines.delay
 
 
 enum class QuizzMode {
@@ -62,18 +65,18 @@ fun buildQuizz(
 
     listId.forEach { id ->
         if (id.startsWith("kanji")) {
-            //result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Fr9Jp))
-            //result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Jp4Fr))
-            //result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Fr4Kana))
-            //result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Jp4Kana))
+            result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Fr9Jp))
+            result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Jp4Fr))
+            result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Fr4Kana))
+            result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Jp4Kana))
         }
         if (id.startsWith("vocab")) {
             val vocab = VocabStorage.getVocabById(context, id)
-            //result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Fr4Jp))
-            //result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Jp4Fr))
+            result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Fr4Jp))
+            result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Jp4Fr))
             if(vocab.lecture.kana != vocab.jp) {
-                //result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Fr4Kana))
-                //result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Jp4Kana))
+                result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Fr4Kana))
+                result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Jp4Kana))
             }
         }
         if (id.startsWith("grammar")) {
@@ -90,6 +93,29 @@ fun QuizzPlayingScreen(
     navController: NavController,
     categoryPath: String
 ) {
+    val context = LocalContext.current
+
+    var backPressedOnce by remember { mutableStateOf(false) }
+
+    if (backPressedOnce) {
+        LaunchedEffect(Unit) {
+            delay(2000)
+            backPressedOnce = false
+        }
+    }
+
+    BackHandler {
+        if (backPressedOnce) {
+            navController.navigate(Screen.QuizzList.route)
+        } else {
+            backPressedOnce = true
+            Toast.makeText(
+                context,
+                "Appuyez encore pour quitter. Les données non sauvegardées seront perdues.",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -110,7 +136,6 @@ fun QuizzPlayingScreen(
         var loading by remember { mutableStateOf(true) }
         val passed = remember { mutableStateOf(true) }
         var mode by remember { mutableStateOf(QuizzMode.KANJI_Fr9Jp) }
-        val context = LocalContext.current
 
         fun onNext() {
             loading = true

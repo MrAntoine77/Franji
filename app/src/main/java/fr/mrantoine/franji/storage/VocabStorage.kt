@@ -125,6 +125,12 @@ object VocabStorage {
                 .randomOrNull()
                 ?.let { resultIds.add(it) }
         }
+        repeat(4 - resultIds.size) {
+            vocabByIdCache.values
+                .filter { it.id !in resultIds }
+                .randomOrNull()
+                ?.let { resultIds.add(it.id) }
+        }
 
         return resultIds.mapNotNull { vocabByIdCache[it] }.shuffled()
     }

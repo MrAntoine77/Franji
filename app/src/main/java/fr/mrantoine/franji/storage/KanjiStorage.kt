@@ -187,6 +187,13 @@ object KanjiStorage {
                 .randomOrNull()
                 ?.let { resultIds.add(it) }
         }
+        repeat(9 - resultIds.size) {
+            kanjiByIdCache.values
+                .filter { it.id !in resultIds }
+                .randomOrNull()
+                ?.let { resultIds.add(it.id) }
+        }
+
 
         return resultIds.mapNotNull { kanjiByIdCache[it] }.shuffled()
     }
@@ -213,6 +220,12 @@ object KanjiStorage {
                 .filter { it !in resultIds }
                 .randomOrNull()
                 ?.let { resultIds.add(it) }
+        }
+        repeat(4 - resultIds.size) {
+            kanjiByIdCache.values
+                .filter { it.id !in resultIds }
+                .randomOrNull()
+                ?.let { resultIds.add(it.id) }
         }
 
         return resultIds.mapNotNull { kanjiByIdCache[it] }.shuffled()
