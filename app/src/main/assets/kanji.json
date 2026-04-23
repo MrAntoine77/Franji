@@ -4,8 +4,8 @@
         "id": "kanji1",
         "main_lecture": {
             "fr": "un",
-            "romaji": "ICHI",
-            "kana": "イチ"
+            "romaji": "ichi",
+            "kana": "いち"
         },
         "lectures": {
             "fr": [
@@ -115,8 +115,8 @@
         "id": "kanji2",
         "main_lecture": {
             "fr": "deux",
-            "romaji": "NI",
-            "kana": "ニ"
+            "romaji": "ni",
+            "kana": "に"
         },
         "lectures": {
             "fr": [
@@ -168,8 +168,8 @@
         "id": "kanji3",
         "main_lecture": {
             "fr": "trois",
-            "romaji": "SAN",
-            "kana": "サン"
+            "romaji": "san",
+            "kana": "さん"
         },
         "lectures": {
             "fr": [
@@ -328,7 +328,7 @@
         "main_lecture": {
             "fr": "six",
             "romaji": "ROKU",
-            "kana": "ロむ"
+            "kana": "ロク"
         },
         "lectures": {
             "fr": [
@@ -7775,8 +7775,8 @@
         "id": "kanji111",
         "main_lecture": {
             "fr": "vaste bâtiment public",
-            "romaji": "-",
-            "kana": "-"
+            "romaji": "in",
+            "kana": "いん"
         },
         "lectures": {
             "fr": [
@@ -7790,12 +7790,7 @@
                     "kana": "イン"
                 }
             ],
-            "kun": [
-                {
-                    "romaji": "-",
-                    "kana": "-"
-                }
-            ]
+            "kun": []
         },
         "frequency": 708,
         "vocab": [
