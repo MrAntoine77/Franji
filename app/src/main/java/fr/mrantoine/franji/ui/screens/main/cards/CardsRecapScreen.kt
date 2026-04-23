@@ -91,7 +91,8 @@ fun CardsRecapScreen(
                 modifier = Modifier.statusBarsPadding(),
                 title = "Révision",
                 showBack = true,
-                onBackClick = { backDispatcher?.onBackPressed() }
+                onBackClick = { backDispatcher?.onBackPressed() },
+                navController = navController
             )
         }
     ) { innerPadding ->

@@ -84,7 +84,6 @@ fun QuizzKanjiFr9Jp(
                     selectedIds = emptyList()
                 }
             )
-            Spacer(modifier = Modifier.weight(1f))
         }
         else {
             Spacer(modifier = Modifier.weight(1f))

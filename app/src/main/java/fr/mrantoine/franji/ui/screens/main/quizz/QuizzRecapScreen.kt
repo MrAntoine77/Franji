@@ -112,7 +112,8 @@ fun QuizzRecapScreen(
                     modifier = Modifier.statusBarsPadding(),
                     title = title,
                     showBack = true,
-                    onBackClick = { backDispatcher?.onBackPressed() }
+                    onBackClick = { backDispatcher?.onBackPressed() },
+                    navController = navController
                 )
             },
             bottomBar = {

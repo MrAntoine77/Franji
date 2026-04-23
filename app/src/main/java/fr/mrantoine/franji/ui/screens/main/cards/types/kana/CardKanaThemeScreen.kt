@@ -72,7 +72,7 @@ fun CardKanaThemeScreen(
     }
 
     CardTypeTag(
-        text = "Kanji",
+        text = "Kana",
         color = MaterialTheme.colorScheme.primary,
         textColor = MaterialTheme.colorScheme.onPrimary
     )

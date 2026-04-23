@@ -48,7 +48,8 @@ fun QuizzMainScreen(
                 TopBar(
                     title = "Quizz",
                     showBack = true,
-                    onBackClick =  { backDispatcher?.onBackPressed() }
+                    onBackClick =  { backDispatcher?.onBackPressed() },
+                    navController = navController
                 )
             }
         },

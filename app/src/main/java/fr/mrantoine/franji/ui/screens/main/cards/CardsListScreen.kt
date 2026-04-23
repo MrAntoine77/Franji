@@ -77,7 +77,8 @@ fun CardsListScreen(
                 TopBar(
                     title = "Révision",
                     showBack = true,
-                    onBackClick =  { backDispatcher?.onBackPressed() }
+                    onBackClick =  { backDispatcher?.onBackPressed() },
+                    navController = navController
                 )
             }
         },

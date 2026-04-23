@@ -12,16 +12,19 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavController
+import fr.mrantoine.franji.Screen
 
 @Composable
 fun TopBar(
+    navController: NavController,
     title: String,
     modifier: Modifier = Modifier,
     showBack: Boolean = false,
-    showMenu: Boolean = false,
+    showMenu: Boolean = true,
     onBackClick: () -> Unit = {},
-    onMenuClick: () -> Unit = {},
 ) {
     val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
     Column() {
@@ -55,9 +58,11 @@ fun TopBar(
             )
 
             if (showMenu) {
-                IconButton(onClick = onMenuClick) {
+                IconButton(onClick = {
+                    navController.navigate(Screen.Settings.route)
+                }) {
                     Icon(
-                        imageVector = Icons.Filled.Menu,
+                        imageVector = Icons.Outlined.Settings,
                         contentDescription = "Menu"
                     )
                 }

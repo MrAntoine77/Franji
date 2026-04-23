@@ -4,9 +4,12 @@ import android.content.Context
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,6 +25,7 @@ import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
 import fr.mrantoine.franji.storage.VocabStorage
+import fr.mrantoine.franji.ui.components.CardTypeTag
 import fr.mrantoine.franji.ui.components.navigation.TopBar
 import fr.mrantoine.franji.ui.screens.main.quizz.grammar.QuizzGrammarFr3Jp
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzGrammarJp4Fr
@@ -124,7 +128,9 @@ fun QuizzPlayingScreen(
                 modifier = Modifier.statusBarsPadding(),
                 title = categoryPath.uppercase().replace("/", " "),
                 showBack = true,
-                onBackClick = { backDispatcher?.onBackPressed() }
+                showMenu = false,
+                onBackClick = { backDispatcher?.onBackPressed() },
+                navController = navController
             )
         }
     ) { innerPadding ->
@@ -176,6 +182,11 @@ fun QuizzPlayingScreen(
             .padding(horizontal = Dimens.s)
         ) {
             Text(text=quizzList.size.toString())
+            CardTypeTag(
+                text = if(itemId.startsWith("kanji")) "Kanji" else if(itemId.startsWith("vocab")) "Vocabulaire" else "Grammaire",
+                color = MaterialTheme.colorScheme.primary,
+                textColor = MaterialTheme.colorScheme.onPrimary
+            )
             if(quizzList.isNotEmpty() && !loading && itemId != "") {
                 key(itemId) {
                     when (mode) {

@@ -82,7 +82,6 @@ fun QuizzKanjiFr4Kana(
                     selectedIds = emptyList()
                 }
             )
-            Spacer(modifier = Modifier.weight(1f))
         }
         else {
             Spacer(modifier = Modifier.weight(1f))

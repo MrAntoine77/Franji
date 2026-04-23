@@ -106,7 +106,9 @@ fun SettingsScreen(
                         } else {
                             navController.popBackStack()
                         }
-                    }
+                    },
+                    showMenu = false,
+                    navController = navController
                 )
             }
         },

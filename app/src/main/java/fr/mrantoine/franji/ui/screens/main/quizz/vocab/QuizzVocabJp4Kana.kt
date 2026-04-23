@@ -58,15 +58,16 @@ fun QuizzVocabJp4Kana(
     ) {
         Spacer(modifier = Modifier.height(Dimens.xxxl))
 
-        Text(
-            text = vocab.jp,
-            fontSize = 32.sp,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth()
-        )
+
         if(isRevealed) {
             val reveal_kana = if(SettingsStorage.isRomaji()) vocab.lecture.kana.replaceFirstChar { it.uppercase() } else vocab.lecture.kana.replaceFirstChar { it.uppercase() }
-
+            ClickableAnimatedText(
+                text = vocab.jp,
+                fontSize = 32.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth(),
+                onClick = { TtsStorage.speak(vocab.lecture.kana) }
+            )
             ClickableAnimatedText(
                 text = reveal_kana,
                 fontSize = 24.sp,
@@ -88,9 +89,14 @@ fun QuizzVocabJp4Kana(
                     selectedIds = emptyList()
                 }
             )
-            Spacer(modifier = Modifier.weight(1f))
         }
         else {
+            Text(
+                text = vocab.jp,
+                fontSize = 32.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
             Spacer(modifier = Modifier.weight(1f))
             VocabGrid4Kana(
                 items = guess_list,
