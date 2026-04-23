@@ -19,7 +19,8 @@ fun ThemedButton(
     modifier: Modifier = Modifier,
     text: String,
     onClick: () -> Unit,
-    isPrimary: Boolean = true
+    isPrimary: Boolean = true,
+    enabled: Boolean = true
 ) {
     val backgroundColor = if (isPrimary) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onPrimary
     val contentColor = if (isPrimary) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onBackground
@@ -31,7 +32,8 @@ fun ThemedButton(
             containerColor = backgroundColor,
             contentColor = contentColor
         ),
-        shape = RoundedCornerShape(12.dp)
+        shape = RoundedCornerShape(12.dp),
+        enabled = enabled
     ) {
         Text(
             text = text,

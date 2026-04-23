@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -61,8 +62,6 @@ fun QuizzKanjiFr4Kana(
             text = kanji.main_lecture.fr.replaceFirstChar { it.uppercase() },
             fontSize = 32.sp
         )
-
-        Spacer(modifier = Modifier.weight(1f))
         if(isRevealed) {
             val reveal_kana = if(SettingsStorage.isRomaji()) kanji.main_lecture.kana.replaceFirstChar { it.uppercase() } else kanji.main_lecture.kana.replaceFirstChar { it.uppercase() }
             Lottie(
@@ -72,7 +71,8 @@ fun QuizzKanjiFr4Kana(
             ClickableAnimatedText(
                 text = reveal_kana,
                 fontSize = 28.sp,
-                onClick = { TtsStorage.speak(kanji.main_lecture.kana) }
+                onClick = { TtsStorage.speak(kanji.main_lecture.kana) },
+                color = MaterialTheme.colorScheme.secondary
             )
             Spacer(modifier = Modifier.weight(1f))
             ThemedButton(
@@ -85,6 +85,7 @@ fun QuizzKanjiFr4Kana(
             Spacer(modifier = Modifier.weight(1f))
         }
         else {
+            Spacer(modifier = Modifier.weight(1f))
             KanjiGrid4Kana(
                 items = guess_list,
                 selectedIds = selectedIds,

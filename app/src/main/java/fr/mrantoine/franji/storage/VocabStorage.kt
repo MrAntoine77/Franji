@@ -13,7 +13,8 @@ data class Vocab(
     val jp: String = "",
     val lecture: Pronunciation = Pronunciation(),
     val id: String = "",
-    val kanji: List<String> = emptyList()
+    val kanji: List<String> = emptyList(),
+    val similarity: List<String> = emptyList()
 )
 
 @Serializable
@@ -103,6 +104,31 @@ object VocabStorage {
                     .thenBy { !startsWithMatch(it) }
             )
     }
+
+
+
+    fun get4LinkedVocab(context: Context, vocabId: String, categoryPath: String): List<Vocab> {
+        val categoryIds = CategoryStorage.getCategoryByPath(context, categoryPath).toMutableList().filter { it.startsWith("vocab") }
+        val resultIds = mutableListOf<String>()
+
+        fun addBlock(id: String) {
+            val base = vocabByIdCache[id] ?: return
+            resultIds += id
+            resultIds += base.similarity.shuffled().take(3).filter { it !in resultIds }
+        }
+
+        addBlock(vocabId)
+
+        repeat(4 - resultIds.size) {
+            categoryIds
+                .filter { it !in resultIds }
+                .randomOrNull()
+                ?.let { resultIds.add(it) }
+        }
+
+        return resultIds.mapNotNull { vocabByIdCache[it] }.shuffled()
+    }
+
 
 
     private val cache_file_path = "vocab_cache.json"

@@ -1,5 +1,6 @@
 package fr.mrantoine.franji.ui.screens.main.quizz
 
+import android.content.Context
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -18,11 +19,17 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
+import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.navigation.TopBar
+import fr.mrantoine.franji.ui.screens.main.quizz.grammar.QuizzGrammarFr3Jp
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzKanjiFr4Kana
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzKanjiFr9Jp
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzKanjiJp4Fr
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzKanjiJp4Kana
+import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzVocabFr4Jp
+import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzVocabFr4Kana
+import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzVocabJp4Fr
+import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzVocabJp4Kana
 import fr.mrantoine.franji.ui.theme.Dimens
 
 
@@ -31,23 +38,44 @@ enum class QuizzMode {
     KANJI_Fr4Kana,
     KANJI_Jp4Fr,
     KANJI_Jp4Kana,
+    VOCAB_Fr4Jp,
+    VOCAB_Fr4Kana,
+    VOCAB_Jp4Fr,
+    VOCAB_Jp4Kana,
+    GRAMMAR_Fr3Jp
 }
 
 data class QuizzElement(
     val id: String,
-    val mode: QuizzMode
+    val mode: QuizzMode,
+    val failed: Boolean = false
 )
 
 
-fun buildQuizz(listId: List<String>): List<QuizzElement> {
+fun buildQuizz(
+    context: Context,
+    listId: List<String>
+): List<QuizzElement> {
     val result = mutableListOf<QuizzElement>()
 
     listId.forEach { id ->
         if (id.startsWith("kanji")) {
-            result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Fr9Jp))
-            result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Fr4Kana))
-            result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Jp4Fr))
-            result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Jp4Kana))
+            //result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Fr9Jp))
+            //result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Jp4Fr))
+            //result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Fr4Kana))
+            //result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Jp4Kana))
+        }
+        if (id.startsWith("vocab")) {
+            val vocab = VocabStorage.getVocabById(context, id)
+            //result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Fr4Jp))
+            //result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Jp4Fr))
+            if(vocab.lecture.kana != vocab.jp) {
+                //result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Fr4Kana))
+                //result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Jp4Kana))
+            }
+        }
+        if (id.startsWith("grammar")) {
+            result.add(QuizzElement(id = id, mode = QuizzMode.GRAMMAR_Fr3Jp))
         }
     }
     return result.shuffled()
@@ -84,18 +112,27 @@ fun QuizzPlayingScreen(
         fun onNext() {
             loading = true
             index += 1
-            quizzList = if(passed.value) {
+
+            val current = quizzList.first()
+
+            quizzList = if (passed.value) {
                 quizzList.drop(1)
             } else {
-                quizzList.drop(1) + quizzList.first()
+                if (current.failed) {
+                    quizzList.drop(1)
+                } else {
+                    val updated = current.copy(failed = true)
+                    quizzList.drop(1) + updated
+                }
             }
+
             passed.value = true
         }
 
         LaunchedEffect(index) {
             if(index == 0) {
                 itemIdList = CategoryStorage.getCategoryByPath(context, categoryPath).toList().shuffled()
-                quizzList = buildQuizz(listId = itemIdList)
+                quizzList = buildQuizz(context= context, listId = itemIdList)
             }
             if(quizzList.isNotEmpty()) {
                 itemId = quizzList[0].id
@@ -143,6 +180,45 @@ fun QuizzPlayingScreen(
                             QuizzKanjiJp4Kana(
                                 kanjiId = itemId,
                                 categoryPath = categoryPath,
+                                onNext = { onNext() },
+                                passed = passed
+                            )
+                        }
+                        QuizzMode.VOCAB_Fr4Jp -> {
+                            QuizzVocabFr4Jp(
+                                vocabId = itemId,
+                                categoryPath = categoryPath,
+                                onNext = { onNext() },
+                                passed = passed
+                            )
+                        }
+                        QuizzMode.VOCAB_Fr4Kana -> {
+                            QuizzVocabFr4Kana(
+                                vocabId = itemId,
+                                categoryPath = categoryPath,
+                                onNext = { onNext() },
+                                passed = passed
+                            )
+                        }
+                        QuizzMode.VOCAB_Jp4Fr -> {
+                            QuizzVocabJp4Fr(
+                                vocabId = itemId,
+                                categoryPath = categoryPath,
+                                onNext = { onNext() },
+                                passed = passed
+                            )
+                        }
+                        QuizzMode.VOCAB_Jp4Kana -> {
+                            QuizzVocabJp4Kana(
+                                vocabId = itemId,
+                                categoryPath = categoryPath,
+                                onNext = { onNext() },
+                                passed = passed
+                            )
+                        }
+                        QuizzMode.GRAMMAR_Fr3Jp -> {
+                            QuizzGrammarFr3Jp(
+                                grammarId = itemId,
                                 onNext = { onNext() },
                                 passed = passed
                             )

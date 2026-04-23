@@ -3,6 +3,7 @@ package fr.mrantoine.franji.ui.screens.main.quizz.kanji
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -17,38 +18,36 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import fr.mrantoine.franji.storage.Kanji
-import fr.mrantoine.franji.storage.KanjiStorage
-import fr.mrantoine.franji.storage.LottieStorage
 import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.TtsStorage
+import fr.mrantoine.franji.storage.Vocab
+import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.ClickableAnimatedText
-import fr.mrantoine.franji.ui.components.KanjiGrid4Fr
-import fr.mrantoine.franji.ui.components.Lottie
+import fr.mrantoine.franji.ui.components.VocabGrid4Fr
+import fr.mrantoine.franji.ui.components.VocabGrid4Jp
+import fr.mrantoine.franji.ui.components.VocabGrid4Kana
 import fr.mrantoine.franji.ui.components.navigation.ThemedButton
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
-fun QuizzKanjiJp4Kana(
-    kanjiId: String,
+fun QuizzVocabJp4Kana(
+    vocabId: String,
     categoryPath: String,
     onNext: () -> Unit = {},
     passed: MutableState<Boolean>
-
 ) {
-    var lottie by remember { mutableStateOf("{}") }
-    var guess_list by remember { mutableStateOf<List<Kanji>>(emptyList()) }
-    var kanji by remember { mutableStateOf(Kanji()) }
+    var guess_list by remember { mutableStateOf<List<Vocab>>(emptyList()) }
+    var vocab by remember { mutableStateOf(Vocab()) }
     var selectedIds by remember { mutableStateOf<List<String>>(emptyList()) }
-    val isRevealed = selectedIds.contains(kanjiId)
+    val isRevealed = selectedIds.contains(vocabId)
 
     val context = LocalContext.current
 
     LaunchedEffect(Unit) {
-        guess_list = KanjiStorage.get4LinkedKanji(context, kanjiId, categoryPath)
-        lottie = LottieStorage.getLottieById(context, kanjiId)
-        kanji = KanjiStorage.getKanjiById(context, kanjiId)
+        guess_list = VocabStorage.get4LinkedVocab(context, vocabId, categoryPath)
+        vocab = VocabStorage.getVocabById(context, vocabId)
     }
 
     Column(
@@ -58,18 +57,28 @@ fun QuizzKanjiJp4Kana(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(Dimens.xxxl))
-        Lottie(
-            data = lottie,
-            speed = 2f
+
+        Text(
+            text = vocab.jp,
+            fontSize = 32.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth()
         )
         if(isRevealed) {
-            val reveal_kana = if(SettingsStorage.isRomaji()) kanji.main_lecture.kana.replaceFirstChar { it.uppercase() } else kanji.main_lecture.kana.replaceFirstChar { it.uppercase() }
+            val reveal_kana = if(SettingsStorage.isRomaji()) vocab.lecture.kana.replaceFirstChar { it.uppercase() } else vocab.lecture.kana.replaceFirstChar { it.uppercase() }
 
             ClickableAnimatedText(
                 text = reveal_kana,
-                fontSize = 28.sp,
-                onClick = { TtsStorage.speak(kanji.main_lecture.kana) },
+                fontSize = 24.sp,
+                onClick = { TtsStorage.speak(vocab.lecture.kana) },
                 color = MaterialTheme.colorScheme.secondary
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Text(
+                text = vocab.fr,
+                fontSize = 38.sp,
+                lineHeight = 42.sp,
+                textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.weight(1f))
             ThemedButton(
@@ -83,14 +92,14 @@ fun QuizzKanjiJp4Kana(
         }
         else {
             Spacer(modifier = Modifier.weight(1f))
-            KanjiGrid4Fr(
+            VocabGrid4Kana(
                 items = guess_list,
                 selectedIds = selectedIds,
-                kanjiId = kanjiId,
-                onClick = { kanji ->
-                    selectedIds = selectedIds + kanji.id
-                    if(kanji.id == kanjiId) {
-                        TtsStorage.speak(kanji.main_lecture.kana)
+                vocabId = vocabId,
+                onClick = { vocab ->
+                    selectedIds = selectedIds + vocab.id
+                    if(vocab.id == vocabId) {
+                        TtsStorage.speak(vocab.lecture.kana)
                     } else {
                         passed.value = false
                     }

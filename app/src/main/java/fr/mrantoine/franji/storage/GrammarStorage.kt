@@ -17,12 +17,20 @@ data class Grammar(
 )
 
 @Serializable
+data class GrammarItemElement(
+    val jp: List<String> = emptyList(),
+    val kana: List<String> = emptyList(),
+    val romaji: List<String> = emptyList()
+)
+
+@Serializable
 data class GrammarItem(
     val jp: String = "",
     val fr: String = "",
     val lecture: Pronunciation = Pronunciation(),
-    val elements: List<String> = emptyList()
+    val elements: GrammarItemElement = GrammarItemElement()
 )
+
 
 @Serializable
 data class GrammarCache(
@@ -119,6 +127,17 @@ object GrammarStorage {
             )
     }
 
+
+
+    fun get3RandomGrammarElement(grammarId: String): List<Grammar> {
+
+        return grammarByIdCache.values
+            .filter { it.id != grammarId }
+            .shuffled()
+            .take(3)
+
+
+    }
 
     private val cache_file_path = "grammar_cache.json"
     fun clearCache(context: Context) {

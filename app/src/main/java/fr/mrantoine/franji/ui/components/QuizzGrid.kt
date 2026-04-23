@@ -2,9 +2,12 @@ package fr.mrantoine.franji.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -15,13 +18,20 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.SettingsStorage
+import fr.mrantoine.franji.storage.Vocab
+import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
 fun KanjiGrid9Jp(
@@ -103,18 +113,25 @@ fun KanjiGrid4Kana(
                     },
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
             ) {
-                Box(
-                    contentAlignment = Alignment.Center,
+                Box (
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(40.dp)
                         .background(boxColor)
                 ) {
-                    Text(
-                        text = text,
-                        fontSize = 20.sp,
-                        color = textColor
-                    )
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = Dimens.s)
+                    ) {
+                        Text(
+                            text = text,
+                            fontSize = 20.sp,
+                            color = textColor,
+                            textAlign = TextAlign.Center
+
+                        )
+                    }
                 }
             }
         }
@@ -154,20 +171,204 @@ fun KanjiGrid4Fr(
                     },
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
             ) {
-                Box(
-                    contentAlignment = Alignment.Center,
+                Box (
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(40.dp)
                         .background(boxColor)
                 ) {
-                    Text(
-                        text = text,
-                        fontSize = 20.sp,
-                        color = textColor
-                    )
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = Dimens.s)
+                    ) {
+                        Text(
+                            text = text,
+                            fontSize = 20.sp,
+                            color = textColor,
+                            textAlign = TextAlign.Center
+
+                        )
+                    }
                 }
             }
         }
     }
 }
+
+@Composable
+fun VocabGrid4Jp(
+    items: List<Vocab>,
+    onClick: (Vocab) -> Unit = {},
+    selectedIds: List<String> = emptyList(),
+    vocabId: String
+) {
+    val safeItems = items.take(4)
+    val canSelect = !selectedIds.contains(vocabId)
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        safeItems.forEach { vocab ->
+
+            val isSelected = selectedIds.contains(vocab.id)
+
+            val boxColor =
+                if (isSelected) MaterialTheme.colorScheme.tertiary else Color.Transparent
+
+            val textColor =
+                if (isSelected) MaterialTheme.colorScheme.secondary else Color.Unspecified
+
+            val text = vocab.jp
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(6.dp)
+                    .clickable(enabled = canSelect && !isSelected) {
+                        onClick(vocab)
+                    },
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            ) {
+                Box (
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(boxColor)
+                ) {
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = Dimens.s)
+                    ) {
+                        Text(
+                            text = text,
+                            fontSize = 20.sp,
+                            color = textColor,
+                            textAlign = TextAlign.Center
+
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun VocabGrid4Fr(
+    items: List<Vocab>,
+    onClick: (Vocab) -> Unit = {},
+    selectedIds: List<String> = emptyList(),
+    vocabId: String
+) {
+    val safeItems = items.take(4)
+    val canSelect = !selectedIds.contains(vocabId)
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        safeItems.forEach { vocab ->
+
+            val isSelected = selectedIds.contains(vocab.id)
+
+            val boxColor =
+                if (isSelected) MaterialTheme.colorScheme.tertiary else Color.Transparent
+
+            val textColor =
+                if (isSelected) MaterialTheme.colorScheme.secondary else Color.Unspecified
+
+            val text = vocab.fr.replaceFirstChar { it.uppercase() }
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(6.dp)
+                    .clickable(enabled = canSelect && !isSelected) {
+                        onClick(vocab)
+                    },
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            ) {
+                Box (
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(boxColor)
+                ){
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = Dimens.s),
+                    ) {
+                        Text(
+                            text = text,
+                            fontSize = 20.sp,
+                            color = textColor,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@Composable
+fun VocabGrid4Kana(
+    items: List<Vocab>,
+    onClick: (Vocab) -> Unit = {},
+    selectedIds: List<String> = emptyList(),
+    vocabId: String
+) {
+    val safeItems = items.take(4)
+    val canSelect = !selectedIds.contains(vocabId)
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        safeItems.forEach { vocab ->
+
+            val isSelected = selectedIds.contains(vocab.id)
+
+            val boxColor =
+                if (isSelected) MaterialTheme.colorScheme.tertiary else Color.Transparent
+
+            val textColor =
+                if (isSelected) MaterialTheme.colorScheme.secondary else Color.Unspecified
+
+            val text = if(SettingsStorage.isRomaji()) vocab.lecture.romaji else vocab.lecture.kana
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(6.dp)
+                    .clickable(enabled = canSelect && !isSelected) {
+                        onClick(vocab)
+                    },
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            ) {
+                Box (
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(boxColor)
+                ) {
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = Dimens.s)
+                    ) {
+                        Text(
+                            text = text,
+                            fontSize = 20.sp,
+                            color = textColor,
+                            textAlign = TextAlign.Center
+
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+

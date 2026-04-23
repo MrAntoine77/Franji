@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -16,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
@@ -62,14 +64,21 @@ fun QuizzKanjiJp4Fr(
             data = lottie,
             speed = 2f
         )
-        Spacer(modifier = Modifier.weight(1f))
         if(isRevealed) {
             val reveal_kana = if(SettingsStorage.isRomaji()) kanji.main_lecture.kana.replaceFirstChar { it.uppercase() } else kanji.main_lecture.kana.replaceFirstChar { it.uppercase() }
 
             ClickableAnimatedText(
                 text = reveal_kana,
                 fontSize = 28.sp,
-                onClick = { TtsStorage.speak(kanji.main_lecture.kana) }
+                onClick = { TtsStorage.speak(kanji.main_lecture.kana) },
+                color = MaterialTheme.colorScheme.secondary
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Text(
+                text = kanji.main_lecture.fr,
+                fontSize = 38.sp,
+                lineHeight = 42.sp,
+                textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.weight(1f))
             ThemedButton(
@@ -82,6 +91,7 @@ fun QuizzKanjiJp4Fr(
             Spacer(modifier = Modifier.weight(1f))
         }
         else {
+            Spacer(modifier = Modifier.weight(1f))
             KanjiGrid4Fr(
                 items = guess_list,
                 selectedIds = selectedIds,
