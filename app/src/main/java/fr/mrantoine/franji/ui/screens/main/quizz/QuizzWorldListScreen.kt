@@ -148,9 +148,21 @@ fun QuizzWorldListScreen(
                             fontWeight = FontWeight.SemiBold
                         )
                         val progress = worldProgress[path] ?: 0f
-                        ProgressBar(
-                            progress = progress,
-                        )
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            ProgressBar(
+                                progress = progress,
+                                modifier = Modifier.weight(1f)
+                            )
+
+                            Text(
+                                text = "${progress.toInt()} %",
+                                color = Color.White,
+                                modifier = Modifier.padding(start = 8.dp),
+                                fontSize = 10.sp
+                            )
+                        }
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                         ) {

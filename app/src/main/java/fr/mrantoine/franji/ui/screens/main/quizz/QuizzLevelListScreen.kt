@@ -48,6 +48,7 @@ fun QuizzLevelListScreen(
     var levelPaths by remember { mutableStateOf<Array<String>>(emptyArray()) }
     var levelCounts by remember { mutableStateOf<List<Map<String, Int>>>(emptyList()) }
     var levelFirsts by remember { mutableStateOf<List<Array<String>>>(emptyList()) }
+    var levelProgress by remember { mutableStateOf<Map<String, Float>>(emptyMap()) }
 
     val context = LocalContext.current
 
@@ -64,6 +65,9 @@ fun QuizzLevelListScreen(
         }
         levelFirsts = levelPaths.map { path ->
             CategoryStorage.getFirsts(context, path)
+        }
+        levelProgress = levelPaths.associateWith { path ->
+            CategoryStorage.getProgress(context, path)
         }
     }
     val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
@@ -118,9 +122,22 @@ fun QuizzLevelListScreen(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.SemiBold
                         )
-                        ProgressBar(
-                            progress = 0.5f,
-                        )
+                        val progress = levelProgress[path] ?: 0f
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            ProgressBar(
+                                progress = progress,
+                                modifier = Modifier.weight(1f)
+                            )
+
+                            Text(
+                                text = "${progress.toInt()} %",
+                                color = Color.White,
+                                modifier = Modifier.padding(start = 8.dp),
+                                fontSize = 10.sp
+                            )
+                        }
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                         ) {
