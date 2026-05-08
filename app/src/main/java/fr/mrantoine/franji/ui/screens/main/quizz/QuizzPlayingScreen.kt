@@ -110,7 +110,7 @@ fun QuizzPlayingScreen(
 
     BackHandler {
         if (backPressedOnce) {
-            navController.navigate(Screen.QuizzList.route)
+            navController.navigate(Screen.QuizzWorldList.route)
         } else {
             backPressedOnce = true
             Toast.makeText(
@@ -174,7 +174,7 @@ fun QuizzPlayingScreen(
                 loading = false
             }
             else {
-                navController.navigate(Screen.QuizzList.route)
+                navController.navigate(Screen.QuizzWorldList.route)
             }
         }
         Column(modifier = Modifier

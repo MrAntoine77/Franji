@@ -96,7 +96,7 @@ fun SplashScreen(
         splashMinDelay.join()
         loadingJob.join()
 
-        navController.navigate(Screen.QuizzList.route) {
+        navController.navigate(Screen.QuizzWorldList.route) {
             popUpTo(Screen.Splash.route) { inclusive = true }
         }
     }

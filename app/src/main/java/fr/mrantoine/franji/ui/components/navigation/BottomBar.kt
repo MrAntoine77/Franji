@@ -100,7 +100,7 @@ fun BottomBar(
                     onClick = {
                         when(index) {
                             0 -> navController.navigate(Screen.KanjiList.route(KanjiState.CategoryLsit, "", ""))
-                            1 -> navController.navigate(Screen.QuizzList.route)
+                            1 -> navController.navigate(Screen.QuizzWorldList.route)
                             2 -> navController.navigate(Screen.CardsList.route)
                             else -> navController.navigate(Screen.KanjiList.route(KanjiState.CategoryLsit, "", ""))
                         }

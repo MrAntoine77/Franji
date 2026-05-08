@@ -1,6 +1,5 @@
 package fr.mrantoine.franji.ui.screens.main.quizz
 
-import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.background
@@ -9,9 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
@@ -32,33 +29,43 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
-import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.ui.components.ProgressBar
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.TopBar
-import fr.mrantoine.franji.ui.components.navigation.Tree
-
-
 
 
 val worldColors = listOf(
-    0xFF4FC3F7, // bleu ciel (très facile)
-    0xFF81C784, // vert clair
-    0xFFFFCE20, // jaune doux
-    0xFFFF8A65, // orange clair
-    0xFFBA68C8, // violet doux
+    0xFFE06A8C,
+    0xFFDB5F84,
+    0xFFD6547C,
+    0xFFD04974,
+    0xFFCB3E6C,
+    0xFFC53364,
+    0xFFC0285C,
+    0xFFBA2458, // proche base
+    0xFFD5246B, // base
+    0xFFC61F61,
+    0xFFB91C5A,
+    0xFFAC1953,
+    0xFF9F164C,
+    0xFF921245,
+    0xFF850F3E,
+    0xFF780C37,
+    0xFF6B0931,
+    0xFF5E062B,
+    0xFF520425,
+    0xFF46031F
 )
 
 
 
 @Composable
-fun QuizzListScreen(
+fun QuizzWorldListScreen(
     navController: NavController
 ) {
     var paths by remember { mutableStateOf<Array<String>>(emptyArray()) }
@@ -113,15 +120,16 @@ fun QuizzListScreen(
                 .padding(innerPadding)
         ) {
             paths.forEachIndexed { index, path ->
+                val colorLong = worldColors[index % worldColors.size]
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 24.dp, vertical = 12.dp)
                         .clip(RoundedCornerShape(18.dp))
                         .clickable {
-
+                            navController.navigate(Screen.QuizzLevelList.route(path, colorLong))
                         }
-                        .background(Color(worldColors[index % worldColors.size]))
+                        .background(Color(colorLong))
                         .padding(16.dp)
                 ) {
                     Column(

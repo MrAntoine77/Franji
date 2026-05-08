@@ -21,9 +21,13 @@ object CategoryStorage {
     private val keysCache = mutableMapOf<String, Array<String>>()
     fun getKeys(
         context: Context,
-        prefix: String = ""
+        prefix: String = "",
+        exceptTotal: Boolean = false
     ): Array<String> {
-        keysCache[prefix]?.let { return it }
+        val cacheKey = "$prefix|$exceptTotal"
+
+        keysCache[cacheKey]?.let { return it }
+
         val jsonString = context.assets
             .open(data_file_path)
             .bufferedReader()
@@ -31,17 +35,18 @@ object CategoryStorage {
 
         val jsonObject = JSONObject(jsonString)
 
-
         val keys = jsonObject.keys()
             .asSequence()
             .filter { it.startsWith(prefix) }
+            .filter { !exceptTotal || !it.contains("Total") }
             .toList()
             .toTypedArray()
 
         if (keys.isNotEmpty()) {
-            keysCache[prefix] = keys
-            return keysCache[prefix]!!
+            keysCache[cacheKey] = keys
+            return keys
         }
+
         return emptyArray()
     }
 

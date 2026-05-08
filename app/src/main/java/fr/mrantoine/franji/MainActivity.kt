@@ -30,7 +30,8 @@ import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiScreen
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiState
 import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabScreen
 import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabState
-import fr.mrantoine.franji.ui.screens.main.quizz.QuizzListScreen
+import fr.mrantoine.franji.ui.screens.main.quizz.QuizzLevelListScreen
+import fr.mrantoine.franji.ui.screens.main.quizz.QuizzWorldListScreen
 import fr.mrantoine.franji.ui.screens.main.quizz.QuizzMainScreen
 import fr.mrantoine.franji.ui.screens.main.quizz.QuizzPlayingScreen
 import fr.mrantoine.franji.ui.screens.main.settings.SettingsScreen
@@ -115,7 +116,13 @@ sealed class Screen(val route: String) {
         fun route(categoryPath: String) = "quizz_playing/${Uri.encode(categoryPath)}"
     }
 
-    data object QuizzList : Screen("quizz_list")
+    data object QuizzWorldList : Screen("quizz_world_list")
+
+    data object QuizzLevelList : Screen("quizz_level_list/{worldPath}/{color}") {
+        const val ARG_WORLD = "worldPath"
+        const val ARG_COLOR = "color"
+        fun route(worldPath: String, color: Long) = "quizz_level_list/${Uri.encode(worldPath)}/${color}"
+    }
 
 
 }
@@ -345,8 +352,27 @@ class MainActivity : ComponentActivity() {
                             mode = mode
                         )
                     }
-                    composable(Screen.QuizzList.route) {
-                        QuizzListScreen(navController)
+                    composable(Screen.QuizzWorldList.route) {
+                        QuizzWorldListScreen(navController)
+                    }
+
+                    composable(
+                        route = Screen.QuizzLevelList.route,
+                        arguments = listOf(
+                            navArgument(Screen.QuizzLevelList.ARG_WORLD) { type = NavType.StringType },
+                            navArgument(Screen.QuizzLevelList.ARG_COLOR) { type = NavType.LongType }
+                        )
+                    ) { backStackEntry ->
+
+
+                        val worldPath = backStackEntry.arguments
+                            ?.getString(Screen.QuizzLevelList.ARG_WORLD)
+                            ?.let { Uri.decode(it) } ?: ""
+
+                        val worldColor = backStackEntry.arguments
+                            ?.getLong(Screen.QuizzLevelList.ARG_COLOR) ?: 0L
+
+                        QuizzLevelListScreen(navController, worldPath, worldColor)
                     }
 
                     composable(
