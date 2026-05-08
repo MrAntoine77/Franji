@@ -1,6 +1,7 @@
 package fr.mrantoine.franji.storage
 
 import android.content.Context
+import androidx.compose.runtime.key
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -26,21 +27,23 @@ object CategoryStorage {
     private val data_file_path = "categories.json"
 
     private val progressCache = mutableMapOf<String, ProgressWorld>()
-    fun buildProgress(
+
+
+    fun getWorldProgress(
         context: Context,
-        prefix: String = "Quizz"
-    ) {
-        if(progressCache.isEmpty()) {
-            val keys = getKeys(context, prefix, true)
-
-            keys.forEach { key ->
-                val ids = getCategoryByPath(context, key)
-                progressCache[key] = ProgressWorld(
-                    cards = ids.associateWith { 0L }
-                )
-
+        path: String
+    ): Float {
+        val keys = getKeys(context, "$path/", true)
+        var total = 0
+        var count = 0
+        keys.forEach { key ->
+            val progress = progressCache[key]
+            if(progress != null) {
+                count += progress.cards.count { it.value != 0L }
+                total += progress.cards.size
             }
         }
+        return if(total > 0) count.toFloat() / total.toFloat() else 0f
     }
 
 
@@ -201,6 +204,7 @@ object CategoryStorage {
             "grammar" to grammarCount
         )
     }
+
 
     fun loadAll(context: Context) {
         if(categoryByPathCache.isEmpty()) {

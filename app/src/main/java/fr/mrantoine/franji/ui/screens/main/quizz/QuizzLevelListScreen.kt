@@ -65,8 +65,6 @@ fun QuizzLevelListScreen(
         firsts = paths.map { path ->
             CategoryStorage.getFirsts(context, path)
         }
-        print(counts)
-
     }
     val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
 

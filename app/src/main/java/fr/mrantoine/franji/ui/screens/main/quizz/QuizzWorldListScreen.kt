@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
+import fr.mrantoine.franji.storage.ProgressWorld
 import fr.mrantoine.franji.ui.components.ProgressBar
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.TopBar
@@ -71,6 +72,7 @@ fun QuizzWorldListScreen(
     var paths by remember { mutableStateOf<Array<String>>(emptyArray()) }
     var counts by remember { mutableStateOf<List<Map<String, Int>>>(emptyList()) }
     var firsts by remember { mutableStateOf<List<Array<String>>>(emptyList()) }
+    var worldProgress by remember { mutableStateOf<Map<String, Float>>(emptyMap()) }
 
     val context = LocalContext.current
 
@@ -87,9 +89,11 @@ fun QuizzWorldListScreen(
         firsts = paths.map { path ->
             CategoryStorage.getFirsts(context, "$path/Total")
         }
-        print(counts)
-
+        worldProgress = paths.associateWith { path ->
+            CategoryStorage.getWorldProgress(context, path)
+        }
     }
+    
     val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
 
     Scaffold(
@@ -143,8 +147,9 @@ fun QuizzWorldListScreen(
                             fontSize = 20.sp,
                             fontWeight = FontWeight.SemiBold
                         )
+                        val progress = worldProgress[path] ?: 0f
                         ProgressBar(
-                            progress = 0.5f,
+                            progress = progress,
                         )
                         Row(
                             modifier = Modifier.fillMaxWidth(),
