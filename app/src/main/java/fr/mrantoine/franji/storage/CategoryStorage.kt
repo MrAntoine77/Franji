@@ -29,7 +29,7 @@ object CategoryStorage {
     private val progressCache = mutableMapOf<String, ProgressWorld>()
 
 
-    fun getWorldProgress(
+    fun getProgress(
         context: Context,
         path: String
     ): Float {
@@ -45,8 +45,6 @@ object CategoryStorage {
         }
         return if(total > 0) count.toFloat() / total.toFloat() else 0f
     }
-
-
 
     private val keysCache = mutableMapOf<String, Array<String>>()
     fun getKeys(

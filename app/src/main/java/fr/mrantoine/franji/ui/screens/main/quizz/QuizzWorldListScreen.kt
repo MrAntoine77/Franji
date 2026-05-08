@@ -69,9 +69,9 @@ val worldColors = listOf(
 fun QuizzWorldListScreen(
     navController: NavController
 ) {
-    var paths by remember { mutableStateOf<Array<String>>(emptyArray()) }
-    var counts by remember { mutableStateOf<List<Map<String, Int>>>(emptyList()) }
-    var firsts by remember { mutableStateOf<List<Array<String>>>(emptyList()) }
+    var worldPaths by remember { mutableStateOf<Array<String>>(emptyArray()) }
+    var worldCounts by remember { mutableStateOf<List<Map<String, Int>>>(emptyList()) }
+    var worldFirsts by remember { mutableStateOf<List<Array<String>>>(emptyList()) }
     var worldProgress by remember { mutableStateOf<Map<String, Float>>(emptyMap()) }
 
     val context = LocalContext.current
@@ -82,18 +82,18 @@ fun QuizzWorldListScreen(
     }
 
     LaunchedEffect(Unit) {
-        paths = CategoryStorage.getWorlds(context, "Quizz")
-        counts = paths.map { path ->
+        worldPaths = CategoryStorage.getWorlds(context, "Quizz")
+        worldCounts = worldPaths.map { path ->
             CategoryStorage.getCountsIds(context, "$path/Total")
         }
-        firsts = paths.map { path ->
+        worldFirsts = worldPaths.map { path ->
             CategoryStorage.getFirsts(context, "$path/Total")
         }
-        worldProgress = paths.associateWith { path ->
-            CategoryStorage.getWorldProgress(context, path)
+        worldProgress = worldPaths.associateWith { path ->
+            CategoryStorage.getProgress(context, path)
         }
     }
-    
+
     val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
 
     Scaffold(
@@ -123,7 +123,7 @@ fun QuizzWorldListScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(innerPadding)
         ) {
-            paths.forEachIndexed { index, path ->
+            worldPaths.forEachIndexed { index, path ->
                 val colorLong = worldColors[index % worldColors.size]
                 Box(
                     modifier = Modifier
@@ -159,7 +159,7 @@ fun QuizzWorldListScreen(
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 Text(
-                                    text = firsts[index].getOrNull(0) ?: "",
+                                    text = worldFirsts[index].getOrNull(0) ?: "",
                                     color = Color.White,
                                     fontSize = 20.sp
                                 )
@@ -169,7 +169,7 @@ fun QuizzWorldListScreen(
                                     fontSize = 14.sp
                                 )
                                 Text(
-                                    text = "0/${counts[index]["kanji"] ?: 0}",
+                                    text = "0/${worldCounts[index]["kanji"] ?: 0}",
                                     color = Color.White,
                                     fontWeight = FontWeight.SemiBold,
                                     fontSize = 14.sp
@@ -181,7 +181,7 @@ fun QuizzWorldListScreen(
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 Text(
-                                    text = firsts[index].getOrNull(1) ?: "",
+                                    text = worldFirsts[index].getOrNull(1) ?: "",
                                     color = Color.White,
                                     fontSize = 20.sp
                                 )
@@ -191,7 +191,7 @@ fun QuizzWorldListScreen(
                                     fontSize = 14.sp
                                 )
                                 Text(
-                                    text = "0/${counts[index]["vocab"] ?: 0}",
+                                    text = "0/${worldCounts[index]["vocab"] ?: 0}",
                                     color = Color.White,
                                     fontWeight = FontWeight.SemiBold,
                                     fontSize = 14.sp
@@ -203,7 +203,7 @@ fun QuizzWorldListScreen(
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 Text(
-                                    text = firsts[index].getOrNull(2) ?: "",
+                                    text = worldFirsts[index].getOrNull(2) ?: "",
                                     color = Color.White,
                                     fontSize = 20.sp
                                 )
@@ -213,7 +213,7 @@ fun QuizzWorldListScreen(
                                     fontSize = 14.sp
                                 )
                                 Text(
-                                    text = "0/${counts[index]["grammar"] ?: 0}",
+                                    text = "0/${worldCounts[index]["grammar"] ?: 0}",
                                     color = Color.White,
                                     fontWeight = FontWeight.SemiBold,
                                     fontSize = 14.sp

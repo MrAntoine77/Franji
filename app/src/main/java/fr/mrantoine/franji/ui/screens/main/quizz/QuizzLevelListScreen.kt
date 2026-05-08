@@ -45,9 +45,9 @@ fun QuizzLevelListScreen(
     worldPath: String,
     worldColor: Long
 ) {
-    var paths by remember { mutableStateOf<Array<String>>(emptyArray()) }
-    var counts by remember { mutableStateOf<List<Map<String, Int>>>(emptyList()) }
-    var firsts by remember { mutableStateOf<List<Array<String>>>(emptyList()) }
+    var levelPaths by remember { mutableStateOf<Array<String>>(emptyArray()) }
+    var levelCounts by remember { mutableStateOf<List<Map<String, Int>>>(emptyList()) }
+    var levelFirsts by remember { mutableStateOf<List<Array<String>>>(emptyList()) }
 
     val context = LocalContext.current
 
@@ -57,12 +57,12 @@ fun QuizzLevelListScreen(
     }
 
     LaunchedEffect(Unit) {
-        paths = CategoryStorage.getKeys(context, "$worldPath/", true)
-        print(paths)
-        counts = paths.map { path ->
+        levelPaths = CategoryStorage.getKeys(context, "$worldPath/", true)
+        print(levelPaths)
+        levelCounts = levelPaths.map { path ->
             CategoryStorage.getCountsIds(context, path)
         }
-        firsts = paths.map { path ->
+        levelFirsts = levelPaths.map { path ->
             CategoryStorage.getFirsts(context, path)
         }
     }
@@ -95,7 +95,7 @@ fun QuizzLevelListScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(innerPadding)
         ) {
-            paths.forEachIndexed { index, path ->
+            levelPaths.forEachIndexed { index, path ->
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -138,7 +138,7 @@ fun QuizzLevelListScreen(
                             Row {
                                 stats.forEach { stat ->
 
-                                    val count = counts[index][stat.key] ?: 0
+                                    val count = levelCounts[index][stat.key] ?: 0
 
                                     if (count != 0) {
                                         Column(
@@ -146,7 +146,7 @@ fun QuizzLevelListScreen(
                                             horizontalAlignment = Alignment.CenterHorizontally
                                         ) {
                                             Text(
-                                                text = firsts[index].getOrNull(stat.indexIcon) ?: "",
+                                                text = levelFirsts[index].getOrNull(stat.indexIcon) ?: "",
                                                 color = Color.White,
                                                 fontSize = 20.sp
                                             )
