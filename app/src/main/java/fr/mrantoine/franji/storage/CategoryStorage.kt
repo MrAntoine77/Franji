@@ -41,7 +41,6 @@ object CategoryStorage {
             prefix = path,
             exceptTotal = true,
             fullPath = fullPath)
-        print(keys)
         var total = 0
         var count = 0
         keys.forEach { key ->
@@ -95,6 +94,16 @@ object CategoryStorage {
         return emptyArray()
     }
 
+
+    fun resetCard(context: Context, path: String, id: String) {
+        val world = progressCache[path]
+        if (world != null) {
+            world.cards = world.cards.toMutableMap().apply {
+                put(id, 0L)
+            }
+        }
+        saveCache(context)
+    }
 
     fun updateCard(context: Context, path: String, id: String) {
         val world = progressCache[path]

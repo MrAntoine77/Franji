@@ -41,6 +41,7 @@ import fr.mrantoine.franji.ui.theme.Dimens
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.Collections.emptyMap
 
 
 enum class QuizzMode {
@@ -145,10 +146,10 @@ fun QuizzPlayingScreen(
         val passed = remember { mutableStateOf(true) }
         var mode by remember { mutableStateOf(QuizzMode.KANJI_Fr9Jp) }
 
+
+        val checkList = remember { mutableMapOf<String, Boolean>() }
+
         fun onNext() {
-
-
-
             loading = true
             index += 1
 
@@ -156,12 +157,13 @@ fun QuizzPlayingScreen(
 
             quizzList = if (passed.value) {
                 if(!current.failed) {
-                    MainScope().launch {
-                        CategoryStorage.updateCard(context, categoryPath, itemId)
+                    if(!checkList.containsKey(itemId)) {
+                        checkList[itemId] = true
                     }
                 }
                 quizzList.drop(1)
             } else {
+                checkList[itemId] = false
                 if (current.failed) {
                     quizzList.drop(1)
                 } else {
@@ -184,6 +186,14 @@ fun QuizzPlayingScreen(
                 loading = false
             }
             else {
+                checkList.forEach { (id, done) ->
+                    if(done) {
+                        CategoryStorage.updateCard(context, categoryPath, id)
+                    }
+                    else {
+                        CategoryStorage.resetCard(context, categoryPath, id)
+                    }
+                }
                 navController.navigate(Screen.QuizzWorldList.route)
             }
         }
