@@ -38,7 +38,9 @@ import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzVocabFr4Kana
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzVocabJp4Fr
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzVocabJp4Kana
 import fr.mrantoine.franji.ui.theme.Dimens
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 enum class QuizzMode {
@@ -144,12 +146,20 @@ fun QuizzPlayingScreen(
         var mode by remember { mutableStateOf(QuizzMode.KANJI_Fr9Jp) }
 
         fun onNext() {
+
+
+
             loading = true
             index += 1
 
             val current = quizzList.first()
 
             quizzList = if (passed.value) {
+                if(!current.failed) {
+                    MainScope().launch {
+                        CategoryStorage.updateCard(context, categoryPath, itemId)
+                    }
+                }
                 quizzList.drop(1)
             } else {
                 if (current.failed) {

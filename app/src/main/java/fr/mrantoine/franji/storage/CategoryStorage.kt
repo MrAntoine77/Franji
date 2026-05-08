@@ -8,6 +8,8 @@ import kotlinx.serialization.json.Json
 import java.io.File
 import kotlin.collections.mutableMapOf
 import org.json.JSONObject
+import java.time.LocalDate
+import java.time.ZoneId
 
 @Serializable
 data class CategoryCache(
@@ -19,7 +21,7 @@ data class CategoryCache(
 
 @Serializable
 data class ProgressWorld(
-    val cards: Map<String, Long>
+    var cards: Map<String, Long>
 )
 
 
@@ -33,7 +35,7 @@ object CategoryStorage {
         context: Context,
         path: String
     ): Float {
-        val keys = getKeys(context, "$path/", true)
+        val keys = getKeys(context, path, true)
         var total = 0
         var count = 0
         keys.forEach { key ->
@@ -78,6 +80,21 @@ object CategoryStorage {
         return emptyArray()
     }
 
+
+    fun updateCard(context: Context, path: String, id: String) {
+        val world = progressCache[path]
+        if (world != null) {
+            val epoch = LocalDate.now()
+                .atStartOfDay(ZoneId.systemDefault())
+                .toEpochSecond()
+
+            world.cards = world.cards.toMutableMap().apply {
+                put(id, epoch)
+            }
+        }
+
+        saveCache(context)
+    }
 
     fun getWorlds(
         context: Context,

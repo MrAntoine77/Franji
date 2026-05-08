@@ -90,7 +90,7 @@ fun QuizzWorldListScreen(
             CategoryStorage.getFirsts(context, "$path/Total")
         }
         worldProgress = worldPaths.associateWith { path ->
-            CategoryStorage.getProgress(context, path)
+            CategoryStorage.getProgress(context, "$path/")
         }
     }
 
@@ -157,7 +157,7 @@ fun QuizzWorldListScreen(
                             )
 
                             Text(
-                                text = "${progress.toInt()} %",
+                                text = "${(progress * 100).toInt()} %",
                                 color = Color.White,
                                 modifier = Modifier.padding(start = 8.dp),
                                 fontSize = 10.sp

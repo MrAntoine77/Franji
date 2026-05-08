@@ -59,7 +59,6 @@ fun QuizzLevelListScreen(
 
     LaunchedEffect(Unit) {
         levelPaths = CategoryStorage.getKeys(context, "$worldPath/", true)
-        print(levelPaths)
         levelCounts = levelPaths.map { path ->
             CategoryStorage.getCountsIds(context, path)
         }
@@ -132,7 +131,7 @@ fun QuizzLevelListScreen(
                             )
 
                             Text(
-                                text = "${progress.toInt()} %",
+                                text = "${(progress * 100).toInt()} %",
                                 color = Color.White,
                                 modifier = Modifier.padding(start = 8.dp),
                                 fontSize = 10.sp
