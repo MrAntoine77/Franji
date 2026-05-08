@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -155,12 +157,14 @@ fun QuizzWorldListScreen(
                                 progress = progress,
                                 modifier = Modifier.weight(1f)
                             )
-
                             Text(
                                 text = "${(progress * 100).toInt()} %",
                                 color = Color.White,
-                                modifier = Modifier.padding(start = 8.dp),
-                                fontSize = 10.sp
+                                fontSize = 10.sp,
+                                modifier = Modifier
+                                    .padding(start = 8.dp)
+                                    .width(32.dp)
+                                    .wrapContentWidth(Alignment.End)
                             )
                         }
                         Row(

@@ -33,9 +33,15 @@ object CategoryStorage {
 
     fun getProgress(
         context: Context,
-        path: String
+        path: String,
+        fullPath: Boolean = false
     ): Float {
-        val keys = getKeys(context, path, true)
+        val keys = getKeys(
+            context = context,
+            prefix = path,
+            exceptTotal = true,
+            fullPath = fullPath)
+        print(keys)
         var total = 0
         var count = 0
         keys.forEach { key ->
@@ -52,9 +58,10 @@ object CategoryStorage {
     fun getKeys(
         context: Context,
         prefix: String = "",
-        exceptTotal: Boolean = false
+        exceptTotal: Boolean = false,
+        fullPath: Boolean = false
     ): Array<String> {
-        val cacheKey = "$prefix|$exceptTotal"
+        val cacheKey = "$prefix|$exceptTotal|$fullPath"
 
         keysCache[cacheKey]?.let { return it }
 
@@ -65,12 +72,20 @@ object CategoryStorage {
 
         val jsonObject = JSONObject(jsonString)
 
-        val keys = jsonObject.keys()
-            .asSequence()
-            .filter { it.startsWith(prefix) }
-            .filter { !exceptTotal || !it.contains("Total") }
-            .toList()
-            .toTypedArray()
+        val keys = if (fullPath) {
+            jsonObject.keys()
+                .asSequence()
+                .filter { it == prefix }
+                .toList()
+                .toTypedArray()
+        } else {
+            jsonObject.keys()
+                .asSequence()
+                .filter { it.startsWith(prefix) }
+                .filter { !exceptTotal || !it.contains("Total") }
+                .toList()
+                .toTypedArray()
+        }
 
         if (keys.isNotEmpty()) {
             keysCache[cacheKey] = keys
