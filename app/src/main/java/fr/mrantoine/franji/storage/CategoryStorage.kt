@@ -11,13 +11,40 @@ import org.json.JSONObject
 @Serializable
 data class CategoryCache(
     val keys: Map<String, Array<String>>,
-    val categories: Map<String, Array<String>>
-
-
-
+    val categories: Map<String, Array<String>>,
+    val progress: Map<String, ProgressWorld>
 )
+
+
+@Serializable
+data class ProgressWorld(
+    val cards: Map<String, Long>
+)
+
+
 object CategoryStorage {
     private val data_file_path = "categories.json"
+
+    private val progressCache = mutableMapOf<String, ProgressWorld>()
+    fun buildProgress(
+        context: Context,
+        prefix: String = "Quizz"
+    ) {
+        if(progressCache.isEmpty()) {
+            val keys = getKeys(context, prefix, true)
+
+            keys.forEach { key ->
+                val ids = getCategoryByPath(context, key)
+                progressCache[key] = ProgressWorld(
+                    cards = ids.associateWith { 0L }
+                )
+
+            }
+        }
+    }
+
+
+
     private val keysCache = mutableMapOf<String, Array<String>>()
     fun getKeys(
         context: Context,
@@ -144,7 +171,6 @@ object CategoryStorage {
                     }
                 }
             }
-            // Si on a trouvé les 3, pas besoin de continuer
             if (firstKanji != null && firstVocab != null && firstGrammar != null) break
         }
 
@@ -197,6 +223,17 @@ object CategoryStorage {
                 categoryByPathCache[key] = value
             }
         }
+        if(progressCache.isEmpty()) {
+            val keys = getKeys(context, "Quizz", true)
+
+            keys.forEach { key ->
+                val ids = getCategoryByPath(context, key)
+                progressCache[key] = ProgressWorld(
+                    cards = ids.associateWith { 0L }
+                )
+
+            }
+        }
     }
 
     private val cache_file_path = "categories_cache.json"
@@ -216,7 +253,8 @@ object CategoryStorage {
 
         val serializableCache = CategoryCache(
             keys = keysCache.toMap(),
-            categories = categoryByPathCache.toMap()
+            categories = categoryByPathCache.toMap(),
+            progress = progressCache.toMap()
         )
 
         val jsonString = Json.encodeToString(serializableCache)
@@ -236,6 +274,9 @@ object CategoryStorage {
 
             categoryByPathCache.clear()
             categoryByPathCache.putAll(loadedCache.categories)
+
+            progressCache.clear()
+            progressCache.putAll(loadedCache.progress)
         } catch (e: Exception) {
             e.printStackTrace()
         }

@@ -78,7 +78,7 @@ fun QuizzLevelListScreen(
                     .statusBarsPadding())
             {
                 TopBar(
-                    title = "Quizz",
+                    title = worldPath.split("/").getOrNull(1)?.replace("_", " ") ?: "",
                     showBack = true,
                     onBackClick =  { backDispatcher?.onBackPressed() },
                     navController = navController

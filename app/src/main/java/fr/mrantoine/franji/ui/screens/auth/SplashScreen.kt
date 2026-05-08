@@ -84,7 +84,6 @@ fun SplashScreen(
             MainPageStorage.saveCache(context)
             UserStorage.saveCache(context)
 
-
             TtsStorage.init(context)
         }
 
