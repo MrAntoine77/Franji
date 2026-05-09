@@ -14,9 +14,9 @@ data class ConversationCache(
 
 @Serializable
 data class Conversation(
-    val objective: String,
-    val parts: List<ConversationPart>,
-    val phases: List<List<String>>
+    val objective: String = "",
+    val parts: List<ConversationPart> = emptyList(),
+    val phases: List<List<String>> = emptyList()
 )
 
 @Serializable
@@ -37,7 +37,9 @@ object ConversationStorage {
 
     private val conversationCache = mutableMapOf<String, Conversation>()
 
-
+    fun getConversations(convId: String): Conversation?  {
+        return conversationCache[convId]
+    }
 
 
     fun loadAll(context: Context) {

@@ -22,6 +22,7 @@ import fr.mrantoine.franji.ui.screens.main.cards.CardsListScreen
 import fr.mrantoine.franji.ui.screens.main.cards.CardsPlayingScreen
 import fr.mrantoine.franji.ui.screens.main.cards.CardsRecapScreen
 import fr.mrantoine.franji.ui.screens.main.cards.Mode
+import fr.mrantoine.franji.ui.screens.main.conversation.ConversationPlayingScreen
 import fr.mrantoine.franji.ui.screens.main.home.grammar.GrammarScreen
 import fr.mrantoine.franji.ui.screens.main.home.grammar.GrammarState
 import fr.mrantoine.franji.ui.screens.main.home.kana.KanaScreen
@@ -124,6 +125,9 @@ sealed class Screen(val route: String) {
         fun route(worldPath: String, color: Long) = "quizz_level_list/${Uri.encode(worldPath)}/${color}"
     }
 
+
+
+    data object ConversationPlaying : Screen("conversation_playing")
 
 }
 
@@ -387,6 +391,11 @@ class MainActivity : ComponentActivity() {
                             ?.let { Uri.decode(it) } ?: ""
 
                         QuizzPlayingScreen(navController, categoryPath)
+                    }
+
+
+                    composable(Screen.ConversationPlaying.route) {
+                        ConversationPlayingScreen(navController)
                     }
 
                 }

@@ -12,6 +12,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 
 @Composable
@@ -20,32 +21,58 @@ fun HighlightedText(
     text: String,
     color: Color = MaterialTheme.colorScheme.onBackground,
     highlightColor: Color = MaterialTheme.colorScheme.primary,
-    fontSize: androidx.compose.ui.unit.TextUnit = 16.sp,
-    lineHeight: androidx.compose.ui.unit.TextUnit = 16.sp,
+    fontSize: TextUnit = 16.sp,
+    lineHeight: TextUnit = 16.sp,
     fontWeight: FontWeight = FontWeight.Normal,
     fontStyle: FontStyle = FontStyle.Normal,
-    textAlign: TextAlign = TextAlign.Start
+    textAlign: TextAlign = TextAlign.Start,
+    highlightBold: Boolean = false
 ) {
+
     val annotatedString = buildAnnotatedString {
         var inBraces = false
-        text.forEach { char ->
-            when (char) {
-                '{' -> inBraces = true
-                '}' -> inBraces = false
-                else -> {
-                    if (inBraces) {
-                        withStyle(style = SpanStyle(color = highlightColor)) {
-                            append(char)
-                        }
-                    } else {
-                        withStyle(style = SpanStyle(color = color)) {
-                            append(char)
-                        }
-                    }
+        val buffer = StringBuilder()
+
+        fun flush(normal: Boolean) {
+            if (buffer.isNotEmpty()) {
+                val style = if (normal) {
+                    SpanStyle(
+                        color = color,
+                        fontWeight = fontWeight
+                    )
+                } else {
+                    SpanStyle(
+                        color = highlightColor,
+                        fontWeight = if (highlightBold) FontWeight.Bold else fontWeight
+                    )
                 }
+
+                withStyle(style) {
+                    append(buffer.toString())
+                }
+                buffer.clear()
             }
         }
+
+        text.forEach { char ->
+            when (char) {
+                '{' -> {
+                    flush(true)
+                    inBraces = true
+                }
+
+                '}' -> {
+                    flush(false)
+                    inBraces = false
+                }
+
+                else -> buffer.append(char)
+            }
+        }
+
+        flush(!inBraces)
     }
+
     Text(
         modifier = modifier,
         text = annotatedString,

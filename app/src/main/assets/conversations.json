@@ -1,109 +1,109 @@
 {
-    "conv1": {
-        "objective": "Acheter un {size} {drink} {sweetener} à consommer {place}, payer en {payment}",
-        "parts": [
-            {
-                "name": "drink",
-                "elements": [
-                    {
-                        "fr": "café",
-                        "jp": "コーヒー"
-                    },
-                    {
-                        "fr": "thé",
-                        "jp": "おちゃ"
-                    },
-                    {
-                        "fr": "jus d'orange",
-                        "jp": "オレンジジュース"
-                    }
-                ]
-            },
-            {
-                "name": "size",
-                "elements": [
-                    {
-                        "fr": "petit",
-                        "jp": "しょうサイズ"
-                    },
-                    {
-                        "fr": "moyen",
-                        "jp": "ちゅうサイズ"
-                    },
-                    {
-                        "fr": "grand",
-                        "jp": "だいサイズ"
-                    }
-                ]
-            },
-            {
-                "name": "sweetener",
-                "elements": [
-                    {
-                        "fr": "avec sucre",
-                        "jp": "さとう を いれてください"
-                    },
-                    {
-                        "fr": "sans sucre",
-                        "jp": "さとう は いりません"
-                    }
-                ]
-            },
-            {
-                "name": "place",
-                "elements": [
-                    {
-                        "fr": "sur place",
-                        "jp": "てんない"
-                    },
-                    {
-                        "fr": "à emporter",
-                        "jp": "おもちかえり"
-                    }
-                ]
-            },
-            {
-                "name": "payment",
-                "elements": [
-                    {
-                        "fr": "suica",
-                        "jp": "スイカ"
-                    },
-                    {
-                        "fr": "carte bancaire",
-                        "jp": "カード"
-                    },
-                    {
-                        "fr": "liquide",
-                        "jp": "げんきん"
-                    }
-                ]
-            }
-        ],
-        "phases": [
-            [
-                "いらっしゃいませ。ごちゅうもんは いかが しますか。",
-                "こんにちは。{drink} を おねがいします。"
-            ],
-            [
-                "かしこまりました。サイズは いかが しますか。",
-                "{size} を おねがいします。"
-            ],
-            [
-                "おさとうは いれますか。",
-                "{sweetener}"
-            ],
-            [
-                "てんない ですか、おもちかえり ですか。",
-                "{place} で おねがいします。"
-            ],
-            [
-                "おしはらいは どのように しますか。",
-                "{payment} で はらいます。"
-            ],
-            [
-                "ありがとうございます。おまたせしました。"
-            ]
+  "conv1": {
+    "objective": "Acheter un {size} {drink} {sweetener} à consommer {place}, payer en {payment}",
+    "parts": [
+      {
+        "name": "drink",
+        "elements": [
+          {
+            "fr": "café",
+            "jp": "コーヒー"
+          },
+          {
+            "fr": "thé",
+            "jp": "おちゃ"
+          },
+          {
+            "fr": "jus d'orange",
+            "jp": "オレンジジュース"
+          }
         ]
-    }
+      },
+      {
+        "name": "size",
+        "elements": [
+          {
+            "fr": "petit",
+            "jp": "しょうサイズ"
+          },
+          {
+            "fr": "moyen",
+            "jp": "ちゅうサイズ"
+          },
+          {
+            "fr": "grand",
+            "jp": "だいサイズ"
+          }
+        ]
+      },
+      {
+        "name": "sweetener",
+        "elements": [
+          {
+            "fr": "avec sucre",
+            "jp": "さとう を いれてください"
+          },
+          {
+            "fr": "sans sucre",
+            "jp": "さとう は いりません"
+          }
+        ]
+      },
+      {
+        "name": "place",
+        "elements": [
+          {
+            "fr": "sur place",
+            "jp": "てんない"
+          },
+          {
+            "fr": "à emporter",
+            "jp": "おもちかえり"
+          }
+        ]
+      },
+      {
+        "name": "payment",
+        "elements": [
+          {
+            "fr": "suica",
+            "jp": "スイカ"
+          },
+          {
+            "fr": "carte bancaire",
+            "jp": "カード"
+          },
+          {
+            "fr": "liquide",
+            "jp": "げんきん"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      [
+        "いらっしゃいませ。ごちゅうもんは いかが しますか？",
+        "こんにちは。{drink} を おねがいします。"
+      ],
+      [
+        "かしこまりました。サイズは いかが しますか？",
+        "{size} を おねがいします。"
+      ],
+      [
+        "おさとうは いれますか？",
+        "{sweetener}"
+      ],
+      [
+        "てんない ですか、おもちかえり ですか？",
+        "{place} で おねがいします。"
+      ],
+      [
+        "おしはらいは どのように しますか？",
+        "{payment} で はらいます。"
+      ],
+      [
+        "ありがとうございます。おまたせしました。"
+      ]
+    ]
+  }
 }
