@@ -55,6 +55,7 @@ fun SplashScreen(
                 VocabStorage.clearCache(context)
                 GrammarStorage.clearCache(context)
                 MainPageStorage.clearCache(context)
+                ConversationStorage.clearCache(context)
             }
             CategoryStorage.loadCache(context)
             KanjiStorage.loadCache(context)
@@ -63,6 +64,7 @@ fun SplashScreen(
             VocabStorage.loadCache(context)
             GrammarStorage.loadCache(context)
             MainPageStorage.loadCache(context)
+            ConversationStorage.loadCache(context)
 
             CategoryStorage.loadAll(context)
             KanjiStorage.loadAll(context)
@@ -71,6 +73,7 @@ fun SplashScreen(
             VocabStorage.loadAll(context)
             GrammarStorage.loadAll(context)
             MainPageStorage.loadAll(context)
+            ConversationStorage.loadAll(context)
 
             CategoryStorage.saveCache(context)
             KanjiStorage.saveCache(context)
@@ -79,6 +82,7 @@ fun SplashScreen(
             VocabStorage.saveCache(context)
             GrammarStorage.saveCache(context)
             MainPageStorage.saveCache(context)
+            ConversationStorage.saveCache(context)
 
             TtsStorage.init(context)
         }
