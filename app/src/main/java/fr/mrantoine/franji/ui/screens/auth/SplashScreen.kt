@@ -97,7 +97,7 @@ fun SplashScreen(
 
 
         // TODO Remettre a QuizzWorldList
-        navController.navigate(Screen.ConversationPlaying.route) {
+        navController.navigate(Screen.ConversationPlaying.route("conv1")) {
             popUpTo(Screen.Splash.route) { inclusive = true }
         }
     }

@@ -430,3 +430,60 @@ fun GrammarGrid4Fr(
 }
 
 
+@Composable
+fun ConversationGrd(
+    items: List<String>,
+    onClick: (String) -> Unit = {},
+    selectedIds: List<String> = emptyList()
+) {
+    val canSelect = true
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        items.forEach { item ->
+
+            val isSelected = selectedIds.contains(item)
+
+            val boxColor =
+                if (isSelected) MaterialTheme.colorScheme.tertiary else Color.Transparent
+
+            val textColor =
+                if (isSelected) MaterialTheme.colorScheme.secondary else Color.Unspecified
+
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(6.dp)
+                    .clickable(enabled = canSelect && !isSelected) {
+                        onClick(item)
+                    },
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            ) {
+                Box (
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(boxColor)
+                ){
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = Dimens.s),
+                    ) {
+                        Text(
+                            text = item,
+                            fontSize = 20.sp,
+                            color = textColor,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
