@@ -14,6 +14,7 @@ data class ConversationCache(
 
 @Serializable
 data class Conversation(
+    val title: String = "",
     val objective: String = "",
     val parts: List<ConversationPart> = emptyList(),
     val phases: List<List<String>> = emptyList()
@@ -39,6 +40,10 @@ object ConversationStorage {
 
     fun getConversations(convId: String): Conversation?  {
         return conversationCache[convId]
+    }
+
+    fun getConversationsIds(): List<String> {
+        return conversationCache.map { it.key }
     }
 
 

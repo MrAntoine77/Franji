@@ -22,6 +22,7 @@ import fr.mrantoine.franji.ui.screens.main.cards.CardsListScreen
 import fr.mrantoine.franji.ui.screens.main.cards.CardsPlayingScreen
 import fr.mrantoine.franji.ui.screens.main.cards.CardsRecapScreen
 import fr.mrantoine.franji.ui.screens.main.cards.Mode
+import fr.mrantoine.franji.ui.screens.main.conversation.ConversationListScreen
 import fr.mrantoine.franji.ui.screens.main.conversation.ConversationPlayingScreen
 import fr.mrantoine.franji.ui.screens.main.home.grammar.GrammarScreen
 import fr.mrantoine.franji.ui.screens.main.home.grammar.GrammarState
@@ -130,6 +131,9 @@ sealed class Screen(val route: String) {
         const val ARG = "convId"
         fun route(convId: String) = "conversation_playing/${Uri.encode(convId)}"
     }
+
+    data object ConversationList : Screen("conversation_list")
+
 }
 
 
@@ -408,6 +412,9 @@ class MainActivity : ComponentActivity() {
                         ConversationPlayingScreen(navController, convId)
                     }
 
+                    composable(Screen.ConversationList.route) {
+                        ConversationListScreen(navController)
+                    }
                 }
             }
         }

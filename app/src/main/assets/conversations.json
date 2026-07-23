@@ -1,5 +1,6 @@
 {
   "conv1": {
+    "title": "Commande au bar",
     "objective": "Acheter un {size} {drink} {sweetener} à consommer {place}, payer en {payment}",
     "parts": [
       {

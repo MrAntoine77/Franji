@@ -95,9 +95,7 @@ fun SplashScreen(
         splashMinDelay.join()
         loadingJob.join()
 
-
-        // TODO Remettre a QuizzWorldList
-        navController.navigate(Screen.ConversationPlaying.route("conv1")) {
+        navController.navigate(Screen.QuizzWorldList.route) {
             popUpTo(Screen.Splash.route) { inclusive = true }
         }
     }

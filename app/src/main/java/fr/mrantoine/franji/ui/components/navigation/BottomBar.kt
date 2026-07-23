@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.PlayArrow
@@ -89,6 +90,7 @@ fun BottomBar(
                 "Accueil" to Icons.Outlined.Home,
                 "Quizz" to Icons.Default.PlayArrow,
                 "Révision" to Icons.Default.Menu,
+                "Conversation" to Icons.Default.Face
 
             )
 
@@ -102,6 +104,7 @@ fun BottomBar(
                             0 -> navController.navigate(Screen.KanjiList.route(KanjiState.CategoryLsit, "", ""))
                             1 -> navController.navigate(Screen.QuizzWorldList.route)
                             2 -> navController.navigate(Screen.CardsList.route)
+                            3 -> navController.navigate(Screen.ConversationList.route)
                             else -> navController.navigate(Screen.KanjiList.route(KanjiState.CategoryLsit, "", ""))
                         }
                     },
