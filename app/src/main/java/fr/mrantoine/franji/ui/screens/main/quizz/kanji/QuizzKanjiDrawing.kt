@@ -3,6 +3,7 @@ package fr.mrantoine.franji.ui.screens.main.quizz.kanji
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -18,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
@@ -28,6 +30,7 @@ import fr.mrantoine.franji.ui.components.ClickableAnimatedText
 import fr.mrantoine.franji.ui.components.DrawArea
 import fr.mrantoine.franji.ui.components.KanjiGrid4Kana
 import fr.mrantoine.franji.ui.components.Lottie
+import fr.mrantoine.franji.ui.components.formatKana
 import fr.mrantoine.franji.ui.components.navigation.ThemedButton
 import fr.mrantoine.franji.ui.theme.Dimens
 
@@ -72,6 +75,13 @@ fun QuizzKanjiDrawing(
                 data = lottie,
                 speed = 2f
             )
+            ClickableAnimatedText(
+                text = kanji.main_lecture.kana.formatKana(),
+                fontSize = 28.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth(),
+                onClick = { TtsStorage.speak(kanji.main_lecture.kana) }
+            )
             Spacer(modifier = Modifier.weight(1f))
             ThemedButton(
                 text = "Suivant",
@@ -82,16 +92,13 @@ fun QuizzKanjiDrawing(
             )
         }
         else {
-
-
             DrawArea(
                 angles = kanji.angles,
                 isRevealed = isRevealed,
                 lottie = lottie,
-                drawColor = Color.Black
+                drawColor = Color.Black,
+                onReveal =  { TtsStorage.speak(kanji.main_lecture.kana) }
             )
-
-
         }
     }
 }

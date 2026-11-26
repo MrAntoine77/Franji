@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import fr.mrantoine.franji.storage.TtsStorage
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.atan2
@@ -27,6 +28,7 @@ fun DrawArea(
     isRevealed: MutableState<Boolean>,
     lottie: String,
     drawColor: Color = MaterialTheme.colorScheme.onBackground,
+    onReveal: () -> Unit = {},
 ) {
     var paths by remember { mutableStateOf(listOf<List<Offset>>()) }
     var currentPath by remember { mutableStateOf(listOf<Offset>()) }
@@ -66,6 +68,7 @@ fun DrawArea(
             if (diff <= 22.5) {
                 drawIndex += 1
                 if (drawIndex == angles.size) {
+                    onReveal()
                     isRevealed.value = true
                 }
             } else {
