@@ -137,7 +137,7 @@ fun ConversationPlayingScreen(
 
     fun next() {
         if(index == chat.size - 1) {
-            navController.navigate(Screen.QuizzWorldList.route)
+            navController.navigate(Screen.ConversationList.route)
         }
         else {
             index = (index + 1) % chat.size
@@ -220,7 +220,7 @@ fun ConversationPlayingScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(250.dp) // ← TA TAILLE FIXE
+                    .height(250.dp)
             ) {
                 Column(
                     modifier = Modifier.fillMaxSize(),
@@ -235,6 +235,7 @@ fun ConversationPlayingScreen(
 
                         ConversationGrd(
                             items = allElementsJp[key] ?: emptyList(),
+                            correctAnswer = elementsJp[key],
                             onClick = { next() }
                         )
                     } else {

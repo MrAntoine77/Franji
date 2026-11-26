@@ -434,16 +434,17 @@ fun GrammarGrid4Fr(
 fun ConversationGrd(
     items: List<String>,
     onClick: (String) -> Unit = {},
+    correctAnswer: String? = null,
     selectedIds: List<String> = emptyList()
 ) {
-    val canSelect = true
+    val clickedItems = remember(items) { mutableStateListOf<String>() }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         items.forEach { item ->
 
-            val isSelected = selectedIds.contains(item)
+            val isSelected = selectedIds.contains(item) || clickedItems.contains(item)
 
             val boxColor =
                 if (isSelected) MaterialTheme.colorScheme.tertiary else Color.Transparent
@@ -451,20 +452,26 @@ fun ConversationGrd(
             val textColor =
                 if (isSelected) MaterialTheme.colorScheme.secondary else Color.Unspecified
 
+            val isCorrect = (item == correctAnswer)
+
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(6.dp)
-                    .clickable(enabled = canSelect && !isSelected) {
-                        onClick(item)
+                    .clickable(enabled = !isSelected) {
+                        if(isCorrect) {
+                            onClick(item)
+                        } else {
+                            clickedItems.add(item)
+                        }
                     },
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
             ) {
-                Box (
+                Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .background(boxColor)
-                ){
+                ) {
                     Box(
                         contentAlignment = Alignment.Center,
                         modifier = Modifier
@@ -483,7 +490,6 @@ fun ConversationGrd(
         }
     }
 }
-
 
 
 
