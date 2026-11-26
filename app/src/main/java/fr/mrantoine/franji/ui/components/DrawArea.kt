@@ -54,7 +54,6 @@ fun DrawArea(
             val angleRad = atan2(deltaY, deltaX)
             var angleDeg = (angleRad * 180 / PI + 360) % 360
 
-            // Convert CCW (atan2) to CW
             angleDeg = (360 - angleDeg) % 360
 
             val targetAngle = angles[drawIndex]
