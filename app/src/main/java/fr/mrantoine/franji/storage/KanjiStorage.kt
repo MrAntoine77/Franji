@@ -45,7 +45,7 @@ data class KanjiCache(
 )
 
 object KanjiStorage {
-    private val data_file_path = "kanji.json"
+    private val kanji_path = "kanji.json"
 
     private var kanjiByIdCache = mutableMapOf<String, Kanji>()
     fun getKanjiById(
@@ -53,7 +53,7 @@ object KanjiStorage {
         kanjiId: String
     ): Kanji {
         kanjiByIdCache[kanjiId]?.let { return it }
-        val jsonString = context.assets.open(data_file_path)
+        val jsonString = context.assets.open(kanji_path)
             .bufferedReader()
             .use { it.readText() }
 
@@ -72,9 +72,9 @@ object KanjiStorage {
     }
 
 
-    fun loadAllKanji(context: Context) {
+    fun loadAll(context: Context) {
         if (kanjiByIdCache.isEmpty()) {
-            val jsonString = context.assets.open(data_file_path)
+            val jsonString = context.assets.open(kanji_path)
                 .bufferedReader()
                 .use { it.readText() }
 
@@ -88,11 +88,6 @@ object KanjiStorage {
                 kanjiByIdCache[kanji.id] = kanji
             }
         }
-    }
-
-
-    fun loadAll(context: Context) {
-        loadAllKanji(context)
     }
 
 

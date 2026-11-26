@@ -19,7 +19,7 @@ data class LottieCache(
 )
 
 object LottieStorage {
-    private val data_file_path = "lottie.json"
+    private val lottie_path = "lottie.json"
 
     private var lottieByIdCache = mutableMapOf<String, String>()
 
@@ -28,7 +28,7 @@ object LottieStorage {
         kanjiId: String
     ): String {
         lottieByIdCache[kanjiId]?.let { return it }
-        val jsonString = context.assets.open(data_file_path)
+        val jsonString = context.assets.open(lottie_path)
             .bufferedReader()
             .use { it.readText() }
 
@@ -46,10 +46,10 @@ object LottieStorage {
         return lottie
     }
 
-    fun loadAllLotties(context: Context) {
+    fun loadAll(context: Context) {
         if (lottieByIdCache.isEmpty()) {
 
-            val jsonString = context.assets.open(data_file_path)
+            val jsonString = context.assets.open(lottie_path)
                 .bufferedReader()
                 .use { it.readText() }
 
@@ -65,11 +65,6 @@ object LottieStorage {
             }
         }
     }
-
-    fun loadAll(context: Context) {
-        loadAllLotties(context)
-    }
-
 
     private val cache_file_path = "lottie_cache.json"
     fun clearCache(context: Context) {

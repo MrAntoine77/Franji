@@ -31,23 +31,23 @@ object SettingsStorage {
         settings.restCacheOnLaunch = reset
     }
 
-    private val cache_file_path = "settings_cache.json"
+    private val settings_path = "settings_cache.json"
 
     fun clearCache(context: Context) {
-        val cacheFile = File(context.filesDir, cache_file_path)
+        val cacheFile = File(context.filesDir, settings_path)
         if (cacheFile.exists()) {
             cacheFile.delete()
         }
     }
 
     fun saveCache(context: Context) {
-        val file = File(context.filesDir, cache_file_path)
+        val file = File(context.filesDir, settings_path)
         val jsonText = Json.encodeToString(SettingsCache.serializer(), settings)
         file.writeText(jsonText)
     }
 
     fun loadCache(context: Context) {
-        val file = File(context.filesDir, cache_file_path)
+        val file = File(context.filesDir, settings_path)
         if (!file.exists()) {
             settings = SettingsCache()
             return

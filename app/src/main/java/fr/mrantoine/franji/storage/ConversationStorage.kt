@@ -34,7 +34,7 @@ data class ConversationElement(
 
 
 object ConversationStorage {
-    private val data_file_path = "conversations.json"
+    private val conversations_path = "conversations.json"
 
     private val conversationCache = mutableMapOf<String, Conversation>()
 
@@ -50,7 +50,7 @@ object ConversationStorage {
     fun loadAll(context: Context) {
         if (conversationCache.isEmpty()) {
 
-            val jsonString = context.assets.open(data_file_path)
+            val jsonString = context.assets.open(conversations_path)
                 .bufferedReader()
                 .use { it.readText() }
 

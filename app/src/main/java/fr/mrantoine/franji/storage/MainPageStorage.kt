@@ -27,14 +27,14 @@ data class MainPageCache(
 )
 
 object MainPageStorage {
-    private val data_file_path = "main_page.json"
+    private val main_page_path = "main_page.json"
     private var mainPageCache = mutableMapOf<String, MainPage>()
 
 
     fun getMainPage(context: Context, path: String): MainPage {
         mainPageCache[path]?.let { return it }
 
-        val jsonString = context.assets.open(data_file_path)
+        val jsonString = context.assets.open(main_page_path)
             .bufferedReader()
             .use { it.readText() }
 
@@ -58,7 +58,7 @@ object MainPageStorage {
     fun loadAll(context: Context) {
         if (mainPageCache.isEmpty()) {
 
-            val jsonString = context.assets.open(data_file_path)
+            val jsonString = context.assets.open(main_page_path)
                 .bufferedReader()
                 .use { it.readText() }
 

@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
+import fr.mrantoine.franji.storage.FirstElement
 import fr.mrantoine.franji.storage.ProgressWorld
 import fr.mrantoine.franji.ui.components.ProgressBar
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
@@ -72,8 +73,7 @@ fun QuizzWorldListScreen(
     navController: NavController
 ) {
     var worldPaths by remember { mutableStateOf<Array<String>>(emptyArray()) }
-    var worldCounts by remember { mutableStateOf<List<Map<String, Int>>>(emptyList()) }
-    var worldFirsts by remember { mutableStateOf<List<Array<String>>>(emptyList()) }
+    var worldFirsts by remember { mutableStateOf<List<FirstElement>>(emptyList()) }
     var worldProgress by remember { mutableStateOf<Map<String, Float>>(emptyMap()) }
 
     val context = LocalContext.current
@@ -85,12 +85,7 @@ fun QuizzWorldListScreen(
 
     LaunchedEffect(Unit) {
         worldPaths = CategoryStorage.getWorlds(context, "Quizz")
-        worldCounts = worldPaths.map { path ->
-            CategoryStorage.getCountsIds(context, "$path/Total")
-        }
-        worldFirsts = worldPaths.map { path ->
-            CategoryStorage.getFirsts(context, "$path/Total")
-        }
+        worldFirsts = CategoryStorage.getWorldfirsts(context)
         worldProgress = worldPaths.associateWith { path ->
             CategoryStorage.getProgress(context, "$path/")
         }
@@ -127,116 +122,141 @@ fun QuizzWorldListScreen(
         ) {
             worldPaths.forEachIndexed { index, path ->
                 val colorLong = worldColors[index % worldColors.size]
-                Box(
+                WorldCard(
+                    navController = navController,
+                    path = path,
+                    colorLong = colorLong,
+                    worldProgress = worldProgress,
+                    worldFirsts = worldFirsts,
+                    index = index
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun WorldCard(
+    navController: NavController,
+    path: String,
+    colorLong: Long,
+    worldProgress: Map<String, Float>,
+    worldFirsts: List<FirstElement>,
+    index: Int
+) {
+
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 24.dp, vertical = 12.dp)
+            .clip(RoundedCornerShape(18.dp))
+            .clickable {
+                navController.navigate(Screen.QuizzLevelList.route(path, colorLong))
+            }
+            .background(Color(colorLong))
+            .padding(16.dp)
+    ) {
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            val title = path.split("/")[1].replace("_", " ")
+            Text(
+                text = title,
+                color = Color.White,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.SemiBold
+            )
+            val progress = worldProgress[path] ?: 0f
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                ProgressBar(
+                    progress = progress,
+                    modifier = Modifier.weight(1f)
+                )
+                Text(
+                    text = "${(progress * 100).toInt()} %",
+                    color = Color.White,
+                    fontSize = 10.sp,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 24.dp, vertical = 12.dp)
-                        .clip(RoundedCornerShape(18.dp))
-                        .clickable {
-                            navController.navigate(Screen.QuizzLevelList.route(path, colorLong))
-                        }
-                        .background(Color(colorLong))
-                        .padding(16.dp)
+                        .padding(start = 8.dp)
+                        .width(32.dp)
+                        .wrapContentWidth(Alignment.End)
+                )
+            }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Column(
+                    modifier = Modifier.weight(1f),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Column(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalArrangement = Arrangement.spacedBy(4.dp)
-                    ) {
-                        val title = path.split("/")[1].replace("_" , " ")
-                        Text(
-                            text = title,
-                            color = Color.White,
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.SemiBold
-                        )
-                        val progress = worldProgress[path] ?: 0f
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            ProgressBar(
-                                progress = progress,
-                                modifier = Modifier.weight(1f)
-                            )
-                            Text(
-                                text = "${(progress * 100).toInt()} %",
-                                color = Color.White,
-                                fontSize = 10.sp,
-                                modifier = Modifier
-                                    .padding(start = 8.dp)
-                                    .width(32.dp)
-                                    .wrapContentWidth(Alignment.End)
-                            )
-                        }
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                        ) {
-                            Column(
-                                modifier = Modifier.weight(1f),
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Text(
-                                    text = worldFirsts[index].getOrNull(0) ?: "",
-                                    color = Color.White,
-                                    fontSize = 20.sp
-                                )
-                                Text(
-                                    text = "Kanji",
-                                    color = Color.White,
-                                    fontSize = 14.sp
-                                )
-                                Text(
-                                    text = "0/${worldCounts[index]["kanji"] ?: 0}",
-                                    color = Color.White,
-                                    fontWeight = FontWeight.SemiBold,
-                                    fontSize = 14.sp
-                                )
-                            }
+                    Text(
+                        text = worldFirsts[index].kanji ?: "",
+                        color = Color.White,
+                        fontSize = 20.sp
+                    )
+                    Text(
+                        text = "Kanji",
+                        color = Color.White,
+                        fontSize = 14.sp
+                    )
+                    Text(
+                        text = "0/${worldFirsts[index].kanji_count}",
+                        color = Color.White,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 14.sp
+                    )
+                }
 
-                            Column(
-                                modifier = Modifier.weight(1f),
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Text(
-                                    text = worldFirsts[index].getOrNull(1) ?: "",
-                                    color = Color.White,
-                                    fontSize = 20.sp
-                                )
-                                Text(
-                                    text = "Vocabulaire",
-                                    color = Color.White,
-                                    fontSize = 14.sp
-                                )
-                                Text(
-                                    text = "0/${worldCounts[index]["vocab"] ?: 0}",
-                                    color = Color.White,
-                                    fontWeight = FontWeight.SemiBold,
-                                    fontSize = 14.sp
-                                )
-                            }
+                Column(
+                    modifier = Modifier.weight(1f),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = worldFirsts[index].vocab?.let {
+                            if (it.length > 5) it.take(4) + "…" else it
+                        } ?: "",
+                        color = Color.White,
+                        fontSize = 20.sp
+                    )
+                    Text(
+                        text = "Vocabulaire",
+                        color = Color.White,
+                        fontSize = 14.sp
+                    )
+                    Text(
+                        text = "0/${worldFirsts[index].vocab_count}",
+                        color = Color.White,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 14.sp
+                    )
+                }
 
-                            Column(
-                                modifier = Modifier.weight(1f),
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Text(
-                                    text = worldFirsts[index].getOrNull(2) ?: "",
-                                    color = Color.White,
-                                    fontSize = 20.sp
-                                )
-                                Text(
-                                    text = "Grammaire",
-                                    color = Color.White,
-                                    fontSize = 14.sp
-                                )
-                                Text(
-                                    text = "0/${worldCounts[index]["grammar"] ?: 0}",
-                                    color = Color.White,
-                                    fontWeight = FontWeight.SemiBold,
-                                    fontSize = 14.sp
-                                )
-                            }
-                        }
-                    }
+                Column(
+                    modifier = Modifier.weight(1f),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = worldFirsts[index].grammar?.let {
+                            if (it.length > 5) it.take(4) + "…" else it
+                        } ?: "",
+                        color = Color.White,
+                        fontSize = 20.sp
+                    )
+                    Text(
+                        text = "Grammaire",
+                        color = Color.White,
+                        fontSize = 14.sp
+                    )
+                    Text(
+                        text = "0/${worldFirsts[index].grammar_count}",
+                        color = Color.White,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 14.sp
+                    )
                 }
             }
         }

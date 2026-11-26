@@ -28,7 +28,7 @@ data class KanaCache(
 )
 
 object KanaStorage {
-    private val data_file_path = "kana.json"
+    private val kana_path = "kana.json"
 
     private var kanaByIdCache = mutableMapOf<String, Kana>()
 
@@ -38,7 +38,7 @@ object KanaStorage {
     ): Kana {
         kanaByIdCache[kanaId]?.let { return it }
 
-        val jsonString = context.assets.open(data_file_path)
+        val jsonString = context.assets.open(kana_path)
             .bufferedReader()
             .use { it.readText() }
 
@@ -59,10 +59,10 @@ object KanaStorage {
     }
 
 
-    fun loadAllKana(context: Context) {
+    fun loadAll(context: Context) {
         if (kanaByIdCache.isEmpty()) {
 
-            val jsonString = context.assets.open(data_file_path)
+            val jsonString = context.assets.open(kana_path)
                 .bufferedReader()
                 .use { it.readText() }
 
@@ -77,11 +77,6 @@ object KanaStorage {
                 kanaByIdCache[kana.main_id] = kana
             }
         }
-    }
-
-
-    fun loadAll(context: Context) {
-        loadAllKana(context)
     }
 
     fun search(text: String): List<Kana> {

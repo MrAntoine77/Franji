@@ -1,6 +1,8 @@
 package fr.mrantoine.franji.storage
 
 import android.content.Context
+import android.icu.text.CaseMap
+import android.util.JsonReader
 import androidx.compose.runtime.key
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
@@ -8,25 +10,42 @@ import kotlinx.serialization.json.Json
 import java.io.File
 import kotlin.collections.mutableMapOf
 import org.json.JSONObject
+import java.io.InputStreamReader
 import java.time.LocalDate
 import java.time.ZoneId
 
 @Serializable
 data class CategoryCache(
-    val keys: Map<String, Array<String>>,
+    val keys:       Map<String, Array<String>>,
     val categories: Map<String, Array<String>>,
-    val progress: Map<String, ProgressWorld>
+    val progress:   Map<String, ProgressWorld>
 )
 
 
 @Serializable
+data class FirstElement(
+    val title: String,
+    val kanji: String? = null,
+    val vocab: String? = null,
+    val grammar: String? = null,
+    val kanji_count: Int,
+    val vocab_count: Int,
+    val grammar_count: Int
+)
+
+
+
+@Serializable
 data class ProgressWorld(
+    //id, progress
     var cards: Map<String, Long>
 )
 
 
 object CategoryStorage {
-    private val data_file_path = "categories.json"
+    private val categories_path = "categories.json"
+    private val worldfirst_path = "worldfirst.json"
+    private val levelfirst_path = "levelfirst.json"
 
     private val progressCache = mutableMapOf<String, ProgressWorld>()
 
@@ -34,13 +53,16 @@ object CategoryStorage {
     fun getProgress(
         context: Context,
         path: String,
-        fullPath: Boolean = false
+        fullpath: Boolean = false
     ): Float {
-        val keys = getKeys(
+        val keys = if(fullpath) getKeysFullpath(
+            context = context,
+            path = path,
+            )
+        else getKeys(
             context = context,
             prefix = path,
-            exceptTotal = true,
-            fullPath = fullPath)
+        )
         var total = 0
         var count = 0
         keys.forEach { key ->
@@ -57,41 +79,114 @@ object CategoryStorage {
     fun getKeys(
         context: Context,
         prefix: String = "",
-        exceptTotal: Boolean = false,
-        fullPath: Boolean = false
     ): Array<String> {
-        val cacheKey = "$prefix|$exceptTotal|$fullPath"
+        keysCache[prefix]?.let { return it }
 
-        keysCache[cacheKey]?.let { return it }
+        val keys = mutableListOf<String>()
 
-        val jsonString = context.assets
-            .open(data_file_path)
-            .bufferedReader()
-            .use { it.readText() }
+        context.assets.open(categories_path).use { input ->
+            JsonReader(InputStreamReader(input, Charsets.UTF_8)).use { reader ->
+                reader.beginObject()
+                while (reader.hasNext()) {
+                    val name = reader.nextName()
 
-        val jsonObject = JSONObject(jsonString)
+                    val matches = name.startsWith(prefix)
 
-        val keys = if (fullPath) {
-            jsonObject.keys()
-                .asSequence()
-                .filter { it == prefix }
-                .toList()
-                .toTypedArray()
-        } else {
-            jsonObject.keys()
-                .asSequence()
-                .filter { it.startsWith(prefix) }
-                .filter { !exceptTotal || !it.contains("Total") }
-                .toList()
-                .toTypedArray()
+                    if (matches) keys.add(name)
+
+                    reader.skipValue()
+                }
+                reader.endObject()
+            }
         }
 
-        if (keys.isNotEmpty()) {
-            keysCache[cacheKey] = keys
-            return keys
+        val result = keys.toTypedArray()
+        if (result.isNotEmpty()) {
+            keysCache[prefix] = result
+        }
+        return result
+    }
+
+    fun loadAllQuizzKeys(
+        context: Context,
+    ) {
+        val tempKeys = mutableMapOf<String, MutableList<String>>()
+
+        for (i in 1..20) {
+            val prefix = "Quizz/Monde_${i}/"
+            tempKeys[prefix] = mutableListOf()
         }
 
-        return emptyArray()
+        context.assets.open(categories_path).use { input ->
+            JsonReader(InputStreamReader(input, Charsets.UTF_8)).use { reader ->
+
+                reader.beginObject()
+
+                while (reader.hasNext()) {
+                    val name = reader.nextName()
+
+                    val prefix = tempKeys.keys.firstOrNull {
+                        name.startsWith(it)
+                    }
+
+                    if (prefix != null) {
+                        tempKeys[prefix]?.add(name)
+                    }
+
+                    reader.skipValue()
+                }
+
+                reader.endObject()
+            }
+        }
+
+        // Remplissage du cache
+        tempKeys.forEach { (prefix, keys) ->
+            if (keys.isNotEmpty()) {
+                keysCache[prefix] = keys.toTypedArray()
+            }
+        }
+    }
+
+
+
+
+
+    fun getKeysFullpath(
+        context: Context,
+        path: String = "",
+    ): Array<String> {
+
+        keysCache[path]?.let { return it }
+
+        val keys = mutableListOf<String>()
+
+        context.assets.open(categories_path).use { input ->
+            JsonReader(InputStreamReader(input, Charsets.UTF_8)).use { reader ->
+
+                reader.beginObject()
+
+                while (reader.hasNext()) {
+                    val name = reader.nextName()
+
+                    if (name == path) {
+                        keys.add(name)
+                    }
+
+                    reader.skipValue()
+                }
+
+                reader.endObject()
+            }
+        }
+
+        val result = keys.toTypedArray()
+
+        if (result.isNotEmpty()) {
+            keysCache[path] = result
+        }
+
+        return result
     }
 
 
@@ -125,7 +220,7 @@ object CategoryStorage {
         prefix: String = ""
     ): Array<String> {
         val jsonString = context.assets
-            .open(data_file_path)
+            .open(categories_path)
             .bufferedReader()
             .use { it.readText() }
 
@@ -152,7 +247,7 @@ object CategoryStorage {
         path: String
     ): Array<String> {
         categoryByPathCache[path]?.let { return it }
-        val jsonString = context.assets.open(data_file_path)
+        val jsonString = context.assets.open(categories_path)
             .bufferedReader()
             .use { it.readText() }
 
@@ -167,87 +262,30 @@ object CategoryStorage {
     }
 
 
-    fun getFirsts(
-        context: Context,
-        path: String
-    ): Array<String> {
-        val all = getCategoryByPath(context, path)
+    fun getWorldfirsts(context: Context): List<FirstElement> {
+        val jsonString = context.assets.open(worldfirst_path)
+            .bufferedReader()
+            .use { it.readText() }
 
-        var firstKanji: String? = null
-        var firstVocab: String? = null
-        var firstGrammar: String? = null
+        val map: Map<String, FirstElement> = Json.decodeFromString(jsonString)
 
-        for (item in all) {
-            when {
-                firstKanji == null && item.startsWith("kanji") -> {
-                    val first = KanjiStorage.getKanjiById(context, item).kanji
-                    firstKanji = if (first.length > 3) {
-                        first.take(3) + "…"
-                    } else {
-                        first
-                    }
-                }
-                firstVocab == null && item.startsWith("vocab") -> {
-                    val first = VocabStorage.getVocabById(context, item).jp
-
-
-                    firstVocab = if (first.length > 3) {
-                        first.take(3) + "…"
-                    } else {
-                        first
-                    }
-                }
-                firstGrammar == null && item.startsWith("grammar") -> {
-                    val first = GrammarStorage
-                        .getGrammarById(context, item)
-                        .examples
-                        .firstOrNull()
-                        ?.elements
-                        ?.jp
-                        ?.joinToString(", ")
-                        ?: ""
-                    firstGrammar = if (first.length > 3) {
-                        first.take(3) + "…"
-                    } else {
-                        first
-                    }
-                }
-            }
-            if (firstKanji != null && firstVocab != null && firstGrammar != null) break
-        }
-
-        return listOfNotNull(firstKanji, firstVocab, firstGrammar).toTypedArray()
+        return map.values.toList()
     }
 
-    fun getCountsIds(
-        context: Context,
-        path: String
-    ): Map<String, Int> {
-        val all = getCategoryByPath(context, path)
+    fun getLevelFirsts(context: Context, world: String): List<FirstElement> {
+        val jsonString = context.assets.open(levelfirst_path)
+            .bufferedReader()
+            .use { it.readText() }
 
-        var kanjiCount = 0
-        var vocabCount = 0
-        var grammarCount = 0
+        val map: Map<String, FirstElement> = Json.decodeFromString(jsonString)
 
-        for (item in all) {
-            when {
-                item.startsWith("kanji") -> kanjiCount++
-                item.startsWith("vocab") -> vocabCount++
-                item.startsWith("grammar") -> grammarCount++
-            }
-        }
-
-        return mapOf(
-            "kanji" to kanjiCount,
-            "vocab" to vocabCount,
-            "grammar" to grammarCount
-        )
+        return map.values.filter { it.title.startsWith("$world/") }
     }
 
 
     fun loadAll(context: Context) {
         if(categoryByPathCache.isEmpty()) {
-            val jsonString = context.assets.open(data_file_path)
+            val jsonString = context.assets.open(categories_path)
                 .bufferedReader()
                 .use { it.readText() }
 
@@ -262,12 +300,16 @@ object CategoryStorage {
             getKeys(context, "Grammar")
             getKeys(context, "Kana")
             getKeys(context, "Vocab")
+            loadAllQuizzKeys(context)
+
+
+
             result.forEach { (key, value) ->
                 categoryByPathCache[key] = value
             }
         }
         if(progressCache.isEmpty()) {
-            val keys = getKeys(context, "Quizz", true)
+            val keys = getKeys(context, "Quizz")
 
             keys.forEach { key ->
                 val ids = getCategoryByPath(context, key)
