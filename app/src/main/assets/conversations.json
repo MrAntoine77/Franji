@@ -83,27 +83,39 @@
     ],
     "phases": [
       [
-        "いらっしゃいませ。ごちゅうもんは いかが しますか？",
-        "こんにちは。{drink} を おねがいします。"
+        [
+          "いらっしゃいませ。ごちゅうもんは いかが しますか？",
+          "こんにちは。{drink} を おねがいします。"
+        ]
       ],
       [
-        "かしこまりました。サイズは いかが しますか？",
-        "{size} を おねがいします。"
+        [
+          "かしこまりました。サイズは いかが しますか？",
+          "{size} を おねがいします。"
+        ]
       ],
       [
-        "おさとうは いれますか？",
-        "{sweetener}"
+        [
+          "おさとうは いれますか？",
+          "{sweetener}"
+        ]
       ],
       [
-        "てんない ですか、おもちかえり ですか？",
-        "{place} で おねがいします。"
+        [
+          "てんない ですか、おもちかえり ですか？",
+          "{place} で おねがいします。"
+        ]
       ],
       [
-        "おしはらいは どのように しますか？",
-        "{payment} で はらいます。"
+        [
+          "おしはらいは どのように しますか？",
+          "{payment} で はらいます。"
+        ]
       ],
       [
-        "ありがとうございます。おまたせしました。"
+        [
+          "ありがとうございます。おまたせしました。"
+        ]
       ]
     ]
   },
@@ -207,28 +219,105 @@
     ],
     "phases": [
       [
-        "いらっしゃいませ。",
-        "こんにちは。"
+        [
+          "いらっしゃいませ。",
+          "こんにちは。"
+        ]
       ],
       [
-        "おべんとうは あたためますか？",
-        "{heating}"
+        [
+          "おべんとう、あたためますか？",
+          "{heating}"
+        ],
+        [
+          "あたためますか？",
+          "{heating}"
+        ]
       ],
       [
-        "おはしは おつけしますか？",
-        "{cutlery} を おねがいします。"
+        [
+          "おはしは おつけしますか？",
+          "{cutlery} を おねがいします。"
+        ],
+        [
+          "おはし、つけますか？",
+          "{cutlery} を おねがいします。"
+        ]
       ],
       [
-        "おのみものは いかがですか？",
-        "{drink} も おねがいします。"
+        [
+          "おのみものは いかがですか？",
+          "{drink} も おねがいします。"
+        ]
       ],
       [
-        "おかいけいは いくらです。",
-        "{payment} で はらいます。"
+        [
+          "おかいけいは いくらです。",
+          "{payment} で はらいます。"
+        ]
       ],
       [
-        "ありがとうございました。"
+        [
+          "ありがとうございました。"
+        ]
       ]
     ]
+  },
+  "conv3": {
+    "title": "Acheter un ticket de metro",
+    "objective": "",
+    "parts": [
+    ],
+    "phases": []
+  },
+  "conv4": {
+    "title": "Commander au restaurant",
+    "objective": "",
+    "parts": [
+    ],
+    "phases": []
+  },
+  "conv5": {
+    "title": "Réserver une chambre à l'hotel",
+    "objective": "",
+    "parts": [
+    ],
+    "phases": []
+  },
+  "conv6": {
+    "title": "Prendre un taxi",
+    "objective": "",
+    "parts": [
+    ],
+    "phases": []
+  },
+  "conv7": {
+    "title": "Acheter un vêtement",
+    "objective": "",
+    "parts": [
+    ],
+    "phases": []
+  },
+  "conv8": {
+    "title": "Demander son chemin",
+    "objective": "",
+    "parts": [
+    ],
+    "phases": []
+  },
+  "conv9": {
+    "title": "À la pharmacie",
+    "objective": "",
+    "parts": [
+    ],
+    "phases": []
+  },
+  "conv10": {
+    "title": "Demander les horaires de train",
+    "objective": "",
+    "parts": [
+    ],
+    "phases": []
   }
 }
+

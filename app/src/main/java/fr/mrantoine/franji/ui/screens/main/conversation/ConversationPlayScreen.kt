@@ -45,8 +45,6 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
 
-
-
 data class Message(
     val text: String,
     val isSender: Boolean,
@@ -103,7 +101,7 @@ fun MessageBubble(
             HighlightedText(
                 text = replacePlaceholders(message.text, responseMap).formatKana(),
                 color = if (message.isSender) Color.White else Color.Black,
-                highlightColor =  if (message.isSender) Color.White else Color.Black,
+                highlightColor = if (message.isSender) Color.White else Color.Black,
                 highlightBold = true,
             )
         }
@@ -137,12 +135,10 @@ fun ConversationPlayingScreen(
 
 
     fun next() {
-        if(index == chat.size - 1) {
+        if (index == chat.size - 1) {
             navController.navigate(Screen.ConversationList.route)
-        }
-        else {
+        } else {
             index = (index + 1) % chat.size
-
         }
     }
 
@@ -158,16 +154,19 @@ fun ConversationPlayingScreen(
         }
 
         conversation.phases.forEach { exchange ->
-            exchange.forEachIndexed { index, text ->
-                chat.add(Message(
-                    text = text,
-                    isSender = (index % 2 != 0),
-                    key = extractFirstBracesContent(text))
+            if (exchange.isEmpty()) return@forEach
+            val randomVariant = exchange[(0 until exchange.size).random()]
+
+            randomVariant.forEachIndexed { msgIndex, text ->
+                chat.add(
+                    Message(
+                        text = text,
+                        isSender = (msgIndex % 2 != 0),
+                        key = extractFirstBracesContent(text)
+                    )
                 )
             }
         }
-        print(chat)
-
     }
 
     LaunchedEffect(index) {

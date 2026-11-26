@@ -17,7 +17,7 @@ data class Conversation(
     val title: String = "",
     val objective: String = "",
     val parts: List<ConversationPart> = emptyList(),
-    val phases: List<List<String>> = emptyList()
+    val phases: List<List<List<String>>> = emptyList()
 )
 
 @Serializable
