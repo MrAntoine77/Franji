@@ -1,6 +1,7 @@
 package fr.mrantoine.franji.storage
 
 import android.content.Context
+import fr.mrantoine.franji.ui.components.formatKana
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -11,7 +12,7 @@ import java.io.File
 data class Vocab(
     val fr: String = "",
     val jp: String = "",
-    val lecture: Pronunciation = Pronunciation(),
+    val lecture: String = "",
     val id: String = "",
     val kanji: List<String> = emptyList(),
     val similarity: List<String> = emptyList()
@@ -78,22 +79,22 @@ object VocabStorage {
         fun startsWithMatch(vocab: Vocab): Boolean {
             return vocab.fr.lowercase().startsWith(query) ||
                     vocab.jp.lowercase().startsWith(query) ||
-                    vocab.lecture.kana.startsWith(query)
+                    vocab.lecture.startsWith(query)
         }
 
         fun containsMatch(vocab: Vocab): Boolean {
             return vocab.fr.lowercase().contains(query) ||
                     vocab.jp.lowercase().contains(query) ||
-                    vocab.lecture.romaji.lowercase().contains(query) ||
-                    vocab.lecture.kana.contains(query)
+                    vocab.lecture.formatKana().lowercase().contains(query) ||
+                    vocab.lecture.contains(query)
         }
 
 
         fun exactMatch(vocab: Vocab, query: String): Boolean {
             return vocab.fr.equals(query, ignoreCase = true) ||
                     vocab.jp.equals(query, ignoreCase = true) ||
-                    vocab.lecture.romaji.equals(query, ignoreCase = true) ||
-                    vocab.lecture.kana.equals(query, ignoreCase = true)
+                    vocab.lecture.formatKana().equals(query, ignoreCase = true) ||
+                    vocab.lecture.equals(query, ignoreCase = true)
         }
 
 

@@ -27,6 +27,7 @@ import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.ClickableAnimatedText
 import fr.mrantoine.franji.ui.components.VocabGrid4Jp
 import fr.mrantoine.franji.ui.components.VocabGrid4Kana
+import fr.mrantoine.franji.ui.components.formatKana
 import fr.mrantoine.franji.ui.components.navigation.ThemedButton
 import fr.mrantoine.franji.ui.theme.Dimens
 
@@ -64,16 +65,15 @@ fun QuizzVocabFr4Kana(
             modifier = Modifier.fillMaxWidth()
         )
         if(isRevealed) {
-            val reveal_kana = if(SettingsStorage.isRomaji()) vocab.lecture.kana.replaceFirstChar { it.uppercase() } else vocab.lecture.kana.replaceFirstChar { it.uppercase() }
             ClickableAnimatedText(
                 text = vocab.jp,
                 fontSize = 38.sp,
-                onClick = { TtsStorage.speak(vocab.lecture.kana) }
+                onClick = { TtsStorage.speak(vocab.lecture) }
             )
             ClickableAnimatedText(
-                text = reveal_kana,
+                text = vocab.lecture.formatKana().replaceFirstChar { it.uppercase() },
                 fontSize = 24.sp,
-                onClick = { TtsStorage.speak(vocab.lecture.kana) },
+                onClick = { TtsStorage.speak(vocab.lecture) },
                 color = MaterialTheme.colorScheme.secondary
             )
             Spacer(modifier = Modifier.weight(1f))
@@ -94,7 +94,7 @@ fun QuizzVocabFr4Kana(
                 onClick = { vocab ->
                     selectedIds = selectedIds + vocab.id
                     if(vocab.id == vocabId) {
-                        TtsStorage.speak(vocab.lecture.kana)
+                        TtsStorage.speak(vocab.lecture)
                     } else {
                         passed.value = false
                     }

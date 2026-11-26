@@ -31,17 +31,10 @@ fun Lecture(
     lecture: Lecture,
 ) {
     val french = lecture.fr
-    val kun: List<String> = if (SettingsStorage.isRomaji()) {
-        lecture.kun.map { it.romaji }
-    } else {
-        lecture.kun.map { it.kana }
-    }
+    val kun: List<String> = lecture.kun.map { it }
 
-    val ON: List<String> = if (SettingsStorage.isRomaji()) {
-        lecture.ON.map { it.romaji }
-    } else {
-        lecture.ON.map { it.kana }
-    }
+    val ON: List<String> =  lecture.ON.map { it }
+
 
     Box(modifier = Modifier.padding(Dimens.m)) {
         Row(
@@ -81,7 +74,7 @@ fun Lecture(
                         Column {
                             ON.forEach { lecture ->
                                 ClickableAnimatedText(
-                                    text = lecture,
+                                    text = lecture.formatKana(),
                                     fontSize = 16.sp,
                                     textAlign = TextAlign.Right,
                                     onClick = { TtsStorage.speak(lecture) }
@@ -110,7 +103,7 @@ fun Lecture(
                         Column {
                             kun.forEach { lecture->
                                 ClickableAnimatedText(
-                                    text = lecture,
+                                    text = lecture.formatKana(),
                                     fontSize = 16.sp,
                                     textAlign = TextAlign.Right,
                                     onClick = { TtsStorage.speak(lecture) }

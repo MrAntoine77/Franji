@@ -20,14 +20,13 @@ data class Grammar(
 data class GrammarItemElement(
     val jp: List<String> = emptyList(),
     val kana: List<String> = emptyList(),
-    val romaji: List<String> = emptyList()
 )
 
 @Serializable
 data class GrammarItem(
     val jp: String = "",
     val fr: String = "",
-    val lecture: Pronunciation = Pronunciation(),
+    val lecture: String = "",
     val elements: GrammarItemElement = GrammarItemElement()
 )
 

@@ -32,6 +32,7 @@ import fr.mrantoine.franji.ui.components.GrammarGrid4Fr
 import fr.mrantoine.franji.ui.components.HighlightedText
 import fr.mrantoine.franji.ui.components.VocabGrid4Fr
 import fr.mrantoine.franji.ui.components.VocabGrid4Jp
+import fr.mrantoine.franji.ui.components.formatKana
 import fr.mrantoine.franji.ui.components.navigation.ThemedButton
 import fr.mrantoine.franji.ui.theme.Dimens
 
@@ -70,17 +71,15 @@ fun QuizzGrammarJp4Fr(
             lineHeight = 36.sp,
             modifier = Modifier.fillMaxWidth(),
             onClick = {
-                TtsStorage.speak(grammarItem.lecture.kana)
+                TtsStorage.speak(grammarItem.lecture)
             }
         )
         if(isRevealed) {
-            val reveal_kana = if(SettingsStorage.isRomaji()) grammarItem.lecture.kana.replaceFirstChar { it.uppercase() } else grammarItem.lecture.kana.replaceFirstChar { it.uppercase() }
-
             ClickableAnimatedText(
-                text = reveal_kana,
+                text = grammarItem.lecture.formatKana().replaceFirstChar { it.uppercase() },
                 fontSize = 24.sp,
                 lineHeight = 28.sp,
-                onClick = { TtsStorage.speak(grammarItem.lecture.kana) },
+                onClick = { TtsStorage.speak(grammarItem.lecture) },
                 color = MaterialTheme.colorScheme.secondary
             )
             Spacer(modifier = Modifier.weight(1f))
@@ -127,7 +126,7 @@ fun QuizzGrammarJp4Fr(
                 onClick = { grammar ->
                     selectedIds = selectedIds + grammar.id
                     if(grammar.id == grammarId) {
-                        TtsStorage.speak(grammarItem.lecture.kana)
+                        TtsStorage.speak(grammarItem.lecture)
                     } else {
                         passed.value = false
                     }

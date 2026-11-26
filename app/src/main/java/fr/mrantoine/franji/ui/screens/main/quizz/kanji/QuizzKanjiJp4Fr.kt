@@ -27,6 +27,7 @@ import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.ClickableAnimatedText
 import fr.mrantoine.franji.ui.components.KanjiGrid4Fr
 import fr.mrantoine.franji.ui.components.Lottie
+import fr.mrantoine.franji.ui.components.formatKana
 import fr.mrantoine.franji.ui.components.navigation.ThemedButton
 import fr.mrantoine.franji.ui.theme.Dimens
 
@@ -65,10 +66,8 @@ fun QuizzKanjiJp4Fr(
             speed = 2f
         )
         if(isRevealed) {
-            val reveal_kana = if(SettingsStorage.isRomaji()) kanji.main_lecture.kana.replaceFirstChar { it.uppercase() } else kanji.main_lecture.kana.replaceFirstChar { it.uppercase() }
-
             ClickableAnimatedText(
-                text = reveal_kana,
+                text = kanji.main_lecture.kana.formatKana().replaceFirstChar { it.uppercase() },
                 fontSize = 28.sp,
                 onClick = { TtsStorage.speak(kanji.main_lecture.kana) },
                 color = MaterialTheme.colorScheme.secondary

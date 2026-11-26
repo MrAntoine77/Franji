@@ -87,7 +87,7 @@ fun buildQuizz(
             val vocab = VocabStorage.getVocabById(context, id)
             result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Fr4Jp))
             result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Jp4Fr))
-            if(vocab.lecture.kana != vocab.jp) {
+            if(vocab.lecture != vocab.jp) {
                 result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Fr4Kana))
                 result.add(QuizzElement(id = id, mode = QuizzMode.VOCAB_Jp4Kana))
             }

@@ -29,6 +29,7 @@ import fr.mrantoine.franji.storage.GrammarStorage
 import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.ClickableAnimatedText
+import fr.mrantoine.franji.ui.components.formatKana
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
@@ -100,17 +101,17 @@ fun GrammarInfoScreen(
                         modifier = Modifier.fillMaxWidth(),
                         text = example.jp,
                         fontSize = 20.sp,
-                        onClick = { TtsStorage.speak(example.lecture.kana) }
+                        onClick = { TtsStorage.speak(example.lecture) }
                     )
                 }
                 item {
                     ClickableAnimatedText(
                         modifier = Modifier.fillMaxWidth(),
-                        text = if(SettingsStorage.isRomaji()) example.lecture.romaji else example.lecture.kana,
+                        text = example.lecture.formatKana(),
                         fontSize = 20.sp,
                         fontStyle = FontStyle.Italic,
                         color = MaterialTheme.colorScheme.secondary,
-                        onClick = { TtsStorage.speak(example.lecture.kana) }
+                        onClick = { TtsStorage.speak(example.lecture) }
                     )
                 }
                 item {

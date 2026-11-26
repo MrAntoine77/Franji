@@ -104,7 +104,6 @@ fun KanjiGrid4Kana(
             val textColor =
                 if (isSelected) MaterialTheme.colorScheme.secondary else Color.Unspecified
 
-            val text = if(SettingsStorage.isRomaji()) kanji.main_lecture.romaji else kanji.main_lecture.kana
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -126,7 +125,7 @@ fun KanjiGrid4Kana(
                             .padding(vertical = Dimens.s)
                     ) {
                         Text(
-                            text = text,
+                            text = kanji.main_lecture.kana.formatKana(),
                             fontSize = 20.sp,
                             color = textColor,
                             textAlign = TextAlign.Center
@@ -336,7 +335,6 @@ fun VocabGrid4Kana(
             val textColor =
                 if (isSelected) MaterialTheme.colorScheme.secondary else Color.Unspecified
 
-            val text = if(SettingsStorage.isRomaji()) vocab.lecture.romaji else vocab.lecture.kana
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -358,7 +356,7 @@ fun VocabGrid4Kana(
                             .padding(vertical = Dimens.s)
                     ) {
                         Text(
-                            text = text,
+                            text = vocab.lecture.formatKana(),
                             fontSize = 20.sp,
                             color = textColor,
                             textAlign = TextAlign.Center
@@ -479,7 +477,7 @@ fun ConversationGrd(
                             .padding(vertical = Dimens.s),
                     ) {
                         Text(
-                            text = item,
+                            text = item.formatKana(),
                             fontSize = 20.sp,
                             color = textColor,
                             textAlign = TextAlign.Center

@@ -1,6 +1,7 @@
 package fr.mrantoine.franji.storage
 
 import android.content.Context
+import fr.mrantoine.franji.ui.components.formatKana
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -9,20 +10,13 @@ import java.io.File
 @Serializable
 data class Lecture(
     val fr: List<String> = emptyList(),
-    val ON: List<Pronunciation> = emptyList(),
-    val kun: List<Pronunciation> = emptyList()
-)
-
-@Serializable
-data class Pronunciation(
-    val romaji: String = "",
-    val kana: String = "",
+    val ON: List<String> = emptyList(),
+    val kun: List<String> = emptyList()
 )
 
 @Serializable
 data class MainLecture(
     val fr: String = "",
-    val romaji: String = "",
     val kana: String = ""
 )
 
@@ -99,17 +93,17 @@ object KanjiStorage {
         fun startsWithMatch(kanji: Kanji): Boolean {
             return kanji.kanji.startsWith(query) ||
                     kanji.main_lecture.fr.lowercase().startsWith(query) ||
-                    kanji.main_lecture.romaji.lowercase().startsWith(query) ||
+                    kanji.main_lecture.kana.formatKana().lowercase().startsWith(query) ||
                     kanji.main_lecture.kana.startsWith(query) ||
 
                     kanji.lectures.fr.any { it.lowercase().startsWith(query) } ||
                     kanji.lectures.ON.any {
-                        it.romaji.lowercase().startsWith(query) ||
-                                it.kana.startsWith(query)
+                        it.formatKana().lowercase().startsWith(query) ||
+                                it.startsWith(query)
                     } ||
                     kanji.lectures.kun.any {
-                        it.romaji.lowercase().startsWith(query) ||
-                                it.kana.startsWith(query)
+                        it.formatKana().lowercase().startsWith(query) ||
+                                it.startsWith(query)
                     } ||
                     kanji.vocab.any { it.lowercase().startsWith(query) }
         }
@@ -117,17 +111,17 @@ object KanjiStorage {
         fun containsMatch(kanji: Kanji): Boolean {
             return kanji.kanji.contains(query) ||
                     kanji.main_lecture.fr.lowercase().contains(query) ||
-                    kanji.main_lecture.romaji.lowercase().contains(query) ||
+                    kanji.main_lecture.kana.formatKana().lowercase().contains(query) ||
                     kanji.main_lecture.kana.contains(query) ||
 
                     kanji.lectures.fr.any { it.lowercase().contains(query) } ||
                     kanji.lectures.ON.any {
-                        it.romaji.lowercase().contains(query) ||
-                                it.kana.contains(query)
+                        it.formatKana().lowercase().contains(query) ||
+                                it.contains(query)
                     } ||
                     kanji.lectures.kun.any {
-                        it.romaji.lowercase().contains(query) ||
-                                it.kana.contains(query)
+                        it.formatKana().lowercase().contains(query) ||
+                                it.contains(query)
                     } ||
                     kanji.vocab.any { it.lowercase().contains(query) }
         }
@@ -135,17 +129,17 @@ object KanjiStorage {
         fun exactMatch(kanji: Kanji, query: String): Boolean {
             return kanji.kanji == query ||
                     kanji.main_lecture.fr.equals(query, ignoreCase = true) ||
-                    kanji.main_lecture.romaji.equals(query, ignoreCase = true) ||
+                    kanji.main_lecture.kana.formatKana().equals(query, ignoreCase = true) ||
                     kanji.main_lecture.kana == query ||
 
                     kanji.lectures.fr.any { it.equals(query, ignoreCase = true) } ||
                     kanji.lectures.ON.any {
-                        it.romaji.equals(query, ignoreCase = true) ||
-                                it.kana == query
+                        it.formatKana().equals(query, ignoreCase = true) ||
+                                it == query
                     } ||
                     kanji.lectures.kun.any {
-                        it.romaji.equals(query, ignoreCase = true) ||
-                                it.kana == query
+                        it.formatKana().equals(query, ignoreCase = true) ||
+                                it == query
                     } ||
                     kanji.vocab.any { it.equals(query, ignoreCase = true) }
         }

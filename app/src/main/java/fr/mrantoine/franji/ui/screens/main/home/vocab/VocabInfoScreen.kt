@@ -39,6 +39,7 @@ import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.storage.Vocab
 import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.ClickableAnimatedText
+import fr.mrantoine.franji.ui.components.formatKana
 import fr.mrantoine.franji.ui.components.navigation.BottomBar
 import fr.mrantoine.franji.ui.components.navigation.HomeTopBar
 import fr.mrantoine.franji.ui.screens.main.home.kanji.KanjiState
@@ -72,18 +73,18 @@ fun VocabInfoScreen(
                 fontSize = 48.sp,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
-                onClick = { TtsStorage.speak(vocab.lecture.kana) }
+                onClick = { TtsStorage.speak(vocab.lecture) }
 
             )
         }
         item {Spacer(modifier = Modifier.height(Dimens.m))}
         item {
             ClickableAnimatedText(
-                text = if(SettingsStorage.isRomaji()) vocab.lecture.romaji else vocab.lecture.kana,
+                text = vocab.lecture.formatKana(),
                 fontSize = 16.sp,
                 color = MaterialTheme.colorScheme.secondary,
                 textAlign = TextAlign.Center,
-                onClick = { TtsStorage.speak(vocab.lecture.kana) }
+                onClick = { TtsStorage.speak(vocab.lecture) }
             )
         }
         item {Spacer(modifier = Modifier.height(Dimens.m))}

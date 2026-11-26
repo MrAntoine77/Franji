@@ -242,7 +242,7 @@ fun QuizzGrammarFr3Jp(
                         maxItems = grammarItem.elements.jp.size,
                         passed = passed
                     ) { reveal ->
-                        TtsStorage.speak(grammarItem.lecture.kana)
+                        TtsStorage.speak(grammarItem.lecture)
                         isRevealed = reveal
                     }
                 }
@@ -253,16 +253,16 @@ fun QuizzGrammarFr3Jp(
                         textAlign = TextAlign.Center,
                         fontSize = 32.sp,
                         lineHeight = 36.sp,
-                        onClick = { TtsStorage.speak(grammarItem.lecture.kana) }
+                        onClick = { TtsStorage.speak(grammarItem.lecture) }
                     )
                     ClickableAnimatedText(
-                        text = grammarItem.lecture.kana,
+                        text = grammarItem.lecture,
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = TextAlign.Center,
                         fontSize = 24.sp,
                         lineHeight = 28.sp,
                         color = MaterialTheme.colorScheme.secondary,
-                        onClick = { TtsStorage.speak(grammarItem.lecture.kana) }
+                        onClick = { TtsStorage.speak(grammarItem.lecture) }
                     )
                     Spacer(modifier = Modifier.height(Dimens.xl))
                     Text(

@@ -34,6 +34,7 @@ import fr.mrantoine.franji.storage.Vocab
 import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
 import fr.mrantoine.franji.ui.components.ClickableAnimatedText
+import fr.mrantoine.franji.ui.components.formatKana
 import fr.mrantoine.franji.ui.theme.Dimens
 import java.util.Locale
 
@@ -54,7 +55,7 @@ fun CardVocabVersionScreen(
 
     LaunchedEffect( isRevealed.value) {
         if (isRevealed.value) {
-            TtsStorage.speak(vocab.lecture.kana)
+            TtsStorage.speak(vocab.lecture)
         }
     }
 
@@ -72,7 +73,7 @@ fun CardVocabVersionScreen(
         lineHeight = 40.sp,
         textAlign = TextAlign.Center,
         modifier = Modifier.fillMaxWidth(),
-        onClick = { TtsStorage.speak( vocab.lecture.kana) }
+        onClick = { TtsStorage.speak( vocab.lecture) }
     )
     HorizontalDivider(
         color = MaterialTheme.colorScheme.secondary,
@@ -102,13 +103,13 @@ fun CardVocabVersionScreen(
                         textAlign = TextAlign.Center
                     )
                     ClickableAnimatedText(
-                        text = if(SettingsStorage.isRomaji()) lecture.romaji else lecture.kana,
+                        text = lecture.formatKana(),
                         fontSize = 20.sp,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = Dimens.l),
                         textAlign = TextAlign.Center,
-                        onClick = { TtsStorage.speak( lecture.kana) }
+                        onClick = { TtsStorage.speak( lecture) }
                     )
                 }
             }

@@ -22,7 +22,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -30,15 +29,14 @@ import androidx.compose.ui.unit.sp
 import fr.mrantoine.franji.storage.Kanji
 import fr.mrantoine.franji.storage.KanjiStorage
 import fr.mrantoine.franji.storage.LottieStorage
-import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
 import fr.mrantoine.franji.ui.components.ClickableAnimatedText
 import fr.mrantoine.franji.ui.components.DrawArea
 import fr.mrantoine.franji.ui.components.Lecture
 import fr.mrantoine.franji.ui.components.Lottie
+import fr.mrantoine.franji.ui.components.formatKana
 import fr.mrantoine.franji.ui.theme.Dimens
-import java.util.Locale
 
 @Composable
 fun CardKanjiThemeScreen(
@@ -52,7 +50,7 @@ fun CardKanjiThemeScreen(
     val context = LocalContext.current
 
     val hint = kanji.main_lecture.fr
-    val jp = if (SettingsStorage.isRomaji()) kanji.main_lecture.romaji else kanji.main_lecture.kana
+    val jp = kanji.main_lecture.kana.formatKana()
 
 
     LaunchedEffect(cardId) {

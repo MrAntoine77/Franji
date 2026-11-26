@@ -38,6 +38,7 @@ import fr.mrantoine.franji.storage.ConversationStorage
 import fr.mrantoine.franji.storage.TtsStorage
 import fr.mrantoine.franji.ui.components.ConversationGrd
 import fr.mrantoine.franji.ui.components.HighlightedText
+import fr.mrantoine.franji.ui.components.formatKana
 import fr.mrantoine.franji.ui.components.navigation.ThemedButton
 import fr.mrantoine.franji.ui.components.navigation.TopBar
 import kotlinx.coroutines.MainScope
@@ -100,7 +101,7 @@ fun MessageBubble(
                 .padding(12.dp)
         ) {
             HighlightedText(
-                text = replacePlaceholders(message.text, responseMap),
+                text = replacePlaceholders(message.text, responseMap).formatKana(),
                 color = if (message.isSender) Color.White else Color.Black,
                 highlightColor =  if (message.isSender) Color.White else Color.Black,
                 highlightBold = true,

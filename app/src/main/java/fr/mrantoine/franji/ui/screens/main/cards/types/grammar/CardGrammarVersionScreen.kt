@@ -38,6 +38,7 @@ import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
 import fr.mrantoine.franji.ui.components.ClickableAnimatedText
 import fr.mrantoine.franji.ui.components.HighlightedText
+import fr.mrantoine.franji.ui.components.formatKana
 import fr.mrantoine.franji.ui.theme.Dimens
 import org.w3c.dom.Text
 import java.util.Locale
@@ -61,7 +62,7 @@ fun CardGrammarVersionScreen(
 
     LaunchedEffect( isRevealed.value) {
         if (isRevealed.value) {
-            TtsStorage.speak(grammarExample.lecture.kana)
+            TtsStorage.speak(grammarExample.lecture)
         }
     }
 
@@ -79,7 +80,7 @@ fun CardGrammarVersionScreen(
         lineHeight = 40.sp,
         textAlign = TextAlign.Center,
         modifier = Modifier.fillMaxWidth(),
-        onClick = { TtsStorage.speak(grammarExample.lecture.kana) }
+        onClick = { TtsStorage.speak(grammarExample.lecture) }
     )
     HorizontalDivider(
         color = MaterialTheme.colorScheme.secondary,
@@ -115,13 +116,13 @@ fun CardGrammarVersionScreen(
                         textAlign = TextAlign.Center
                     )
                     ClickableAnimatedText(
-                        text = if(SettingsStorage.isRomaji()) lecture.romaji else lecture.kana,
+                        text = lecture.formatKana(),
                         fontSize = 20.sp,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = Dimens.m),
                         textAlign = TextAlign.Center,
-                        onClick = { TtsStorage.speak(grammarExample.lecture.kana) }
+                        onClick = { TtsStorage.speak(grammarExample.lecture) }
                     )
                     Text(
                         text = title,

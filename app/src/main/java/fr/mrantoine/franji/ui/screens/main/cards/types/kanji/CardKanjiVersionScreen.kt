@@ -36,6 +36,7 @@ import fr.mrantoine.franji.ui.components.CardTypeTag
 import fr.mrantoine.franji.ui.components.ClickableAnimatedText
 import fr.mrantoine.franji.ui.components.Lecture
 import fr.mrantoine.franji.ui.components.Lottie
+import fr.mrantoine.franji.ui.components.formatKana
 import fr.mrantoine.franji.ui.theme.Dimens
 
 @Composable
@@ -50,7 +51,7 @@ fun CardKanjiVersionScreen(
     val context = LocalContext.current
 
     val hint = kanji.kanji
-    val jp = if (SettingsStorage.isRomaji()) kanji.main_lecture.romaji else kanji.main_lecture.kana
+    val jp = kanji.main_lecture.kana.formatKana()
     val fr: String =  kanji.main_lecture.fr
 
     LaunchedEffect(cardId) {

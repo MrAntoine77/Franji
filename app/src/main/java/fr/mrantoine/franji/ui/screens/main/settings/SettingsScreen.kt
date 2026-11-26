@@ -60,7 +60,7 @@ fun SettingsScreen(
     var isRestCacheOnLaunch by remember { mutableStateOf(SettingsStorage.isRestCacheOnLaunch()) }
     var isDrawLessons by remember { mutableStateOf(SettingsStorage.isDrawLessons()) }
 
-    val settings = remember(isRomajiEnabled, isRestCacheOnLaunch) {
+    val settings = remember(isRomajiEnabled, isRestCacheOnLaunch, isDrawLessons) {
         listOf(
             SettingItem(
                 title = "Caractères romaji",
