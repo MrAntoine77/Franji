@@ -1,0 +1,182 @@
+{
+    "Quizz/Monde_1": {
+        "title": "Quizz/Monde_1",
+        "kanji": "一",
+        "vocab": "ああ",
+        "grammar": "ある",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 10
+    },
+    "Quizz/Monde_2": {
+        "title": "Quizz/Monde_2",
+        "kanji": "遅",
+        "vocab": "失礼しました",
+        "grammar": "ます",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_3": {
+        "title": "Quizz/Monde_3",
+        "kanji": "変",
+        "vocab": "他",
+        "grammar": "もう",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_4": {
+        "title": "Quizz/Monde_4",
+        "kanji": "則",
+        "vocab": "教会",
+        "grammar": "たりします",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_5": {
+        "title": "Quizz/Monde_5",
+        "kanji": "砂",
+        "vocab": "苦い",
+        "grammar": "ならば",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_6": {
+        "title": "Quizz/Monde_6",
+        "kanji": "丸",
+        "vocab": "衛星",
+        "grammar": "ほしい",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_7": {
+        "title": "Quizz/Monde_7",
+        "kanji": "恭",
+        "vocab": "化粧",
+        "grammar": "てばかりいる",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_8": {
+        "title": "Quizz/Monde_8",
+        "kanji": "世",
+        "vocab": "神経",
+        "grammar": "次第",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_9": {
+        "title": "Quizz/Monde_9",
+        "kanji": "泰",
+        "vocab": "電子",
+        "grammar": "に決まっている",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_10": {
+        "title": "Quizz/Monde_10",
+        "kanji": "褒",
+        "vocab": "方々",
+        "grammar": "とおりに",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_11": {
+        "title": "Quizz/Monde_11",
+        "kanji": "媛",
+        "vocab": "インタビュー",
+        "grammar": "ごろ",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_12": {
+        "title": "Quizz/Monde_12",
+        "kanji": "彰",
+        "vocab": "気味",
+        "grammar": "ぎみ",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_13": {
+        "title": "Quizz/Monde_13",
+        "kanji": "跡",
+        "vocab": "四角",
+        "grammar": "反面",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_14": {
+        "title": "Quizz/Monde_14",
+        "kanji": "貿",
+        "vocab": "総理大臣",
+        "grammar": "からといって",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_15": {
+        "title": "Quizz/Monde_15",
+        "kanji": "梶",
+        "vocab": "中身・中味",
+        "grammar": "も構わず",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_16": {
+        "title": "Quizz/Monde_16",
+        "kanji": "嵐",
+        "vocab": "保障",
+        "grammar": "に反して",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_17": {
+        "title": "Quizz/Monde_17",
+        "kanji": "倫",
+        "vocab": "割合に",
+        "grammar": "に従って",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_18": {
+        "title": "Quizz/Monde_18",
+        "kanji": "橿",
+        "vocab": "織物",
+        "grammar": "っぽい",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_19": {
+        "title": "Quizz/Monde_19",
+        "kanji": "檜",
+        "vocab": "教習",
+        "grammar": "とともに",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    },
+    "Quizz/Monde_20": {
+        "title": "Quizz/Monde_20",
+        "kanji": "縮",
+        "vocab": "細菌",
+        "grammar": "わけがない",
+        "kanji_count": 90,
+        "vocab_count": 300,
+        "grammar_count": 15
+    }
+}

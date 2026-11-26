@@ -1,0 +1,5402 @@
+{
+    "Quizz/Monde_1/Niveau_1": {
+        "title": "Quizz/Monde_1/Niveau_1",
+        "kanji": "一",
+        "vocab": "ああ",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_2": {
+        "title": "Quizz/Monde_1/Niveau_2",
+        "kanji": "四",
+        "vocab": "開ける・明ける",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_3": {
+        "title": "Quizz/Monde_1/Niveau_3",
+        "kanji": "七",
+        "vocab": "遊ぶ",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_4": {
+        "title": "Quizz/Monde_1/Niveau_4",
+        "kanji": "十",
+        "vocab": "兄",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_5": {
+        "title": "Quizz/Monde_1/Niveau_5",
+        "kanji": "万",
+        "vocab": "洗う",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_6": {
+        "title": "Quizz/Monde_1/Niveau_6",
+        "kanji": "日",
+        "vocab": "行く",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_7": {
+        "title": "Quizz/Monde_1/Niveau_7",
+        "kanji": "水",
+        "vocab": "一日",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_8": {
+        "title": "Quizz/Monde_1/Niveau_8",
+        "kanji": "土",
+        "vocab": "意味",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_9": {
+        "title": "Quizz/Monde_1/Niveau_9",
+        "kanji": "田",
+        "vocab": "後ろ",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_10": {
+        "title": "Quizz/Monde_1/Niveau_10",
+        "kanji": "手",
+        "vocab": "絵",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_11": {
+        "title": "Quizz/Monde_1/Niveau_11",
+        "kanji": "女",
+        "vocab": "お出でになる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_12": {
+        "title": "Quizz/Monde_1/Niveau_12",
+        "kanji": "校",
+        "vocab": "お元気で",
+        "grammar": "ある",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_1/Niveau_13": {
+        "title": "Quizz/Monde_1/Niveau_13",
+        "kanji": "大",
+        "vocab": "男の子",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_14": {
+        "title": "Quizz/Monde_1/Niveau_14",
+        "kanji": "上",
+        "vocab": "伯母さん・叔母さん",
+        "grammar": "あとで",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_1/Niveau_15": {
+        "title": "Quizz/Monde_1/Niveau_15",
+        "kanji": "右",
+        "vocab": "終わる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_16": {
+        "title": "Quizz/Monde_1/Niveau_16",
+        "kanji": "語",
+        "vocab": "買い物",
+        "grammar": "わらいだす",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_1/Niveau_17": {
+        "title": "Quizz/Monde_1/Niveau_17",
+        "kanji": "見",
+        "vocab": "貸す",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_18": {
+        "title": "Quizz/Monde_1/Niveau_18",
+        "kanji": "食",
+        "vocab": "家内",
+        "grammar": "あそびはじめる",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_1/Niveau_19": {
+        "title": "Quizz/Monde_1/Niveau_19",
+        "kanji": "書",
+        "vocab": "カレンダー",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_20": {
+        "title": "Quizz/Monde_1/Niveau_20",
+        "kanji": "休",
+        "vocab": "ギター",
+        "grammar": "かいにいく",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_1/Niveau_21": {
+        "title": "Quizz/Monde_1/Niveau_21",
+        "kanji": "立",
+        "vocab": "今日",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_22": {
+        "title": "Quizz/Monde_1/Niveau_22",
+        "kanji": "使",
+        "vocab": "金曜日",
+        "grammar": "すぎる",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_1/Niveau_23": {
+        "title": "Quizz/Monde_1/Niveau_23",
+        "kanji": "会",
+        "vocab": "クラス",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_24": {
+        "title": "Quizz/Monde_1/Niveau_24",
+        "kanji": "今",
+        "vocab": "結婚",
+        "grammar": "中",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_1/Niveau_25": {
+        "title": "Quizz/Monde_1/Niveau_25",
+        "kanji": "前",
+        "vocab": "声",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_26": {
+        "title": "Quizz/Monde_1/Niveau_26",
+        "kanji": "東",
+        "vocab": "ご馳走様でした",
+        "grammar": "で",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_1/Niveau_27": {
+        "title": "Quizz/Monde_1/Niveau_27",
+        "kanji": "北",
+        "vocab": "ご免下さい",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_28": {
+        "title": "Quizz/Monde_1/Niveau_28",
+        "kanji": "赤",
+        "vocab": "歳",
+        "grammar": "でしょう",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_1/Niveau_29": {
+        "title": "Quizz/Monde_1/Niveau_29",
+        "kanji": "古",
+        "vocab": "寒い",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_1/Niveau_30": {
+        "title": "Quizz/Monde_1/Niveau_30",
+        "kanji": "高",
+        "vocab": "時",
+        "grammar": "い",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_2/Niveau_1": {
+        "title": "Quizz/Monde_2/Niveau_1",
+        "kanji": "遅",
+        "vocab": "失礼しました",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_2/Niveau_2": {
+        "title": "Quizz/Monde_2/Niveau_2",
+        "kanji": "明",
+        "vocab": "写真",
+        "grammar": "ます",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_2/Niveau_3": {
+        "title": "Quizz/Monde_2/Niveau_3",
+        "kanji": "母",
+        "vocab": "丈夫",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_2/Niveau_4": {
+        "title": "Quizz/Monde_2/Niveau_4",
+        "kanji": "雨",
+        "vocab": "少し",
+        "grammar": "ないでください",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_2/Niveau_5": {
+        "title": "Quizz/Monde_2/Niveau_5",
+        "kanji": "電",
+        "vocab": "為る",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_2/Niveau_6": {
+        "title": "Quizz/Monde_2/Niveau_6",
+        "kanji": "国",
+        "vocab": "先週",
+        "grammar": "る",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_2/Niveau_7": {
+        "title": "Quizz/Monde_2/Niveau_7",
+        "kanji": "病",
+        "vocab": "その他",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_2/Niveau_8": {
+        "title": "Quizz/Monde_2/Niveau_8",
+        "kanji": "買",
+        "vocab": "大丈夫",
+        "grammar": "たい",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_2/Niveau_9": {
+        "title": "Quizz/Monde_2/Niveau_9",
+        "kanji": "帰",
+        "vocab": "出す",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_2/Niveau_10": {
+        "title": "Quizz/Monde_2/Niveau_10",
+        "kanji": "持",
+        "vocab": "食べる",
+        "grammar": "て",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_2/Niveau_11": {
+        "title": "Quizz/Monde_2/Niveau_11",
+        "kanji": "知",
+        "vocab": "地図",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_2/Niveau_12": {
+        "title": "Quizz/Monde_2/Niveau_12",
+        "kanji": "毎",
+        "vocab": "疲れる",
+        "grammar": "が",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_2/Niveau_13": {
+        "title": "Quizz/Monde_2/Niveau_13",
+        "kanji": "午",
+        "vocab": "強い",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_2/Niveau_14": {
+        "title": "Quizz/Monde_2/Niveau_14",
+        "kanji": "夜",
+        "vocab": "では",
+        "grammar": "は",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_2/Niveau_15": {
+        "title": "Quizz/Monde_2/Niveau_15",
+        "kanji": "和",
+        "vocab": "電話",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_2/Niveau_16": {
+        "title": "Quizz/Monde_2/Niveau_16",
+        "kanji": "告",
+        "vocab": "どうぞ",
+        "grammar": "はいけません",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_2/Niveau_17": {
+        "title": "Quizz/Monde_2/Niveau_17",
+        "kanji": "掲",
+        "vocab": "何所",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_2/Niveau_18": {
+        "title": "Quizz/Monde_2/Niveau_18",
+        "kanji": "表",
+        "vocab": "土曜日",
+        "grammar": "ほうがいい",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_2/Niveau_19": {
+        "title": "Quizz/Monde_2/Niveau_19",
+        "kanji": "番",
+        "vocab": "長い",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_2/Niveau_20": {
+        "title": "Quizz/Monde_2/Niveau_20",
+        "kanji": "条",
+        "vocab": "並ぶ",
+        "grammar": "か",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_2/Niveau_21": {
+        "title": "Quizz/Monde_2/Niveau_21",
+        "kanji": "及",
+        "vocab": "日曜日",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_2/Niveau_22": {
+        "title": "Quizz/Monde_2/Niveau_22",
+        "kanji": "権",
+        "vocab": "ノート",
+        "grammar": "から",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_2/Niveau_23": {
+        "title": "Quizz/Monde_2/Niveau_23",
+        "kanji": "関",
+        "vocab": "葉書",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_2/Niveau_24": {
+        "title": "Quizz/Monde_2/Niveau_24",
+        "kanji": "代",
+        "vocab": "バス",
+        "grammar": "だから",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_2/Niveau_25": {
+        "title": "Quizz/Monde_2/Niveau_25",
+        "kanji": "合",
+        "vocab": "母",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_2/Niveau_26": {
+        "title": "Quizz/Monde_2/Niveau_26",
+        "kanji": "当",
+        "vocab": "ハンカチ",
+        "grammar": "ことができる",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_2/Niveau_27": {
+        "title": "Quizz/Monde_2/Niveau_27",
+        "kanji": "官",
+        "vocab": "飛行機",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_2/Niveau_28": {
+        "title": "Quizz/Monde_2/Niveau_28",
+        "kanji": "以",
+        "vocab": "平仮名",
+        "grammar": "まえに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_2/Niveau_29": {
+        "title": "Quizz/Monde_2/Niveau_29",
+        "kanji": "報",
+        "vocab": "二つ",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_2/Niveau_30": {
+        "title": "Quizz/Monde_2/Niveau_30",
+        "kanji": "乙",
+        "vocab": "下手",
+        "grammar": "も",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_3/Niveau_1": {
+        "title": "Quizz/Monde_3/Niveau_1",
+        "kanji": "変",
+        "vocab": "他",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_3/Niveau_2": {
+        "title": "Quizz/Monde_3/Niveau_2",
+        "kanji": "申",
+        "vocab": "本当に",
+        "grammar": "もう",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_3/Niveau_3": {
+        "title": "Quizz/Monde_3/Niveau_3",
+        "kanji": "方",
+        "vocab": "曲がる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_3/Niveau_4": {
+        "title": "Quizz/Monde_3/Niveau_4",
+        "kanji": "資",
+        "vocab": "丸い",
+        "grammar": "もいいです",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_3/Niveau_5": {
+        "title": "Quizz/Monde_3/Niveau_5",
+        "kanji": "係",
+        "vocab": "道",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_3/Niveau_6": {
+        "title": "Quizz/Monde_3/Niveau_6",
+        "kanji": "用",
+        "vocab": "六つ",
+        "grammar": "一番",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_3/Niveau_7": {
+        "title": "Quizz/Monde_3/Niveau_7",
+        "kanji": "頁",
+        "vocab": "もっと",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_3/Niveau_8": {
+        "title": "Quizz/Monde_3/Niveau_8",
+        "kanji": "最",
+        "vocab": "休む",
+        "grammar": "など",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_3/Niveau_9": {
+        "title": "Quizz/Monde_3/Niveau_9",
+        "kanji": "員",
+        "vocab": "洋服",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_3/Niveau_10": {
+        "title": "Quizz/Monde_3/Niveau_10",
+        "kanji": "局",
+        "vocab": "来週",
+        "grammar": "なければなりません",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_3/Niveau_11": {
+        "title": "Quizz/Monde_3/Niveau_11",
+        "kanji": "通",
+        "vocab": "冷蔵庫",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_3/Niveau_12": {
+        "title": "Quizz/Monde_3/Niveau_12",
+        "kanji": "保",
+        "vocab": "私",
+        "grammar": "なる",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_3/Niveau_13": {
+        "title": "Quizz/Monde_3/Niveau_13",
+        "kanji": "判",
+        "vocab": "赤ん坊",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_3/Niveau_14": {
+        "title": "Quizz/Monde_3/Niveau_14",
+        "kanji": "臣",
+        "vocab": "集める",
+        "grammar": "ね",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_3/Niveau_15": {
+        "title": "Quizz/Monde_3/Niveau_15",
+        "kanji": "伐",
+        "vocab": "あんな",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_3/Niveau_16": {
+        "title": "Quizz/Monde_3/Niveau_16",
+        "kanji": "主",
+        "vocab": "以上",
+        "grammar": "に",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_3/Niveau_17": {
+        "title": "Quizz/Monde_3/Niveau_17",
+        "kanji": "期",
+        "vocab": "以内",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_3/Niveau_18": {
+        "title": "Quizz/Monde_3/Niveau_18",
+        "kanji": "記",
+        "vocab": "打つ・撃つ",
+        "grammar": "の",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_3/Niveau_19": {
+        "title": "Quizz/Monde_3/Niveau_19",
+        "kanji": "理",
+        "vocab": "うん",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_3/Niveau_20": {
+        "title": "Quizz/Monde_3/Niveau_20",
+        "kanji": "協",
+        "vocab": "遠慮する",
+        "grammar": "のです",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_3/Niveau_21": {
+        "title": "Quizz/Monde_3/Niveau_21",
+        "kanji": "借",
+        "vocab": "可笑しい",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_3/Niveau_22": {
+        "title": "Quizz/Monde_3/Niveau_22",
+        "kanji": "続",
+        "vocab": "お嬢さん",
+        "grammar": "と",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_3/Niveau_23": {
+        "title": "Quizz/Monde_3/Niveau_23",
+        "kanji": "平",
+        "vocab": "驚く",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_3/Niveau_24": {
+        "title": "Quizz/Monde_3/Niveau_24",
+        "kanji": "状",
+        "vocab": "お湯",
+        "grammar": "という",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_3/Niveau_25": {
+        "title": "Quizz/Monde_3/Niveau_25",
+        "kanji": "況",
+        "vocab": "会",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_3/Niveau_26": {
+        "title": "Quizz/Monde_3/Niveau_26",
+        "kanji": "裁",
+        "vocab": "学部",
+        "grammar": "と思います",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_3/Niveau_27": {
+        "title": "Quizz/Monde_3/Niveau_27",
+        "kanji": "域",
+        "vocab": "悲しい",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_3/Niveau_28": {
+        "title": "Quizz/Monde_3/Niveau_28",
+        "kanji": "府",
+        "vocab": "彼",
+        "grammar": "つもりです",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_3/Niveau_29": {
+        "title": "Quizz/Monde_3/Niveau_29",
+        "kanji": "力",
+        "vocab": "機会",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_3/Niveau_30": {
+        "title": "Quizz/Monde_3/Niveau_30",
+        "kanji": "効",
+        "vocab": "気分",
+        "grammar": "ことがある",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_4/Niveau_1": {
+        "title": "Quizz/Monde_4/Niveau_1",
+        "kanji": "則",
+        "vocab": "教会",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_4/Niveau_2": {
+        "title": "Quizz/Monde_4/Niveau_2",
+        "kanji": "在",
+        "vocab": "雲",
+        "grammar": "たりします",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_4/Niveau_3": {
+        "title": "Quizz/Monde_4/Niveau_3",
+        "kanji": "村",
+        "vocab": "警察",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_4/Niveau_4": {
+        "title": "Quizz/Monde_4/Niveau_4",
+        "kanji": "岡",
+        "vocab": "喧嘩する",
+        "grammar": "いる",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_4/Niveau_5": {
+        "title": "Quizz/Monde_4/Niveau_5",
+        "kanji": "各",
+        "vocab": "高校生",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_4/Niveau_6": {
+        "title": "Quizz/Monde_4/Niveau_6",
+        "kanji": "又",
+        "vocab": "ご存知",
+        "grammar": "から",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_4/Niveau_7": {
+        "title": "Quizz/Monde_4/Niveau_7",
+        "kanji": "経",
+        "vocab": "込む・混む",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_4/Niveau_8": {
+        "title": "Quizz/Monde_4/Niveau_8",
+        "kanji": "機",
+        "vocab": "最近",
+        "grammar": "を",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_4/Niveau_9": {
+        "title": "Quizz/Monde_4/Niveau_9",
+        "kanji": "的",
+        "vocab": "様",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_4/Niveau_10": {
+        "title": "Quizz/Monde_4/Niveau_10",
+        "kanji": "管",
+        "vocab": "字",
+        "grammar": "や",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_4/Niveau_11": {
+        "title": "Quizz/Monde_4/Niveau_11",
+        "kanji": "登",
+        "vocab": "確り",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_4/Niveau_12": {
+        "title": "Quizz/Monde_4/Niveau_12",
+        "kanji": "確",
+        "vocab": "事務所",
+        "grammar": "よ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_4/Niveau_13": {
+        "title": "Quizz/Monde_4/Niveau_13",
+        "kanji": "採",
+        "vocab": "出発",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_4/Niveau_14": {
+        "title": "Quizz/Monde_4/Niveau_14",
+        "kanji": "録",
+        "vocab": "承知",
+        "grammar": "より",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_4/Niveau_15": {
+        "title": "Quizz/Monde_4/Niveau_15",
+        "kanji": "港",
+        "vocab": "親切",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_4/Niveau_16": {
+        "title": "Quizz/Monde_4/Niveau_16",
+        "kanji": "再",
+        "vocab": "スーパー",
+        "grammar": "より",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_4/Niveau_17": {
+        "title": "Quizz/Monde_4/Niveau_17",
+        "kanji": "労",
+        "vocab": "ステレオ",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_4/Niveau_18": {
+        "title": "Quizz/Monde_4/Niveau_18",
+        "kanji": "福",
+        "vocab": "政治",
+        "grammar": "あまり",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_4/Niveau_19": {
+        "title": "Quizz/Monde_4/Niveau_19",
+        "kanji": "財",
+        "vocab": "全然",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_4/Niveau_20": {
+        "title": "Quizz/Monde_4/Niveau_20",
+        "kanji": "加",
+        "vocab": "そちら",
+        "grammar": "あう",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_4/Niveau_21": {
+        "title": "Quizz/Monde_4/Niveau_21",
+        "kanji": "覧",
+        "vocab": "退院",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_4/Niveau_22": {
+        "title": "Quizz/Monde_4/Niveau_22",
+        "kanji": "松",
+        "vocab": "確",
+        "grammar": "ながら",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_4/Niveau_23": {
+        "title": "Quizz/Monde_4/Niveau_23",
+        "kanji": "般",
+        "vocab": "棚",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_4/Niveau_24": {
+        "title": "Quizz/Monde_4/Niveau_24",
+        "kanji": "命",
+        "vocab": "小さな",
+        "grammar": "そう",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_4/Niveau_25": {
+        "title": "Quizz/Monde_4/Niveau_25",
+        "kanji": "縦",
+        "vocab": "点く",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_4/Niveau_26": {
+        "title": "Quizz/Monde_4/Niveau_26",
+        "kanji": "止",
+        "vocab": "連れる",
+        "grammar": "つづける",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_4/Niveau_27": {
+        "title": "Quizz/Monde_4/Niveau_27",
+        "kanji": "験",
+        "vocab": "点",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_4/Niveau_28": {
+        "title": "Quizz/Monde_4/Niveau_28",
+        "kanji": "欄",
+        "vocab": "遠く",
+        "grammar": "やすい",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_4/Niveau_29": {
+        "title": "Quizz/Monde_4/Niveau_29",
+        "kanji": "補",
+        "vocab": "届ける",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_4/Niveau_30": {
+        "title": "Quizz/Monde_4/Niveau_30",
+        "kanji": "点",
+        "vocab": "投げる",
+        "grammar": "べき",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_5/Niveau_1": {
+        "title": "Quizz/Monde_5/Niveau_1",
+        "kanji": "砂",
+        "vocab": "苦い",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_5/Niveau_2": {
+        "title": "Quizz/Monde_5/Niveau_2",
+        "kanji": "吸",
+        "vocab": "塗る",
+        "grammar": "ならば",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_5/Niveau_3": {
+        "title": "Quizz/Monde_5/Niveau_3",
+        "kanji": "職",
+        "vocab": "葉",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_5/Niveau_4": {
+        "title": "Quizz/Monde_5/Niveau_4",
+        "kanji": "崎",
+        "vocab": "恥ずかしい",
+        "grammar": "と",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_5/Niveau_5": {
+        "title": "Quizz/Monde_5/Niveau_5",
+        "kanji": "秒",
+        "vocab": "日",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_5/Niveau_6": {
+        "title": "Quizz/Monde_5/Niveau_6",
+        "kanji": "選",
+        "vocab": "吃驚",
+        "grammar": "れば",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_5/Niveau_7": {
+        "title": "Quizz/Monde_5/Niveau_7",
+        "kanji": "化",
+        "vocab": "拾う",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_5/Niveau_8": {
+        "title": "Quizz/Monde_5/Niveau_8",
+        "kanji": "標",
+        "vocab": "不便",
+        "grammar": "たら",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_5/Niveau_9": {
+        "title": "Quizz/Monde_5/Niveau_9",
+        "kanji": "家",
+        "vocab": "返事",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_5/Niveau_10": {
+        "title": "Quizz/Monde_5/Niveau_10",
+        "kanji": "適",
+        "vocab": "翻訳する",
+        "grammar": "だけ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_5/Niveau_11": {
+        "title": "Quizz/Monde_5/Niveau_11",
+        "kanji": "得",
+        "vocab": "回り・周り",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_5/Niveau_12": {
+        "title": "Quizz/Monde_5/Niveau_12",
+        "kanji": "河",
+        "vocab": "迎える",
+        "grammar": "ようとする",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_5/Niveau_13": {
+        "title": "Quizz/Monde_5/Niveau_13",
+        "kanji": "価",
+        "vocab": "若し",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_5/Niveau_14": {
+        "title": "Quizz/Monde_5/Niveau_14",
+        "kanji": "廃",
+        "vocab": "止む",
+        "grammar": "る",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_5/Niveau_15": {
+        "title": "Quizz/Monde_5/Niveau_15",
+        "kanji": "療",
+        "vocab": "揺れる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_5/Niveau_16": {
+        "title": "Quizz/Monde_5/Niveau_16",
+        "kanji": "試",
+        "vocab": "喜ぶ",
+        "grammar": "させる",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_5/Niveau_17": {
+        "title": "Quizz/Monde_5/Niveau_17",
+        "kanji": "憲",
+        "vocab": "連絡",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_5/Niveau_18": {
+        "title": "Quizz/Monde_5/Niveau_18",
+        "kanji": "優",
+        "vocab": "愛",
+        "grammar": "える",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_5/Niveau_19": {
+        "title": "Quizz/Monde_5/Niveau_19",
+        "kanji": "案",
+        "vocab": "明き・空き",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_5/Niveau_20": {
+        "title": "Quizz/Monde_5/Niveau_20",
+        "kanji": "不",
+        "vocab": "辺り",
+        "grammar": "なさい",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_5/Niveau_21": {
+        "title": "Quizz/Monde_5/Niveau_21",
+        "kanji": "低",
+        "vocab": "粗い",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_5/Niveau_22": {
+        "title": "Quizz/Monde_5/Niveau_22",
+        "kanji": "流",
+        "vocab": "泡",
+        "grammar": "こう",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_5/Niveau_23": {
+        "title": "Quizz/Monde_5/Niveau_23",
+        "kanji": "広",
+        "vocab": "行き",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_5/Niveau_24": {
+        "title": "Quizz/Monde_5/Niveau_24",
+        "kanji": "緯",
+        "vocab": "泉",
+        "grammar": "させられる",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_5/Niveau_25": {
+        "title": "Quizz/Monde_5/Niveau_25",
+        "kanji": "型",
+        "vocab": "一時",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_5/Niveau_26": {
+        "title": "Quizz/Monde_5/Niveau_26",
+        "kanji": "必",
+        "vocab": "一致",
+        "grammar": "ずに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_5/Niveau_27": {
+        "title": "Quizz/Monde_5/Niveau_27",
+        "kanji": "太",
+        "vocab": "違反",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_5/Niveau_28": {
+        "title": "Quizz/Monde_5/Niveau_28",
+        "kanji": "戸",
+        "vocab": "祝う",
+        "grammar": "たがる",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_5/Niveau_29": {
+        "title": "Quizz/Monde_5/Niveau_29",
+        "kanji": "授",
+        "vocab": "動かす",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_5/Niveau_30": {
+        "title": "Quizz/Monde_5/Niveau_30",
+        "kanji": "坂",
+        "vocab": "生まれ",
+        "grammar": "はず",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_6/Niveau_1": {
+        "title": "Quizz/Monde_6/Niveau_1",
+        "kanji": "丸",
+        "vocab": "衛星",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_6/Niveau_2": {
+        "title": "Quizz/Monde_6/Niveau_2",
+        "kanji": "営",
+        "vocab": "演説",
+        "grammar": "ほしい",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_6/Niveau_3": {
+        "title": "Quizz/Monde_6/Niveau_3",
+        "kanji": "占",
+        "vocab": "終える",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_6/Niveau_4": {
+        "title": "Quizz/Monde_6/Niveau_4",
+        "kanji": "請",
+        "vocab": "収める・納める・治める",
+        "grammar": "かどうか",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_6/Niveau_5": {
+        "title": "Quizz/Monde_6/Niveau_5",
+        "kanji": "津",
+        "vocab": "帯",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_6/Niveau_6": {
+        "title": "Quizz/Monde_6/Niveau_6",
+        "kanji": "際",
+        "vocab": "恩",
+        "grammar": "ます",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_6/Niveau_7": {
+        "title": "Quizz/Monde_6/Niveau_7",
+        "kanji": "製",
+        "vocab": "海外",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_6/Niveau_8": {
+        "title": "Quizz/Monde_6/Niveau_8",
+        "kanji": "回",
+        "vocab": "回復",
+        "grammar": "気にする",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_6/Niveau_9": {
+        "title": "Quizz/Monde_6/Niveau_9",
+        "kanji": "込",
+        "vocab": "限る",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_6/Niveau_10": {
+        "title": "Quizz/Monde_6/Niveau_10",
+        "kanji": "易",
+        "vocab": "確認",
+        "grammar": "ことにする",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_6/Niveau_11": {
+        "title": "Quizz/Monde_6/Niveau_11",
+        "kanji": "氏",
+        "vocab": "家事",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_6/Niveau_12": {
+        "title": "Quizz/Monde_6/Niveau_12",
+        "kanji": "富",
+        "vocab": "刀",
+        "grammar": "によると",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_6/Niveau_13": {
+        "title": "Quizz/Monde_6/Niveau_13",
+        "kanji": "審",
+        "vocab": "必ずしも",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_6/Niveau_14": {
+        "title": "Quizz/Monde_6/Niveau_14",
+        "kanji": "横",
+        "vocab": "かも知れない",
+        "grammar": "のに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_6/Niveau_15": {
+        "title": "Quizz/Monde_6/Niveau_15",
+        "kanji": "重",
+        "vocab": "管",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_6/Niveau_16": {
+        "title": "Quizz/Monde_6/Niveau_16",
+        "kanji": "環",
+        "vocab": "患者",
+        "grammar": "らしい",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_6/Niveau_17": {
+        "title": "Quizz/Monde_6/Niveau_17",
+        "kanji": "量",
+        "vocab": "監督",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_6/Niveau_18": {
+        "title": "Quizz/Monde_6/Niveau_18",
+        "kanji": "愛",
+        "vocab": "企業",
+        "grammar": "し",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_6/Niveau_19": {
+        "title": "Quizz/Monde_6/Niveau_19",
+        "kanji": "担",
+        "vocab": "期待",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_6/Niveau_20": {
+        "title": "Quizz/Monde_6/Niveau_20",
+        "kanji": "参",
+        "vocab": "機能",
+        "grammar": "にする",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_6/Niveau_21": {
+        "title": "Quizz/Monde_6/Niveau_21",
+        "kanji": "門",
+        "vocab": "逆",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_6/Niveau_22": {
+        "title": "Quizz/Monde_6/Niveau_22",
+        "kanji": "災",
+        "vocab": "救助",
+        "grammar": "ときに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_6/Niveau_23": {
+        "title": "Quizz/Monde_6/Niveau_23",
+        "kanji": "系",
+        "vocab": "教授",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_6/Niveau_24": {
+        "title": "Quizz/Monde_6/Niveau_24",
+        "kanji": "植",
+        "vocab": "嫌う",
+        "grammar": "たばかり",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_6/Niveau_25": {
+        "title": "Quizz/Monde_6/Niveau_25",
+        "kanji": "問",
+        "vocab": "金庫",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_6/Niveau_26": {
+        "title": "Quizz/Monde_6/Niveau_26",
+        "kanji": "馬",
+        "vocab": "食う",
+        "grammar": "らどうですか",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_6/Niveau_27": {
+        "title": "Quizz/Monde_6/Niveau_27",
+        "kanji": "賀",
+        "vocab": "組",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_6/Niveau_28": {
+        "title": "Quizz/Monde_6/Niveau_28",
+        "kanji": "沖",
+        "vocab": "繰り返す",
+        "grammar": "てあげる",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_6/Niveau_29": {
+        "title": "Quizz/Monde_6/Niveau_29",
+        "kanji": "群",
+        "vocab": "訓",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_6/Niveau_30": {
+        "title": "Quizz/Monde_6/Niveau_30",
+        "kanji": "養",
+        "vocab": "計算",
+        "grammar": "てある",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_7/Niveau_1": {
+        "title": "Quizz/Monde_7/Niveau_1",
+        "kanji": "恭",
+        "vocab": "化粧",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_7/Niveau_2": {
+        "title": "Quizz/Monde_7/Niveau_2",
+        "kanji": "岩",
+        "vocab": "結論",
+        "grammar": "てばかりいる",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_7/Niveau_3": {
+        "title": "Quizz/Monde_7/Niveau_3",
+        "kanji": "求",
+        "vocab": "検査",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_7/Niveau_4": {
+        "title": "Quizz/Monde_7/Niveau_4",
+        "kanji": "属",
+        "vocab": "現場",
+        "grammar": "ていただけませんか",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_7/Niveau_5": {
+        "title": "Quizz/Monde_7/Niveau_5",
+        "kanji": "児",
+        "vocab": "効果",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_7/Niveau_6": {
+        "title": "Quizz/Monde_7/Niveau_6",
+        "kanji": "修",
+        "vocab": "貢献",
+        "grammar": "てくれませんか",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_7/Niveau_7": {
+        "title": "Quizz/Monde_7/Niveau_7",
+        "kanji": "講",
+        "vocab": "候補",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_7/Niveau_8": {
+        "title": "Quizz/Monde_7/Niveau_8",
+        "kanji": "納",
+        "vocab": "呼吸",
+        "grammar": "てくれる",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_7/Niveau_9": {
+        "title": "Quizz/Monde_7/Niveau_9",
+        "kanji": "領",
+        "vocab": "国家",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_7/Niveau_10": {
+        "title": "Quizz/Monde_7/Niveau_10",
+        "kanji": "宝",
+        "vocab": "コピー",
+        "grammar": "てみる",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_7/Niveau_11": {
+        "title": "Quizz/Monde_7/Niveau_11",
+        "kanji": "練",
+        "vocab": "困難",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_7/Niveau_12": {
+        "title": "Quizz/Monde_7/Niveau_12",
+        "kanji": "贈",
+        "vocab": "最中",
+        "grammar": "ても",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_7/Niveau_13": {
+        "title": "Quizz/Monde_7/Niveau_13",
+        "kanji": "瑞",
+        "vocab": "作業",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_7/Niveau_14": {
+        "title": "Quizz/Monde_7/Niveau_14",
+        "kanji": "器",
+        "vocab": "札",
+        "grammar": "てもらう",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_7/Niveau_15": {
+        "title": "Quizz/Monde_7/Niveau_15",
+        "kanji": "責",
+        "vocab": "覚める",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_7/Niveau_16": {
+        "title": "Quizz/Monde_7/Niveau_16",
+        "kanji": "興",
+        "vocab": "詩",
+        "grammar": "ておく",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_7/Niveau_17": {
+        "title": "Quizz/Monde_7/Niveau_17",
+        "kanji": "静",
+        "vocab": "頻りに",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_7/Niveau_18": {
+        "title": "Quizz/Monde_7/Niveau_18",
+        "kanji": "介",
+        "vocab": "詩人",
+        "grammar": "てしまう",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_7/Niveau_19": {
+        "title": "Quizz/Monde_7/Niveau_19",
+        "kanji": "裕",
+        "vocab": "質",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_7/Niveau_20": {
+        "title": "Quizz/Monde_7/Niveau_20",
+        "kanji": "雅",
+        "vocab": "失望",
+        "grammar": "てすみません",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_7/Niveau_21": {
+        "title": "Quizz/Monde_7/Niveau_21",
+        "kanji": "警",
+        "vocab": "死亡",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_7/Niveau_22": {
+        "title": "Quizz/Monde_7/Niveau_22",
+        "kanji": "浩",
+        "vocab": "喋る",
+        "grammar": "てよかった",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_7/Niveau_23": {
+        "title": "Quizz/Monde_7/Niveau_23",
+        "kanji": "充",
+        "vocab": "修正する",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_7/Niveau_24": {
+        "title": "Quizz/Monde_7/Niveau_24",
+        "kanji": "倉",
+        "vocab": "主義",
+        "grammar": "ようにする",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_7/Niveau_25": {
+        "title": "Quizz/Monde_7/Niveau_25",
+        "kanji": "助",
+        "vocab": "主要",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_7/Niveau_26": {
+        "title": "Quizz/Monde_7/Niveau_26",
+        "kanji": "察",
+        "vocab": "障害",
+        "grammar": "がち",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_7/Niveau_27": {
+        "title": "Quizz/Monde_7/Niveau_27",
+        "kanji": "被",
+        "vocab": "少々",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_7/Niveau_28": {
+        "title": "Quizz/Monde_7/Niveau_28",
+        "kanji": "鹿",
+        "vocab": "商売",
+        "grammar": "きれる",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_7/Niveau_29": {
+        "title": "Quizz/Monde_7/Niveau_29",
+        "kanji": "根",
+        "vocab": "食品",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_7/Niveau_30": {
+        "title": "Quizz/Monde_7/Niveau_30",
+        "kanji": "永",
+        "vocab": "署名",
+        "grammar": "っこない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_8/Niveau_1": {
+        "title": "Quizz/Monde_8/Niveau_1",
+        "kanji": "世",
+        "vocab": "神経",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_8/Niveau_2": {
+        "title": "Quizz/Monde_8/Niveau_2",
+        "kanji": "形",
+        "vocab": "新鮮",
+        "grammar": "次第",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_8/Niveau_3": {
+        "title": "Quizz/Monde_8/Niveau_3",
+        "kanji": "側",
+        "vocab": "信頼",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_8/Niveau_4": {
+        "title": "Quizz/Monde_8/Niveau_4",
+        "kanji": "隆",
+        "vocab": "スープ",
+        "grammar": "ようがない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_8/Niveau_5": {
+        "title": "Quizz/Monde_8/Niveau_5",
+        "kanji": "潟",
+        "vocab": "進める",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_8/Niveau_6": {
+        "title": "Quizz/Monde_8/Niveau_6",
+        "kanji": "布",
+        "vocab": "全て",
+        "grammar": "だらけ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_8/Niveau_7": {
+        "title": "Quizz/Monde_8/Niveau_7",
+        "kanji": "踪",
+        "vocab": "税金",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_8/Niveau_8": {
+        "title": "Quizz/Monde_8/Niveau_8",
+        "kanji": "考",
+        "vocab": "成長",
+        "grammar": "か",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_8/Niveau_9": {
+        "title": "Quizz/Monde_8/Niveau_9",
+        "kanji": "満",
+        "vocab": "石油",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_8/Niveau_10": {
+        "title": "Quizz/Monde_8/Niveau_10",
+        "kanji": "争",
+        "vocab": "責める",
+        "grammar": "はもとより",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_8/Niveau_11": {
+        "title": "Quizz/Monde_8/Niveau_11",
+        "kanji": "契",
+        "vocab": "全体",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_8/Niveau_12": {
+        "title": "Quizz/Monde_8/Niveau_12",
+        "kanji": "留",
+        "vocab": "速度",
+        "grammar": "一方だ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_8/Niveau_13": {
+        "title": "Quizz/Monde_8/Niveau_13",
+        "kanji": "秀",
+        "vocab": "備える",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_8/Niveau_14": {
+        "title": "Quizz/Monde_8/Niveau_14",
+        "kanji": "放",
+        "vocab": "存在",
+        "grammar": "から",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_8/Niveau_15": {
+        "title": "Quizz/Monde_8/Niveau_15",
+        "kanji": "執",
+        "vocab": "滞在",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_8/Niveau_16": {
+        "title": "Quizz/Monde_8/Niveau_16",
+        "kanji": "署",
+        "vocab": "代表",
+        "grammar": "かわりに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_8/Niveau_17": {
+        "title": "Quizz/Monde_8/Niveau_17",
+        "kanji": "客",
+        "vocab": "互い",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_8/Niveau_18": {
+        "title": "Quizz/Monde_8/Niveau_18",
+        "kanji": "杉",
+        "vocab": "戦う",
+        "grammar": "こそ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_8/Niveau_19": {
+        "title": "Quizz/Monde_8/Niveau_19",
+        "kanji": "芳",
+        "vocab": "例え",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_8/Niveau_20": {
+        "title": "Quizz/Monde_8/Niveau_20",
+        "kanji": "張",
+        "vocab": "堪らない",
+        "grammar": "くせに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_8/Niveau_21": {
+        "title": "Quizz/Monde_8/Niveau_21",
+        "kanji": "賢",
+        "vocab": "単純",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_8/Niveau_22": {
+        "title": "Quizz/Monde_8/Niveau_22",
+        "kanji": "皇",
+        "vocab": "チーズ",
+        "grammar": "もの",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_8/Niveau_23": {
+        "title": "Quizz/Monde_8/Niveau_23",
+        "kanji": "垣",
+        "vocab": "知事",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_8/Niveau_24": {
+        "title": "Quizz/Monde_8/Niveau_24",
+        "kanji": "急",
+        "vocab": "中古",
+        "grammar": "ながらも",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_8/Niveau_25": {
+        "title": "Quizz/Monde_8/Niveau_25",
+        "kanji": "塩",
+        "vocab": "頂上",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_8/Niveau_26": {
+        "title": "Quizz/Monde_8/Niveau_26",
+        "kanji": "材",
+        "vocab": "通信",
+        "grammar": "に限って",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_8/Niveau_27": {
+        "title": "Quizz/Monde_8/Niveau_27",
+        "kanji": "択",
+        "vocab": "勤め",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_8/Niveau_28": {
+        "title": "Quizz/Monde_8/Niveau_28",
+        "kanji": "訂",
+        "vocab": "辛い",
+        "grammar": "に関して",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_8/Niveau_29": {
+        "title": "Quizz/Monde_8/Niveau_29",
+        "kanji": "償",
+        "vocab": "停留所",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_8/Niveau_30": {
+        "title": "Quizz/Monde_8/Niveau_30",
+        "kanji": "訴",
+        "vocab": "鉄",
+        "grammar": "に代わって",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_9/Niveau_1": {
+        "title": "Quizz/Monde_9/Niveau_1",
+        "kanji": "泰",
+        "vocab": "電子",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_9/Niveau_2": {
+        "title": "Quizz/Monde_9/Niveau_2",
+        "kanji": "統",
+        "vocab": "動詞",
+        "grammar": "に決まっている",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_9/Niveau_3": {
+        "title": "Quizz/Monde_9/Niveau_3",
+        "kanji": "段",
+        "vocab": "通す",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_9/Niveau_4": {
+        "title": "Quizz/Monde_9/Niveau_4",
+        "kanji": "艦",
+        "vocab": "独立",
+        "grammar": "に比べて",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_9/Niveau_5": {
+        "title": "Quizz/Monde_9/Niveau_5",
+        "kanji": "王",
+        "vocab": "途端",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_9/Niveau_6": {
+        "title": "Quizz/Monde_9/Niveau_6",
+        "kanji": "難",
+        "vocab": "共に",
+        "grammar": "に加えて",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_9/Niveau_7": {
+        "title": "Quizz/Monde_9/Niveau_7",
+        "kanji": "香",
+        "vocab": "取れる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_9/Niveau_8": {
+        "title": "Quizz/Monde_9/Niveau_8",
+        "kanji": "涵",
+        "vocab": "仲",
+        "grammar": "に対して",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_9/Niveau_9": {
+        "title": "Quizz/Monde_9/Niveau_9",
+        "kanji": "宇",
+        "vocab": "謎",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_9/Niveau_10": {
+        "title": "Quizz/Monde_9/Niveau_10",
+        "kanji": "札",
+        "vocab": "何で",
+        "grammar": "にとって",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_9/Niveau_11": {
+        "title": "Quizz/Monde_9/Niveau_11",
+        "kanji": "強",
+        "vocab": "日中",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_9/Niveau_12": {
+        "title": "Quizz/Monde_9/Niveau_12",
+        "kanji": "診",
+        "vocab": "願い",
+        "grammar": "につけ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_9/Niveau_13": {
+        "title": "Quizz/Monde_9/Niveau_13",
+        "kanji": "須",
+        "vocab": "能",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_9/Niveau_14": {
+        "title": "Quizz/Monde_9/Niveau_14",
+        "kanji": "仁",
+        "vocab": "除く",
+        "grammar": "おかげで",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_9/Niveau_15": {
+        "title": "Quizz/Monde_9/Niveau_15",
+        "kanji": "滅",
+        "vocab": "パーセント",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_9/Niveau_16": {
+        "title": "Quizz/Monde_9/Niveau_16",
+        "kanji": "様",
+        "vocab": "馬鹿",
+        "grammar": "さえすれば",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_9/Niveau_17": {
+        "title": "Quizz/Monde_9/Niveau_17",
+        "kanji": "幌",
+        "vocab": "外す",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_9/Niveau_18": {
+        "title": "Quizz/Monde_9/Niveau_18",
+        "kanji": "訟",
+        "vocab": "発車",
+        "grammar": "せいで",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_9/Niveau_19": {
+        "title": "Quizz/Monde_9/Niveau_19",
+        "kanji": "築",
+        "vocab": "離れる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_9/Niveau_20": {
+        "title": "Quizz/Monde_9/Niveau_20",
+        "kanji": "深",
+        "vocab": "反抗",
+        "grammar": "たびに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_9/Niveau_21": {
+        "title": "Quizz/Monde_9/Niveau_21",
+        "kanji": "募",
+        "vocab": "悲劇",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_9/Niveau_22": {
+        "title": "Quizz/Monde_9/Niveau_22",
+        "kanji": "芝",
+        "vocab": "ビデオ",
+        "grammar": "ても",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_9/Niveau_23": {
+        "title": "Quizz/Monde_9/Niveau_23",
+        "kanji": "春",
+        "vocab": "紐",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_9/Niveau_24": {
+        "title": "Quizz/Monde_9/Niveau_24",
+        "kanji": "細",
+        "vocab": "広がる",
+        "grammar": "といえば",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_9/Niveau_25": {
+        "title": "Quizz/Monde_9/Niveau_25",
+        "kanji": "籍",
+        "vocab": "不可",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_9/Niveau_26": {
+        "title": "Quizz/Monde_9/Niveau_26",
+        "kanji": "具",
+        "vocab": "夫人",
+        "grammar": "といったら",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_9/Niveau_27": {
+        "title": "Quizz/Monde_9/Niveau_27",
+        "kanji": "断",
+        "vocab": "打つ",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_9/Niveau_28": {
+        "title": "Quizz/Monde_9/Niveau_28",
+        "kanji": "佳",
+        "vocab": "プラン",
+        "grammar": "というと",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_9/Niveau_29": {
+        "title": "Quizz/Monde_9/Niveau_29",
+        "kanji": "競",
+        "vocab": "文明",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_9/Niveau_30": {
+        "title": "Quizz/Monde_9/Niveau_30",
+        "kanji": "望",
+        "vocab": "変更",
+        "grammar": "ところへ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_10/Niveau_1": {
+        "title": "Quizz/Monde_10/Niveau_1",
+        "kanji": "褒",
+        "vocab": "方々",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_10/Niveau_2": {
+        "title": "Quizz/Monde_10/Niveau_2",
+        "kanji": "希",
+        "vocab": "歩道",
+        "grammar": "とおりに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_10/Niveau_3": {
+        "title": "Quizz/Monde_10/Niveau_3",
+        "kanji": "宣",
+        "vocab": "マーケット",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_10/Niveau_4": {
+        "title": "Quizz/Monde_10/Niveau_4",
+        "kanji": "拓",
+        "vocab": "貧しい",
+        "grammar": "として",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_10/Niveau_5": {
+        "title": "Quizz/Monde_10/Niveau_5",
+        "kanji": "超",
+        "vocab": "ママ",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_10/Niveau_6": {
+        "title": "Quizz/Monde_10/Niveau_6",
+        "kanji": "畑",
+        "vocab": "見送り",
+        "grammar": "ついでに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_10/Niveau_7": {
+        "title": "Quizz/Monde_10/Niveau_7",
+        "kanji": "草",
+        "vocab": "未来",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_10/Niveau_8": {
+        "title": "Quizz/Monde_10/Niveau_8",
+        "kanji": "緊",
+        "vocab": "寧ろ",
+        "grammar": "うちに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_10/Niveau_9": {
+        "title": "Quizz/Monde_10/Niveau_9",
+        "kanji": "郵",
+        "vocab": "命令",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_10/Niveau_10": {
+        "title": "Quizz/Monde_10/Niveau_10",
+        "kanji": "己",
+        "vocab": "申し込む",
+        "grammar": "ところ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_10/Niveau_11": {
+        "title": "Quizz/Monde_10/Niveau_11",
+        "kanji": "旧",
+        "vocab": "用いる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_10/Niveau_12": {
+        "title": "Quizz/Monde_10/Niveau_12",
+        "kanji": "邦",
+        "vocab": "模様",
+        "grammar": "とたん",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_10/Niveau_13": {
+        "title": "Quizz/Monde_10/Niveau_13",
+        "kanji": "堂",
+        "vocab": "破る",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_10/Niveau_14": {
+        "title": "Quizz/Monde_10/Niveau_14",
+        "kanji": "童",
+        "vocab": "郵便",
+        "grammar": "て以来",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_10/Niveau_15": {
+        "title": "Quizz/Monde_10/Niveau_15",
+        "kanji": "積",
+        "vocab": "様",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_10/Niveau_16": {
+        "title": "Quizz/Monde_10/Niveau_16",
+        "kanji": "党",
+        "vocab": "曜日",
+        "grammar": "わけではない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_10/Niveau_17": {
+        "title": "Quizz/Monde_10/Niveau_17",
+        "kanji": "祝",
+        "vocab": "余分",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_10/Niveau_18": {
+        "title": "Quizz/Monde_10/Niveau_18",
+        "kanji": "聴",
+        "vocab": "ラケット",
+        "grammar": "を中心に",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_10/Niveau_19": {
+        "title": "Quizz/Monde_10/Niveau_19",
+        "kanji": "温",
+        "vocab": "量",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_10/Niveau_20": {
+        "title": "Quizz/Monde_10/Niveau_20",
+        "kanji": "替",
+        "vocab": "連続で",
+        "grammar": "をはじめ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_10/Niveau_21": {
+        "title": "Quizz/Monde_10/Niveau_21",
+        "kanji": "乗",
+        "vocab": "脇",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_10/Niveau_22": {
+        "title": "Quizz/Monde_10/Niveau_22",
+        "kanji": "便",
+        "vocab": "相変わらず",
+        "grammar": "を抜きにして",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_10/Niveau_23": {
+        "title": "Quizz/Monde_10/Niveau_23",
+        "kanji": "湯",
+        "vocab": "憧れる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_10/Niveau_24": {
+        "title": "Quizz/Monde_10/Niveau_24",
+        "kanji": "蔵",
+        "vocab": "厚かましい",
+        "grammar": "ように",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_10/Niveau_25": {
+        "title": "Quizz/Monde_10/Niveau_25",
+        "kanji": "感",
+        "vocab": "網",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_10/Niveau_26": {
+        "title": "Quizz/Monde_10/Niveau_26",
+        "kanji": "震",
+        "vocab": "有難い",
+        "grammar": "直した",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_10/Niveau_27": {
+        "title": "Quizz/Monde_10/Niveau_27",
+        "kanji": "朗",
+        "vocab": "言い付ける",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_10/Niveau_28": {
+        "title": "Quizz/Monde_10/Niveau_28",
+        "kanji": "桜",
+        "vocab": "イコール",
+        "grammar": "終わった",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_10/Niveau_29": {
+        "title": "Quizz/Monde_10/Niveau_29",
+        "kanji": "浅",
+        "vocab": "一段と",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_10/Niveau_30": {
+        "title": "Quizz/Monde_10/Niveau_30",
+        "kanji": "評",
+        "vocab": "五戸",
+        "grammar": "ようと思う",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_11/Niveau_1": {
+        "title": "Quizz/Monde_11/Niveau_1",
+        "kanji": "媛",
+        "vocab": "インタビュー",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_11/Niveau_2": {
+        "title": "Quizz/Monde_11/Niveau_2",
+        "kanji": "降",
+        "vocab": "浮く",
+        "grammar": "ごろ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_11/Niveau_3": {
+        "title": "Quizz/Monde_11/Niveau_3",
+        "kanji": "差",
+        "vocab": "映す",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_11/Niveau_4": {
+        "title": "Quizz/Monde_11/Niveau_4",
+        "kanji": "票",
+        "vocab": "羨ましい",
+        "grammar": "必要",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_11/Niveau_5": {
+        "title": "Quizz/Monde_11/Niveau_5",
+        "kanji": "械",
+        "vocab": "衛生",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_11/Niveau_6": {
+        "title": "Quizz/Monde_11/Niveau_6",
+        "kanji": "妻",
+        "vocab": "園芸",
+        "grammar": "一応",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_11/Niveau_7": {
+        "title": "Quizz/Monde_11/Niveau_7",
+        "kanji": "菅",
+        "vocab": "応援",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_11/Niveau_8": {
+        "title": "Quizz/Monde_11/Niveau_8",
+        "kanji": "剛",
+        "vocab": "大空",
+        "grammar": "二度と",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_11/Niveau_9": {
+        "title": "Quizz/Monde_11/Niveau_9",
+        "kanji": "陛",
+        "vocab": "お気の毒に",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_11/Niveau_10": {
+        "title": "Quizz/Monde_11/Niveau_10",
+        "kanji": "袋",
+        "vocab": "お洒落",
+        "grammar": "そんなに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_11/Niveau_11": {
+        "title": "Quizz/Monde_11/Niveau_11",
+        "kanji": "廣",
+        "vocab": "お参り",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_11/Niveau_12": {
+        "title": "Quizz/Monde_11/Niveau_12",
+        "kanji": "拡",
+        "vocab": "おや",
+        "grammar": "tada no",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_11/Niveau_13": {
+        "title": "Quizz/Monde_11/Niveau_13",
+        "kanji": "沿",
+        "vocab": "女の人",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_11/Niveau_14": {
+        "title": "Quizz/Monde_11/Niveau_14",
+        "kanji": "晃",
+        "vocab": "開会",
+        "grammar": "というのは",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_11/Niveau_15": {
+        "title": "Quizz/Monde_11/Niveau_15",
+        "kanji": "晴",
+        "vocab": "解説",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_11/Niveau_16": {
+        "title": "Quizz/Monde_11/Niveau_16",
+        "kanji": "徹",
+        "vocab": "概論",
+        "grammar": "たらいいですか",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_11/Niveau_17": {
+        "title": "Quizz/Monde_11/Niveau_17",
+        "kanji": "着",
+        "vocab": "各",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_11/Niveau_18": {
+        "title": "Quizz/Monde_11/Niveau_18",
+        "kanji": "級",
+        "vocab": "角度",
+        "grammar": "しょうがない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_11/Niveau_19": {
+        "title": "Quizz/Monde_11/Niveau_19",
+        "kanji": "磁",
+        "vocab": "重なる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_11/Niveau_20": {
+        "title": "Quizz/Monde_11/Niveau_20",
+        "kanji": "押",
+        "vocab": "箇所",
+        "grammar": "ずつ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_11/Niveau_21": {
+        "title": "Quizz/Monde_11/Niveau_21",
+        "kanji": "菊",
+        "vocab": "固まる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_11/Niveau_22": {
+        "title": "Quizz/Monde_11/Niveau_22",
+        "kanji": "亀",
+        "vocab": "担ぐ",
+        "grammar": "あげくに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_11/Niveau_23": {
+        "title": "Quizz/Monde_11/Niveau_23",
+        "kanji": "卒",
+        "vocab": "仮名遣い",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_11/Niveau_24": {
+        "title": "Quizz/Monde_11/Niveau_24",
+        "kanji": "均",
+        "vocab": "髪",
+        "grammar": "あまり",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_11/Niveau_25": {
+        "title": "Quizz/Monde_11/Niveau_25",
+        "kanji": "揚",
+        "vocab": "がる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_11/Niveau_26": {
+        "title": "Quizz/Monde_11/Niveau_26",
+        "kanji": "魚",
+        "vocab": "代わる・替わる・換わる",
+        "grammar": "ばかりか",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_11/Niveau_27": {
+        "title": "Quizz/Monde_11/Niveau_27",
+        "kanji": "酒",
+        "vocab": "関西",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_11/Niveau_28": {
+        "title": "Quizz/Monde_11/Niveau_28",
+        "kanji": "輪",
+        "vocab": "缶詰",
+        "grammar": "ばかりに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_11/Niveau_29": {
+        "title": "Quizz/Monde_11/Niveau_29",
+        "kanji": "銭",
+        "vocab": "器",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_11/Niveau_30": {
+        "title": "Quizz/Monde_11/Niveau_30",
+        "kanji": "寄",
+        "vocab": "基準・規準",
+        "grammar": "がたい",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_12/Niveau_1": {
+        "title": "Quizz/Monde_12/Niveau_1",
+        "kanji": "彰",
+        "vocab": "気味",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_12/Niveau_2": {
+        "title": "Quizz/Monde_12/Niveau_2",
+        "kanji": "私",
+        "vocab": "清い",
+        "grammar": "ぎみ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_12/Niveau_3": {
+        "title": "Quizz/Monde_12/Niveau_3",
+        "kanji": "剰",
+        "vocab": "教養",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_12/Niveau_4": {
+        "title": "Quizz/Monde_12/Niveau_4",
+        "kanji": "巻",
+        "vocab": "記録する",
+        "grammar": "かけた",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_12/Niveau_5": {
+        "title": "Quizz/Monde_12/Niveau_5",
+        "kanji": "隻",
+        "vocab": "空中",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_12/Niveau_6": {
+        "title": "Quizz/Monde_12/Niveau_6",
+        "kanji": "堤",
+        "vocab": "砕く",
+        "grammar": "かねない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_12/Niveau_7": {
+        "title": "Quizz/Monde_12/Niveau_7",
+        "kanji": "國",
+        "vocab": "配る",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_12/Niveau_8": {
+        "title": "Quizz/Monde_12/Niveau_8",
+        "kanji": "去",
+        "vocab": "呉れ呉れも",
+        "grammar": "かねます",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_12/Niveau_9": {
+        "title": "Quizz/Monde_12/Niveau_9",
+        "kanji": "革",
+        "vocab": "毛糸",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_12/Niveau_10": {
+        "title": "Quizz/Monde_12/Niveau_10",
+        "kanji": "滑",
+        "vocab": "毛皮",
+        "grammar": "切った",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_12/Niveau_11": {
+        "title": "Quizz/Monde_12/Niveau_11",
+        "kanji": "洗",
+        "vocab": "血圧",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_12/Niveau_12": {
+        "title": "Quizz/Monde_12/Niveau_12",
+        "kanji": "駐",
+        "vocab": "煙い",
+        "grammar": "抜いた",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_12/Niveau_13": {
+        "title": "Quizz/Monde_12/Niveau_13",
+        "kanji": "繰",
+        "vocab": "原始",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_12/Niveau_14": {
+        "title": "Quizz/Monde_12/Niveau_14",
+        "kanji": "圧",
+        "vocab": "小",
+        "grammar": "つつある",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_12/Niveau_15": {
+        "title": "Quizz/Monde_12/Niveau_15",
+        "kanji": "糖",
+        "vocab": "強引に",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_12/Niveau_16": {
+        "title": "Quizz/Monde_12/Niveau_16",
+        "kanji": "菜",
+        "vocab": "工事",
+        "grammar": "得る",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_12/Niveau_17": {
+        "title": "Quizz/Monde_12/Niveau_17",
+        "kanji": "辞",
+        "vocab": "高層",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_12/Niveau_18": {
+        "title": "Quizz/Monde_12/Niveau_18",
+        "kanji": "磨",
+        "vocab": "後輩",
+        "grammar": "だけ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_12/Niveau_19": {
+        "title": "Quizz/Monde_12/Niveau_19",
+        "kanji": "履",
+        "vocab": "ご遠慮なく",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_12/Niveau_20": {
+        "title": "Quizz/Monde_12/Niveau_20",
+        "kanji": "縁",
+        "vocab": "焦げる",
+        "grammar": "だけあって",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_12/Niveau_21": {
+        "title": "Quizz/Monde_12/Niveau_21",
+        "kanji": "味",
+        "vocab": "加速",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_12/Niveau_22": {
+        "title": "Quizz/Monde_12/Niveau_22",
+        "kanji": "炭",
+        "vocab": "毎",
+        "grammar": "だけに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_12/Niveau_23": {
+        "title": "Quizz/Monde_12/Niveau_23",
+        "kanji": "席",
+        "vocab": "小指",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_12/Niveau_24": {
+        "title": "Quizz/Monde_12/Niveau_24",
+        "kanji": "歴",
+        "vocab": "コンクリート",
+        "grammar": "どころではない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_12/Niveau_25": {
+        "title": "Quizz/Monde_12/Niveau_25",
+        "kanji": "街",
+        "vocab": "催促",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_12/Niveau_26": {
+        "title": "Quizz/Monde_12/Niveau_26",
+        "kanji": "錦",
+        "vocab": "酒場",
+        "grammar": "ではないか",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_12/Niveau_27": {
+        "title": "Quizz/Monde_12/Niveau_27",
+        "kanji": "芸",
+        "vocab": "刺さる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_12/Niveau_28": {
+        "title": "Quizz/Monde_12/Niveau_28",
+        "kanji": "笠",
+        "vocab": "雑音",
+        "grammar": "げ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_12/Niveau_29": {
+        "title": "Quizz/Monde_12/Niveau_29",
+        "kanji": "粉",
+        "vocab": "サラリーマン",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_12/Niveau_30": {
+        "title": "Quizz/Monde_12/Niveau_30",
+        "kanji": "磯",
+        "vocab": "山林",
+        "grammar": "はともかく",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_13/Niveau_1": {
+        "title": "Quizz/Monde_13/Niveau_1",
+        "kanji": "跡",
+        "vocab": "四角",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_13/Niveau_2": {
+        "title": "Quizz/Monde_13/Niveau_2",
+        "kanji": "濱",
+        "vocab": "持参する",
+        "grammar": "反面",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_13/Niveau_3": {
+        "title": "Quizz/Monde_13/Niveau_3",
+        "kanji": "展",
+        "vocab": "子孫",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_13/Niveau_4": {
+        "title": "Quizz/Monde_13/Niveau_4",
+        "kanji": "慶",
+        "vocab": "しつこい",
+        "grammar": "ほど",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_13/Niveau_5": {
+        "title": "Quizz/Monde_13/Niveau_5",
+        "kanji": "邊",
+        "vocab": "失恋",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_13/Niveau_6": {
+        "title": "Quizz/Monde_13/Niveau_6",
+        "kanji": "罪",
+        "vocab": "地味",
+        "grammar": "ほかない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_13/Niveau_7": {
+        "title": "Quizz/Monde_13/Niveau_7",
+        "kanji": "卓",
+        "vocab": "しゃがむ",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_13/Niveau_8": {
+        "title": "Quizz/Monde_13/Niveau_8",
+        "kanji": "滝",
+        "vocab": "斜辺",
+        "grammar": "以外の",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_13/Niveau_9": {
+        "title": "Quizz/Monde_13/Niveau_9",
+        "kanji": "筑",
+        "vocab": "重体",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_13/Niveau_10": {
+        "title": "Quizz/Monde_13/Niveau_10",
+        "kanji": "嗣",
+        "vocab": "縮小",
+        "grammar": "以上は",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_13/Niveau_11": {
+        "title": "Quizz/Monde_13/Niveau_11",
+        "kanji": "迫",
+        "vocab": "循環",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_13/Niveau_12": {
+        "title": "Quizz/Monde_13/Niveau_12",
+        "kanji": "著",
+        "vocab": "畳",
+        "grammar": "一方",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_13/Niveau_13": {
+        "title": "Quizz/Monde_13/Niveau_13",
+        "kanji": "遺",
+        "vocab": "消極的",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_13/Niveau_14": {
+        "title": "Quizz/Monde_13/Niveau_14",
+        "kanji": "柴",
+        "vocab": "焦点",
+        "grammar": "上は",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_13/Niveau_15": {
+        "title": "Quizz/Monde_13/Niveau_15",
+        "kanji": "貯",
+        "vocab": "正面",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_13/Niveau_16": {
+        "title": "Quizz/Monde_13/Niveau_16",
+        "kanji": "炉",
+        "vocab": "ショップ",
+        "grammar": "かと思うと",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_13/Niveau_17": {
+        "title": "Quizz/Monde_13/Niveau_17",
+        "kanji": "榮",
+        "vocab": "素人",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_13/Niveau_18": {
+        "title": "Quizz/Monde_13/Niveau_18",
+        "kanji": "極",
+        "vocab": "診断",
+        "grammar": "限り",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_13/Niveau_19": {
+        "title": "Quizz/Monde_13/Niveau_19",
+        "kanji": "崇",
+        "vocab": "水産",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_13/Niveau_20": {
+        "title": "Quizz/Monde_13/Niveau_20",
+        "kanji": "窪",
+        "vocab": "水平線",
+        "grammar": "限りでは",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_13/Niveau_21": {
+        "title": "Quizz/Monde_13/Niveau_21",
+        "kanji": "映",
+        "vocab": "好き嫌い",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_13/Niveau_22": {
+        "title": "Quizz/Monde_13/Niveau_22",
+        "kanji": "耕",
+        "vocab": "スタート",
+        "grammar": "かのように",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_13/Niveau_23": {
+        "title": "Quizz/Monde_13/Niveau_23",
+        "kanji": "峡",
+        "vocab": "頭脳",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_13/Niveau_24": {
+        "title": "Quizz/Monde_13/Niveau_24",
+        "kanji": "攻",
+        "vocab": "滑らす",
+        "grammar": "から言うと",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_13/Niveau_25": {
+        "title": "Quizz/Monde_13/Niveau_25",
+        "kanji": "豆",
+        "vocab": "青少年",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_13/Niveau_26": {
+        "title": "Quizz/Monde_13/Niveau_26",
+        "kanji": "茶",
+        "vocab": "性別",
+        "grammar": "から見ても",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_13/Niveau_27": {
+        "title": "Quizz/Monde_13/Niveau_27",
+        "kanji": "談",
+        "vocab": "瀬戸物",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_13/Niveau_28": {
+        "title": "Quizz/Monde_13/Niveau_28",
+        "kanji": "拒",
+        "vocab": "全集",
+        "grammar": "からには",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_13/Niveau_29": {
+        "title": "Quizz/Monde_13/Niveau_29",
+        "kanji": "謙",
+        "vocab": "先頭",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_13/Niveau_30": {
+        "title": "Quizz/Monde_13/Niveau_30",
+        "kanji": "説",
+        "vocab": "倉庫",
+        "grammar": "からすると",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_14/Niveau_1": {
+        "title": "Quizz/Monde_14/Niveau_1",
+        "kanji": "貿",
+        "vocab": "総理大臣",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_14/Niveau_2": {
+        "title": "Quizz/Monde_14/Niveau_2",
+        "kanji": "創",
+        "vocab": "そそっかしい",
+        "grammar": "からといって",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_14/Niveau_3": {
+        "title": "Quizz/Monde_14/Niveau_3",
+        "kanji": "荘",
+        "vocab": "算盤",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_14/Niveau_4": {
+        "title": "Quizz/Monde_14/Niveau_4",
+        "kanji": "桂",
+        "vocab": "体系",
+        "grammar": "からこそ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_14/Niveau_5": {
+        "title": "Quizz/Monde_14/Niveau_5",
+        "kanji": "駿",
+        "vocab": "大木",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_14/Niveau_6": {
+        "title": "Quizz/Monde_14/Niveau_6",
+        "kanji": "亡",
+        "vocab": "耐える",
+        "grammar": "気がする",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_14/Niveau_7": {
+        "title": "Quizz/Monde_14/Niveau_7",
+        "kanji": "帯",
+        "vocab": "立ち止まる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_14/Niveau_8": {
+        "title": "Quizz/Monde_14/Niveau_8",
+        "kanji": "亜",
+        "vocab": "溜まる",
+        "grammar": "きり",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_14/Niveau_9": {
+        "title": "Quizz/Monde_14/Niveau_9",
+        "kanji": "潤",
+        "vocab": "淡水",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_14/Niveau_10": {
+        "title": "Quizz/Monde_14/Niveau_10",
+        "kanji": "邉",
+        "vocab": "近づく",
+        "grammar": "っけ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_14/Niveau_11": {
+        "title": "Quizz/Monde_14/Niveau_11",
+        "kanji": "坪",
+        "vocab": "縮れる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_14/Niveau_12": {
+        "title": "Quizz/Monde_14/Niveau_12",
+        "kanji": "篤",
+        "vocab": "抽象",
+        "grammar": "ことだ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_14/Niveau_13": {
+        "title": "Quizz/Monde_14/Niveau_13",
+        "kanji": "毅",
+        "vocab": "超過",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_14/Niveau_14": {
+        "title": "Quizz/Monde_14/Niveau_14",
+        "kanji": "辰",
+        "vocab": "調味料",
+        "grammar": "ことだから",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_14/Niveau_15": {
+        "title": "Quizz/Monde_14/Niveau_15",
+        "kanji": "貝",
+        "vocab": "直角",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_14/Niveau_16": {
+        "title": "Quizz/Monde_14/Niveau_16",
+        "kanji": "閲",
+        "vocab": "通貨",
+        "grammar": "ことはない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_14/Niveau_17": {
+        "title": "Quizz/Monde_14/Niveau_17",
+        "kanji": "茅",
+        "vocab": "突き当たり",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_14/Niveau_18": {
+        "title": "Quizz/Monde_14/Niveau_18",
+        "kanji": "箱",
+        "vocab": "繋がり",
+        "grammar": "ことか",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_14/Niveau_19": {
+        "title": "Quizz/Monde_14/Niveau_19",
+        "kanji": "荷",
+        "vocab": "釣り合う",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_14/Niveau_20": {
+        "title": "Quizz/Monde_14/Niveau_20",
+        "kanji": "恒",
+        "vocab": "停止",
+        "grammar": "ことから",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_14/Niveau_21": {
+        "title": "Quizz/Monde_14/Niveau_21",
+        "kanji": "甚",
+        "vocab": "的確・適確",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_14/Niveau_22": {
+        "title": "Quizz/Monde_14/Niveau_22",
+        "kanji": "磐",
+        "vocab": "手前",
+        "grammar": "ことなく",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_14/Niveau_23": {
+        "title": "Quizz/Monde_14/Niveau_23",
+        "kanji": "冬",
+        "vocab": "電線",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_14/Niveau_24": {
+        "title": "Quizz/Monde_14/Niveau_24",
+        "kanji": "演",
+        "vocab": "問い合わせ",
+        "grammar": "ことには",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_14/Niveau_25": {
+        "title": "Quizz/Monde_14/Niveau_25",
+        "kanji": "濃",
+        "vocab": "動作",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_14/Niveau_26": {
+        "title": "Quizz/Monde_14/Niveau_26",
+        "kanji": "衣",
+        "vocab": "投票する",
+        "grammar": "くらい",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_14/Niveau_27": {
+        "title": "Quizz/Monde_14/Niveau_27",
+        "kanji": "径",
+        "vocab": "溶く",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_14/Niveau_28": {
+        "title": "Quizz/Monde_14/Niveau_28",
+        "kanji": "析",
+        "vocab": "床の間",
+        "grammar": "まい",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_14/Niveau_29": {
+        "title": "Quizz/Monde_14/Niveau_29",
+        "kanji": "訳",
+        "vocab": "殿",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_14/Niveau_30": {
+        "title": "Quizz/Monde_14/Niveau_30",
+        "kanji": "宕",
+        "vocab": "捕る・獲る",
+        "grammar": "まいか",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_15/Niveau_1": {
+        "title": "Quizz/Monde_15/Niveau_1",
+        "kanji": "梶",
+        "vocab": "中身・中味",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_15/Niveau_2": {
+        "title": "Quizz/Monde_15/Niveau_2",
+        "kanji": "想",
+        "vocab": "生意気",
+        "grammar": "も構わず",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_15/Niveau_3": {
+        "title": "Quizz/Monde_15/Niveau_3",
+        "kanji": "隅",
+        "vocab": "何とも",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_15/Niveau_4": {
+        "title": "Quizz/Monde_15/Niveau_4",
+        "kanji": "殊",
+        "vocab": "にこにこ",
+        "grammar": "ものだ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_15/Niveau_5": {
+        "title": "Quizz/Monde_15/Niveau_5",
+        "kanji": "乃",
+        "vocab": "女房",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_15/Niveau_6": {
+        "title": "Quizz/Monde_15/Niveau_6",
+        "kanji": "鍋",
+        "vocab": "寝巻",
+        "grammar": "ものだから",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_15/Niveau_7": {
+        "title": "Quizz/Monde_15/Niveau_7",
+        "kanji": "礼",
+        "vocab": "鋸",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_15/Niveau_8": {
+        "title": "Quizz/Monde_15/Niveau_8",
+        "kanji": "掘",
+        "vocab": "売店",
+        "grammar": "ものがある",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_15/Niveau_9": {
+        "title": "Quizz/Monde_15/Niveau_9",
+        "kanji": "傷",
+        "vocab": "バケツ",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_15/Niveau_10": {
+        "title": "Quizz/Monde_15/Niveau_10",
+        "kanji": "猿",
+        "vocab": "発",
+        "grammar": "ものか",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_15/Niveau_11": {
+        "title": "Quizz/Monde_15/Niveau_11",
+        "kanji": "踏",
+        "vocab": "話し掛ける",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_15/Niveau_12": {
+        "title": "Quizz/Monde_15/Niveau_12",
+        "kanji": "箕",
+        "vocab": "填める",
+        "grammar": "ものなら",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_15/Niveau_13": {
+        "title": "Quizz/Monde_15/Niveau_13",
+        "kanji": "歯",
+        "vocab": "反",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_15/Niveau_14": {
+        "title": "Quizz/Monde_15/Niveau_14",
+        "kanji": "璽",
+        "vocab": "半島",
+        "grammar": "ものの",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_15/Niveau_15": {
+        "title": "Quizz/Monde_15/Niveau_15",
+        "kanji": "庚",
+        "vocab": "引き受ける",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_15/Niveau_16": {
+        "title": "Quizz/Monde_15/Niveau_16",
+        "kanji": "寒",
+        "vocab": "引っ掛かる",
+        "grammar": "向け",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_15/Niveau_17": {
+        "title": "Quizz/Monde_15/Niveau_17",
+        "kanji": "鳴",
+        "vocab": "人差し指",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_15/Niveau_18": {
+        "title": "Quizz/Monde_15/Niveau_18",
+        "kanji": "淡",
+        "vocab": "日日",
+        "grammar": "向き",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_15/Niveau_19": {
+        "title": "Quizz/Monde_15/Niveau_19",
+        "kanji": "柿",
+        "vocab": "美容",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_15/Niveau_20": {
+        "title": "Quizz/Monde_15/Niveau_20",
+        "kanji": "鉱",
+        "vocab": "広々",
+        "grammar": "など",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_15/Niveau_21": {
+        "title": "Quizz/Monde_15/Niveau_21",
+        "kanji": "我",
+        "vocab": "深まる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_15/Niveau_22": {
+        "title": "Quizz/Monde_15/Niveau_22",
+        "kanji": "潔",
+        "vocab": "膨らます",
+        "grammar": "ことはない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_15/Niveau_23": {
+        "title": "Quizz/Monde_15/Niveau_23",
+        "kanji": "華",
+        "vocab": "部首",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_15/Niveau_24": {
+        "title": "Quizz/Monde_15/Niveau_24",
+        "kanji": "宛",
+        "vocab": "踏切",
+        "grammar": "ことには",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_15/Niveau_25": {
+        "title": "Quizz/Monde_15/Niveau_25",
+        "kanji": "栖",
+        "vocab": "フリー",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_15/Niveau_26": {
+        "title": "Quizz/Monde_15/Niveau_26",
+        "kanji": "笹",
+        "vocab": "文芸",
+        "grammar": "なかなか",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_15/Niveau_27": {
+        "title": "Quizz/Monde_15/Niveau_27",
+        "kanji": "蘇",
+        "vocab": "閉会",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_15/Niveau_28": {
+        "title": "Quizz/Monde_15/Niveau_28",
+        "kanji": "君",
+        "vocab": "別々",
+        "grammar": "にあたって",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_15/Niveau_29": {
+        "title": "Quizz/Monde_15/Niveau_29",
+        "kanji": "雪",
+        "vocab": "方言",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_15/Niveau_30": {
+        "title": "Quizz/Monde_15/Niveau_30",
+        "kanji": "焼",
+        "vocab": "方面",
+        "grammar": "に違いない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_16/Niveau_1": {
+        "title": "Quizz/Monde_16/Niveau_1",
+        "kanji": "嵐",
+        "vocab": "保障",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_16/Niveau_2": {
+        "title": "Quizz/Monde_16/Niveau_2",
+        "kanji": "珠",
+        "vocab": "本の",
+        "grammar": "に反して",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_16/Niveau_3": {
+        "title": "Quizz/Monde_16/Niveau_3",
+        "kanji": "軌",
+        "vocab": "曲げる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_16/Niveau_4": {
+        "title": "Quizz/Monde_16/Niveau_4",
+        "kanji": "廿",
+        "vocab": "待合室",
+        "grammar": "にほかならない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_16/Niveau_5": {
+        "title": "Quizz/Monde_16/Niveau_5",
+        "kanji": "暮",
+        "vocab": "真っ白い",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_16/Niveau_6": {
+        "title": "Quizz/Monde_16/Niveau_6",
+        "kanji": "綿",
+        "vocab": "マラソン",
+        "grammar": "に限らず",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_16/Niveau_7": {
+        "title": "Quizz/Monde_16/Niveau_7",
+        "kanji": "斉",
+        "vocab": "真ん前",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_16/Niveau_8": {
+        "title": "Quizz/Monde_16/Niveau_8",
+        "kanji": "顕",
+        "vocab": "岬",
+        "grammar": "に限り",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_16/Niveau_9": {
+        "title": "Quizz/Monde_16/Niveau_9",
+        "kanji": "已",
+        "vocab": "見っともない",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_16/Niveau_10": {
+        "title": "Quizz/Monde_16/Niveau_10",
+        "kanji": "悪",
+        "vocab": "明",
+        "grammar": "に限る",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_16/Niveau_11": {
+        "title": "Quizz/Monde_16/Niveau_11",
+        "kanji": "呂",
+        "vocab": "向き",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_16/Niveau_12": {
+        "title": "Quizz/Monde_16/Niveau_12",
+        "kanji": "弾",
+        "vocab": "群",
+        "grammar": "にかかわらず",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_16/Niveau_13": {
+        "title": "Quizz/Monde_16/Niveau_13",
+        "kanji": "犬",
+        "vocab": "銘々",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_16/Niveau_14": {
+        "title": "Quizz/Monde_16/Niveau_14",
+        "kanji": "劾",
+        "vocab": "目茶苦茶",
+        "grammar": "にかけては",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_16/Niveau_15": {
+        "title": "Quizz/Monde_16/Niveau_15",
+        "kanji": "庸",
+        "vocab": "面倒臭い",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_16/Niveau_16": {
+        "title": "Quizz/Monde_16/Niveau_16",
+        "kanji": "殖",
+        "vocab": "若しかすると",
+        "grammar": "に応えて",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_16/Niveau_17": {
+        "title": "Quizz/Monde_16/Niveau_17",
+        "kanji": "班",
+        "vocab": "物凄い",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_16/Niveau_18": {
+        "title": "Quizz/Monde_16/Niveau_18",
+        "kanji": "耐",
+        "vocab": "屋・家",
+        "grammar": "にもかかわらず",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_16/Niveau_19": {
+        "title": "Quizz/Monde_16/Niveau_19",
+        "kanji": "陵",
+        "vocab": "役目",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_16/Niveau_20": {
+        "title": "Quizz/Monde_16/Niveau_20",
+        "kanji": "杵",
+        "vocab": "やむを得ない",
+        "grammar": "に基づいて",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_16/Niveau_21": {
+        "title": "Quizz/Monde_16/Niveau_21",
+        "kanji": "肇",
+        "vocab": "浴衣",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_16/Niveau_22": {
+        "title": "Quizz/Monde_16/Niveau_22",
+        "kanji": "薮",
+        "vocab": "溶岩",
+        "grammar": "において",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_16/Niveau_23": {
+        "title": "Quizz/Monde_16/Niveau_23",
+        "kanji": "束",
+        "vocab": "幼稚園",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_16/Niveau_24": {
+        "title": "Quizz/Monde_16/Niveau_24",
+        "kanji": "固",
+        "vocab": "汚す",
+        "grammar": "に応じて",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_16/Niveau_25": {
+        "title": "Quizz/Monde_16/Niveau_25",
+        "kanji": "斎",
+        "vocab": "因る",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_16/Niveau_26": {
+        "title": "Quizz/Monde_16/Niveau_26",
+        "kanji": "猛",
+        "vocab": "利害",
+        "grammar": "に際して",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_16/Niveau_27": {
+        "title": "Quizz/Monde_16/Niveau_27",
+        "kanji": "諾",
+        "vocab": "留学する",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_16/Niveau_28": {
+        "title": "Quizz/Monde_16/Niveau_28",
+        "kanji": "飼",
+        "vocab": "領事",
+        "grammar": "に先立って",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_16/Niveau_29": {
+        "title": "Quizz/Monde_16/Niveau_29",
+        "kanji": "玖",
+        "vocab": "レーンコート・レインコート",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_16/Niveau_30": {
+        "title": "Quizz/Monde_16/Niveau_30",
+        "kanji": "煙",
+        "vocab": "ロッカー",
+        "grammar": "にしろ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_17/Niveau_1": {
+        "title": "Quizz/Monde_17/Niveau_1",
+        "kanji": "倫",
+        "vocab": "割合に",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_17/Niveau_2": {
+        "title": "Quizz/Monde_17/Niveau_2",
+        "kanji": "嘱",
+        "vocab": "合間",
+        "grammar": "に従って",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_17/Niveau_3": {
+        "title": "Quizz/Monde_17/Niveau_3",
+        "kanji": "摘",
+        "vocab": "悪どい",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_17/Niveau_4": {
+        "title": "Quizz/Monde_17/Niveau_4",
+        "kanji": "渉",
+        "vocab": "焦る",
+        "grammar": "にしたら",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_17/Niveau_5": {
+        "title": "Quizz/Monde_17/Niveau_5",
+        "kanji": "胆",
+        "vocab": "当て",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_17/Niveau_6": {
+        "title": "Quizz/Monde_17/Niveau_6",
+        "kanji": "亨",
+        "vocab": "雨具",
+        "grammar": "にしては",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_17/Niveau_7": {
+        "title": "Quizz/Monde_17/Niveau_7",
+        "kanji": "綜",
+        "vocab": "荒らす",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_17/Niveau_8": {
+        "title": "Quizz/Monde_17/Niveau_8",
+        "kanji": "慣",
+        "vocab": "アワー・アウア",
+        "grammar": "に相違ない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_17/Niveau_9": {
+        "title": "Quizz/Monde_17/Niveau_9",
+        "kanji": "塗",
+        "vocab": "異",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_17/Niveau_10": {
+        "title": "Quizz/Monde_17/Niveau_10",
+        "kanji": "銅",
+        "vocab": "怒り",
+        "grammar": "に沿って",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_17/Niveau_11": {
+        "title": "Quizz/Monde_17/Niveau_11",
+        "kanji": "呉",
+        "vocab": "意向",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_17/Niveau_12": {
+        "title": "Quizz/Monde_17/Niveau_12",
+        "kanji": "幕",
+        "vocab": "依然",
+        "grammar": "に過ぎない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_17/Niveau_13": {
+        "title": "Quizz/Monde_17/Niveau_13",
+        "kanji": "慈",
+        "vocab": "一同",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_17/Niveau_14": {
+        "title": "Quizz/Monde_17/Niveau_14",
+        "kanji": "暁",
+        "vocab": "一挙に",
+        "grammar": "に伴って",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_17/Niveau_15": {
+        "title": "Quizz/Monde_17/Niveau_15",
+        "kanji": "覆",
+        "vocab": "挑む",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_17/Niveau_16": {
+        "title": "Quizz/Monde_17/Niveau_16",
+        "kanji": "陳",
+        "vocab": "衣料",
+        "grammar": "について",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_17/Niveau_17": {
+        "title": "Quizz/Monde_17/Niveau_17",
+        "kanji": "堆",
+        "vocab": "インフレ",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_17/Niveau_18": {
+        "title": "Quizz/Monde_17/Niveau_18",
+        "kanji": "於",
+        "vocab": "嘘つき",
+        "grammar": "につき",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_17/Niveau_19": {
+        "title": "Quizz/Monde_17/Niveau_19",
+        "kanji": "炎",
+        "vocab": "鬱陶しい",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_17/Niveau_20": {
+        "title": "Quizz/Monde_17/Niveau_20",
+        "kanji": "腫",
+        "vocab": "埋め込む",
+        "grammar": "につれて",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_17/Niveau_21": {
+        "title": "Quizz/Monde_17/Niveau_21",
+        "kanji": "葦",
+        "vocab": "運河",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_17/Niveau_22": {
+        "title": "Quizz/Monde_17/Niveau_22",
+        "kanji": "鴻",
+        "vocab": "映写",
+        "grammar": "にわたって",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_17/Niveau_23": {
+        "title": "Quizz/Monde_17/Niveau_23",
+        "kanji": "到",
+        "vocab": "沿岸",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_17/Niveau_24": {
+        "title": "Quizz/Monde_17/Niveau_24",
+        "kanji": "靴",
+        "vocab": "追い出す",
+        "grammar": "のもとで",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_17/Niveau_25": {
+        "title": "Quizz/Monde_17/Niveau_25",
+        "kanji": "臓",
+        "vocab": "大柄",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_17/Niveau_26": {
+        "title": "Quizz/Monde_17/Niveau_26",
+        "kanji": "垂",
+        "vocab": "侵す",
+        "grammar": "のみならず",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_17/Niveau_27": {
+        "title": "Quizz/Monde_17/Niveau_27",
+        "kanji": "循",
+        "vocab": "押し込む",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_17/Niveau_28": {
+        "title": "Quizz/Monde_17/Niveau_28",
+        "kanji": "曹",
+        "vocab": "落ち着き",
+        "grammar": "抜きで",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_17/Niveau_29": {
+        "title": "Quizz/Monde_17/Niveau_29",
+        "kanji": "趣",
+        "vocab": "驚き",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_17/Niveau_30": {
+        "title": "Quizz/Monde_17/Niveau_30",
+        "kanji": "夷",
+        "vocab": "思い付き",
+        "grammar": "おそれがある",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_18/Niveau_1": {
+        "title": "Quizz/Monde_18/Niveau_1",
+        "kanji": "橿",
+        "vocab": "織物",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_18/Niveau_2": {
+        "title": "Quizz/Monde_18/Niveau_2",
+        "kanji": "滿",
+        "vocab": "海",
+        "grammar": "っぽい",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_18/Niveau_3": {
+        "title": "Quizz/Monde_18/Niveau_3",
+        "kanji": "絆",
+        "vocab": "外観",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_18/Niveau_4": {
+        "title": "Quizz/Monde_18/Niveau_4",
+        "kanji": "鷲",
+        "vocab": "外相",
+        "grammar": "さえ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_18/Niveau_5": {
+        "title": "Quizz/Monde_18/Niveau_5",
+        "kanji": "埋",
+        "vocab": "ガイド",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_18/Niveau_6": {
+        "title": "Quizz/Monde_18/Niveau_6",
+        "kanji": "腰",
+        "vocab": "外来",
+        "grammar": "際に",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_18/Niveau_7": {
+        "title": "Quizz/Monde_18/Niveau_7",
+        "kanji": "坑",
+        "vocab": "掲げる",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_18/Niveau_8": {
+        "title": "Quizz/Monde_18/Niveau_8",
+        "kanji": "弧",
+        "vocab": "拡散",
+        "grammar": "最中に",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_18/Niveau_9": {
+        "title": "Quizz/Monde_18/Niveau_9",
+        "kanji": "握",
+        "vocab": "楽譜",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_18/Niveau_10": {
+        "title": "Quizz/Monde_18/Niveau_10",
+        "kanji": "砕",
+        "vocab": "駆けっこ",
+        "grammar": "次第では",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_18/Niveau_11": {
+        "title": "Quizz/Monde_18/Niveau_11",
+        "kanji": "葬",
+        "vocab": "擦る",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_18/Niveau_12": {
+        "title": "Quizz/Monde_18/Niveau_12",
+        "kanji": "駆",
+        "vocab": "片思い",
+        "grammar": "しかない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_18/Niveau_13": {
+        "title": "Quizz/Monde_18/Niveau_13",
+        "kanji": "堰",
+        "vocab": "合唱する",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_18/Niveau_14": {
+        "title": "Quizz/Monde_18/Niveau_14",
+        "kanji": "欣",
+        "vocab": "敵わない",
+        "grammar": "末に",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_18/Niveau_15": {
+        "title": "Quizz/Monde_18/Niveau_15",
+        "kanji": "股",
+        "vocab": "噛み切る",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_18/Niveau_16": {
+        "title": "Quizz/Monde_18/Niveau_16",
+        "kanji": "隈",
+        "vocab": "カレー",
+        "grammar": "といっても",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_18/Niveau_17": {
+        "title": "Quizz/Monde_18/Niveau_17",
+        "kanji": "呼",
+        "vocab": "感慨",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_18/Niveau_18": {
+        "title": "Quizz/Monde_18/Niveau_18",
+        "kanji": "賛",
+        "vocab": "換算",
+        "grammar": "ということだ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_18/Niveau_19": {
+        "title": "Quizz/Monde_18/Niveau_19",
+        "kanji": "冊",
+        "vocab": "関税",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_18/Niveau_20": {
+        "title": "Quizz/Monde_18/Niveau_20",
+        "kanji": "封",
+        "vocab": "勘弁",
+        "grammar": "というものだ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_18/Niveau_21": {
+        "title": "Quizz/Monde_18/Niveau_21",
+        "kanji": "捜",
+        "vocab": "還暦",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_18/Niveau_22": {
+        "title": "Quizz/Monde_18/Niveau_22",
+        "kanji": "薄",
+        "vocab": "器官",
+        "grammar": "というものではない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_18/Niveau_23": {
+        "title": "Quizz/Monde_18/Niveau_23",
+        "kanji": "誌",
+        "vocab": "棄権",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_18/Niveau_24": {
+        "title": "Quizz/Monde_18/Niveau_24",
+        "kanji": "冶",
+        "vocab": "記述",
+        "grammar": "というより",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_18/Niveau_25": {
+        "title": "Quizz/Monde_18/Niveau_25",
+        "kanji": "尋",
+        "vocab": "議題",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_18/Niveau_26": {
+        "title": "Quizz/Monde_18/Niveau_26",
+        "kanji": "懸",
+        "vocab": "軌道",
+        "grammar": "としたら",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_18/Niveau_27": {
+        "title": "Quizz/Monde_18/Niveau_27",
+        "kanji": "繕",
+        "vocab": "決まり悪い",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_18/Niveau_28": {
+        "title": "Quizz/Monde_18/Niveau_28",
+        "kanji": "距",
+        "vocab": "キャリア",
+        "grammar": "としては",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_18/Niveau_29": {
+        "title": "Quizz/Monde_18/Niveau_29",
+        "kanji": "鮮",
+        "vocab": "旧知",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_18/Niveau_30": {
+        "title": "Quizz/Monde_18/Niveau_30",
+        "kanji": "愼",
+        "vocab": "共学",
+        "grammar": "としても",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_19/Niveau_1": {
+        "title": "Quizz/Monde_19/Niveau_1",
+        "kanji": "檜",
+        "vocab": "教習",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_19/Niveau_2": {
+        "title": "Quizz/Monde_19/Niveau_2",
+        "kanji": "砥",
+        "vocab": "脅迫",
+        "grammar": "とともに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_19/Niveau_3": {
+        "title": "Quizz/Monde_19/Niveau_3",
+        "kanji": "與",
+        "vocab": "拒絶する",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_19/Niveau_4": {
+        "title": "Quizz/Monde_19/Niveau_4",
+        "kanji": "漢",
+        "vocab": "気流",
+        "grammar": "とか",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_19/Niveau_5": {
+        "title": "Quizz/Monde_19/Niveau_5",
+        "kanji": "頼",
+        "vocab": "勤勉",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_19/Niveau_6": {
+        "title": "Quizz/Monde_19/Niveau_6",
+        "kanji": "恋",
+        "vocab": "区間",
+        "grammar": "つつ",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_19/Niveau_7": {
+        "title": "Quizz/Monde_19/Niveau_7",
+        "kanji": "硬",
+        "vocab": "ぐっと",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_19/Niveau_8": {
+        "title": "Quizz/Monde_19/Niveau_8",
+        "kanji": "辛",
+        "vocab": "群",
+        "grammar": "上で",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_19/Niveau_9": {
+        "title": "Quizz/Monde_19/Niveau_9",
+        "kanji": "唯",
+        "vocab": "芸",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_19/Niveau_10": {
+        "title": "Quizz/Monde_19/Niveau_10",
+        "kanji": "微",
+        "vocab": "掲載する",
+        "grammar": "上は",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_19/Niveau_11": {
+        "title": "Quizz/Monde_19/Niveau_11",
+        "kanji": "殻",
+        "vocab": "経歴",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_19/Niveau_12": {
+        "title": "Quizz/Monde_19/Niveau_12",
+        "kanji": "稼",
+        "vocab": "血管",
+        "grammar": "上に",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_19/Niveau_13": {
+        "title": "Quizz/Monde_19/Niveau_13",
+        "kanji": "翁",
+        "vocab": "げっそりする",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_19/Niveau_14": {
+        "title": "Quizz/Monde_19/Niveau_14",
+        "kanji": "膨",
+        "vocab": "兼業",
+        "grammar": "ば",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_19/Niveau_15": {
+        "title": "Quizz/Monde_19/Niveau_15",
+        "kanji": "謄",
+        "vocab": "原書",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_19/Niveau_16": {
+        "title": "Quizz/Monde_19/Niveau_16",
+        "kanji": "陣",
+        "vocab": "原点",
+        "grammar": "ないではいられない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_19/Niveau_17": {
+        "title": "Quizz/Monde_19/Niveau_17",
+        "kanji": "將",
+        "vocab": "権力",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_19/Niveau_18": {
+        "title": "Quizz/Monde_19/Niveau_18",
+        "kanji": "暢",
+        "vocab": "公演",
+        "grammar": "たきり",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_19/Niveau_19": {
+        "title": "Quizz/Monde_19/Niveau_19",
+        "kanji": "欽",
+        "vocab": "興業",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_19/Niveau_20": {
+        "title": "Quizz/Monde_19/Niveau_20",
+        "kanji": "瓦",
+        "vocab": "交渉",
+        "grammar": "て初めて",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_19/Niveau_21": {
+        "title": "Quizz/Monde_19/Niveau_21",
+        "kanji": "肱",
+        "vocab": "構想",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_19/Niveau_22": {
+        "title": "Quizz/Monde_19/Niveau_22",
+        "kanji": "蓼",
+        "vocab": "光熱費",
+        "grammar": "てからでないと",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_19/Niveau_23": {
+        "title": "Quizz/Monde_19/Niveau_23",
+        "kanji": "貼",
+        "vocab": "公用",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_19/Niveau_24": {
+        "title": "Quizz/Monde_19/Niveau_24",
+        "kanji": "韮",
+        "vocab": "国土",
+        "grammar": "てならない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_19/Niveau_25": {
+        "title": "Quizz/Monde_19/Niveau_25",
+        "kanji": "幾",
+        "vocab": "心得",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_19/Niveau_26": {
+        "title": "Quizz/Monde_19/Niveau_26",
+        "kanji": "掃",
+        "vocab": "誤差",
+        "grammar": "てたまらない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_19/Niveau_27": {
+        "title": "Quizz/Monde_19/Niveau_27",
+        "kanji": "塾",
+        "vocab": "誇張する",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_19/Niveau_28": {
+        "title": "Quizz/Monde_19/Niveau_28",
+        "kanji": "汽",
+        "vocab": "粉々",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_19/Niveau_29": {
+        "title": "Quizz/Monde_19/Niveau_29",
+        "kanji": "漏",
+        "vocab": "固有",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_19/Niveau_30": {
+        "title": "Quizz/Monde_19/Niveau_30",
+        "kanji": "矯",
+        "vocab": "コンタクトレンズ",
+        "grammar": "わけです",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_20/Niveau_1": {
+        "title": "Quizz/Monde_20/Niveau_1",
+        "kanji": "縮",
+        "vocab": "細菌",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_20/Niveau_2": {
+        "title": "Quizz/Monde_20/Niveau_2",
+        "kanji": "蛇",
+        "vocab": "採集",
+        "grammar": "わけがない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_20/Niveau_3": {
+        "title": "Quizz/Monde_20/Niveau_3",
+        "kanji": "躍",
+        "vocab": "採用",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_20/Niveau_4": {
+        "title": "Quizz/Monde_20/Niveau_4",
+        "kanji": "雷",
+        "vocab": "作",
+        "grammar": "わけにはいかない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_20/Niveau_5": {
+        "title": "Quizz/Monde_20/Niveau_5",
+        "kanji": "圓",
+        "vocab": "差し出す",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_20/Niveau_6": {
+        "title": "Quizz/Monde_20/Niveau_6",
+        "kanji": "嶌",
+        "vocab": "殺人",
+        "grammar": "わりに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_20/Niveau_7": {
+        "title": "Quizz/Monde_20/Niveau_7",
+        "kanji": "捧",
+        "vocab": "三味線",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_20/Niveau_8": {
+        "title": "Quizz/Monde_20/Niveau_8",
+        "kanji": "枇",
+        "vocab": "産休",
+        "grammar": "を契機に",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_20/Niveau_9": {
+        "title": "Quizz/Monde_20/Niveau_9",
+        "kanji": "榛",
+        "vocab": "山腹",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_20/Niveau_10": {
+        "title": "Quizz/Monde_20/Niveau_10",
+        "kanji": "爪",
+        "vocab": "強いて",
+        "grammar": "をきっかけに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_20/Niveau_11": {
+        "title": "Quizz/Monde_20/Niveau_11",
+        "kanji": "瓜",
+        "vocab": "資格",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_20/Niveau_12": {
+        "title": "Quizz/Monde_20/Niveau_12",
+        "kanji": "苑",
+        "vocab": "為来り",
+        "grammar": "を込めて",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_20/Niveau_13": {
+        "title": "Quizz/Monde_20/Niveau_13",
+        "kanji": "諒",
+        "vocab": "自己",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_20/Niveau_14": {
+        "title": "Quizz/Monde_20/Niveau_14",
+        "kanji": "騨",
+        "vocab": "支持",
+        "grammar": "をめぐって",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_20/Niveau_15": {
+        "title": "Quizz/Monde_20/Niveau_15",
+        "kanji": "彼",
+        "vocab": "子息",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_20/Niveau_16": {
+        "title": "Quizz/Monde_20/Niveau_16",
+        "kanji": "塔",
+        "vocab": "仕立てる",
+        "grammar": "をもとに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_20/Niveau_17": {
+        "title": "Quizz/Monde_20/Niveau_17",
+        "kanji": "祈",
+        "vocab": "実情",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_20/Niveau_18": {
+        "title": "Quizz/Monde_20/Niveau_18",
+        "kanji": "較",
+        "vocab": "萎びる",
+        "grammar": "を問わず",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_20/Niveau_19": {
+        "title": "Quizz/Monde_20/Niveau_19",
+        "kanji": "伎",
+        "vocab": "司法",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_20/Niveau_20": {
+        "title": "Quizz/Monde_20/Niveau_20",
+        "kanji": "勧",
+        "vocab": "社交",
+        "grammar": "を通じて",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_20/Niveau_21": {
+        "title": "Quizz/Monde_20/Niveau_21",
+        "kanji": "奉",
+        "vocab": "ジャンプ",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_20/Niveau_22": {
+        "title": "Quizz/Monde_20/Niveau_22",
+        "kanji": "廉",
+        "vocab": "周期",
+        "grammar": "ざるを得ない",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_20/Niveau_23": {
+        "title": "Quizz/Monde_20/Niveau_23",
+        "kanji": "暇",
+        "vocab": "従事する",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_20/Niveau_24": {
+        "title": "Quizz/Monde_20/Niveau_24",
+        "kanji": "碁",
+        "vocab": "修了",
+        "grammar": "か着かないかのうちに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_20/Niveau_25": {
+        "title": "Quizz/Monde_20/Niveau_25",
+        "kanji": "索",
+        "vocab": "取材",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_20/Niveau_26": {
+        "title": "Quizz/Monde_20/Niveau_26",
+        "kanji": "詩",
+        "vocab": "出生",
+        "grammar": "やら",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_20/Niveau_27": {
+        "title": "Quizz/Monde_20/Niveau_27",
+        "kanji": "醸",
+        "vocab": "手法",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_20/Niveau_28": {
+        "title": "Quizz/Monde_20/Niveau_28",
+        "kanji": "鉢",
+        "vocab": "仕様",
+        "grammar": "もあれば",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    },
+    "Quizz/Monde_20/Niveau_29": {
+        "title": "Quizz/Monde_20/Niveau_29",
+        "kanji": "阻",
+        "vocab": "証言",
+        "grammar": null,
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 0
+    },
+    "Quizz/Monde_20/Niveau_30": {
+        "title": "Quizz/Monde_20/Niveau_30",
+        "kanji": "鶏",
+        "vocab": "称する",
+        "grammar": "ばいいのに",
+        "kanji_count": 3,
+        "vocab_count": 10,
+        "grammar_count": 1
+    }
+}
