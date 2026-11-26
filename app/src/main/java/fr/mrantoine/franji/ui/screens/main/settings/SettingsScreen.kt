@@ -58,6 +58,7 @@ fun SettingsScreen(
 
     var isRomajiEnabled by remember { mutableStateOf(SettingsStorage.isRomaji()) }
     var isRestCacheOnLaunch by remember { mutableStateOf(SettingsStorage.isRestCacheOnLaunch()) }
+    var isDrawLessons by remember { mutableStateOf(SettingsStorage.isDrawLessons()) }
 
     val settings = remember(isRomajiEnabled, isRestCacheOnLaunch) {
         listOf(
@@ -78,7 +79,17 @@ fun SettingsScreen(
                     isRestCacheOnLaunch = value
                     isEdited = true
                 }
+            ),
+            SettingItem(
+                title = "Dessin de kanji dans les Quizz",
+                checked = isDrawLessons,
+                onToggle = { value ->
+                    SettingsStorage.setDrawLessons(value)
+                    isDrawLessons = value
+                    isEdited = true
+                }
             )
+
         )
     }
 

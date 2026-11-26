@@ -10,6 +10,7 @@ import java.io.File
 data class SettingsCache(
     var isRomaji: Boolean = false,
     var restCacheOnLaunch: Boolean = false,
+    var drawLessons: Boolean = true
 )
 
 object SettingsStorage {
@@ -29,6 +30,14 @@ object SettingsStorage {
 
     fun setRestCacheOnLaunch(reset: Boolean) {
         settings.restCacheOnLaunch = reset
+    }
+
+    fun isDrawLessons() : Boolean {
+        return settings.drawLessons
+    }
+
+    fun setDrawLessons(drawLessons: Boolean) {
+        settings.drawLessons = drawLessons
     }
 
     private val settings_path = "settings_cache.json"

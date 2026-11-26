@@ -26,14 +26,14 @@ fun DrawArea(
     angles: List<Float>,
     isRevealed: MutableState<Boolean>,
     lottie: String,
-    drawColor: Color = MaterialTheme.colorScheme.onBackground
-
+    drawColor: Color = MaterialTheme.colorScheme.onBackground,
 ) {
     var paths by remember { mutableStateOf(listOf<List<Offset>>()) }
     var currentPath by remember { mutableStateOf(listOf<Offset>()) }
 
     var drawIndex by remember { mutableStateOf(0) }
     var fails by remember { mutableStateOf(0) }
+    var hintLines by remember { mutableStateOf(0) }
     var isLocked by remember { mutableStateOf(false) }
     if (fails > 0) {
         LaunchedEffect(fails) {
@@ -71,11 +71,11 @@ fun DrawArea(
                 }
             } else {
                 fails += 1
+                hintLines = maxOf(hintLines, drawIndex + 1)
                 paths = emptyList()
                 currentPath = emptyList()
                 drawIndex = 0
                 isLocked = true
-
             }
         }
     }
@@ -97,7 +97,8 @@ fun DrawArea(
                         autoPlay = true,
                         color = MaterialTheme.colorScheme.tertiary,
                         speed = 1.5f,
-                        lines = fails)
+                        lines = hintLines
+                    )
                 }
             }
             Box(

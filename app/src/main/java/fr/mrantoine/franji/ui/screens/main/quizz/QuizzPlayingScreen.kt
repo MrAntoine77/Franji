@@ -24,11 +24,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import fr.mrantoine.franji.Screen
 import fr.mrantoine.franji.storage.CategoryStorage
+import fr.mrantoine.franji.storage.SettingsStorage
 import fr.mrantoine.franji.storage.VocabStorage
 import fr.mrantoine.franji.ui.components.CardTypeTag
 import fr.mrantoine.franji.ui.components.navigation.TopBar
 import fr.mrantoine.franji.ui.screens.main.quizz.grammar.QuizzGrammarFr3Jp
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzGrammarJp4Fr
+import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzKanjiDrawing
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzKanjiFr4Kana
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzKanjiFr9Jp
 import fr.mrantoine.franji.ui.screens.main.quizz.kanji.QuizzKanjiJp4Fr
@@ -49,6 +51,7 @@ enum class QuizzMode {
     KANJI_Fr4Kana,
     KANJI_Jp4Fr,
     KANJI_Jp4Kana,
+    KANJI_Drawing,
     VOCAB_Fr4Jp,
     VOCAB_Fr4Kana,
     VOCAB_Jp4Fr,
@@ -76,6 +79,9 @@ fun buildQuizz(
             result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Jp4Fr))
             result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Fr4Kana))
             result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Jp4Kana))
+            if(SettingsStorage.isDrawLessons()) {
+                result.add(QuizzElement(id = id, mode = QuizzMode.KANJI_Drawing))
+            }
         }
         if (id.startsWith("vocab")) {
             val vocab = VocabStorage.getVocabById(context, id)
@@ -237,6 +243,14 @@ fun QuizzPlayingScreen(
                         }
                         QuizzMode.KANJI_Jp4Kana -> {
                             QuizzKanjiJp4Kana(
+                                kanjiId = itemId,
+                                categoryPath = categoryPath,
+                                onNext = { onNext() },
+                                passed = passed
+                            )
+                        }
+                        QuizzMode.KANJI_Drawing -> {
+                            QuizzKanjiDrawing(
                                 kanjiId = itemId,
                                 categoryPath = categoryPath,
                                 onNext = { onNext() },
