@@ -1,7 +1,7 @@
 {
   "conv1": {
     "title": "Commande au bar",
-    "objective": "Acheter un {size} {drink} {sweetener} à consommer {place}, payer en {payment}",
+    "objective": "Acheter un {drink} {size} {sweetener} {place}, payer en {payment}",
     "parts": [
       {
         "name": "drink",
@@ -24,15 +24,15 @@
         "name": "size",
         "elements": [
           {
-            "fr": "petit",
+            "fr": "petite taille",
             "jp": "しょうサイズ"
           },
           {
-            "fr": "moyen",
+            "fr": "moyenne taille",
             "jp": "ちゅうサイズ"
           },
           {
-            "fr": "grand",
+            "fr": "grande taille",
             "jp": "だいサイズ"
           }
         ]
@@ -54,7 +54,7 @@
         "name": "place",
         "elements": [
           {
-            "fr": "sur place",
+            "fr": "à consommer sur place",
             "jp": "てんない"
           },
           {
@@ -67,7 +67,7 @@
         "name": "payment",
         "elements": [
           {
-            "fr": "suica",
+            "fr": "Suica",
             "jp": "スイカ"
           },
           {
@@ -75,7 +75,7 @@
             "jp": "カード"
           },
           {
-            "fr": "liquide",
+            "fr": "espèces",
             "jp": "げんきん"
           }
         ]
@@ -104,6 +104,130 @@
       ],
       [
         "ありがとうございます。おまたせしました。"
+      ]
+    ]
+  },
+  "conv2": {
+    "title": "Achats au konbini",
+    "objective": "Acheter un {food} et {drink}, {heating}, {cutlery} et payer en {payment}",
+    "parts": [
+      {
+        "name": "food",
+        "elements": [
+          {
+            "fr": "onigiri au saumon",
+            "jp": "しゃけのおにぎり"
+          },
+          {
+            "fr": "sandwich",
+            "jp": "サンドイッチ"
+          },
+          {
+            "fr": "bento",
+            "jp": "べんとう"
+          },
+          {
+            "fr": "pain au curry",
+            "jp": "カレーパン"
+          }
+        ]
+      },
+      {
+        "name": "drink",
+        "elements": [
+          {
+            "fr": "un thé vert",
+            "jp": "りょくちゃ"
+          },
+          {
+            "fr": "de l'eau",
+            "jp": "みず"
+          },
+          {
+            "fr": "un café",
+            "jp": "コーヒー"
+          },
+          {
+            "fr": "un jus d'orange",
+            "jp": "オレンジジュース"
+          }
+        ]
+      },
+      {
+        "name": "heating",
+        "elements": [
+          {
+            "fr": "à réchauffer",
+            "jp": "あたためてください"
+          },
+          {
+            "fr": "pas besoin de réchauffer",
+            "jp": "あたためなくていいです"
+          }
+        ]
+      },
+      {
+        "name": "cutlery",
+        "elements": [
+          {
+            "fr": "demander des baguettes",
+            "jp": "おはし"
+          },
+          {
+            "fr": "demander une fourchette",
+            "jp": "フォーク"
+          },
+          {
+            "fr": "demander une cuillère",
+            "jp": "スプーン"
+          },
+          {
+            "fr": "ne pas demander de couverts",
+            "jp": "いりません"
+          }
+        ]
+      },
+      {
+        "name": "payment",
+        "elements": [
+          {
+            "fr": "espèces",
+            "jp": "げんきん"
+          },
+          {
+            "fr": "carte bancaire",
+            "jp": "クレジットカード"
+          },
+          {
+            "fr": "Suica",
+            "jp": "スイカ"
+          }
+        ]
+      }
+    ],
+    "phases": [
+      [
+        "いらっしゃいませ。",
+        "こんにちは。"
+      ],
+      [
+        "おべんとうは あたためますか？",
+        "{heating}"
+      ],
+      [
+        "おはしは おつけしますか？",
+        "{cutlery} を おねがいします。"
+      ],
+      [
+        "おのみものは いかがですか？",
+        "{drink} も おねがいします。"
+      ],
+      [
+        "おかいけいは いくらです。",
+        "{payment} で はらいます。"
+      ],
+      [
+        "ありがとうございました。"
       ]
     ]
   }
