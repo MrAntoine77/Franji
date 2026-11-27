@@ -52,13 +52,6 @@ data class Message(
     val key: String? = null
 )
 
-enum class ConversationPhase {
-    SENDER,
-    RECEIVER,
-    WAITING,
-}
-
-
 fun replacePlaceholders(
     text: String,
     values: Map<String, String>
