@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -204,7 +205,11 @@ fun ConversationPlayingScreen(
                 textAlign = TextAlign.Justify,
                 highlightBold = true
             )
-
+            HorizontalDivider(
+                modifier = Modifier.padding(top = 12.dp),
+                thickness = 1.dp,
+                color = MaterialTheme.colorScheme.outlineVariant
+            )
             LazyColumn(
                 state = listState,
                 modifier = Modifier
