@@ -24,7 +24,6 @@ import fr.mrantoine.franji.ui.screens.main.cards.CardsRecapScreen
 import fr.mrantoine.franji.ui.screens.main.cards.Mode
 import fr.mrantoine.franji.ui.screens.main.conversation.ConversationListScreen
 import fr.mrantoine.franji.ui.screens.main.conversation.ConversationPlayingScreen
-import fr.mrantoine.franji.ui.screens.main.conversation.ConversationPlayingScreenTemp
 import fr.mrantoine.franji.ui.screens.main.home.grammar.GrammarScreen
 import fr.mrantoine.franji.ui.screens.main.home.grammar.GrammarState
 import fr.mrantoine.franji.ui.screens.main.home.kana.KanaScreen
@@ -35,7 +34,6 @@ import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabScreen
 import fr.mrantoine.franji.ui.screens.main.home.vocab.VocabState
 import fr.mrantoine.franji.ui.screens.main.quizz.QuizzLevelListScreen
 import fr.mrantoine.franji.ui.screens.main.quizz.QuizzWorldListScreen
-import fr.mrantoine.franji.ui.screens.main.quizz.QuizzMainScreen
 import fr.mrantoine.franji.ui.screens.main.quizz.QuizzPlayingScreen
 import fr.mrantoine.franji.ui.screens.main.settings.SettingsScreen
 
@@ -410,7 +408,7 @@ class MainActivity : ComponentActivity() {
                             ?.getString(Screen.ConversationPlaying.ARG)
                             ?.let { Uri.decode(it) } ?: ""
 
-                        ConversationPlayingScreenTemp(navController, convId)
+                        ConversationPlayingScreen(navController, convId)
                     }
 
                     composable(Screen.ConversationList.route) {
