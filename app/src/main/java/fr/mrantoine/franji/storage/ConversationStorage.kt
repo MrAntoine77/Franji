@@ -1,6 +1,7 @@
 package fr.mrantoine.franji.storage
 
 import android.content.Context
+import androidx.compose.runtime.remember
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -17,7 +18,10 @@ data class Conversation(
     val title: String = "",
     val objective: String = "",
     val parts: List<ConversationPart> = emptyList(),
-    val phases: List<List<List<String>>> = emptyList()
+    val phases: List<List<List<String>>> = emptyList(),
+    val backgroundImagePath: String = "",
+    val delimiterImagePath: String = "",
+    val characterImagePath: String = "",
 )
 
 @Serializable

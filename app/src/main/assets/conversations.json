@@ -2,6 +2,9 @@
   "conv1": {
     "title": "Commande au bar",
     "objective": "Acheter un {drink} {size} {sweetener} {place}, payer en {payment}",
+    "backgroundImagePath":"conversations/conv1/background.png",
+    "delimiterImagePath": "conversations/conv1/delimiter.png",
+    "characterImagePath": "conversations/conv1/character.png",
     "parts": [
       {
         "name": "drink",
@@ -114,7 +117,8 @@
       ],
       [
         [
-          "ありがとうございます。おまたせしました。"
+          "ありがとうございます。おまたせしました。",
+          "ありがとうございます"
         ]
       ]
     ]
