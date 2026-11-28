@@ -19,9 +19,6 @@ data class Conversation(
     val objective: String = "",
     val parts: List<ConversationPart> = emptyList(),
     val phases: List<List<List<String>>> = emptyList(),
-    val backgroundImagePath: String = "",
-    val delimiterImagePath: String = "",
-    val characterImagePath: String = "",
 )
 
 @Serializable

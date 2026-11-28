@@ -200,14 +200,14 @@ fun ConversationPlayingScreen(
                             .clipToBounds()
                     ) {
                         Image(
-                            bitmap = loadAsset(conversation.backgroundImagePath),
+                            bitmap = loadAsset("conversations/${convId}/background.png"),
                             contentDescription = null,
                             contentScale = ContentScale.FillWidth,
                             modifier = Modifier.align(Alignment.TopCenter)
                         )
 
                         Image(
-                            bitmap = loadAsset(conversation.characterImagePath),
+                            bitmap = loadAsset("conversations/${convId}/character.png"),
                             contentDescription = null,
                             contentScale = ContentScale.Fit,
                             modifier = Modifier
@@ -234,7 +234,7 @@ fun ConversationPlayingScreen(
 
                         Box(modifier = Modifier.align(Alignment.BottomCenter)) {
                             Image(
-                                bitmap = loadAsset(conversation.delimiterImagePath),
+                                bitmap = loadAsset("conversations/${convId}/delimiter.png"),
                                 contentDescription = null,
                                 contentScale = ContentScale.FillWidth,
                                 modifier = Modifier.fillMaxWidth()
@@ -303,9 +303,6 @@ fun ConversationPlayingScreen(
                                     }
                                 )
                             }
-
-
-
                         }
                         Spacer(modifier = Modifier.weight(1f))
                         InfoBox(text = replacePlaceholders(conversation.objective, selection))
